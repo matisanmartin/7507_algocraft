@@ -3,15 +3,22 @@ package jugadortest;
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.Volcan;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import controller.Posicion;
 import razas.Raza;
+import razas.Terran;
 import exceptions.ColorInvalidoException;
+import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
+import factory.construcciones.CentroDeMineral;
+import factory.construcciones.ConstruccionSobreVolcan;
+import factory.construcciones.Refineria;
 
 @RunWith(JUnit4.class)
 public class JugadorTest {
@@ -42,4 +49,19 @@ public class JugadorTest {
 		 //assertEquals(Raza.class,jugadorPrueba.getRaza().getClass());
 	 }
 
+	 @Test
+	 public void alCrerseDeberiaTener200DeCristal0DeGas() throws NombreCortoException, ColorInvalidoException{
+		 jugadorPrueba = new Jugador("12345",TipoColor.COLOR_AZUL,razaPrueba);
+		 assertEquals(200,jugadorPrueba.getCantidadDeCristal());
+		 assertEquals(0,jugadorPrueba.getCantidadDeGas());
+		 
+	 }
+	 
+//	 @Test
+//	 public void siPideRecursosAUnEdificoDeRecursoRecibeMas10() throws FueraDeRangoException, NombreCortoException, ColorInvalidoException{
+//		Jugador jugador = new Jugador("pepepe", TipoColor.COLOR_AMARILLO, new Terran());
+//		ConstruccionSobreVolcan refineria = new Refineria(new Volcan(new Posicion(1, 1))); 
+//		 
+//		 
+//	 }
 }

@@ -17,6 +17,9 @@ public class Jugador {
 	TipoColor color;
 	Raza raza;
 	List<Elemento> elementos;
+
+	private int cantidadDeCristal;
+	private int cantidadDeGas;
 	
 	public Jugador(String nombre,TipoColor color,Raza raza) 
 	throws NombreCortoException, ColorInvalidoException {
@@ -32,6 +35,9 @@ public class Jugador {
 		this.raza=raza;
 		
 		elementos = new ArrayList<Elemento>();
+		
+		this.cantidadDeCristal = 200;
+		this.cantidadDeGas = 0;
 	}
 	
 	public void agregarElemento(Elemento elem) throws ElementoInvalidoException {
@@ -55,6 +61,16 @@ public class Jugador {
 	public TipoColor getColor() {
 		// TODO Auto-generated method stub
 		return this.color;
+	}
+
+	public int getCantidadDeCristal() {
+		// TODO Auto-generated method stub
+		return this.cantidadDeCristal;
+	}
+
+	public int getCantidadDeGas() {
+		// TODO Auto-generated method stub
+		return this.cantidadDeGas;
 	}
 
 
