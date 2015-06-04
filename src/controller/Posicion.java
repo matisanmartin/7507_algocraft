@@ -35,6 +35,10 @@ public class Posicion {
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
+	
+	public boolean equals(Object pos){
+		return (this.posX ==  ((Posicion) pos).getPosX() && this.posY == ((Posicion) pos).getPosY());
+	}
 
 	
 }
