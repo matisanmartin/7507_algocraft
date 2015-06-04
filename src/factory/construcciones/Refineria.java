@@ -1,9 +1,15 @@
 package factory.construcciones;
 
+import model.Volcan;
 import controller.Posicion;
 import exceptions.FueraDeRangoException;
 
-public class Refineria extends Construccion {
+public class Refineria extends ConstruccionSobreVolcan {
+
+	public Refineria(Volcan volcan) {
+		super(volcan);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException {
