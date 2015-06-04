@@ -1,5 +1,6 @@
 package factory;
 
+import model.Elemento;
 import factory.construcciones.Construccion;
 import factory.construcciones.TipoConstruccion;
 import factory.unidades.TipoUnidad;

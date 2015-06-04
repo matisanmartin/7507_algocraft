@@ -9,5 +9,5 @@ import factory.unidades.Unidad;
 public abstract class AbstractFactory {
 
 	public abstract Unidad getUnidad(TipoUnidad unidadRequerida) throws UnidadInvalidaException;
-	abstract Construccion getConstruccion(TipoConstruccion construccionRequerida);
+	public abstract Construccion getConstruccion(TipoConstruccion construccionRequerida);
 }

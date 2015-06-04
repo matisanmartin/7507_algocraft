@@ -6,8 +6,8 @@ import exceptions.FueraDeRangoException;
 
 public abstract class Unidad extends ElementoImpl {
 
-	protected int transporte;
-	protected int vision;
+	private int transporte;
+	private int vision;
 	private String costo;
 	private int tiempoConstruccion;
 	private String daño;
@@ -92,20 +92,16 @@ public abstract class Unidad extends ElementoImpl {
 	}
 
 	public Posicion getPosicion() {
-		return posicion;
+		return getPosicion();
 	}
 
-	public void setPosicion(Posicion posicion) {
-		this.posicion = posicion;
-	}
-	
 	public void posicionar(Posicion posicionInicial) throws FueraDeRangoException{
-		posicion = new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY());
+		setPosicion(new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY()));
 		
 	}
 	
 	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException {	
-		posicion = new Posicion(nuevaPosicion.getPosX(),nuevaPosicion.getPosY());
+		setPosicion(new Posicion(nuevaPosicion.getPosX(),nuevaPosicion.getPosY()));
 	}
 	
 	

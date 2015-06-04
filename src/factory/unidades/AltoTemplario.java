@@ -1,5 +1,7 @@
 package factory.unidades;
 
+import model.Elemento;
+
 public class AltoTemplario extends Unidad {
 
 	public AltoTemplario(int transporte, int vision, String costo,int tiempoConstruccion, String daño, int suministro,
@@ -9,7 +11,5 @@ public class AltoTemplario extends Unidad {
 				rangoAtaque, unidadAltoTemplarioVida);
 		
 	}
-
-
 
 }
