@@ -18,7 +18,7 @@ import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 
 @RunWith(JUnit4.class)
-public class FactoryIntegracion {
+public class FactoryIntegracionTest {
 
 	AbstractFactory factory;
 	AbstractFactory factoryUnidad;
@@ -39,7 +39,7 @@ public class FactoryIntegracion {
 		assertEquals(UnidadFactory.UNIDAD_MARINE_TRANSPORTE, unidadObtenida.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_VISION, unidadObtenida.getVision());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_COSTO, unidadObtenida.getCosto());
-		assertEquals(UnidadFactory.UNIDAD_MARINE_DAÃ‘O, unidadObtenida.getDaÃ±o());
+		assertEquals(UnidadFactory.UNIDAD_MARINE_DAÑO, unidadObtenida.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_RANGO_ATAQUE, unidadObtenida.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_SUMINISTRO, unidadObtenida.getSuministro());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_VIDA, unidadObtenida.getVida());
