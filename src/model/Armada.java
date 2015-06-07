@@ -6,7 +6,6 @@ import java.util.List;
 
 import controller.Posicion;
 import exceptions.ElementoNoEncontradoException;
-import factory.unidades.Unidad;
 
 public class Armada {
 	
@@ -44,29 +43,20 @@ public class Armada {
 	//uno en aire y otro en tierra
 		
  		Iterator<ElementoArtificial> it = elementos.iterator();
-		Integer indice1=null;
-		Integer indice2=null;
+		int indice = 0;
 		int i=0;
 	
 		while(it.hasNext())
 		{	
 			ElementoArtificial actual = it.next();
 			
-			if(actual.getPosicion().equals(pos))
-			{
-				if(indice1==null&&indice2==null)
-					indice1=i;
-				else
-					indice2=i;
-			}
+			if(actual.getPosicion().equals(pos)&&actual.getVida().equals("0"))
+				indice=i;
 			i++;
 		}
 		
-		if(((Unidad) elementos.get(indice1)).getVida().equals("0"))
-			elementos.remove(indice1);
-		else if(((Unidad) elementos.get(indice2)).getVida().equals("0"))
-			elementos.remove(indice2);
-
+		elementos.remove(indice);
+		
 		dimensionArmada=elementos.size();
 	}
 	

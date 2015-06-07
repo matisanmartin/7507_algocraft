@@ -2,7 +2,7 @@ package jugadortest;
 
 import static org.junit.Assert.assertEquals;
 import model.Armada;
-import model.Elemento;
+import model.ElementoArtificial;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -65,10 +65,12 @@ public class ArmadaTest {
 		
 		armada.agregarElemento(unidadMuerta);
 		armada.agregarElemento(unidadMuertaNueva);
+		
 		armada.eliminarElementoMuertoEnPosicion(new Posicion(2,3));
 		assertEquals(1,armada.getDimensionArmada());
-		Elemento ElementoUnico = armada.obtenerElementoEnPosicion(pos);
-		assertEquals(pos,ElementoUnico.getPosicion());	
+		
+		ElementoArtificial ElementoUnico = armada.obtenerElementoEnPosicion(pos);
+		assertEquals(true,pos.equals(ElementoUnico.getPosicion()));	
 	}
 
 }

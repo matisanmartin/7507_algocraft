@@ -3,22 +3,15 @@ package jugadortest;
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
 import jugador.TipoColor;
-import model.Volcan;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import controller.Posicion;
 import razas.Raza;
-import razas.Terran;
 import exceptions.ColorInvalidoException;
-import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
-import factory.construcciones.CentroDeMineral;
-import factory.construcciones.ConstruccionSobreVolcan;
-import factory.construcciones.Refineria;
 
 @RunWith(JUnit4.class)
 public class JugadorTest {
