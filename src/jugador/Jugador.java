@@ -1,10 +1,9 @@
 package jugador;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import model.Elemento;
+import model.Armada;
+import model.ElementoArtificial;
 import razas.Raza;
+import controller.Posicion;
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.NombreCortoException;
@@ -16,7 +15,7 @@ public class Jugador {
 	String nombre;
 	TipoColor color;
 	Raza raza;
-	List<Elemento> elementos;
+	Armada armada;
 
 	private int cantidadDeCristal;
 	private int cantidadDeGas;
@@ -34,18 +33,27 @@ public class Jugador {
 		this.color=color;
 		this.raza=raza;
 		
-		elementos = new ArrayList<Elemento>();
+		armada = new Armada();
 		
 		this.cantidadDeCristal = 200;
 		this.cantidadDeGas = 0;
 	}
 	
-	public void agregarElemento(Elemento elem) throws ElementoInvalidoException {
+	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException {
 		
 		if(elem==null)
 			throw new ElementoInvalidoException();
 		
-		elementos.add(elem);
+		armada.agregarElemento(elem);
+	}
+	
+	public void eliminarElementoMuertoEnPosicion(Posicion pos){
+		
+		armada.eliminarElementoMuertoEnPosicion(pos);
+	}
+	
+	public int obtenerDimensionArmada(){
+		return armada.getDimensionArmada();
 	}
 
 	public String getNombre() {

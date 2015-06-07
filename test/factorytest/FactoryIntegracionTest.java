@@ -13,7 +13,6 @@ import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
 import factory.TipoFactory;
 import factory.UnidadFactory;
-import factory.unidades.Marine;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 
@@ -35,7 +34,7 @@ public class FactoryIntegracionTest {
 	
 	@Test
 	public void testObtengoMarine() {	
-		assertEquals(Marine.class,unidadObtenida.getClass());
+		assertEquals(Unidad.class,unidadObtenida.getClass());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_TRANSPORTE, unidadObtenida.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_VISION, unidadObtenida.getVision());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_COSTO, unidadObtenida.getCosto());

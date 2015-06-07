@@ -1,6 +1,5 @@
 package model;
 
-import common.Constantes;
 import controller.Posicion;
 import exceptions.FueraDeRangoException;
 

@@ -9,18 +9,8 @@ import org.junit.runners.JUnit4;
 
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
-import factory.unidades.AltoTemplario;
-import factory.unidades.Dragon;
-import factory.unidades.Espectro;
-import factory.unidades.Golliat;
-import factory.unidades.Marine;
-import factory.unidades.NaveCiencia;
-import factory.unidades.NaveTransporteProtoss;
-import factory.unidades.NaveTransporteTerran;
-import factory.unidades.Scout;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
-import factory.unidades.Zealot;
 
 
 @RunWith(JUnit4.class)
@@ -33,26 +23,6 @@ public class UnidadFactoryTest {
 	public void setUp(){
 		factory = new UnidadFactory();
 	}
-
-	
-	@Test
-	public void testInstanciasCorrectasTerran() throws UnidadInvalidaException {
-		assertEquals(Marine.class,factory.getUnidad(TipoUnidad.TERRAN_MARINE).getClass());
-		assertEquals(Golliat.class,factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT).getClass());
-		assertEquals(Espectro.class,factory.getUnidad(TipoUnidad.TERRAN_ESPECTRO).getClass());
-		assertEquals(NaveCiencia.class,factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA).getClass());
-		assertEquals(NaveTransporteTerran.class,factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE).getClass());
-	}
-	
-	@Test
-	public void testInstanciasCorrectaProtoss() throws UnidadInvalidaException {
-		assertEquals(Zealot.class,factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT).getClass());
-		assertEquals(Dragon.class,factory.getUnidad(TipoUnidad.PROTOSS_DRAGON).getClass());
-		assertEquals(Scout.class,factory.getUnidad(TipoUnidad.PROTOSS_SCOUT).getClass());
-		assertEquals(AltoTemplario.class,factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO).getClass());
-		assertEquals(NaveTransporteProtoss.class,factory.getUnidad(TipoUnidad.PROTOSS_NAVE_TRANSPORTE).getClass());
-	}
-
 
 	@Test
 	public void testAtributosMarine() throws UnidadInvalidaException {

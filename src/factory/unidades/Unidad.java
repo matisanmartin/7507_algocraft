@@ -1,20 +1,22 @@
 package factory.unidades;
 
-import model.ElementoImpl;
-import controller.Posicion;
-import exceptions.FueraDeRangoException;
+import java.util.List;
 
-public abstract class Unidad extends ElementoImpl {
+import model.ElementoArtificial;
+import model.ElementoArtificialImpl;
+import strategy.ContextoStrategy;
+import exceptions.FactoryInvalidaException;
+import exceptions.FueraDeRangoException;
+import exceptions.UnidadInvalidaException;
+
+public class Unidad extends ElementoArtificialImpl {
 
 	private int transporte;
 	private int vision;
-	private String costo;
 	private int tiempoConstruccion;
 	private String daño;
 	private int suministro;
 	private String rangoAtaque;
-	private String vida;
-	
 
 	public Unidad(int transporte, int vision, String costo, int tiempoConstruccion, 
 			          String daño, int suministro,String rangoAtaque, String unidadMarineVida) {
@@ -41,14 +43,6 @@ public abstract class Unidad extends ElementoImpl {
 	}
 	public void setVision(int vision) {
 		this.vision = vision;
-	}
-
-	public String getCosto() {
-		return costo;
-	}
-
-	public void setCosto(String costo) {
-		this.costo = costo;
 	}
 
 	public int getTiempoConstruccion() {
@@ -82,30 +76,12 @@ public abstract class Unidad extends ElementoImpl {
 	public void setRangoAtaque(String rangoAtaque) {
 		this.rangoAtaque = rangoAtaque;
 	}
-
-	public String getVida() {
-		return vida;
+ 
+	@Override
+	public void realizarAccion(ContextoStrategy contexto, List<ElementoArtificial> unidadesEnemigas) 
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
+		contexto.ejecutarStrategy(this.getPosicion(),this.getRangoAtaque(),this.getDaño(), unidadesEnemigas);
 	}
-
-	public void setVida(String unidadMarineVida) {
-		this.vida = unidadMarineVida;
-	}
-
-	public Posicion getPosicion() {
-		return getPosicion();
-	}
-
-	public void posicionar(Posicion posicionInicial) throws FueraDeRangoException{
-		setPosicion(new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY()));
-		
-	}
-	
-	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException {	
-		setPosicion(new Posicion(nuevaPosicion.getPosX(),nuevaPosicion.getPosY()));
-	}
-	
-	
-
 
 
 }

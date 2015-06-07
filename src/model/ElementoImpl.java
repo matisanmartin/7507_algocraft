@@ -11,6 +11,8 @@ public abstract class ElementoImpl implements Elemento {
 	}
 
 	public void setPosicion(Posicion posicion) {
+		//TODO msma: Acá se agregaría la validación de que la nueva posicion es valida
+		// Si no se puede, tira excepcion, si se puede, 
 		this.posicion = posicion;
 	}
 }

@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4;
 
 import common.Constantes;
 
-import factory.unidades.UnidadFactory;
+import factory.UnidadFactory;
 
 @RunWith(JUnit4.class)
 public class CampoBatallaTest {

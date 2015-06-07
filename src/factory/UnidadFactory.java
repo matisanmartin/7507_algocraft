@@ -3,18 +3,8 @@ package factory;
 import exceptions.UnidadInvalidaException;
 import factory.construcciones.Construccion;
 import factory.construcciones.TipoConstruccion;
-import factory.unidades.AltoTemplario;
-import factory.unidades.Dragon;
-import factory.unidades.Espectro;
-import factory.unidades.Golliat;
-import factory.unidades.Marine;
-import factory.unidades.NaveCiencia;
-import factory.unidades.NaveTransporteProtoss;
-import factory.unidades.NaveTransporteTerran;
-import factory.unidades.Scout;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
-import factory.unidades.Zealot;
 
 public class UnidadFactory extends AbstractFactory{
 	
@@ -142,7 +132,7 @@ public class UnidadFactory extends AbstractFactory{
 		
 		switch (unidadRequerida) {
 		case TERRAN_MARINE:
-			unidadCreada = new Marine(	UNIDAD_MARINE_TRANSPORTE,
+			unidadCreada = new Unidad(	UNIDAD_MARINE_TRANSPORTE,
 										UNIDAD_MARINE_VISION,
 										UNIDAD_MARINE_COSTO,
 										UNIDAD_MARINE_TIEMPO_CONSTRUCCION,
@@ -153,7 +143,7 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 		
 		case TERRAN_GOLLIAT:
-			unidadCreada = new Golliat(	UNIDAD_GOLLIAT_TRANSPORTE,
+			unidadCreada = new Unidad(	UNIDAD_GOLLIAT_TRANSPORTE,
 										UNIDAD_GOLLIAT_VISION,
 										UNIDAD_GOLLIAT_COSTO,
 										UNIDAD_GOLLIAT_TIEMPO_CONSTRUCCION,
@@ -164,7 +154,7 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 			
 		case TERRAN_ESPECTRO:
-			unidadCreada = new Espectro(UNIDAD_ESPECTRO_TRANSPORTE,
+			unidadCreada = new Unidad(	UNIDAD_ESPECTRO_TRANSPORTE,
 										UNIDAD_ESPECTRO_VISION,
 										UNIDAD_ESPECTRO_COSTO,
 										UNIDAD_ESPECTRO_TIEMPO_CONSTRUCCION,
@@ -175,29 +165,29 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 			
 		case TERRAN_NAVE_CIENCIA:
-			unidadCreada = new NaveCiencia(	UNIDAD_NAVE_CIENCIA_TRANSPORTE,
-											UNIDAD_NAVE_CIENCIA_VISION,
-											UNIDAD_NAVE_CIENCIA_COSTO,
-											UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION,
-											UNIDAD_NAVE_CIENCIA_DAÑO,
-											UNIDAD_NAVE_CIENCIA_SUMINISTRO,
-											UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
-											UNIDAD_NAVE_CIENCIA_VIDA);
+			unidadCreada = new Unidad(	UNIDAD_NAVE_CIENCIA_TRANSPORTE,
+										UNIDAD_NAVE_CIENCIA_VISION,
+										UNIDAD_NAVE_CIENCIA_COSTO,
+										UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION,
+										UNIDAD_NAVE_CIENCIA_DAÑO,
+										UNIDAD_NAVE_CIENCIA_SUMINISTRO,
+										UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
+										UNIDAD_NAVE_CIENCIA_VIDA);
 			break;
 			
 		case TERRAN_NAVE_TRANSPORTE:
-			unidadCreada = new NaveTransporteTerran(UNIDAD_NAVE_TRANSPORTE_TERRAN_TRANSPORTE,
-													UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION,
-													UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO,
-													UNIDAD_NAVE_TRANSPORTE_TERRAN_TIEMPO_CONSTRUCCION,
-													UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO,
-													UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO,
-													UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE,
-													UNIDAD_NAVE_TRANSPORTE_TERRAN_VIDA);	
+			unidadCreada = new Unidad(	UNIDAD_NAVE_TRANSPORTE_TERRAN_TRANSPORTE,
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION,
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO,
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_TIEMPO_CONSTRUCCION,
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO,
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO,
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE,
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_VIDA);	
 			break;
 			
 		case PROTOSS_ZEALOT:
-			unidadCreada = new Zealot(	UNIDAD_ZEALOT_TRANSPORTE,
+			unidadCreada = new Unidad(	UNIDAD_ZEALOT_TRANSPORTE,
 										UNIDAD_ZEALOT_VISION,
 										UNIDAD_ZEALOT_COSTO,
 										UNIDAD_ZEALOT_TIEMPO_CONSTRUCCION,
@@ -208,7 +198,7 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 			
 		case PROTOSS_DRAGON:
-			unidadCreada = new Dragon(	UNIDAD_DRAGON_TRANSPORTE,
+			unidadCreada = new Unidad(	UNIDAD_DRAGON_TRANSPORTE,
 										UNIDAD_DRAGON_VISION,
 										UNIDAD_DRAGON_COSTO,
 										UNIDAD_DRAGON_TIEMPO_CONSTRUCCION,
@@ -219,7 +209,7 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 			
 		case PROTOSS_SCOUT:
-			unidadCreada = new Scout(	UNIDAD_SCOUT_TRANSPORTE,
+			unidadCreada = new Unidad(	UNIDAD_SCOUT_TRANSPORTE,
 										UNIDAD_SCOUT_VISION,
 										UNIDAD_SCOUT_COSTO,
 										UNIDAD_SCOUT_TIEMPO_CONSTRUCCION,
@@ -230,25 +220,25 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 			
 		case PROTOSS_ALTO_TEMPLARIO:
-			unidadCreada = new AltoTemplario(	UNIDAD_ALTO_TEMPLARIO_TRANSPORTE,
-												UNIDAD_ALTO_TEMPLARIO_VISION,
-												UNIDAD_ALTO_TEMPLARIO_COSTO,
-												UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION,
-												UNIDAD_ALTO_TEMPLARIO_DAÑO,
-												UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
-												UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
-												UNIDAD_ALTO_TEMPLARIO_VIDA);
+			unidadCreada = new Unidad(	UNIDAD_ALTO_TEMPLARIO_TRANSPORTE,
+										UNIDAD_ALTO_TEMPLARIO_VISION,
+										UNIDAD_ALTO_TEMPLARIO_COSTO,
+										UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION,
+										UNIDAD_ALTO_TEMPLARIO_DAÑO,
+										UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
+										UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
+										UNIDAD_ALTO_TEMPLARIO_VIDA);
 			break;
 			
 		case PROTOSS_NAVE_TRANSPORTE:
-			unidadCreada = new NaveTransporteProtoss(	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TRANSPORTE,
-														UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION,
-														UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO,
-														UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION,
-														UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO,
-														UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO,
-														UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE,
-														UNIDAD_NAVE_TRANSPORTE_PROTOSS_VIDA);
+			unidadCreada = new Unidad(	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TRANSPORTE,
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION,
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO,
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION,
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO,
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO,
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE,
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_VIDA);
 			break;
 		default: 
 			throw new UnidadInvalidaException();

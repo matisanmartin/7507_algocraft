@@ -49,9 +49,4 @@ public class Base extends ElementoImpl {
 		
 	}
 
-	@Override
-	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException {
-		// TODO Auto-generated method stub
-		
-	}
 }

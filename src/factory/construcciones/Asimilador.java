@@ -1,8 +1,13 @@
 package factory.construcciones;
 
-import model.Volcan;
-import controller.Posicion;
+import java.util.List;
+
+import strategy.ContextoStrategy;
+import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoException;
+import exceptions.UnidadInvalidaException;
+import model.ElementoArtificial;
+import model.Volcan;
 
 public class Asimilador extends ConstruccionSobreVolcan {
 
@@ -12,15 +17,14 @@ public class Asimilador extends ConstruccionSobreVolcan {
 	}
 
 	@Override
-	public void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException {
+	public void realizarAccion(ContextoStrategy contexto,
+			List<ElementoArtificial> unidadesEnemigas)
+			throws FactoryInvalidaException, UnidadInvalidaException,
+			FueraDeRangoException {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-	@Override
-	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException {
-		// TODO Auto-generated method stub
 
-	}
 
 }

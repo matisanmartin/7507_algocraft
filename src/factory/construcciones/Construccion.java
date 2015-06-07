@@ -1,10 +1,10 @@
 package factory.construcciones;
 
-import model.ElementoImpl;
+import model.ElementoArtificialImpl;
 
-public abstract class Construccion extends ElementoImpl {
+public abstract class Construccion extends ElementoArtificialImpl {
 	
-	
+
 
 
 }
