@@ -1,13 +1,13 @@
 package jugador;
 
 import common.Posicion;
-
 import model.Armada;
 import model.ElementoArtificial;
 import razas.Raza;
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.NombreCortoException;
+import factory.unidades.TipoUnidad;
 
 public class Jugador {
 	
@@ -48,6 +48,9 @@ public class Jugador {
 		armada.agregarElemento(elem);
 	}
 	
+//	public void generarNuevaUnidad(TipoUnidad unidad){
+//		
+//	}
 	public void eliminarElementoMuertoEnPosicion(Posicion pos){
 		
 		armada.eliminarElementoMuertoEnPosicion(pos);

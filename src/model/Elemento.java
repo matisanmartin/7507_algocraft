@@ -35,7 +35,7 @@ public abstract class Elemento {
 	private void crearPartes() throws FueraDeRangoException {
 		for (int i = 0; i < this.alto; i++) {
 			for (int j = 0; j < this.ancho; j++) {
-				Parte parte = new Parte(new Posicion(i, j));
+				Parte parte = new Parte(new Posicion(this.posicion.getPosX() + i, this.posicion.getPosY() + j));
 				this.partes.add(parte);
 			}
 		}

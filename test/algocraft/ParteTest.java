@@ -17,9 +17,16 @@ public class ParteTest {
 		assertNotNull(parte);
 	}
 	
+	@Test
 	public void deberiaTenerUnaPosicion() throws FueraDeRangoException{
-		Parte parte = new Parte(new Posicion(1, 1));
-		assertEquals(new Posicion(1, 1),parte.getPosicion());
+		Parte parte = new Parte(new Posicion(3, 2));
+		assertEquals(new Posicion(3, 2),parte.getPosicion());
 	}
 
+	@Test
+	public void noDeberiaTenerUnaPosicionDistintaALaCreada() throws FueraDeRangoException{
+		
+		Parte parte = new Parte(new Posicion(2, 3));
+		assertNotEquals(new Posicion(1, 1), parte.getPosicion());
+	}
 }

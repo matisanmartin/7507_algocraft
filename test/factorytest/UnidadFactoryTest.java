@@ -1,6 +1,7 @@
 package factorytest;
 
 import static org.junit.Assert.assertEquals;
+import model.Parte;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import common.Posicion;
-
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
@@ -167,5 +167,14 @@ public class UnidadFactoryTest {
 	public void unMarineDe2x2DeberiaTener4Partes() throws UnidadInvalidaException, FueraDeRangoException{
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		assertEquals(4,unidad.getPartes().size());
+	}
+	
+	@Test
+	public void unMarineDe2x2ConPosX1Y1DeberiaTenerSusPartesEnPosicionesCorrectas() throws UnidadInvalidaException, FueraDeRangoException{
+		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
+		assertEquals((new Parte(new Posicion(1, 1)).getPosicion()), unidad.getPartes().get(0).getPosicion() );
+		assertEquals((new Parte(new Posicion(1, 2)).getPosicion()), unidad.getPartes().get(1).getPosicion() );
+		assertEquals((new Parte(new Posicion(2, 1 )).getPosicion()), unidad.getPartes().get(2).getPosicion() );
+		assertEquals((new Parte(new Posicion(2, 2)).getPosicion()), unidad.getPartes().get(3).getPosicion() );
 	}
 }
