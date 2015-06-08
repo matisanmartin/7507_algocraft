@@ -2,13 +2,18 @@ package model;
 
 import java.util.ArrayList;
 
+import strategy.Estrategias;
 import common.Constantes;
+import exceptions.PosicionInvalidaException;
+import factory.unidades.Unidad;
 
 public class CampoBatalla {
 	
 	private int ancho;
 	private int alto;
 	private ArrayList<Elemento> elementos;
+	private Espacio espacioTerrestre;
+	private Espacio espacioAereo;
 	private static CampoBatalla INSTANCIA = null;
 
 	private CampoBatalla() {
@@ -16,6 +21,8 @@ public class CampoBatalla {
 		setAncho(Constantes.ANCHO_DEFECTO);
 		setAlto(Constantes.ALTO_DEFECTO);
 		this.elementos = new ArrayList<Elemento>();
+		this.espacioTerrestre = new Espacio();
+		this.espacioAereo = new Espacio();
 	};
 	
 	public static CampoBatalla getInstancia() {
@@ -24,6 +31,11 @@ public class CampoBatalla {
 			crearInstancia();
 		}
 		return INSTANCIA;
+	}
+	
+	//para probar
+	public static void DestruirInstancia(){
+		INSTANCIA = null;
 	}
 	
 	private synchronized static void crearInstancia() {
@@ -48,11 +60,12 @@ public class CampoBatalla {
 	public void setAlto(int alto) {
 		this.alto = alto;
 	}
-	
-	public void agregarElemento(Elemento elem) {
-		
-		getElementos().add(elem);
-	}
+
+	//comente esto porque aparentemente esta sin uso
+//	public void agregarElemento(Elemento elem) {
+//		
+//		getElementos().add(elem);
+//	}
 
 	public ArrayList<Elemento> getElementos() {
 		return elementos;
@@ -69,6 +82,21 @@ public class CampoBatalla {
 	private void esZonaTerrestre(int posicionX, int posicionY) {
 		
 	}
-	
+
+	public Espacio getEspacioTerrestre() {
+		// TODO Auto-generated method stub
+		return this.espacioTerrestre;
+	}
+
+//	public void agregarElementoTerrestre(Elemento elemento) throws PosicionInvalidaException {
+//		this.espacioTerrestre.agregarElemento(elemento);
+//		
+//	}
+
+	public void posicionarElemento(Elemento elemento, Espacio espacio) throws PosicionInvalidaException {
+		espacio.agregarElemento(elemento);
+		
+	}
+
 
 }

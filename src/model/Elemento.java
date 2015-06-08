@@ -22,6 +22,14 @@ public abstract class Elemento {
 	public void setAncho(int ancho){
 		this.ancho = ancho;
 	}
+	
+	public int getAlto(){
+		return this.alto;
+	}
+	
+	public int getAncho(){
+		return this.ancho;
+	}
 
 	//habria que validad el alto y el ancho
 	public Elemento(int alto, int ancho, Posicion posicion) throws FueraDeRangoException {

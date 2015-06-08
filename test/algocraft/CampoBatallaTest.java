@@ -10,17 +10,23 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import common.Constantes;
-
+import common.Posicion;
+import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
+import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
+import factory.unidades.TipoUnidad;
+import factory.unidades.Unidad;
 
 @RunWith(JUnit4.class)
 public class CampoBatallaTest {
 
 	UnidadFactory factory;
+	Unidad	unidad;
 	
 	@Before
 	public void setUp() {
-	
+		factory = new UnidadFactory();
 	}
 	
 	@Test
@@ -44,6 +50,17 @@ public class CampoBatallaTest {
 		assertEquals(20,CampoBatalla.getInstancia().getAlto());
 	}
 	
+	@Test (expected = PosicionInvalidaException.class)
+	public void noEsPosiblePosicionarUnaUnidadDelMismoTipoSiLaPosicionEstaOcupadaPorOtra() throws UnidadInvalidaException, FueraDeRangoException, PosicionInvalidaException{
+		Unidad marine1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10,10));
+		assertEquals(0,CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());
+		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
+		assertEquals(1,CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());
+		Unidad marine2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10,10));
+		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
+	}
+	
+	
 	//TODO msma: Comente este test temporalmente
 //	@Test
 //	public void testPosicionarMarine() {
@@ -58,6 +75,8 @@ public class CampoBatallaTest {
 //
 //	}
 	
+
+
 	
 	
 	
