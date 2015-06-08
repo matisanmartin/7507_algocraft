@@ -3,8 +3,9 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
+import common.Posicion;
+
 import model.ElementoArtificial;
-import controller.Posicion;
 
 public class Atacar implements Strategy {
 

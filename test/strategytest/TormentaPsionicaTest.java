@@ -1,8 +1,8 @@
 package strategytest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import model.Elemento;
 
@@ -10,7 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import strategy.ContextoStrategy;
-import controller.Posicion;
+
+import common.Posicion;
+
 import factory.AbstractFactory;
 import factory.unidades.Unidad;
 
@@ -24,7 +26,7 @@ public class TormentaPsionicaTest {
 	Posicion posicionAtacante;
 	Posicion posicionEnRango;
 	Posicion posicionFueraDeRango;
-	List<Elemento> unidadesEnemigas;
+	ArrayList<Elemento> unidadesEnemigas;
 	
 	@Before
 	public void setUp() throws Exception {

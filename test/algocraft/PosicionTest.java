@@ -4,7 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import controller.Posicion;
+import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 
 public class PosicionTest {

@@ -10,9 +10,10 @@ import model.ElementoArtificial;
 import org.junit.Before;
 import org.junit.Test;
 
+import common.Posicion;
+
 import strategy.Atacar;
 import strategy.ContextoStrategy;
-import controller.Posicion;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
@@ -41,18 +42,18 @@ public class AtacarTest {
 		contexto = new ContextoStrategy(new Atacar());
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		
-		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE);
+		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		posicionAtacante = new Posicion(1,1);
 		unidadAtacante.posicionar(posicionAtacante);
 		unidadAtacante.setDaño("6");//temporalmente para que ande la prueba
 		unidadAtacante.setRangoAtaque("4");
 		
-		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT);
+		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(1, 1));
 		posicionEnRango = new Posicion(1,2);
 		unidadDefensoraEnRango.posicionar(posicionEnRango);
 		unidadDefensoraEnRango.setVida("60");
 		
-		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT);
+		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(1, 1));
 		posicionFueraDeRango = new Posicion(10,10);
 		unidadDefensoraFueraDeRango.posicionar(posicionFueraDeRango);
 		unidadDefensoraFueraDeRango.setVida("60");

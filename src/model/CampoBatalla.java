@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import common.Constantes;
 
@@ -9,14 +8,14 @@ public class CampoBatalla {
 	
 	private int ancho;
 	private int alto;
-	private List<Elemento> elementos;
+	private ArrayList<Elemento> elementos;
 	private static CampoBatalla INSTANCIA = null;
 
 	private CampoBatalla() {
 		
 		setAncho(Constantes.ANCHO_DEFECTO);
 		setAlto(Constantes.ALTO_DEFECTO);
-		setElementos(new ArrayList<Elemento>());
+		this.elementos = new ArrayList<Elemento>();
 	};
 	
 	public static CampoBatalla getInstancia() {
@@ -55,11 +54,11 @@ public class CampoBatalla {
 		getElementos().add(elem);
 	}
 
-	public List<Elemento> getElementos() {
+	public ArrayList<Elemento> getElementos() {
 		return elementos;
 	}
 
-	public void setElementos(List<Elemento> elementos) {
+	public void setElementos(ArrayList<Elemento> elementos) {
 		this.elementos = elementos;
 	}
 	

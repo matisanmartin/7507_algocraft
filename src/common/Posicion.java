@@ -1,7 +1,6 @@
-package controller;
+package common;
 
 import model.CampoBatalla;
-import common.Mensajes;
 import exceptions.FueraDeRangoException;
 
 public class Posicion {

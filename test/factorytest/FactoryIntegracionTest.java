@@ -7,7 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import common.Posicion;
 import exceptions.FactoryInvalidaException;
+import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
@@ -26,10 +28,10 @@ public class FactoryIntegracionTest {
 	Unidad unidadObtenida;
 	
 	@Before
-	public void setUp() throws FactoryInvalidaException, UnidadInvalidaException {
+	public void setUp() throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
 		factoryUnidad = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		factoryConstruccion = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);	
-		unidadObtenida = factoryUnidad.getUnidad(TipoUnidad.TERRAN_MARINE);
+		unidadObtenida = factoryUnidad.getUnidad(TipoUnidad.TERRAN_MARINE,new Posicion(1, 1));
 	}
 	
 	@Test

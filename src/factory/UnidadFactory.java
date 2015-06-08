@@ -1,8 +1,8 @@
 package factory;
 
+import common.Posicion;
+import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
-import factory.construcciones.Construccion;
-import factory.construcciones.TipoConstruccion;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 
@@ -24,6 +24,10 @@ public class UnidadFactory extends AbstractFactory{
 //			INSTANCIA = new UnidadFactory();
 //	}
 
+	//GENERAL PARA PROBAR TAMAÑOS
+	public static final int			UNIDAD_ALTO = 2;
+	public static final int			UNIDAD_ANCHO = 2;
+	
 	//Atributos Marine
 	public static final int 		UNIDAD_MARINE_TRANSPORTE = 1;
 	public static final int 		UNIDAD_MARINE_VISION = 7;
@@ -33,6 +37,9 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 		UNIDAD_MARINE_SUMINISTRO = 1;
 	public static final String 		UNIDAD_MARINE_RANGO_ATAQUE = "0A4T";
 	public static final String 		UNIDAD_MARINE_VIDA = "40";
+	public static final int			UNIDAD_MARINE_ALTO = 2;
+	public static final int			UNIDAD_MARINE_ANCHO = 2;
+	
 	
 	//Atributos Golliat
 	public static final int 	UNIDAD_GOLLIAT_TRANSPORTE = 2;
@@ -126,12 +133,21 @@ public class UnidadFactory extends AbstractFactory{
 
 	
 	@Override
-	public Unidad getUnidad(TipoUnidad unidadRequerida) throws UnidadInvalidaException {
+	public Unidad getUnidad(TipoUnidad unidadRequerida,Posicion posicion) throws UnidadInvalidaException, FueraDeRangoException {
 		
 		Unidad unidadCreada = null;
 		
 		switch (unidadRequerida) {
 		case TERRAN_MARINE:
+//			unidadCreada = new Unidad(	UNIDAD_MARINE_TRANSPORTE,
+//										UNIDAD_MARINE_VISION,
+//										UNIDAD_MARINE_COSTO,
+//										UNIDAD_MARINE_TIEMPO_CONSTRUCCION,
+//										UNIDAD_MARINE_DAÑO,
+//										UNIDAD_MARINE_SUMINISTRO,
+//										UNIDAD_MARINE_RANGO_ATAQUE,
+//										UNIDAD_MARINE_VIDA);
+			
 			unidadCreada = new Unidad(	UNIDAD_MARINE_TRANSPORTE,
 										UNIDAD_MARINE_VISION,
 										UNIDAD_MARINE_COSTO,
@@ -139,7 +155,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_MARINE_DAÑO,
 										UNIDAD_MARINE_SUMINISTRO,
 										UNIDAD_MARINE_RANGO_ATAQUE,
-										UNIDAD_MARINE_VIDA);
+										UNIDAD_MARINE_VIDA,
+										UNIDAD_MARINE_ALTO,
+										UNIDAD_MARINE_ANCHO,
+										posicion);
 			break;
 		
 		case TERRAN_GOLLIAT:
@@ -150,7 +169,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_GOLLIAT_DAÑO,
 										UNIDAD_GOLLIAT_SUMINISTRO,
 										UNIDAD_GOLLIAT_RANGO_ATAQUE,
-										UNIDAD_GOLLIAT_VIDA);
+										UNIDAD_GOLLIAT_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case TERRAN_ESPECTRO:
@@ -161,7 +183,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ESPECTRO_DAÑO,
 										UNIDAD_ESPECTRO_SUMINISTRO,
 										UNIDAD_ESPECTRO_RANGO_ATAQUE,
-										UNIDAD_ESPECTRO_VIDA);
+										UNIDAD_ESPECTRO_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case TERRAN_NAVE_CIENCIA:
@@ -172,7 +197,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_NAVE_CIENCIA_DAÑO,
 										UNIDAD_NAVE_CIENCIA_SUMINISTRO,
 										UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
-										UNIDAD_NAVE_CIENCIA_VIDA);
+										UNIDAD_NAVE_CIENCIA_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case TERRAN_NAVE_TRANSPORTE:
@@ -183,7 +211,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO,
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO,
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE,
-										UNIDAD_NAVE_TRANSPORTE_TERRAN_VIDA);	
+										UNIDAD_NAVE_TRANSPORTE_TERRAN_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case PROTOSS_ZEALOT:
@@ -194,7 +225,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ZEALOT_DAÑO,
 										UNIDAD_ZEALOT_SUMINISTRO,
 										UNIDAD_ZEALOT_RANGO_ATAQUE,
-										UNIDAD_ZEALOT_VIDA);
+										UNIDAD_ZEALOT_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case PROTOSS_DRAGON:
@@ -205,7 +239,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_DRAGON_DAÑO,
 										UNIDAD_DRAGON_SUMINISTRO,
 										UNIDAD_DRAGON_RANGO_ATAQUE,
-										UNIDAD_DRAGON_VIDA);
+										UNIDAD_DRAGON_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case PROTOSS_SCOUT:
@@ -216,7 +253,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_SCOUT_DAÑO,
 										UNIDAD_SCOUT_SUMINISTRO,
 										UNIDAD_SCOUT_RANGO_ATAQUE,
-										UNIDAD_SCOUT_VIDA);
+										UNIDAD_SCOUT_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case PROTOSS_ALTO_TEMPLARIO:
@@ -227,7 +267,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ALTO_TEMPLARIO_DAÑO,
 										UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
 										UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
-										UNIDAD_ALTO_TEMPLARIO_VIDA);
+										UNIDAD_ALTO_TEMPLARIO_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 			
 		case PROTOSS_NAVE_TRANSPORTE:
@@ -238,7 +281,10 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO,
 										UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO,
 										UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE,
-										UNIDAD_NAVE_TRANSPORTE_PROTOSS_VIDA);
+										UNIDAD_NAVE_TRANSPORTE_PROTOSS_VIDA,
+										UNIDAD_ALTO,
+										UNIDAD_ANCHO,
+										posicion);
 			break;
 		default: 
 			throw new UnidadInvalidaException();
@@ -248,9 +294,16 @@ public class UnidadFactory extends AbstractFactory{
 		return unidadCreada;
 	}
 
-	@Override
-	public Construccion getConstruccion(TipoConstruccion construccionRequerida) {
-		return null;
-	}
+//	@Override
+//	public Construccion getConstruccion(TipoConstruccion construccionRequerida) {
+//		return null;
+//	}
+
+//	@Override
+//	public Unidad getUnidad(TipoUnidad unidadRequerida)
+//			throws UnidadInvalidaException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

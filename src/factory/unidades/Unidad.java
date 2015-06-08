@@ -2,14 +2,15 @@ package factory.unidades;
 
 import java.util.List;
 
+import common.Posicion;
+
 import model.ElementoArtificial;
-import model.ElementoArtificialImpl;
 import strategy.ContextoStrategy;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 
-public class Unidad extends ElementoArtificialImpl {
+public class Unidad extends ElementoArtificial {
 
 	private int transporte;
 	private int vision;
@@ -18,9 +19,10 @@ public class Unidad extends ElementoArtificialImpl {
 	private int suministro;
 	private String rangoAtaque;
 
+
 	public Unidad(int transporte, int vision, String costo, int tiempoConstruccion, 
-			          String daño, int suministro,String rangoAtaque, String unidadMarineVida) {
-		
+			String daño, int suministro,String rangoAtaque, String unidadMarineVida,int alto, int ancho, Posicion posicion) throws FueraDeRangoException {
+		super(alto, ancho, posicion);
 		setTransporte(transporte);
 		setVision(vision);
 		setCosto(costo);
@@ -29,8 +31,10 @@ public class Unidad extends ElementoArtificialImpl {
 		setSuministro(suministro);
 		setRangoAtaque(rangoAtaque);
 		setVida(unidadMarineVida);
-		
+
 	}
+
+
 
 	public int getTransporte() {
 		return transporte;
@@ -76,10 +80,10 @@ public class Unidad extends ElementoArtificialImpl {
 	public void setRangoAtaque(String rangoAtaque) {
 		this.rangoAtaque = rangoAtaque;
 	}
- 
+
 	@Override
 	public void realizarAccion(ContextoStrategy contexto, List<ElementoArtificial> unidadesEnemigas) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
+			throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
 		contexto.ejecutarStrategy(this.getPosicion(),this.getRangoAtaque(),this.getDaño(), unidadesEnemigas);
 	}
 

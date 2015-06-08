@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import controller.Posicion;
+import common.Posicion;
+
 import exceptions.ElementoNoEncontradoException;
 
 public class Armada {

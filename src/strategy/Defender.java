@@ -2,8 +2,9 @@ package strategy;
 
 import java.util.List;
 
+import common.Posicion;
+
 import model.ElementoArtificial;
-import controller.Posicion;
 
 public class Defender implements Strategy {
 

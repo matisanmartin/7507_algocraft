@@ -9,7 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import controller.Posicion;
+import common.Posicion;
+
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import factory.AbstractFactory;
@@ -32,11 +33,11 @@ public class ArmadaTest {
 		armada=new Armada();
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		
-		unidadMuerta = factory.getUnidad(TipoUnidad.TERRAN_MARINE);
+		unidadMuerta = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		unidadMuerta.posicionar(pos);
 		unidadMuerta.setVida("0");
 		
-		unidadMuertaNueva = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT);
+		unidadMuertaNueva = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(1, 1));
 		unidadMuertaNueva.setVida("0");
 		unidadMuertaNueva.posicionar(new Posicion(2,3));
 	}

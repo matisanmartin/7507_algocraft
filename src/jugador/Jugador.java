@@ -1,9 +1,10 @@
 package jugador;
 
+import common.Posicion;
+
 import model.Armada;
 import model.ElementoArtificial;
 import razas.Raza;
-import controller.Posicion;
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.NombreCortoException;

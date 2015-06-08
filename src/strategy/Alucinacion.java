@@ -2,8 +2,9 @@ package strategy;
 
 import java.util.List;
 
+import common.Posicion;
+
 import model.ElementoArtificial;
-import controller.Posicion;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
@@ -21,12 +22,12 @@ public class Alucinacion implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		
 		Posicion posicionFicticia1 = new Posicion(posicionActual.getPosX()+1,posicionActual.getPosY());
-		Unidad copiaFicticia1 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO);
+		Unidad copiaFicticia1 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(1, 1));
 		//copiaFicticia1.setDaño("0");
 		copiaFicticia1.posicionar(posicionFicticia1);
 		
 		Posicion posicionFicticia2 = new Posicion(posicionActual.getPosX()-1,posicionActual.getPosY());
-		Unidad copiaFicticia2 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO);
+		Unidad copiaFicticia2 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(1, 1));
 		//copiaFicticia2.setDaño("0");
 		copiaFicticia2.posicionar(posicionFicticia2);
 
