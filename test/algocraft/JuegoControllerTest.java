@@ -13,12 +13,11 @@ import org.junit.runners.JUnit4;
 
 import razas.Protoss;
 import razas.Terran;
-
 import common.Posicion;
-
 import controller.JuegoController;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
+import exceptions.NombreJugadorRepetidoException;
 import exceptions.PosicionInvalidaException;
 import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
@@ -61,7 +60,7 @@ public class JuegoControllerTest {
 	}
 	
 	@Test
-	public void testIntercambiarJugadoresJugadorActualEsJugador2yJugadorEnemigoEsJugador1() {	
+	public void testIntercambiarJugadoresJugadorActualEsJugador2yJugadorEnemigoEsJugador1() throws NombreJugadorRepetidoException {	
 		JuegoController.getInstancia().intercambiarJugadores();
 		assertEquals("jugador2",JuegoController.getInstancia().obtenerNombreJugadorActual());
 		assertEquals("jugador1",JuegoController.getInstancia().obtenerNombreJugadorEnemigo());	
