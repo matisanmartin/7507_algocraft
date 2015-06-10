@@ -1,13 +1,15 @@
 package factory.unidades;
 
-import java.util.List;
-
-import common.Posicion;
-
 import model.ElementoArtificial;
 import strategy.ContextoStrategy;
+import common.Posicion;
+import exceptions.ElementoInvalidoException;
+import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
 
 public class Unidad extends ElementoArtificial {
@@ -82,9 +84,9 @@ public class Unidad extends ElementoArtificial {
 	}
 
 	@Override
-	public void realizarAccion(ContextoStrategy contexto, List<ElementoArtificial> unidadesEnemigas) 
-			throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
-		contexto.ejecutarStrategy(this.getPosicion(),this.getRangoAtaque(),this.getDaño(), unidadesEnemigas);
+	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino) 
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 
 
