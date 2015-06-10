@@ -1,21 +1,27 @@
 package strategytest;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import model.ElementoArtificial;
+import jugador.Jugador;
+import jugador.TipoColor;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import common.Posicion;
-
+import razas.Protoss;
+import razas.Terran;
 import strategy.Atacar;
 import strategy.ContextoStrategy;
+import common.Posicion;
+import controller.JuegoController;
+import exceptions.ElementoInvalidoException;
+import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
@@ -23,6 +29,7 @@ import factory.TipoFactory;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 
+@RunWith(JUnit4.class)
 public class AtacarTest {
 
 	ContextoStrategy contexto;
@@ -33,82 +40,60 @@ public class AtacarTest {
 	Posicion posicionAtacante;
 	Posicion posicionEnRango;
 	Posicion posicionFueraDeRango;
-	List<ElementoArtificial> unidadesEnemigas;
+	Jugador jugadorActual;
+	Jugador jugadorEnemigo;
 	
 	@Before
 	public void setUp() throws Exception {
 		
-		unidadesEnemigas = new ArrayList<ElementoArtificial>();
+		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
+		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
+		
+		JuegoController.getInstancia().setJugadorActual(jugadorActual);
+		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+	
 		contexto = new ContextoStrategy(new Atacar());
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
-		posicionAtacante = new Posicion(1,1);
-		unidadAtacante.posicionar(posicionAtacante);
+
 		unidadAtacante.setDaño("6");//temporalmente para que ande la prueba
 		unidadAtacante.setRangoAtaque("4");
 		
-		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(1, 1));
 		posicionEnRango = new Posicion(1,2);
-		unidadDefensoraEnRango.posicionar(posicionEnRango);
+		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionEnRango);
 		unidadDefensoraEnRango.setVida("60");
 		
-		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(1, 1));
 		posicionFueraDeRango = new Posicion(10,10);
-		unidadDefensoraFueraDeRango.posicionar(posicionFueraDeRango);
+		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionFueraDeRango);
 		unidadDefensoraFueraDeRango.setVida("60");
+		
 			
 	}
 
 	/**
 	 * Un Marine ataca a un zealot en rango, por lo tanto, como el daño del Marine es 6
 	 * la vida del Zealot deberia resultar en 60-6 (ya que daña el escudo y no llega a quitarle vida)
-	 * @throws FueraDeRangoException 
-	 * @throws FactoryInvalidaException 
-	 * 
-	 * 
 	 */
 	@Test
 	public void testMarineAtacaUnidadEnemigaEnRango() 
-	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException {	
-		unidadesEnemigas.add(unidadDefensoraEnRango);
-		unidadAtacante.realizarAccion(contexto, unidadesEnemigas);
+	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {	
+		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
+		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		
-		assertEquals("54",unidadesEnemigas.get(0).getVida());		
+		assertEquals("54",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());		
 	}
 
 	/**
-	 * Un marine ataca a un zealot fuera de rango, por lo tanto, la vida deberia quedar en 60.
-	 * @throws FueraDeRangoException 
-	 * @throws UnidadInvalidaException 
-	 * @throws FactoryInvalidaException 
+	 * Un marine ataca a un zealot fuera de rango, por lo tanto, debería tirar excepcion
 	 */
-	@Test
+	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testMarineAtacaUnidadEnemigaFueraDeRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
-		unidadesEnemigas.add(unidadDefensoraFueraDeRango);
-		unidadAtacante.realizarAccion(contexto, unidadesEnemigas);
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
+		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		
-		assertEquals("60",unidadesEnemigas.get(0).getVida());
-	}
-	
-	/**
-	 * Un marine ataca dos unidades, la primera fuera de rango yla segunda fuera
-	 * la primera no deberia perder vida (60) y la segunda deberia quedar en 54
-	 * @throws FueraDeRangoException 
-	 * @throws UnidadInvalidaException 
-	 * @throws FactoryInvalidaException 
-	 */
-	@Test
-	public void testMarineAtacaDosUnidadesEnemigasUnaEnRangoOtraFuera() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
-		
-		unidadesEnemigas.add(unidadDefensoraFueraDeRango);
-		unidadesEnemigas.add(unidadDefensoraEnRango);	
-		unidadAtacante.realizarAccion(contexto,unidadesEnemigas);
-	
-		assertEquals("60",unidadesEnemigas.get(0).getVida());
-		assertEquals("54",unidadesEnemigas.get(1).getVida());
+		//assertEquals("60",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 	}
 
 }
