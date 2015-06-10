@@ -11,6 +11,7 @@ import model.ElementoArtificial;
 import model.Espacio;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
+import exceptions.NombreJugadorRepetidoException;
 import exceptions.PosicionInvalidaException;
 
 public class JuegoController {
@@ -48,7 +49,7 @@ public class JuegoController {
 		}
 	
 	
-	private JuegoController(Jugador jugadorActual, Jugador jugadorEnemigo,CampoBatalla campoDeBatalla){
+	private JuegoController(Jugador jugadorActual, Jugador jugadorEnemigo,CampoBatalla campoDeBatalla) throws NombreJugadorRepetidoException{
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
 		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 //		JuegoController.getInstancia().setCampoDeBatalla(campoDeBatalla);
@@ -69,7 +70,9 @@ public class JuegoController {
 		return jugadorEnemigo;
 	}
 
-	public void setJugadorEnemigo(Jugador jugadorEnemigo) {
+	public void setJugadorEnemigo(Jugador jugadorEnemigo) throws NombreJugadorRepetidoException {
+		if(jugadorEnemigo.getNombre().equals(JuegoController.getInstancia().getJugadorActual().getNombre()))
+			throw new NombreJugadorRepetidoException();
 		JuegoController.jugadorEnemigo = jugadorEnemigo;
 	}
 
@@ -97,7 +100,7 @@ public class JuegoController {
 		return JuegoController.getInstancia().getJugadorEnemigo().getColor();
 	}
 	
-	public void intercambiarJugadores() {
+	public void intercambiarJugadores() throws NombreJugadorRepetidoException {
 		Jugador jugadorTemp = getInstancia().getJugadorActual();
 		getInstancia().setJugadorActual(jugadorEnemigo);
 		getInstancia().setJugadorEnemigo(jugadorTemp);
