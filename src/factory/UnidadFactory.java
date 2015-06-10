@@ -1,10 +1,13 @@
 package factory;
 
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
+import factory.unidades.UnidadMagicaProtoss;
+import factory.unidades.UnidadMagicaTerran;
 
 public class UnidadFactory extends AbstractFactory{
 	
@@ -190,17 +193,17 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 			
 		case TERRAN_NAVE_CIENCIA:
-			unidadCreada = new Unidad(	UNIDAD_NAVE_CIENCIA_TRANSPORTE,
-										UNIDAD_NAVE_CIENCIA_VISION,
-										UNIDAD_NAVE_CIENCIA_COSTO,
-										UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION,
-										UNIDAD_NAVE_CIENCIA_DAÑO,
-										UNIDAD_NAVE_CIENCIA_SUMINISTRO,
-										UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
-										UNIDAD_NAVE_CIENCIA_VIDA,
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
-										posicion);
+			unidadCreada = new UnidadMagicaTerran(	UNIDAD_NAVE_CIENCIA_TRANSPORTE,
+													UNIDAD_NAVE_CIENCIA_VISION,
+													UNIDAD_NAVE_CIENCIA_COSTO,
+													UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION,
+													UNIDAD_NAVE_CIENCIA_DAÑO,
+													UNIDAD_NAVE_CIENCIA_SUMINISTRO,
+													UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
+													UNIDAD_NAVE_CIENCIA_VIDA,
+													UNIDAD_ALTO,
+													UNIDAD_ANCHO,
+													posicion);
 			break;
 			
 		case TERRAN_NAVE_TRANSPORTE:
@@ -260,17 +263,17 @@ public class UnidadFactory extends AbstractFactory{
 			break;
 			
 		case PROTOSS_ALTO_TEMPLARIO:
-			unidadCreada = new Unidad(	UNIDAD_ALTO_TEMPLARIO_TRANSPORTE,
-										UNIDAD_ALTO_TEMPLARIO_VISION,
-										UNIDAD_ALTO_TEMPLARIO_COSTO,
-										UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION,
-										UNIDAD_ALTO_TEMPLARIO_DAÑO,
-										UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
-										UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
-										UNIDAD_ALTO_TEMPLARIO_VIDA,
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
-										posicion);
+			unidadCreada = new UnidadMagicaProtoss(	UNIDAD_ALTO_TEMPLARIO_TRANSPORTE,
+													UNIDAD_ALTO_TEMPLARIO_VISION,
+													UNIDAD_ALTO_TEMPLARIO_COSTO,
+													UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION,
+													UNIDAD_ALTO_TEMPLARIO_DAÑO,
+													UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
+													UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
+													UNIDAD_ALTO_TEMPLARIO_VIDA,
+													UNIDAD_ALTO,
+													UNIDAD_ANCHO,
+													posicion);
 			break;
 			
 		case PROTOSS_NAVE_TRANSPORTE:
