@@ -1,12 +1,14 @@
 package strategy;
 
-import java.util.List;
-
-import common.Posicion;
-
 import model.ElementoArtificial;
+import common.Posicion;
+import exceptions.ElementoInvalidoException;
+import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
 
 public class ContextoStrategy {
@@ -17,9 +19,9 @@ public class ContextoStrategy {
 		this.strategy=strategy;
 	}
 	
-	public void ejecutarStrategy(Posicion posicionActual, String rangoAtaque, String daño, List<ElementoArtificial> unidadesEnemigas) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException {
-		strategy.realizarAccion(posicionActual,rangoAtaque, daño, unidadesEnemigas);
+	public void ejecutarStrategy(ElementoArtificial elementoActuante, Posicion posicionDestino) 
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+		strategy.realizarAccion(elementoActuante,posicionDestino);
 	}
 	
 }

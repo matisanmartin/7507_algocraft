@@ -3,9 +3,11 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
+import model.ElementoArtificial;
+
 import common.Posicion;
 
-import model.ElementoArtificial;
+import controller.JuegoController;
 import exceptions.FactoryInvalidaException;
 
 public class TormentaPsionica implements Strategy {
@@ -14,9 +16,13 @@ public class TormentaPsionica implements Strategy {
 	private static final int DAÑO_TORMENTA_PSIONICA=100;
 
 	@Override
-	public void realizarAccion(Posicion posicionActual, String rangoAtaque, String daño, List<ElementoArtificial> unidadesEnemigas) throws FactoryInvalidaException {
+	public void realizarAccion(ElementoArtificial elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException {
 		
-		ListIterator<ElementoArtificial> it = unidadesEnemigas.listIterator();
+		//TODO msma: Agregar validacion de energía
+		//TODO msma: Validar que este en rango de vision!
+		List<ElementoArtificial> armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
+		
+		ListIterator<ElementoArtificial> it = armadaEnemiga.listIterator();
 		
 		while(it.hasNext())
 		{
@@ -24,7 +30,7 @@ public class TormentaPsionica implements Strategy {
 			
 			Posicion posicionTemporal = elementoTemporal.getPosicion();
 			
-			String distancia = posicionTemporal.getDistancia(posicionActual);
+			String distancia = posicionTemporal.getDistancia(posicionDestino);
 			
 			Long distanciaNum = Long.parseLong(distancia);
 			
@@ -36,5 +42,7 @@ public class TormentaPsionica implements Strategy {
 			}
 		}
 	}
+
+
 
 }

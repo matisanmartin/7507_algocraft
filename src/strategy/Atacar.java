@@ -1,34 +1,50 @@
 package strategy;
 
-import java.util.List;
-import java.util.ListIterator;
+import model.Armada;
+import model.ElementoArtificial;
 
 import common.Posicion;
 
-import model.ElementoArtificial;
+import controller.JuegoController;
+import exceptions.ElementoNoEncontradoException;
+import exceptions.FactoryInvalidaException;
+import exceptions.FueraDeRangoDeVisionException;
+import factory.unidades.Unidad;
 
 public class Atacar implements Strategy {
 
 	@Override
-	public void realizarAccion(Posicion posicionActual, String rangoAtaque, String daño, List<ElementoArtificial> unidadesEnemigas) {
-	
-		ListIterator<ElementoArtificial> it = unidadesEnemigas.listIterator();
+	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
+	throws FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException {
+			
 		
-		while(it.hasNext())
-		{
-			ElementoArtificial elementoTemporal = it.next();
+		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+		Long distanciaNum = Long.parseLong(distancia);
+		Long rangoDeVisionElementoActuante=Long.parseLong(((Unidad)elementoActuante).getRangoAtaque());
+		
+		if(distanciaNum>rangoDeVisionElementoActuante)
+			throw new FueraDeRangoDeVisionException();
+		
+		
+		//TODO msma: Validar que este en rango de vision!!!
+		Armada armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
+		
+		ElementoArtificial elementoAtacado=armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
 			
-			Posicion posicionTemporal = elementoTemporal.getPosicion();
-			
-			String distancia = posicionTemporal.getDistancia(posicionActual);
-			
-			Long distanciaNum = Long.parseLong(distancia);
-			
-			if(distanciaNum<Long.parseLong(rangoAtaque)){
-				elementoTemporal.restarVida(daño);
-				it.set(elementoTemporal);
-			}
+//		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+//		Long distanciaNum = Long.parseLong(distancia);
+		
+		String dañoTormentaPsionica=((Unidad)elementoActuante).getDaño();
+		
+		if(distanciaNum<Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
+			elementoAtacado.restarVida(dañoTormentaPsionica);
+			armadaEnemiga.modificarElementoEnPosicion(posicionDestino,elementoAtacado);
 		}
-	}
-
+	}			
 }
+		
+
+
+	
+	
+	
