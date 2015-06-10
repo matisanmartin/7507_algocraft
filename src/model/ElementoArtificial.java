@@ -75,6 +75,7 @@ public abstract class ElementoArtificial extends Elemento {
 		Long vida = Long.parseLong(this.getVida());
 		
 		this.setVida(Long.toString(vida-dañoNum));
+//		this.setVida(this.vida - daño);
 		
 	}
 	

@@ -25,6 +25,7 @@ public class Unidad extends ElementoArtificial {
 	private int vision;
 	private int tiempoConstruccion;
 	private String daño;
+//	private int daño;
 	private int suministro;
 	private String rangoAtaque;
 
