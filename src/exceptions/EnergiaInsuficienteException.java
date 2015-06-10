@@ -1,6 +1,6 @@
 package exceptions;
 
-public class PosicionInvalidaException extends Exception {
+public class EnergiaInsuficienteException extends Exception {
 
 	/**
 	 * 
