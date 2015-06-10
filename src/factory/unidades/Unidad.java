@@ -1,8 +1,15 @@
 package factory.unidades;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 import model.ElementoArtificial;
 import strategy.ContextoStrategy;
+
+import command.Accion;
+import command.AtaqueAccion;
 import common.Posicion;
+
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -36,7 +43,10 @@ public class Unidad extends ElementoArtificial {
 
 	}
 
-
+	public Unidad() {
+		super();
+		// TODO temporal borrar
+	}
 
 	public int getTransporte() {
 		return transporte;
@@ -87,6 +97,12 @@ public class Unidad extends ElementoArtificial {
 	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
 		contexto.ejecutarStrategy(this, posicionDestino);
+	}
+	
+	public void definirAccionesDisponibles(){
+		Map<String, Accion> acciones = new Hashtable<String, Accion>();
+		acciones.put("Atacar", new AtaqueAccion(this));
+		setAccionesDisponibles(acciones);
 	}
 
 
