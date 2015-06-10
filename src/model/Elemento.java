@@ -40,6 +40,10 @@ public abstract class Elemento {
 		crearPartes();
 	}
 
+	public Elemento() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private void crearPartes() throws FueraDeRangoException {
 		for (int i = 0; i < this.alto; i++) {
 			for (int j = 0; j < this.ancho; j++) {

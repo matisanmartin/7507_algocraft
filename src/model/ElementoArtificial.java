@@ -1,7 +1,14 @@
 package model;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 import strategy.ContextoStrategy;
+
+import command.Accion;
+import command.AtaqueAccion;
 import common.Posicion;
+
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -14,11 +21,17 @@ import exceptions.UnidadInvalidaException;
 
 public abstract class ElementoArtificial extends Elemento {
 	
-
+	private Map accionesDisponibles;
 
 	public ElementoArtificial(int alto, int ancho, Posicion posicion)
 			throws FueraDeRangoException {
 		super(alto, ancho, posicion);
+	}
+
+
+	public ElementoArtificial() {
+		super();
+		// TODO temporal
 	}
 
 
@@ -74,6 +87,33 @@ public abstract class ElementoArtificial extends Elemento {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException {}	
+			EnergiaInsuficienteException {}
+
+	public Map getAccionesDisponibles() {
+		return accionesDisponibles;
+	}
+
+	public void setAccionesDisponibles(Map acciones) {
+		this.accionesDisponibles = acciones;
+	}
+	
+
+	public void definirAccionesDisponibles() {
+		Map<String, Accion> acciones = new Hashtable<String,Accion>();
+		
+		acciones.put("Atacar",new AtaqueAccion(this));
+		//TODO agregar mover
+		
+	}
+	
+	public void EliminarAccionDisponible(String keyAccion){
+		accionesDisponibles.remove(keyAccion);
+		
+	}
+	
+	public void agregarAccionDisponible(String keyAccion, Accion accion) {
+		
+		accionesDisponibles.put(keyAccion, accion);
+	}
 
 }
