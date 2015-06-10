@@ -1,13 +1,14 @@
 package jugador;
 
-import common.Posicion;
 import model.Armada;
 import model.ElementoArtificial;
 import razas.Raza;
+
+import common.Posicion;
+
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.NombreCortoException;
-import factory.unidades.TipoUnidad;
 
 public class Jugador {
 	
@@ -21,6 +22,8 @@ public class Jugador {
 	private int cantidadDeCristal;
 	private int cantidadDeGas;
 	
+	public Jugador() {
+	}
 	public Jugador(String nombre,TipoColor color,Raza raza) 
 	throws NombreCortoException, ColorInvalidoException {
 		
@@ -46,6 +49,7 @@ public class Jugador {
 			throw new ElementoInvalidoException();
 		
 		armada.agregarElemento(elem);
+//		CampoBatalla.getInstancia().posicionarElemento(wlwm, espacio);
 	}
 	
 //	public void generarNuevaUnidad(TipoUnidad unidad){
@@ -59,29 +63,28 @@ public class Jugador {
 	public int obtenerDimensionArmada(){
 		return armada.getDimensionArmada();
 	}
+	
+	public Armada obtenerArmada() {
+		return armada;
+	}
 
 	public String getNombre() {
-		// TODO Auto-generated method stub
 		return this.nombre;
 	}
 
 	public Raza getRaza() {
-		// TODO Auto-generated method stub
 		return this.raza;
 	}
 
 	public TipoColor getColor() {
-		// TODO Auto-generated method stub
 		return this.color;
 	}
 
 	public int getCantidadDeCristal() {
-		// TODO Auto-generated method stub
 		return this.cantidadDeCristal;
 	}
 
 	public int getCantidadDeGas() {
-		// TODO Auto-generated method stub
 		return this.cantidadDeGas;
 	}
 
