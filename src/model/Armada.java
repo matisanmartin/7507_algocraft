@@ -3,9 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import common.Posicion;
-
 import exceptions.ElementoNoEncontradoException;
 
 public class Armada {
@@ -75,4 +75,20 @@ public class Armada {
 		throw new ElementoNoEncontradoException();
 	}
 
+	public void modificarElementoEnPosicion(Posicion posicionDestino, ElementoArtificial elementoAtacado) {
+
+		ListIterator<ElementoArtificial> it = elementos.listIterator();
+		while(it.hasNext())
+		{
+			ElementoArtificial elementoTemporal = it.next();
+			Posicion posicionActual=elementoTemporal.getPosicion();
+			
+			if(posicionActual.equals(posicionDestino)){
+				elementoTemporal=elementoAtacado;
+				it.set(elementoTemporal);
+				break;	
+			}
+		}
+	}
+		
 }

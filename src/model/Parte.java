@@ -11,7 +11,6 @@ public class Parte{
 	}
 
 	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
 		return this.posicion;
 	}
 

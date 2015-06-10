@@ -84,7 +84,6 @@ public class CampoBatalla {
 	}
 
 	public Espacio getEspacioTerrestre() {
-		// TODO Auto-generated method stub
 		return this.espacioTerrestre;
 	}
 
