@@ -1,8 +1,9 @@
 package factory.unidades;
 
-import command.RadiacionAccion;
+import command.AlucinacionAccion;
 import command.TormentaPsionicaAccion;
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 
 public class UnidadMagicaProtoss extends UnidadMagica {
@@ -33,7 +34,7 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 		
 		//TODO msma: Agregar validacion de vida/Energia cuando este implementado
 		agregarAccionDisponible("TormentaPsionica", new TormentaPsionicaAccion(this));
-		agregarAccionDisponible("Alucinacion",new RadiacionAccion(this));
+		agregarAccionDisponible("Alucinacion",new AlucinacionAccion(this));
 	}
 
 }
