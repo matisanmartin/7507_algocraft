@@ -1,11 +1,9 @@
-package edificios;
+package factory.construcciones;
 
+import command.CrearGolliatAccion;
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
-import exceptions.UnidadInvalidaException;
-import factory.UnidadFactory;
-import factory.unidades.TipoUnidad;
-import factory.unidades.Unidad;
 
 public class Fabrica extends Edificio {
 
@@ -15,6 +13,10 @@ public class Fabrica extends Edificio {
 		this.setCosto("200M100G");
 		this.setTiempoDeConstruccion(12);
 		this.setVida("1250");
+	}
+	
+	public void definirAccionesDisponibles() {
+		agregarAccionDisponible("Crear Golliat", new CrearGolliatAccion(this));
 	}
 	
 }

@@ -1,12 +1,8 @@
-package edificios;
+package factory.construcciones;
 
+import command.CrearMarineAccion;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
-import exceptions.UnidadInvalidaException;
-import factory.AbstractFactory;
-import factory.UnidadFactory;
-import factory.unidades.TipoUnidad;
-import factory.unidades.Unidad;
 
 public class Barraca extends Edificio {
 
@@ -17,5 +13,9 @@ public class Barraca extends Edificio {
 		this.setTiempoDeConstruccion(12);
 		this.setVida("1000");
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void definirAccionesDisponibles() {
+		agregarAccionDisponible("Crear Marine", new CrearMarineAccion(this));
 	}
 }

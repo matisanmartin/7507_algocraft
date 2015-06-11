@@ -27,7 +27,7 @@ public class UnidadMagicaTerran extends UnidadMagica {
 	}
 
 	public void definirAccionesDisponibles(){
-		super.definirAccionesDisponibles();
+		//super.definirAccionesDisponibles();
 		//TODO msma: Agregar validacion de vida/Energia cuando este implementado
 		agregarAccionDisponible("Emp", new EmpAccion(this));
 		agregarAccionDisponible("Radiacion",new RadiacionAccion(this));

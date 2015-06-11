@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4;
 
 import razas.Protoss;
 import razas.Terran;
-import strategy.Atacar;
+import strategy.Ataque;
 import strategy.ContextoStrategy;
 import common.Posicion;
 import controller.JuegoController;
@@ -52,7 +52,7 @@ public class AtacarTest {
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
 		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 	
-		contexto = new ContextoStrategy(new Atacar());
+		contexto = new ContextoStrategy(new Ataque());
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));

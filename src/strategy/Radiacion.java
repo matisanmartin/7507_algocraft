@@ -2,21 +2,36 @@ package strategy;
 
 import model.Armada;
 import model.ElementoArtificial;
-
 import common.Posicion;
-
 import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import factory.UnidadFactory;
 
+/**
+ * Magia de la NaveCiencia Terran
+ *
+ */
 public class Radiacion implements Strategy {
+	
+	private static final int ENERGIA_NECESARIA=75;
 
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws ElementoNoEncontradoException, FueraDeRangoException {
+	throws ElementoNoEncontradoException, FueraDeRangoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+				
+		//TODO msma: test para vida insuficiente
+		Long vidaElementoActuante = Long.parseLong(elementoActuante.getVida());
+		if(vidaElementoActuante<ENERGIA_NECESARIA)
+			throw new EnergiaInsuficienteException();
 		
-		//TODO msma: Agregar validacion de Energia, necesita tener 75, y restarsela a lo actual
-		//TODO msma: Validar que este en rango de vision!
+		//TODO msma: Test para rango de vision
+		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+		Long distanciaNum = Long.parseLong(distancia);
+		if(distanciaNum>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION)
+			throw new FueraDeRangoDeVisionException();
 		
 		Armada armadaEnemiga = JuegoController.getInstancia()
 			       							 .getJugadorEnemigo()

@@ -12,7 +12,7 @@ import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
 
-public class CrearNaveTransporte implements Strategy {
+public class CrearNaveTransporteProtoss implements Strategy {
 	
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
@@ -20,9 +20,10 @@ public class CrearNaveTransporte implements Strategy {
 		
 		UnidadFactory factory = new UnidadFactory();
 		
-		ElementoArtificial naveTransporte = factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posicionDestino);
+		ElementoArtificial naveTransporte = factory.getUnidad(TipoUnidad.PROTOSS_NAVE_TRANSPORTE, posicionDestino);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
 		
 	}
 
 }
+

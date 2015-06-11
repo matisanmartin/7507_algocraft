@@ -5,21 +5,21 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import common.Posicion;
-import edificios.Acceso;
-import edificios.ArchivoTemplario;
-import edificios.Asimilador;
-import edificios.Barraca;
-import edificios.CentroMineral;
-import edificios.Edificio;
-import edificios.EdificioGas;
-import edificios.EdificioMineral;
-import edificios.Fabrica;
-import edificios.NexoMineral;
-import edificios.PuertoEstelar;
-import edificios.PuertoEstelarProtoss;
-import edificios.PuertoEstelarTerran;
-import edificios.Refineria;
 import exceptions.FueraDeRangoException;
+import factory.construcciones.Acceso;
+import factory.construcciones.ArchivoTemplario;
+import factory.construcciones.Asimilador;
+import factory.construcciones.Barraca;
+import factory.construcciones.CentroMineral;
+import factory.construcciones.Edificio;
+import factory.construcciones.EdificioGas;
+import factory.construcciones.EdificioMineral;
+import factory.construcciones.Fabrica;
+import factory.construcciones.NexoMineral;
+import factory.construcciones.PuertoEstelar;
+import factory.construcciones.PuertoEstelarProtoss;
+import factory.construcciones.PuertoEstelarTerran;
+import factory.construcciones.Refineria;
 
 public class EdificioTest {
 	

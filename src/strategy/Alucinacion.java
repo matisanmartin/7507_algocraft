@@ -13,27 +13,33 @@ import exceptions.UnidadInvalidaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
 import factory.TipoFactory;
+import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 
 public class Alucinacion implements Strategy {
 
+	private static final int ENERGIA_NECESARIA=100;
+	
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
 		
-		//TODO sm114244: En principio estas validaciones se realizan aca, pero deberian hacerse antes
+		//TODO msma: En principio estas validaciones se realizan aca, pero deberian hacerse antes
 		//para elegir si se muestra o no la opción como válida para ejecutarse
 		//se supone que si el metodo llega a ejecutarse, es porque se puede
 		String vida = elementoActuante.getVida();
 		int vidaNum = Integer.parseInt(vida);
-		if(vidaNum<100)
+		
+		//TODO msma: Test para esta excepcion
+		if(vidaNum<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException();
 		
 		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 		Long distanciaNum = Long.parseLong(distancia);
 		
-		if(distanciaNum>7)
+		//TODO msma: test para esta excepcion
+		if(distanciaNum>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);

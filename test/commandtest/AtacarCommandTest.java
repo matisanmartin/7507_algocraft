@@ -66,13 +66,11 @@ public class AtacarCommandTest {
 		acciones = unidadMagicaProtossPrueba.getAccionesDisponibles();
 		assertEquals(true,acciones.containsKey("Alucinacion"));
 		assertEquals(true,acciones.containsKey("TormentaPsionica"));
-		assertEquals(true,acciones.containsKey("Atacar"));
 	}
 	
 	@Test
 	public void testAccionesUnidadMagicaTerranAtacarYVariasMas() {
-		acciones=unidadMagicaTerranPrueba.getAccionesDisponibles();
-		assertEquals(true,acciones.containsKey("Atacar"));
+		acciones=unidadMagicaTerranPrueba.getAccionesDisponibles();	
 		assertEquals(true,acciones.containsKey("Emp"));
 		assertEquals(true,acciones.containsKey("Radiacion"));
 	}

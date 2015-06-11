@@ -1,5 +1,6 @@
 package command;
 
+import model.ElementoArtificial;
 import strategy.ContextoStrategy;
 import strategy.Radiacion;
 
@@ -13,15 +14,14 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
-import factory.unidades.Unidad;
 
 
 public class RadiacionAccion implements Accion {
 
-	Unidad unidad;
+	ElementoArtificial elemento;
 	
-	public RadiacionAccion(Unidad unidad) {
-		this.unidad=unidad;
+	public RadiacionAccion(ElementoArtificial unidad) {
+		this.elemento=unidad;
 	}
 	
 	@Override
@@ -30,7 +30,7 @@ public class RadiacionAccion implements Accion {
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
 			FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		unidad.realizarAccion(new ContextoStrategy(new Radiacion()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new Radiacion()), posicionDestino);
 	}
 
 

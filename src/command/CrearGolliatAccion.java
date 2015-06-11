@@ -1,5 +1,6 @@
 package command;
 
+import model.ElementoArtificial;
 import strategy.ContextoStrategy;
 import strategy.CrearGolliat;
 
@@ -13,19 +14,18 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
-import factory.unidades.Unidad;
 
 public class CrearGolliatAccion implements Accion {
-	Unidad unidad;
+	ElementoArtificial elemento;
 	
-	public CrearGolliatAccion(Unidad unidad) {
-		this.unidad=unidad;
+	public CrearGolliatAccion(ElementoArtificial elem) {
+		this.elemento=elem;
 	}
 	
 	@Override
 	public void execute(Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		unidad.realizarAccion(new ContextoStrategy(new CrearGolliat()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new CrearGolliat()), posicionDestino);
 		
 	}
 

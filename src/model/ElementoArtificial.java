@@ -4,11 +4,9 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import strategy.ContextoStrategy;
-
 import command.Accion;
 import command.AtaqueAccion;
 import common.Posicion;
-
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -21,23 +19,21 @@ import exceptions.UnidadInvalidaException;
 
 public abstract class ElementoArtificial extends Elemento {
 	
-	private Map accionesDisponibles;
+	private Map<String, Accion> accionesDisponibles;
 
 	public ElementoArtificial(int alto, int ancho, Posicion posicion)
 			throws FueraDeRangoException {
 		super(alto, ancho, posicion);
+		accionesDisponibles=new Hashtable<String,Accion>();
 	}
-
 
 	public ElementoArtificial() {
 		super();
 		// TODO temporal
 	}
-
-
+	
 	private String costo;
 	private String vida;	
-	
 	
 	public String getCosto() {
 		return costo;
@@ -58,8 +54,7 @@ public abstract class ElementoArtificial extends Elemento {
 
 	
 	public void posicionar(Posicion posicionInicial) throws FueraDeRangoException{
-		setPosicion(new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY()));
-		
+		setPosicion(new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY()));	
 	}
 	
 	
@@ -79,7 +74,6 @@ public abstract class ElementoArtificial extends Elemento {
 		
 	}
 	
-
 	public abstract void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino)
 	throws 	FactoryInvalidaException, 
 			UnidadInvalidaException, 
@@ -90,30 +84,24 @@ public abstract class ElementoArtificial extends Elemento {
 			FueraDeRangoDeVisionException, 
 			EnergiaInsuficienteException;
 
-	public Map getAccionesDisponibles() {
+	public Map<String,Accion> getAccionesDisponibles() {
 		return accionesDisponibles;
 	}
 
-	public void setAccionesDisponibles(Map acciones) {
+	public void setAccionesDisponibles(Map<String,Accion> acciones) {
 		this.accionesDisponibles = acciones;
 	}
 	
-
 	public void definirAccionesDisponibles() {
-		Map<String, Accion> acciones = new Hashtable<String,Accion>();
-		
-		acciones.put("Atacar",new AtaqueAccion(this));
+		accionesDisponibles.put("Atacar",new AtaqueAccion(this));
 		//TODO agregar mover
-		
 	}
 	
 	public void EliminarAccionDisponible(String keyAccion){
 		accionesDisponibles.remove(keyAccion);
-		
 	}
 	
 	public void agregarAccionDisponible(String keyAccion, Accion accion) {
-		
 		accionesDisponibles.put(keyAccion, accion);
 	}
 

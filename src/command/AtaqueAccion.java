@@ -1,7 +1,7 @@
 package command;
 
 import model.ElementoArtificial;
-import strategy.Atacar;
+import strategy.Ataque;
 import strategy.ContextoStrategy;
 
 import common.Posicion;
@@ -18,6 +18,7 @@ import exceptions.UnidadInvalidaException;
 public class AtaqueAccion implements Accion {
 	
 	ElementoArtificial elemento;
+	
 	public AtaqueAccion(ElementoArtificial elemento) {
 		this.elemento=elemento;
 	}
@@ -28,7 +29,7 @@ public class AtaqueAccion implements Accion {
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
 			FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		elemento.realizarAccion(new ContextoStrategy(new Atacar()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new Ataque()), posicionDestino);
 		
 	}
 

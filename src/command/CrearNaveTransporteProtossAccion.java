@@ -2,7 +2,7 @@ package command;
 
 import model.ElementoArtificial;
 import strategy.ContextoStrategy;
-import strategy.CrearMarine;
+import strategy.CrearNaveTransporteProtoss;
 
 import common.Posicion;
 
@@ -15,17 +15,18 @@ import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
 
-public class CrearMarineAccion implements Accion {
+public class CrearNaveTransporteProtossAccion implements Accion {
 	ElementoArtificial elemento;
 	
-	public CrearMarineAccion(ElementoArtificial elem) {
+	public CrearNaveTransporteProtossAccion(ElementoArtificial elem) {
 		this.elemento=elem;
 	}
 	
 	@Override
 	public void execute(Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		elemento.realizarAccion(new ContextoStrategy(new CrearMarine()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new CrearNaveTransporteProtoss()), posicionDestino);
 		
 	}
+
 }

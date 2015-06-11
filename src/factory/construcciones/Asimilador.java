@@ -1,4 +1,4 @@
-package edificios;
+package factory.construcciones;
 
 import common.Posicion;
 

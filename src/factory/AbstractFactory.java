@@ -1,10 +1,9 @@
 package factory;
 
 import common.Posicion;
-
-import edificios.Edificio;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
+import factory.construcciones.Edificio;
 import factory.construcciones.TipoConstruccion;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;

@@ -1,5 +1,6 @@
 package command;
 
+import model.ElementoArtificial;
 import strategy.ContextoStrategy;
 import strategy.Emp;
 
@@ -13,14 +14,13 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
-import factory.unidades.Unidad;
 
 public class EmpAccion implements Accion {
 
-	Unidad unidad;
+	ElementoArtificial elemento;
 	
-	public EmpAccion(Unidad unidad) {
-		this.unidad=unidad;
+	public EmpAccion(ElementoArtificial elem) {
+		this.elemento=elem;
 	}
 	
 
@@ -30,7 +30,7 @@ public class EmpAccion implements Accion {
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
 			FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		unidad.realizarAccion(new ContextoStrategy(new Emp()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new Emp()), posicionDestino);
 		
 	}
 

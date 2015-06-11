@@ -1,9 +1,11 @@
 package command;
 
-import strategy.Alucinacion;
+import model.ElementoArtificial;
 import strategy.ContextoStrategy;
 import strategy.TormentaPsionica;
+
 import common.Posicion;
+
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -12,14 +14,13 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
-import factory.unidades.Unidad;
 
 public class TormentaPsionicaAccion implements Accion {
 
-	Unidad unidad;
+	ElementoArtificial elemento;
 	
-	public TormentaPsionicaAccion(Unidad unidad) {
-		this.unidad=unidad;
+	public TormentaPsionicaAccion(ElementoArtificial elem) {
+		this.elemento=elem;
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class TormentaPsionicaAccion implements Accion {
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
 			FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		unidad.realizarAccion(new ContextoStrategy(new TormentaPsionica()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new TormentaPsionica()), posicionDestino);
 		
 	}
 

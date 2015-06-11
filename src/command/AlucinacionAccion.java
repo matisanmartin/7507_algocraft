@@ -1,8 +1,11 @@
 package command;
 
+import model.ElementoArtificial;
 import strategy.Alucinacion;
 import strategy.ContextoStrategy;
+
 import common.Posicion;
+
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -11,20 +14,19 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
-import factory.unidades.Unidad;
 
 public class AlucinacionAccion implements Accion {
 
-	Unidad unidad;
+	ElementoArtificial elemento;
 	
-	public AlucinacionAccion(Unidad unidad) {
-		this.unidad=unidad;
+	public AlucinacionAccion(ElementoArtificial elem) {
+		this.elemento=elem;
 	}
 	
 	@Override
 	public void execute(Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		unidad.realizarAccion(new ContextoStrategy(new Alucinacion()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new Alucinacion()), posicionDestino);
 		
 	}
 

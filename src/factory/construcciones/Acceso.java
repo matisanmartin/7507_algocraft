@@ -1,5 +1,6 @@
-package edificios;
+package factory.construcciones;
 
+import command.CrearZealotAccion;
 import common.Posicion;
 
 import exceptions.FueraDeRangoException;
@@ -13,6 +14,10 @@ public class Acceso extends Edificio {
 		this.setTiempoDeConstruccion(8);
 		this.setVida("500/500");
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void definirAccionesDisponibles() {
+		agregarAccionDisponible("Crear Zealot", new CrearZealotAccion(this));
 	}
 
 }

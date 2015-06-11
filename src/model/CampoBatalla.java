@@ -2,10 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
-import strategy.Estrategias;
 import common.Constantes;
+
 import exceptions.PosicionInvalidaException;
-import factory.unidades.Unidad;
 
 public class CampoBatalla {
 	
