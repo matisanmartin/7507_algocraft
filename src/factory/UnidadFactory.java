@@ -68,8 +68,8 @@ public class UnidadFactory extends AbstractFactory{
 	//Atributos NaveCiencia
 	public static final int 	UNIDAD_NAVE_CIENCIA_TRANSPORTE = 0;
 	public static final int 	UNIDAD_NAVE_CIENCIA_VISION = 10;
-	public static final String 	UNIDAD_NAVE_CIENCIA_COSTO = "50M";
-	public static final int 	UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION = 3;
+	public static final String 	UNIDAD_NAVE_CIENCIA_COSTO = "100M225G";
+	public static final int 	UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION = 10;
 	public static final String 	UNIDAD_NAVE_CIENCIA_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_CIENCIA_SUMINISTRO = 2;
 	public static final String 	UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE = "0A0T";
@@ -78,8 +78,8 @@ public class UnidadFactory extends AbstractFactory{
 	//Atributos NaveTransporteTerran
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_TRANSPORTE = 8;
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION = 8;
-	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO = "50M";
-	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_TIEMPO_CONSTRUCCION = 3;
+	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO = "100M100G";
+	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_TIEMPO_CONSTRUCCION = 7;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO = 2;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE = "0A0T";
@@ -109,7 +109,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_SCOUT_TRANSPORTE = 0;
 	public static final int 	UNIDAD_SCOUT_VISION = 7;
 	public static final String 	UNIDAD_SCOUT_COSTO = "300M150G";
-	public static final int 	UNIDAD_SCOUT_TIEMPO_CONSTRUCCION = 8;
+	public static final int 	UNIDAD_SCOUT_TIEMPO_CONSTRUCCION = 9;
 	public static final String 	UNIDAD_SCOUT_DAÑO = "14A8T";
 	public static final int 	UNIDAD_SCOUT_SUMINISTRO = 0;
 	public static final String 	UNIDAD_SCOUT_RANGO_ATAQUE = "4A0T";
@@ -119,7 +119,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_TRANSPORTE = 2;
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_VISION = 7;
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_COSTO = "50M150G";
-	public static final int 	UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION = 5;
+	public static final int 	UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION = 7;
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_DAÑO = "0A0T";
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_SUMINISTRO = 0;
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE = "0A0T";
@@ -129,7 +129,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TRANSPORTE = 8;
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION = 8;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO = "200M";
-	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION = 0;
+	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION = 8;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO = 0;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE = "0A0T";
