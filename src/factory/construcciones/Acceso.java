@@ -13,7 +13,7 @@ public class Acceso extends Edificio {
 		this.setCosto("150M");
 		this.setTiempoDeConstruccion(8);
 		this.setVida("500/500");
-		// TODO Auto-generated constructor stub
+		this.definirAccionesDisponibles();
 	}
 	
 	public void definirAccionesDisponibles() {

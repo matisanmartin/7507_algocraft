@@ -13,6 +13,7 @@ public class Fabrica extends Edificio {
 		this.setCosto("200M100G");
 		this.setTiempoDeConstruccion(12);
 		this.setVida("1250");
+		this.definirAccionesDisponibles();
 	}
 	
 	public void definirAccionesDisponibles() {

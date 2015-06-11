@@ -13,6 +13,7 @@ public class ArchivoTemplario extends Edificio {
 		this.setCosto("150M200G");
 		this.setTiempoDeConstruccion(9);
 		this.setVida("500/500");
+		this.definirAccionesDisponibles();
 	}
 	
 	public void definirAccionesDisponibles() {

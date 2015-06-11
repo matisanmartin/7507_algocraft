@@ -13,7 +13,7 @@ public class PuertoEstelarProtoss extends PuertoEstelar {
 		super(alto, ancho, posicion);
 		this.setVida("600/600");
 		this.setCosto("150M150G");
-		// TODO Auto-generated constructor stub
+		this.definirAccionesDisponibles();
 	}
 	
 	public void definirAccionesDisponibles() {

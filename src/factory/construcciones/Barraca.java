@@ -12,7 +12,7 @@ public class Barraca extends Edificio {
 		this.setCosto("150M");
 		this.setTiempoDeConstruccion(12);
 		this.setVida("1000");
-		// TODO Auto-generated constructor stub
+		this.definirAccionesDisponibles();
 	}
 	
 	public void definirAccionesDisponibles() {

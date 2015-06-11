@@ -14,7 +14,7 @@ public class PuertoEstelarTerran extends PuertoEstelar {
 		super(alto, ancho, posicion);
 		this.setVida("1300");
 		this.setCosto("150M100G");
-		// TODO Auto-generated constructor stub
+		this.definirAccionesDisponibles();
 	}
 	
 	public void definirAccionesDisponibles() {
