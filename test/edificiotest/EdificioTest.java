@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import command.Accion;
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 import factory.construcciones.Acceso;
 import factory.construcciones.ArchivoTemplario;
@@ -21,7 +22,6 @@ import factory.construcciones.EdificioGas;
 import factory.construcciones.EdificioMineral;
 import factory.construcciones.Fabrica;
 import factory.construcciones.NexoMineral;
-import factory.construcciones.PuertoEstelar;
 import factory.construcciones.PuertoEstelarProtoss;
 import factory.construcciones.PuertoEstelarTerran;
 import factory.construcciones.Refineria;
@@ -62,7 +62,7 @@ public class EdificioTest {
 	}
 	
 	@Test
-	public void creaUnPuertoEstelarTerrar() throws FueraDeRangoException{
+	public void creaUnPuertoEstelarTerran() throws FueraDeRangoException{
 		edificio = new PuertoEstelarTerran(2,2, new Posicion(10, 10));
 		assertEquals("150M100G", edificio.getCosto());
 		assertEquals(10, edificio.getTiempoDeConstruccion());
@@ -116,17 +116,13 @@ public class EdificioTest {
 		edificio = new Barraca(2, 2, new Posicion(10, 10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Marine"));
-		
-		
 	}
 	
 	@Test
 	public void testBarracaNoPuedeCrearZealot() throws FueraDeRangoException {
 		edificio = new Barraca(2, 2, new Posicion(10, 10));
 		mapaPrueba = edificio.getAccionesDisponibles();
-		assertEquals(false,mapaPrueba.containsKey("Crear Zealot"));
-		
-		
+		assertEquals(false,mapaPrueba.containsKey("Crear Zealot"));	
 	}
 	
 	@Test
@@ -134,15 +130,13 @@ public class EdificioTest {
 		edificio = new Acceso(2,2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Zealot"));
-		
 	}
 	
 	@Test
 	public void testAccesoNoPuedeCrearMarine() throws FueraDeRangoException {
 		edificio = new Acceso(2,2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
-		assertEquals(false,mapaPrueba.containsKey("Crear Marine"));
-		
+		assertEquals(false,mapaPrueba.containsKey("Crear Marine"));	
 	}
 	
 	@Test
@@ -210,7 +204,6 @@ public class EdificioTest {
 		edificio = new PuertoEstelarTerran(2,2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true, mapaPrueba.containsKey("Crear Nave Transporte Terran"));
-		
 	}
 	
 	@Test
@@ -218,7 +211,6 @@ public class EdificioTest {
 		edificio = new PuertoEstelarTerran(2,2,new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Nave Ciencia"));
-		
 	}
 	
 	@Test

@@ -1,6 +1,10 @@
 package factorytest;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.Hashtable;
+import java.util.Map;
+
 import model.Parte;
 
 import org.junit.Before;
@@ -8,7 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import command.Accion;
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
@@ -21,10 +27,13 @@ public class UnidadFactoryTest {
 
 	Unidad unidad;
 	UnidadFactory factory;
+	Map<String,Accion> mapaPrueba;
+	
 	
 	@Before
 	public void setUp(){
 		factory = new UnidadFactory();
+		mapaPrueba= new Hashtable<String,Accion>();
 	}
 
 	@Test
@@ -164,17 +173,79 @@ public class UnidadFactoryTest {
 //	}
 	
 	@Test
-	public void unMarineDe2x2DeberiaTener4Partes() throws UnidadInvalidaException, FueraDeRangoException{
+	public void testUnMarineDe2x2DeberiaTener4Partes() throws UnidadInvalidaException, FueraDeRangoException{
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		assertEquals(4,unidad.getPartes().size());
 	}
 	
 	@Test
-	public void unMarineDe2x2ConPosX1Y1DeberiaTenerSusPartesEnPosicionesCorrectas() throws UnidadInvalidaException, FueraDeRangoException{
+	public void testUnMarineDe2x2ConPosX1Y1DeberiaTenerSusPartesEnPosicionesCorrectas() throws UnidadInvalidaException, FueraDeRangoException{
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		assertEquals((new Parte(new Posicion(1, 1)).getPosicion()), unidad.getPartes().get(0).getPosicion() );
 		assertEquals((new Parte(new Posicion(1, 2)).getPosicion()), unidad.getPartes().get(1).getPosicion() );
 		assertEquals((new Parte(new Posicion(2, 1 )).getPosicion()), unidad.getPartes().get(2).getPosicion() );
 		assertEquals((new Parte(new Posicion(2, 2)).getPosicion()), unidad.getPartes().get(3).getPosicion() );
+	}
+	
+	@Test
+	public void testUnaUnidadTieneAccionAtacar() 
+	throws UnidadInvalidaException, FueraDeRangoException {
+		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
+		mapaPrueba = unidad.getAccionesDisponibles();
+		assertEquals(true,mapaPrueba.containsKey("Atacar"));
+	}
+	
+	@Test
+	public void testUnaUnidadNoTieneAccionesMagica() throws UnidadInvalidaException, FueraDeRangoException {
+		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
+		mapaPrueba = unidad.getAccionesDisponibles();
+		assertEquals(false,mapaPrueba.containsKey("Emp"));
+		assertEquals(false,mapaPrueba.containsKey("Radiacion"));
+		assertEquals(false,mapaPrueba.containsKey("Alucinacion"));
+		assertEquals(false,mapaPrueba.containsKey("Tormenta Psionica"));
+		
+	}
+	
+	@Test
+	public void testUnaUnidadMagicaNoTienAccionAtacar() throws UnidadInvalidaException, FueraDeRangoException {
+		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(1, 1));
+		mapaPrueba = unidad.getAccionesDisponibles();
+		assertEquals(false,mapaPrueba.containsKey("Atacar"));
+		
+	}
+	
+	@Test
+	public void testUnaUnidadMagicaProtossTieneAccionesAlucinacionYTormentaPsionica() throws UnidadInvalidaException, FueraDeRangoException {
+		unidad = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(1, 1));
+		mapaPrueba = unidad.getAccionesDisponibles();
+		assertEquals(true,mapaPrueba.containsKey("Alucinacion"));
+		assertEquals(true,mapaPrueba.containsKey("TormentaPsionica"));
+		
+	}
+	
+	@Test
+	public void testUnaUnidadMagicaProtosNoTieneAccionEmpNiRadiacion() throws UnidadInvalidaException, FueraDeRangoException {
+		unidad = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(1, 1));
+		mapaPrueba = unidad.getAccionesDisponibles();
+		assertEquals(false,mapaPrueba.containsKey("Emp"));
+		assertEquals(false,mapaPrueba.containsKey("Radiacion"));
+	}
+	
+	@Test
+	public void testUnaUnidadMagicaTerranTieneAccionesEmpYRadiacion() throws UnidadInvalidaException, FueraDeRangoException {
+		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(1, 1));
+		mapaPrueba = unidad.getAccionesDisponibles();
+		assertEquals(true,mapaPrueba.containsKey("Emp"));
+		assertEquals(true,mapaPrueba.containsKey("Radiacion"));
+		
+	}
+	
+	@Test
+	public void testUnaUnidadMagicaTerranNoTieneAccionesAlucinacionYTormentaPsionica() throws UnidadInvalidaException, FueraDeRangoException {
+		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(1, 1));
+		mapaPrueba = unidad.getAccionesDisponibles();
+		assertEquals(false,mapaPrueba.containsKey("Alucinacion"));
+		assertEquals(false,mapaPrueba.containsKey("Tormenta Psionica"));
+		
 	}
 }
