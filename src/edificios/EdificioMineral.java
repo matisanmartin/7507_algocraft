@@ -1,6 +1,7 @@
 package edificios;
 
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 
 public abstract class EdificioMineral extends Edificio {

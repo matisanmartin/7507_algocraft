@@ -1,8 +1,16 @@
 package edificios;
 
+import strategy.ContextoStrategy;
 import model.ElementoArtificial;
 import common.Posicion;
+import exceptions.ElementoInvalidoException;
+import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
+import exceptions.FactoryInvalidaException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
+import exceptions.UnidadInvalidaException;
 
 public class Edificio extends ElementoArtificial {
 
@@ -20,6 +28,12 @@ public class Edificio extends ElementoArtificial {
 	
 	public void setTiempoDeConstruccion(int tiempo){
 		this.tiempoDeConstruccion = tiempo;
+	}
+
+	@Override
+	public void realizarAccion(ContextoStrategy contexto,Posicion posicionDestino) 
+	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException{
+		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 
 }

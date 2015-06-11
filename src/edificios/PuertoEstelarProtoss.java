@@ -16,13 +16,4 @@ public class PuertoEstelarProtoss extends PuertoEstelar {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Unidad crearScout() throws UnidadInvalidaException, FueraDeRangoException{
-		UnidadFactory factory = new UnidadFactory();
-		return (factory.getUnidad(TipoUnidad.PROTOSS_SCOUT, new Posicion(10, 10)));
-	}
-	
-	public Unidad crearNaveDeTransporte() throws UnidadInvalidaException, FueraDeRangoException{
-		UnidadFactory factory = new UnidadFactory();
-		return (factory.getUnidad(TipoUnidad.PROTOSS_NAVE_TRANSPORTE, new Posicion(10, 10)));
-	}
 }

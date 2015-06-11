@@ -17,8 +17,4 @@ public class Fabrica extends Edificio {
 		this.setVida("1250");
 	}
 	
-	public Unidad crearGolliat() throws UnidadInvalidaException, FueraDeRangoException {
-		UnidadFactory factory = new UnidadFactory();
-		return (factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(10,10))); //Verificar donde deberia dejar la unidad creada
-	}
 }

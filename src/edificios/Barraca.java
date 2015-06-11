@@ -18,11 +18,4 @@ public class Barraca extends Edificio {
 		this.setVida("1000");
 		// TODO Auto-generated constructor stub
 	}
-
-	public Unidad crearMarine() throws UnidadInvalidaException, FueraDeRangoException {
-		UnidadFactory factory = new UnidadFactory();
-		return (factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10,10))); //Verificar donde deberia dejar la unidad creada
-	}
-
-
 }

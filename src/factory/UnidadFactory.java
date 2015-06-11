@@ -1,9 +1,10 @@
 package factory;
 
 import common.Posicion;
-
+import edificios.Edificio;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
+import factory.construcciones.TipoConstruccion;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 import factory.unidades.UnidadMagicaProtoss;
@@ -295,6 +296,14 @@ public class UnidadFactory extends AbstractFactory{
 		}
 		
 		return unidadCreada;
+	}
+
+
+	@Override
+	public Edificio getEdificio(TipoConstruccion construccionRequerida,
+			Posicion posicion) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	@Override

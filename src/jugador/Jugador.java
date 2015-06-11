@@ -87,6 +87,13 @@ public class Jugador {
 	public int getCantidadDeGas() {
 		return this.cantidadDeGas;
 	}
+	public void agregarCantidadDeCristal(int cantidadDeMineral) {	
+		this.cantidadDeCristal=this.cantidadDeCristal+cantidadDeMineral;
+	}
+	public void agregarCantidadDeGas(int cantidadDeGas) {
+		this.cantidadDeGas=this.cantidadDeGas+cantidadDeGas;
+		
+	}
 
 
 }

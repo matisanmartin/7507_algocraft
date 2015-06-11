@@ -80,7 +80,7 @@ public abstract class ElementoArtificial extends Elemento {
 	}
 	
 
-	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino)
+	public abstract void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino)
 	throws 	FactoryInvalidaException, 
 			UnidadInvalidaException, 
 			FueraDeRangoException, 
@@ -88,7 +88,7 @@ public abstract class ElementoArtificial extends Elemento {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException {}
+			EnergiaInsuficienteException;
 
 	public Map getAccionesDisponibles() {
 		return accionesDisponibles;
