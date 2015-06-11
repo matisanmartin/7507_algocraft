@@ -1,5 +1,7 @@
 package factory;
 
+import model.Base;
+
 import common.Posicion;
 
 import exceptions.FueraDeRangoException;
@@ -115,6 +117,7 @@ public class EdificioFactory extends AbstractFactory {
 		case PROTOSS_PILON:
 			edificioCreado = new Pilon(PILON_ALTO, PILON_ANCHO, posicion);
 			break;
+
 			
 		default:
 			break;
@@ -125,6 +128,12 @@ public class EdificioFactory extends AbstractFactory {
 	@Override
 	public Unidad getUnidad(TipoUnidad unidadRequerida, Posicion posicion)
 	throws UnidadInvalidaException, FueraDeRangoException {
+		return null;
+	}
+
+	@Override
+	public Base getBase(Posicion posicion) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

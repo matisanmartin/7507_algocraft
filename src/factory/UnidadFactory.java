@@ -1,5 +1,6 @@
 package factory;
 
+import model.Base;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
@@ -302,6 +303,13 @@ public class UnidadFactory extends AbstractFactory{
 	@Override
 	public Edificio getEdificio(TipoEdificio construccionRequerida,
 			Posicion posicion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Base getBase(Posicion posicion) {
 		// TODO Auto-generated method stub
 		return null;
 	}
