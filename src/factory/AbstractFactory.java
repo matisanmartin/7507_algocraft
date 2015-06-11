@@ -4,17 +4,14 @@ import common.Posicion;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.construcciones.Edificio;
-import factory.construcciones.TipoConstruccion;
+import factory.construcciones.TipoEdificio;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 
 public abstract class AbstractFactory {
 
-
-//	public abstract Construccion getConstruccion(TipoConstruccion construccionRequerida);
-
 	public abstract  Unidad getUnidad(TipoUnidad unidadRequerida,Posicion posicion)
 			throws UnidadInvalidaException, FueraDeRangoException;
 	
-	public abstract Edificio getEdificio(TipoConstruccion construccionRequerida, Posicion posicion);
+	public abstract Edificio getEdificio(TipoEdificio construccionRequerida, Posicion posicion) throws FueraDeRangoException;
 }

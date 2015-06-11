@@ -12,6 +12,7 @@ public class PuertoEstelarProtoss extends PuertoEstelar {
 			throws FueraDeRangoException {
 		super(alto, ancho, posicion);
 		this.setVida("600/600");
+		this.setCosto("150M150G");
 		// TODO Auto-generated constructor stub
 	}
 	

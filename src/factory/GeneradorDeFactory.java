@@ -11,7 +11,7 @@ public class GeneradorDeFactory {
 		case UNIDAD_FACTORY:
 			return new UnidadFactory();
 		case CONSTRUCCION_FACTORY:
-			return new ConstruccionFactory();
+			return new EdificioFactory();
 		default:
 			throw new FactoryInvalidaException();
 		}

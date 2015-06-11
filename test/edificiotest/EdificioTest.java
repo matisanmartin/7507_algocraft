@@ -52,7 +52,7 @@ public class EdificioTest {
 	@Test
 	public void creaUnPuertoEstelarTerrar() throws FueraDeRangoException{
 		PuertoEstelar edificio = new PuertoEstelarTerran(2,2, new Posicion(10, 10));
-		assertEquals("150M150G", edificio.getCosto());
+		assertEquals("150M100G", edificio.getCosto());
 		assertEquals(10, edificio.getTiempoDeConstruccion());
 		assertEquals("1300", edificio.getVida());
 	}

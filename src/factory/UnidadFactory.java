@@ -4,7 +4,7 @@ import common.Posicion;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.construcciones.Edificio;
-import factory.construcciones.TipoConstruccion;
+import factory.construcciones.TipoEdificio;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 import factory.unidades.UnidadMagicaProtoss;
@@ -300,7 +300,7 @@ public class UnidadFactory extends AbstractFactory{
 
 
 	@Override
-	public Edificio getEdificio(TipoConstruccion construccionRequerida,
+	public Edificio getEdificio(TipoEdificio construccionRequerida,
 			Posicion posicion) {
 		// TODO Auto-generated method stub
 		return null;

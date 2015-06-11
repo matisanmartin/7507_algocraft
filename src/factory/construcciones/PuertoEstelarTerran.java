@@ -13,6 +13,7 @@ public class PuertoEstelarTerran extends PuertoEstelar {
 			throws FueraDeRangoException {
 		super(alto, ancho, posicion);
 		this.setVida("1300");
+		this.setCosto("150M100G");
 		// TODO Auto-generated constructor stub
 	}
 	

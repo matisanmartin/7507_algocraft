@@ -9,7 +9,7 @@ import org.junit.runners.JUnit4;
 
 import exceptions.FactoryInvalidaException;
 import factory.AbstractFactory;
-import factory.ConstruccionFactory;
+import factory.EdificioFactory;
 import factory.GeneradorDeFactory;
 import factory.TipoFactory;
 import factory.UnidadFactory;
@@ -29,7 +29,7 @@ public class AbstractFactoryTest {
 	@Test
 	public void testInstanciacionFactories() {
 		assertEquals(UnidadFactory.class,factoryUnidad.getClass());
-		assertEquals(ConstruccionFactory.class,factoryConstruccion.getClass());
+		assertEquals(EdificioFactory.class,factoryConstruccion.getClass());
 	}
 
 }
