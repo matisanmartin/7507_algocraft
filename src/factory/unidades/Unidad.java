@@ -41,6 +41,7 @@ public class Unidad extends ElementoArtificial {
 		setSuministro(suministro);
 		setRangoAtaque(rangoAtaque);
 		setVida(unidadMarineVida);
+		this.definirAccionesDisponibles();
 
 	}
 

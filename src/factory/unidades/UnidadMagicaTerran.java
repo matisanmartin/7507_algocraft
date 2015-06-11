@@ -20,6 +20,8 @@ public class UnidadMagicaTerran extends UnidadMagica {
 			unidadNaveCienciaDaño,unidadNaveCienciaSuministro,
 			unidadNaveCienciaRangoAtaque, unidadNaveCienciaVida,
 			unidadAlto,unidadAncho,posicion);
+
+		this.definirAccionesDisponibles();
 	}
 
 	public UnidadMagicaTerran() {

@@ -23,6 +23,8 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 			unidadAltoTemplarioRangoAtaque,
 			unidadAltoTemplarioVida,unidadAlto, unidadAncho,
 			posicion);
+		
+		this.definirAccionesDisponibles();
 	}
 
 	public UnidadMagicaProtoss() {
