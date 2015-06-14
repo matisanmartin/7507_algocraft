@@ -1,8 +1,8 @@
 package strategy;
 
+import juego.Juego;
 import model.ElementoArtificial;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.EnergiaInsuficienteException;
@@ -56,8 +56,8 @@ public class Alucinacion implements Strategy {
 		Posicion posicionFicticia2 = new Posicion(posX-1,posY);
 		Unidad copiaFicticia2 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, posicionFicticia2);
 	
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
+		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
+		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
 			
 
 

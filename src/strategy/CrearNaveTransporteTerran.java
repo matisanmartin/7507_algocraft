@@ -1,8 +1,8 @@
 package strategy;
 
+import juego.Juego;
 import model.ElementoArtificial;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -21,7 +21,7 @@ public class CrearNaveTransporteTerran implements Strategy {
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial naveTransporte = factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
+		Juego.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
 		
 	}
 

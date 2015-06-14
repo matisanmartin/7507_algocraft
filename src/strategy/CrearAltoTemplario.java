@@ -1,8 +1,8 @@
 package strategy;
 
+import juego.Juego;
 import model.ElementoArtificial;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -21,7 +21,7 @@ public class CrearAltoTemplario implements Strategy {
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial altoTemplario = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(altoTemplario);
+		Juego.getInstancia().agregarUnidadAJugadorActual(altoTemplario);
 		
 	}
 
