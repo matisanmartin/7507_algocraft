@@ -16,6 +16,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 import factory.unidades.Unidad;
 
 public class CrearDragonAccion implements Accion {
@@ -27,7 +28,7 @@ public class CrearDragonAccion implements Accion {
 	
 	@Override
 	public void execute(Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		unidad.realizarAccion(new ContextoStrategy(new CrearDragon()), posicionDestino);
 		
 	}

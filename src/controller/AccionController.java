@@ -15,6 +15,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 
 public class AccionController {
 	
@@ -25,7 +26,7 @@ public class AccionController {
 	}
 	
 	public void realizarAccion(Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		accion.execute(posicionDestino);
 	}
 

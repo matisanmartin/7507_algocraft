@@ -1,6 +1,8 @@
 package factory.unidades;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import model.ElementoArtificial;
@@ -24,6 +26,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 
 public class Unidad extends ElementoArtificial {
 
@@ -34,6 +37,7 @@ public class Unidad extends ElementoArtificial {
 //	private int daño;
 	private int suministro;
 	private String rangoAtaque;
+	List<Unidad> unidadesTransportadas;
 
 
 	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, 
@@ -48,6 +52,7 @@ public class Unidad extends ElementoArtificial {
 		setRangoAtaque(rangoAtaque);
 		setVitalidad(vida);
 		this.definirAccionesDisponibles();
+		unidadesTransportadas=new ArrayList<Unidad>();
 
 	}
 
@@ -103,7 +108,7 @@ public class Unidad extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	
@@ -111,6 +116,27 @@ public class Unidad extends ElementoArtificial {
 		Map<String, Accion> acciones = new Hashtable<String, Accion>();
 		acciones.put("Atacar", new AtaqueAccion(this));
 		setAccionesDisponibles(acciones);
+	}
+	
+	@Override
+	public void agregarUnidad(ElementoArtificial elemento) throws UnidadLlenaException {
+		
+		if(transporte==0 || capacidadLlena()){
+			throw new UnidadLlenaException();
+		}
+		
+		elemento.setPosicion(this.getPosicion());
+		unidadesTransportadas.add((Unidad) elemento);
+		
+	}
+
+	private boolean capacidadLlena() {
+		return unidadesTransportadas.size()==transporte;
+	}
+
+	@Override
+	public int getCantidadDeUnidadesTransportadas() {
+		return unidadesTransportadas.size();
 	}
 
 

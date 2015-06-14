@@ -28,6 +28,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
 import factory.TipoFactory;
@@ -81,10 +82,11 @@ public class AtacarTest {
 	 * @throws PartidaPerdidaException 
 	 * @throws PartidaGanadaException 
 	 * @throws FinDePartidaException 
+	 * @throws UnidadLlenaException 
 	 */
 	@Test
 	public void testMarineAtacaUnidadEnemigaEnRango() 
-	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {	
+	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {	
 		
 		try
 		{
@@ -106,10 +108,11 @@ public class AtacarTest {
 	 * @throws PartidaPerdidaException 
 	 * @throws PartidaGanadaException 
 	 * @throws FinDePartidaException 
+	 * @throws UnidadLlenaException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testMarineAtacaUnidadEnemigaFueraDeRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		

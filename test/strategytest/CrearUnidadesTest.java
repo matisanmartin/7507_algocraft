@@ -39,6 +39,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 import factory.construcciones.Acceso;
 import factory.construcciones.ArchivoTemplario;
 import factory.construcciones.Barraca;
@@ -75,7 +76,7 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConAccesoCreaZealot() 
-	throws FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 
 		Edificio edificio = new Acceso(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(edificio);
@@ -98,7 +99,7 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConArchivoTemplarioCreaAltoTemplario() 
-	throws ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio acceso = new ArchivoTemplario(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(acceso);
 		contexto = new ContextoStrategy(new CrearAltoTemplario());
@@ -122,7 +123,7 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConBarracaCreaMarine() 
-	throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio barraca = new Barraca(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(barraca);
 		contexto = new ContextoStrategy(new CrearMarine());
@@ -145,7 +146,7 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConFabricaCreaGolliat() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio fabrica = new Fabrica(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(fabrica);
 		contexto = new ContextoStrategy(new CrearGolliat());
@@ -169,7 +170,7 @@ public class CrearUnidadesTest {
 			FueraDeRangoDeVisionException, EnergiaInsuficienteException,
 			CostoInvalidoException, RecursosInsuficientesException,
 			CloneNotSupportedException, FinDePartidaException,
-			PartidaGanadaException, PartidaPerdidaException {
+			PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		fabricaObtenida.realizarAccion(contexto, posicionDestino);
 	}
 	
@@ -177,7 +178,7 @@ public class CrearUnidadesTest {
 	 * Jugador pide a puerto estelar protoss crear scout
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarProtossCreaScout() throws FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void testJugadorConPuertoEstelarProtossCreaScout() throws FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio puertoEstelarProtoss = new PuertoEstelarProtoss(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarProtoss);
 		contexto = new ContextoStrategy(new CrearScout());
@@ -200,7 +201,7 @@ public class CrearUnidadesTest {
 	 * Jugador pide a puerto estelar protoss crear nave de transporte
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarProtossCreaNaveTransporteProtoss() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void testJugadorConPuertoEstelarProtossCreaNaveTransporteProtoss() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio puertoEstelarProtoss = new PuertoEstelarProtoss(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarProtoss);
 		contexto = new ContextoStrategy(new CrearNaveTransporteProtoss());
@@ -222,7 +223,7 @@ public class CrearUnidadesTest {
 	 * Jugador pide a puerto estelar terran crear espectro
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarTerranCreaEspectro() throws FueraDeRangoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void testJugadorConPuertoEstelarTerranCreaEspectro() throws FueraDeRangoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio puertoEstelarTerran = new PuertoEstelarTerran(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarTerran);
 		contexto = new ContextoStrategy(new CrearEspectro());
@@ -244,7 +245,7 @@ public class CrearUnidadesTest {
 	 * Jugador pide a puerto estelar terran crear nave de transporte
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarTerranCreaNaveTransporteTerran() throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void testJugadorConPuertoEstelarTerranCreaNaveTransporteTerran() throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio puertoEstelarTerran = new PuertoEstelarTerran(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarTerran);
 		contexto = new ContextoStrategy(new CrearNaveTransporteTerran());
@@ -262,7 +263,7 @@ public class CrearUnidadesTest {
 	}
 	
 	@Test
-	public void testJugadorConPuertoEstelarTerranCreaNaveCiencia() throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void testJugadorConPuertoEstelarTerranCreaNaveCiencia() throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException {
 		Edificio puertoEstelarTerran = new PuertoEstelarTerran(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarTerran);
 		contexto = new ContextoStrategy(new CrearNaveCiencia());

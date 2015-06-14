@@ -21,6 +21,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 
 
 public abstract class ElementoArtificial extends Elemento implements Cloneable {
@@ -69,7 +70,7 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException;
+			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException;
 
 	public Map<String,Accion> getAccionesDisponibles() {
 		return accionesDisponibles;
@@ -119,6 +120,10 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 		ElementoArtificial clone = (ElementoArtificial)super.clone();
 		return clone;
 	}
+
+	public abstract void agregarUnidad(ElementoArtificial elementoActuante) throws UnidadLlenaException;
+
+	public abstract int getCantidadDeUnidadesTransportadas();
 
 
 

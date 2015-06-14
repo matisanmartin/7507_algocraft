@@ -17,6 +17,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 
 public class Edificio extends ElementoArtificial {
 
@@ -38,7 +39,7 @@ public class Edificio extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto,Posicion posicionDestino) 
-	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException{
+	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException{
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	
@@ -47,6 +48,19 @@ public class Edificio extends ElementoArtificial {
 	@Override
 	public boolean estaMuerta(){
 		return true;
+	}
+
+	@Override
+	public void agregarUnidad(ElementoArtificial elementoActuante)
+			throws UnidadLlenaException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getCantidadDeUnidadesTransportadas() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

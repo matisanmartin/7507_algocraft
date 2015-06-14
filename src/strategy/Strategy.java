@@ -15,6 +15,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 
 public interface Strategy {
 	
@@ -26,6 +27,13 @@ public interface Strategy {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException;
+			EnergiaInsuficienteException, 
+			CostoInvalidoException, 
+			RecursosInsuficientesException, 
+			CloneNotSupportedException, 
+			FinDePartidaException, 
+			PartidaGanadaException, 
+			PartidaPerdidaException, 
+			UnidadLlenaException;
 
 }

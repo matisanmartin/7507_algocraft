@@ -35,6 +35,7 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 import factory.AbstractFactory;
 import factory.EdificioFactory;
 import factory.construcciones.TipoEdificio;
@@ -67,7 +68,7 @@ public class Enunciado8Test {
 
 	
 	@Test(expected = PartidaGanadaException.class)
-	public void testPartidaGanada() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException {
+	public void testPartidaGanada() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException {
 		
 		factoryEdificio = new EdificioFactory();
 		//El jugador crea una barraca
@@ -188,7 +189,7 @@ public class Enunciado8Test {
 	}
 	
 	@Test(expected = PartidaPerdidaException.class)
-	public void testPartidaPerdida() throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException {
+	public void testPartidaPerdida() throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException {
 		//El test se medio rudimentario pero no se me ocurrio otra forma de simular una partida perdida
 		//salvo que la accion sea un """suicidio"""
 		
@@ -234,7 +235,8 @@ public class Enunciado8Test {
 		//suicido al marine
 		marine.setVitalidad(new Vitalidad(0,0));
 		
-		//verifico manualmente porque las excepciones, por ahora, se lanzan cuando se realiza una accion
+		//verifico manualmente porque las excepciones vinculadas con el fin de partida, 
+		//por ahora, se lanzan cuando se realiza una accion
 		JuegoController.getInstancia().verificarFinDePartida();
 		
 	}
