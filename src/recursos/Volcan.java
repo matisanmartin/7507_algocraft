@@ -1,19 +1,16 @@
 package recursos;
 
-import model.Elemento;
+import model.EspacioTerrestre;
+
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 
-public class Volcan extends Elemento {
+public class Volcan extends Recurso {
 
 	public Volcan(int alto, int ancho, Posicion posicion)
 			throws FueraDeRangoException {
-		super(alto, ancho, posicion);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Volcan() {
-		// TODO Auto-generated constructor stub
+		super(alto, ancho, posicion, new EspacioTerrestre());
 	}
 
 	@Override
