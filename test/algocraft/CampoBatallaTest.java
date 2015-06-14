@@ -27,6 +27,7 @@ public class CampoBatallaTest {
 	
 	@Before
 	public void setUp() {
+		CampoBatalla.DestruirInstancia();
 		factory = new UnidadFactory();
 	}
 	

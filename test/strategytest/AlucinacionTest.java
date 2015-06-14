@@ -34,13 +34,13 @@ public class AlucinacionTest {
 	ContextoStrategy contexto;
 	UnidadFactory factory;
 	Unidad unidadAtacante;
-	Unidad unidadAtacadaEnRango;
-	Unidad unidadAtacadaFueraDeRango;
+	Unidad unidadAmigaEnRango;
+	Unidad unidadAmigaFueraDeRango;
 	Jugador jugadorActual;
 	Jugador jugadorEnemigo;
 	Posicion posicionUnidadAtacante;
-	Posicion posicionUnidadAtacadaEnRango;
-	Posicion posicionUnidadAtacadaFueraDeRango;
+	Posicion posicionUnidadAmigaEnRango;
+	Posicion posicionUnidadAmigaFueraDeRango;
 	
 	
 	@Before
@@ -56,13 +56,13 @@ public class AlucinacionTest {
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
 
 		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
-		posicionUnidadAtacadaEnRango = new Posicion(2,4);//El rango de vision del alto templario es 7
-		unidadAtacadaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAtacadaEnRango);
-		jugadorEnemigo.agregarElemento(unidadAtacadaEnRango);
+		posicionUnidadAmigaEnRango = new Posicion(2,4);//El rango de vision del alto templario es 7
+		unidadAmigaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaEnRango);
+		jugadorActual.agregarElemento(unidadAmigaEnRango);
 		
-		posicionUnidadAtacadaFueraDeRango = new Posicion(15,20);//El rango de vision del alto templario es 7
-		unidadAtacadaFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAtacadaFueraDeRango);
-		jugadorEnemigo.agregarElemento(unidadAtacadaFueraDeRango);
+		posicionUnidadAmigaFueraDeRango = new Posicion(15,20);//El rango de vision del alto templario es 7
+		unidadAmigaFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaFueraDeRango);
+		jugadorActual.agregarElemento(unidadAmigaFueraDeRango);
 		
 		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 	
@@ -73,13 +73,14 @@ public class AlucinacionTest {
 	 * Si tira excepcion, el test falla
 	 * @throws CostoInvalidoException 
 	 * @throws RecursosInsuficientesException 
+	 * @throws CloneNotSupportedException 
 	 */
 	@Test
 	public void testAlucinacionCreaUnidadesGemelasYEnemigoEstaEnRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
 		
 		unidadAtacante.setEnergia(100);
-		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
+		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
 		
 		
 		JuegoController.getInstancia()
@@ -99,24 +100,26 @@ public class AlucinacionTest {
 	 * Test "negativo" debería tirar excepcion si el jugador está fuera de rango de vision de la unidad que ataca
 	 * @throws CostoInvalidoException 
 	 * @throws RecursosInsuficientesException 
+	 * @throws CloneNotSupportedException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testAlucinacionCreaUnidadesEnemigoNoEstaEnRango() 
-	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
+	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
 		unidadAtacante.setEnergia(100);
-		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaFueraDeRango);
+		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaFueraDeRango);
 	}
 	
 	/**
 	 * Test "negativo", tiene 50 de vida y se requiere 100 para poder  hacer el ataque
 	 * @throws CostoInvalidoException 
 	 * @throws RecursosInsuficientesException 
+	 * @throws CloneNotSupportedException 
 	 */
 	@Test(expected = EnergiaInsuficienteException.class)
 	public void testAlucinacionUnidadConEnergiaInsuficiente() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
 //		unidadAtacante.setVitalidad(new Vitalidad(150,0));
-		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
+		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
 	}
 	
 }

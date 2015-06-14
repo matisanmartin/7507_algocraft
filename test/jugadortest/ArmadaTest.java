@@ -11,9 +11,9 @@ import org.junit.runners.JUnit4;
 
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
 import factory.TipoFactory;
@@ -49,13 +49,13 @@ public class ArmadaTest {
 	}
 	
 	@Test
-	public void testArmadaConUnElementoDimension1() {
+	public void testArmadaConUnElementoDimension1() throws PosicionInvalidaException {
 		armada.agregarElemento(unidadMuerta);
 		assertEquals(1,armada.getDimensionArmada());
 	}
 	
 	@Test
-	public void testArmadaEliminarElementoEnPosicion() {
+	public void testArmadaEliminarElementoEnPosicion() throws PosicionInvalidaException {
 		armada.agregarElemento(unidadMuerta);
 		Posicion posicion = unidadMuerta.getPosicion();
 		armada.eliminarElementoMuertoEnPosicion(posicion);
@@ -63,7 +63,7 @@ public class ArmadaTest {
 	}
 	
 	@Test
-	public void testArmadaConVariosElementosEliminarElementoEnPosicion() throws FueraDeRangoException, ElementoNoEncontradoException {
+	public void testArmadaConVariosElementosEliminarElementoEnPosicion() throws FueraDeRangoException, ElementoNoEncontradoException, PosicionInvalidaException {
 		
 		armada.agregarElemento(unidadMuerta);
 		armada.agregarElemento(unidadMuertaNueva);

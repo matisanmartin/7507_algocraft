@@ -47,7 +47,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_MARINE_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_MARINE_VIDA.getVida(), unidad.getVida());
+		assertEquals(40, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -60,7 +60,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_VIDA.getVida(), unidad.getVida());
+		assertEquals(125, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -73,7 +73,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_VIDA.getVida(), unidad.getVida());
+		assertEquals(120, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -86,7 +86,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_VIDA.getVida(), unidad.getVida());
+		assertEquals(200, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -99,7 +99,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_VIDA.getVida(), unidad.getVida());
+		assertEquals(150, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -112,7 +112,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_ZEALOT_VIDA.getVida(), unidad.getVida());
+		assertEquals(100, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -125,7 +125,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_DRAGON_VIDA.getVida(), unidad.getVida());
+		assertEquals(100, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -138,7 +138,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_SCOUT_VIDA.getVida(), unidad.getVida());
+		assertEquals(150, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -151,7 +151,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VIDA.getVida(), unidad.getVida());
+		assertEquals(40, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
@@ -164,7 +164,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO, unidad.getDaño());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO, unidad.getSuministro());
-		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_VIDA.getVida(), unidad.getVida());
+		assertEquals(80, unidad.getVida());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	

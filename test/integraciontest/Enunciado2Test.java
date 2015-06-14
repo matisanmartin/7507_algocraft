@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import razas.Protoss;
 import razas.Terran;
+import strategy.Alucinacion;
+import strategy.Ataque;
 import strategy.ContextoStrategy;
 import strategy.TormentaPsionica;
 import common.Posicion;
@@ -29,6 +31,7 @@ import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
 import factory.TipoFactory;
 import factory.unidades.TipoUnidad;
+import factory.unidades.Unidad;
 
 public class Enunciado2Test {
 
@@ -50,6 +53,7 @@ public class Enunciado2Test {
 		factoryUnidad=GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		posicionAltoTemplario=new Posicion(2,2);
 		altoTemplario=factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO,posicionAltoTemplario);
+		
 
 		jugadorActual = new Jugador("Jugador1",TipoColor.COLOR_ROJO,new Protoss());
 		jugadorEnemigo = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Terran());
@@ -73,8 +77,9 @@ public class Enunciado2Test {
 		JuegoController.getInstancia().getJugadorEnemigo().agregarElemento(golliat);
 		
 	}
+	
 	@Test
-	public void testNumero2Enunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException {
+	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException {
 		
 		//El templario debe lanzar tormenta psionica que requiere energia 75
 		//Con pasar 2 turnos, deberia llegar a 80, la energía necesaria
@@ -101,11 +106,83 @@ public class Enunciado2Test {
 		altoTemplarioObt.realizarAccion(contexto, posicionMarine);
 		
 		
+		//marine: Vida inicial:100 -> resultado: 0
+		assertEquals(0,JuegoController.getInstancia()
+										.obtenerArmadaJugadorEnemigo()
+										.obtenerElementoEnPosicion(posicionMarine)
+										.getVida());
+		
+		//golliat: vida inicial: 125 -> resultado: 25
+		assertEquals(25,JuegoController.getInstancia()
+										.obtenerArmadaJugadorEnemigo()
+										.obtenerElementoEnPosicion(posicionGolliat)
+										.getVida());
+		
+		//naveCiencia: vida inicial: 200 -> resultado: 100
+		assertEquals(100,JuegoController.getInstancia()
+										.obtenerArmadaJugadorEnemigo()
+										.obtenerElementoEnPosicion(posicionNaveCiencia)
+										.getVida());	
+	}
+	
+	@Test
+	public void testNumero2bEnunciado() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, NombreJugadorRepetidoException{
+		
+		//Dejo pasar los turnos para que alcance la energia	
+		JuegoController.getInstancia().intercambiarJugadores();//enemigo
+		JuegoController.getInstancia().intercambiarJugadores();//actual
+		JuegoController.getInstancia().intercambiarJugadores();//enemigo
+		JuegoController.getInstancia().intercambiarJugadores();//actual
+		
+		
+		Posicion posicionZealot= new Posicion(5,5);
+		Unidad zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
+		zealot.setRangoAtaque("2");//TODO msma: borrar luego y cambiarlo
+		zealot.setVision(4);//TODO modificar leugo
+		
+		JuegoController.getInstancia().getJugadorActual().agregarElemento(zealot);
+		
+		ElementoArtificial altoTemplarioObt = JuegoController.getInstancia().getJugadorActual()
+				.obtenerArmada()
+				.obtenerElementoEnPosicion(posicionAltoTemplario);
+		
+		ContextoStrategy contexto = new ContextoStrategy(new Alucinacion());
+		
+		altoTemplarioObt.realizarAccion(contexto, posicionZealot);
+		
+		
+		ElementoArtificial zealotFicticio1 = JuegoController.getInstancia()
+															.getJugadorActual()
+															.obtenerArmada()
+															.obtenerElementoEnPosicion(new Posicion(3,2));
+		
+		
+		assertEquals(0,zealotFicticio1.getVida());
+		assertEquals(60,zealotFicticio1.getEscudo());
+		
+		ElementoArtificial zealotFicticio2 = JuegoController.getInstancia()
+															.getJugadorActual()
+															.obtenerArmada()
+															.obtenerElementoEnPosicion(new Posicion(1,2));
+		
+		assertEquals(0,zealotFicticio2.getVida());
+		assertEquals(60,zealotFicticio2.getEscudo());
 		
 		
 		
+		ContextoStrategy contextoZealot = new ContextoStrategy(new Ataque());
 		
+		zealotFicticio1.realizarAccion(contextoZealot, posicionMarine);
+		zealotFicticio2.realizarAccion(contextoZealot, posicionMarine);
 		
+		ElementoArtificial marineObt = JuegoController.getInstancia()
+														.getJugadorEnemigo()
+														.obtenerArmada()
+														.obtenerElementoEnPosicion(posicionMarine);
+														
+		
+		//vida marine = 40
+		assertEquals(40,marineObt.getVida());
 	}
 
 }
