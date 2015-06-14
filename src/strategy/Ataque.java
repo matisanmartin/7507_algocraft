@@ -6,19 +6,21 @@ import java.util.ListIterator;
 import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
-
 import common.Posicion;
-
+import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import factory.unidades.Unidad;
 
 public class Ataque implements Strategy {
 
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException {
+	throws FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 				
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 		
@@ -44,13 +46,15 @@ public class Ataque implements Strategy {
 				int dañoAtaqueNum=Integer.parseInt(dañoAtaque);
 				
 				//TODO msma: Test para distancia menor y test para distancia mayor
-				if(distancia<Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
+				if(distancia<=Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
 					elementoTemporal.restarVitalidad(dañoAtaqueNum);
 					it.set(elementoTemporal);
 					//break;
 				}
 			}
 		}
+		
+		JuegoController.getInstancia().verificarFinDePartida();
 	
 	}			
 }

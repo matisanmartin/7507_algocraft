@@ -53,11 +53,11 @@ public class Enunciado9Test {
 		assertEquals(10,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
 
 		//Pasa un turno, deberia ser 20
-		JuegoController.getInstancia().intercambiarJugadores();
+		JuegoController.getInstancia().cambiarTurno();
 		assertEquals(20,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
 		
 		//Pasa otro turno, deberia ser 30
-		JuegoController.getInstancia().intercambiarJugadores();
+		JuegoController.getInstancia().cambiarTurno();
 		assertEquals(30,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
 		
 	}

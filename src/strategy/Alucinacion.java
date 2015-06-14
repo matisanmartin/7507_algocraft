@@ -8,8 +8,11 @@ import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
@@ -22,7 +25,7 @@ public class Alucinacion implements Strategy {
 	
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, CloneNotSupportedException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		//msma: En principio estas validaciones se realizan aca, pero deberian hacerse antes
 		//para elegir si se muestra o no la opción como válida para ejecutarse
@@ -60,7 +63,8 @@ public class Alucinacion implements Strategy {
 	
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
-			
+		
+		JuegoController.getInstancia().verificarFinDePartida();
 
 	}
 

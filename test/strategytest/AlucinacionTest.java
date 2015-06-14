@@ -19,8 +19,11 @@ import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
@@ -74,24 +77,31 @@ public class AlucinacionTest {
 	 * @throws CostoInvalidoException 
 	 * @throws RecursosInsuficientesException 
 	 * @throws CloneNotSupportedException 
+	 * @throws PartidaPerdidaException 
+	 * @throws PartidaGanadaException 
+	 * @throws FinDePartidaException 
 	 */
 	@Test
 	public void testAlucinacionCreaUnidadesGemelasYEnemigoEstaEnRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
-		unidadAtacante.setEnergia(100);
-		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
-		
-		
-		JuegoController.getInstancia()
-					   .getJugadorActual()
-					   .obtenerArmada()
-					   .obtenerElementoEnPosicion(new Posicion(3,2));
-		
-		JuegoController.getInstancia()
-					   .getJugadorActual()
-					   .obtenerArmada()
-					   .obtenerElementoEnPosicion(new Posicion(1,2));
+		try {
+			unidadAtacante.setEnergia(100);
+			unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
+			
+			
+			JuegoController.getInstancia()
+						   .getJugadorActual()
+						   .obtenerArmada()
+						   .obtenerElementoEnPosicion(new Posicion(3,2));
+			
+			JuegoController.getInstancia()
+						   .getJugadorActual()
+						   .obtenerArmada()
+						   .obtenerElementoEnPosicion(new Posicion(1,2));
+		} catch (PartidaGanadaException e) {
+
+		}
 		
 	}
 	
@@ -101,10 +111,13 @@ public class AlucinacionTest {
 	 * @throws CostoInvalidoException 
 	 * @throws RecursosInsuficientesException 
 	 * @throws CloneNotSupportedException 
+	 * @throws PartidaPerdidaException 
+	 * @throws PartidaGanadaException 
+	 * @throws FinDePartidaException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testAlucinacionCreaUnidadesEnemigoNoEstaEnRango() 
-	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		unidadAtacante.setEnergia(100);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaFueraDeRango);
 	}
@@ -114,10 +127,13 @@ public class AlucinacionTest {
 	 * @throws CostoInvalidoException 
 	 * @throws RecursosInsuficientesException 
 	 * @throws CloneNotSupportedException 
+	 * @throws PartidaPerdidaException 
+	 * @throws PartidaGanadaException 
+	 * @throws FinDePartidaException 
 	 */
 	@Test(expected = EnergiaInsuficienteException.class)
 	public void testAlucinacionUnidadConEnergiaInsuficiente() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 //		unidadAtacante.setVitalidad(new Vitalidad(150,0));
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
 	}

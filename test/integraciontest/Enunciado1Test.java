@@ -21,9 +21,12 @@ import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.NombreJugadorRepetidoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
@@ -59,7 +62,7 @@ public class Enunciado1Test {
 
 	@Test
 	public void testNumero1aEnunciado() 
-	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException {
+	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		//Se construye una nave ciencia
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(naveCiencia);
@@ -67,22 +70,22 @@ public class Enunciado1Test {
 		//Se pasan turnos hasta que acumule la suficiente energia
 		//Suponiendo que es la suficiente energia como para que tire un Emp -> Energia>=100
 		//Cada turno carga 10 de energia -> en 5 turnos deberia tener la vida suficiente
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->60
+		JuegoController.getInstancia().cambiarTurno();//enemigo->60
 		assertEquals(60,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->70
+		JuegoController.getInstancia().cambiarTurno();//actual->70
 		assertEquals(70,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->80
+		JuegoController.getInstancia().cambiarTurno();//enemigo->80
 		assertEquals(80,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->90
+		JuegoController.getInstancia().cambiarTurno();//actual->90
 		assertEquals(90,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->100 (pero no tiene el control)
+		JuegoController.getInstancia().cambiarTurno();//enemigo->100 (pero no tiene el control)
 		assertEquals(100,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->110
+		JuegoController.getInstancia().cambiarTurno();//actual->110
 		assertEquals(110,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
 		//A continuación se situa una unidad protoss
@@ -111,7 +114,7 @@ public class Enunciado1Test {
 	
 	@Test
 	public void testNumero1bEnunciado() 
-	throws ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException {
+	throws ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		//Se construye una nave ciencia
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(naveCiencia);
@@ -119,22 +122,22 @@ public class Enunciado1Test {
 		//Se pasan turnos hasta que acumule la suficiente energia
 		//Suponiendo que es la suficiente energia como para que tire un Emp -> Energia>=100
 		//Cada turno carga 10 de energia -> en 5 turnos deberia tener la vida suficiente
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->60
+		JuegoController.getInstancia().cambiarTurno();//enemigo->60
 		assertEquals(60,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->70
+		JuegoController.getInstancia().cambiarTurno();//actual->70
 		assertEquals(70,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->80
+		JuegoController.getInstancia().cambiarTurno();//enemigo->80
 		assertEquals(80,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->90
+		JuegoController.getInstancia().cambiarTurno();//actual->90
 		assertEquals(90,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->100 (pero no tiene el control)
+		JuegoController.getInstancia().cambiarTurno();//enemigo->100 (pero no tiene el control)
 		assertEquals(100,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->110
+		JuegoController.getInstancia().cambiarTurno();//actual->110
 		assertEquals(110,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 
 		//Se situa un alto templario y otra nave ciencia, se lanza emp
@@ -167,7 +170,7 @@ public class Enunciado1Test {
 	
 	@Test
 	public void testNumero1cEnunciado() 
-	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException {
+	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		//Se construye una nave ciencia
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(naveCiencia);
@@ -175,22 +178,22 @@ public class Enunciado1Test {
 		//Se pasan turnos hasta que acumule la suficiente energia
 		//Suponiendo que es la suficiente energia como para que tire un Emp -> Energia>=100
 		//Cada turno carga 10 de energia -> en 5 turnos deberia tener la vida suficiente
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->60
+		JuegoController.getInstancia().cambiarTurno();//enemigo->60
 		assertEquals(60,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->70
+		JuegoController.getInstancia().cambiarTurno();//actual->70
 		assertEquals(70,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->80
+		JuegoController.getInstancia().cambiarTurno();//enemigo->80
 		assertEquals(80,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->90
+		JuegoController.getInstancia().cambiarTurno();//actual->90
 		assertEquals(90,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo->100 (pero no tiene el control)
+		JuegoController.getInstancia().cambiarTurno();//enemigo->100 (pero no tiene el control)
 		assertEquals(100,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();//actual->110
+		JuegoController.getInstancia().cambiarTurno();//actual->110
 		assertEquals(110,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 
 		//Se situa un alto templario y otra nave ciencia, se lanza emp

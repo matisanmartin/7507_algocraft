@@ -8,7 +8,10 @@ import common.Posicion;
 import controller.JuegoController;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import factory.UnidadFactory;
 
 public class TormentaPsionica implements Strategy {
@@ -18,7 +21,7 @@ public class TormentaPsionica implements Strategy {
 	private static final int ENERGIA_NECESARIA=75;
 
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException, EnergiaInsuficienteException, FueraDeRangoDeVisionException {
+	public void realizarAccion(ElementoArtificial elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException, EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		int energiaActual=elementoActuante.getEnergia();
 		
@@ -47,8 +50,6 @@ public class TormentaPsionica implements Strategy {
 				it.set(elementoTemporal);
 			}
 		}
+		JuegoController.getInstancia().verificarFinDePartida();
 	}
-
-
-
 }

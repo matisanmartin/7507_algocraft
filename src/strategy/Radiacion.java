@@ -6,8 +6,11 @@ import common.Posicion;
 import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import factory.UnidadFactory;
 
 /**
@@ -20,7 +23,7 @@ public class Radiacion implements Strategy {
 
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws ElementoNoEncontradoException, FueraDeRangoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws ElementoNoEncontradoException, FueraDeRangoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 				
 		int energiaActual=elementoActuante.getEnergia();
 		
@@ -92,6 +95,8 @@ public class Radiacion implements Strategy {
 			   .modificarElementoEnPosicion(posicionElementoIzquierda, elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
+		
+		JuegoController.getInstancia().verificarFinDePartida();
 				
 	}
 	

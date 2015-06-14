@@ -30,9 +30,12 @@ import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
@@ -72,7 +75,7 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConAccesoCreaZealot() 
-	throws FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	throws FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 
 		Edificio edificio = new Acceso(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(edificio);
@@ -95,13 +98,13 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConArchivoTemplarioCreaAltoTemplario() 
-	throws ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	throws ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio acceso = new ArchivoTemplario(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(acceso);
 		contexto = new ContextoStrategy(new CrearAltoTemplario());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio accesoObtenido = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		accesoObtenido.realizarAccion(contexto, posicionDestino);
+		extracted(accesoObtenido);
 		Unidad unidad = (Unidad)JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(2,unidad.getTransporte());
 		assertEquals(7, unidad.getVision());
@@ -119,13 +122,13 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConBarracaCreaMarine() 
-	throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio barraca = new Barraca(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(barraca);
 		contexto = new ContextoStrategy(new CrearMarine());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio barracaObtenida = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		barracaObtenida.realizarAccion(contexto, posicionDestino);
+		extracted(barracaObtenida);
 		Unidad unidad = (Unidad) JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(1,unidad.getTransporte());
 		assertEquals(7, unidad.getVision());
@@ -142,13 +145,13 @@ public class CrearUnidadesTest {
 	 */
 	@Test
 	public void testJugadorConFabricaCreaGolliat() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio fabrica = new Fabrica(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(fabrica);
 		contexto = new ContextoStrategy(new CrearGolliat());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio fabricaObtenida = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		fabricaObtenida.realizarAccion(contexto, posicionDestino);
+		extracted(fabricaObtenida);
 		Unidad unidad = (Unidad) JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(2,unidad.getTransporte());
 		assertEquals(8, unidad.getVision());
@@ -158,18 +161,29 @@ public class CrearUnidadesTest {
 		assertEquals("5A6T", unidad.getRangoAtaque());
 		assertEquals(125, unidad.getVida());	
 	}
+
+	private void extracted(Edificio fabricaObtenida)
+			throws FactoryInvalidaException, UnidadInvalidaException,
+			FueraDeRangoException, ElementoInvalidoException,
+			PosicionInvalidaException, ElementoNoEncontradoException,
+			FueraDeRangoDeVisionException, EnergiaInsuficienteException,
+			CostoInvalidoException, RecursosInsuficientesException,
+			CloneNotSupportedException, FinDePartidaException,
+			PartidaGanadaException, PartidaPerdidaException {
+		fabricaObtenida.realizarAccion(contexto, posicionDestino);
+	}
 	
 	/*
 	 * Jugador pide a puerto estelar protoss crear scout
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarProtossCreaScout() throws FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	public void testJugadorConPuertoEstelarProtossCreaScout() throws FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio puertoEstelarProtoss = new PuertoEstelarProtoss(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarProtoss);
 		contexto = new ContextoStrategy(new CrearScout());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio puertoEstelarProtossObtenido = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		puertoEstelarProtossObtenido.realizarAccion(contexto, posicionDestino);
+		extracted(puertoEstelarProtossObtenido);
 		Unidad unidad = (Unidad) JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(0,unidad.getTransporte());
 		assertEquals(7, unidad.getVision());
@@ -186,13 +200,13 @@ public class CrearUnidadesTest {
 	 * Jugador pide a puerto estelar protoss crear nave de transporte
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarProtossCreaNaveTransporteProtoss() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	public void testJugadorConPuertoEstelarProtossCreaNaveTransporteProtoss() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio puertoEstelarProtoss = new PuertoEstelarProtoss(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarProtoss);
 		contexto = new ContextoStrategy(new CrearNaveTransporteProtoss());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio puertoEstelarProtossObtenido = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		puertoEstelarProtossObtenido.realizarAccion(contexto, posicionDestino);
+		extracted(puertoEstelarProtossObtenido);
 		Unidad unidad = (Unidad) JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(8,unidad.getTransporte());
 		assertEquals(8, unidad.getVision());
@@ -208,13 +222,13 @@ public class CrearUnidadesTest {
 	 * Jugador pide a puerto estelar terran crear espectro
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarTerranCreaEspectro() throws FueraDeRangoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	public void testJugadorConPuertoEstelarTerranCreaEspectro() throws FueraDeRangoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio puertoEstelarTerran = new PuertoEstelarTerran(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarTerran);
 		contexto = new ContextoStrategy(new CrearEspectro());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio puertoEstelarTerranObtenido = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		puertoEstelarTerranObtenido.realizarAccion(contexto, posicionDestino);
+		extracted(puertoEstelarTerranObtenido);
 		Unidad unidad = (Unidad) JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(0,unidad.getTransporte());
 		assertEquals(7, unidad.getVision());
@@ -230,13 +244,13 @@ public class CrearUnidadesTest {
 	 * Jugador pide a puerto estelar terran crear nave de transporte
 	 */
 	@Test
-	public void testJugadorConPuertoEstelarTerranCreaNaveTransporteTerran() throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	public void testJugadorConPuertoEstelarTerranCreaNaveTransporteTerran() throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio puertoEstelarTerran = new PuertoEstelarTerran(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarTerran);
 		contexto = new ContextoStrategy(new CrearNaveTransporteTerran());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio puertoEstelarTerranObtenido = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		puertoEstelarTerranObtenido.realizarAccion(contexto, posicionDestino);
+		extracted(puertoEstelarTerranObtenido);
 		Unidad unidad = (Unidad) JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(8,unidad.getTransporte());
 		assertEquals(8, unidad.getVision());
@@ -248,13 +262,13 @@ public class CrearUnidadesTest {
 	}
 	
 	@Test
-	public void testJugadorConPuertoEstelarTerranCreaNaveCiencia() throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
+	public void testJugadorConPuertoEstelarTerranCreaNaveCiencia() throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		Edificio puertoEstelarTerran = new PuertoEstelarTerran(2, 2, posicionOrigen);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarTerran);
 		contexto = new ContextoStrategy(new CrearNaveCiencia());
 		armada = JuegoController.getInstancia().getJugadorActual().obtenerArmada();
 		Edificio puertoEstelarTerranObtenido = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		puertoEstelarTerranObtenido.realizarAccion(contexto, posicionDestino);
+		extracted(puertoEstelarTerranObtenido);
 		Unidad unidad = (Unidad) JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(0,unidad.getTransporte());
 		assertEquals(10, unidad.getVision());

@@ -13,7 +13,10 @@ import common.Posicion;
 import common.RangoAtaque;
 import controller.JuegoController;
 import exceptions.EnergiaInsuficienteException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import factory.UnidadFactory;
 import factory.unidades.Unidad;
 
@@ -23,7 +26,7 @@ public class Emp implements Strategy {
 	private static final int ENERGIA_NECESARIA=100;
 
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) throws EnergiaInsuficienteException, FueraDeRangoDeVisionException {
+	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) throws EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		int energiaActual=elementoActuante.getEnergia();
 		
@@ -68,34 +71,10 @@ public class Emp implements Strategy {
 	
 			}
 		}
-		
-		
-		
-		
-		
-		
+
 		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
-		
-//		List<ElementoArtificial> armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
-//		
-//		
-//		ListIterator<ElementoArtificial> it = armadaEnemiga.listIterator();
-//		
-//		while(it.hasNext())
-//		{
-//			ElementoArtificial elementoTemporal = it.next();
-//			
-//			Posicion posicionTemporal = elementoTemporal.getPosicion();	
-//			int distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
-//			//Long distanciaNumTemp = Long.parseLong(distanciaTemp);
-//			
-//			if(distanciaTemp<RADIO_ACCION_MISIL_EMP){
-//				elementoTemporal.recibirEmp();
-//				it.set(elementoTemporal);
-//			}
-//		}
-//		
-//		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
+
+		JuegoController.getInstancia().verificarFinDePartida();
 	}
 	
 

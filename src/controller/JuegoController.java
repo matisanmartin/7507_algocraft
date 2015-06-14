@@ -11,6 +11,8 @@ import model.ElementoArtificial;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.NombreJugadorRepetidoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 
@@ -62,7 +64,7 @@ public class JuegoController {
 		return JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada();
 	}
 	
-	public static Armada obtenerArmadaJugadorActual() {
+	public Armada obtenerArmadaJugadorActual() {
 		return getInstancia().getJugadorActual().obtenerArmada();
 	}
 
@@ -100,7 +102,7 @@ public class JuegoController {
 		return JuegoController.getInstancia().getJugadorEnemigo().getColor();
 	}
 	
-	public void intercambiarJugadores() throws NombreJugadorRepetidoException {
+	private void intercambiarJugadores() throws NombreJugadorRepetidoException {
 		Jugador jugadorTemp = getInstancia().getJugadorActual();
 		getInstancia().setJugadorActual(jugadorEnemigo);
 		getInstancia().setJugadorEnemigo(jugadorTemp);
@@ -113,6 +115,10 @@ public class JuegoController {
 		getInstancia().getJugadorActual().actualizarUnidades();
 		getInstancia().getJugadorEnemigo().actualizarUnidades();
 		
+	}
+	
+	public void cambiarTurno() throws NombreJugadorRepetidoException {
+		getInstancia().intercambiarJugadores();
 	}
 
 
@@ -137,21 +143,51 @@ public class JuegoController {
 	}
 	
 	/**
-	 * Verifica que exista al menos una unidad con vida en la lista de enemigos
+	 * Verifica que una partida sea ganada o perdida y tira la excepcion correspondiente
 	 * @throws FinDePartidaException
+	 * @throws PartidaGanadaException 
+	 * @throws PartidaPerdidaException 
 	 */
-	public void verificarFinDePartida() throws FinDePartidaException {
+	public void verificarFinDePartida() 
+	throws FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
-		Armada armadaEnemiga = JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada();
+		getInstancia().verificarPartidaGanada();
+		getInstancia().verificarPartidaPerdida();
+		//TODO msma: a futuro agregar un tiempo limite que tire FinDePartidaException y muestre un ganador
+		
+
+	}
+
+
+	private void verificarPartidaPerdida() throws PartidaPerdidaException {
+		Armada armadaActual = JuegoController.getInstancia().obtenerArmadaJugadorActual();
+		
+		List<ElementoArtificial> unidadesActual = armadaActual.getArmada();
+		
+		Iterator<ElementoArtificial> it = unidadesActual.iterator();
+		
+		while(it.hasNext()) {
+			if(!it.next().estaMuerta())
+				return;		
+		}
+		throw new PartidaPerdidaException();
+		
+	}
+
+
+	private void verificarPartidaGanada() throws PartidaGanadaException {
+		Armada armadaEnemiga = JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
 		
 		List<ElementoArtificial> unidadesEnemigas = armadaEnemiga.getArmada();
+		
 		Iterator<ElementoArtificial> it = unidadesEnemigas.iterator();
 		
 		while(it.hasNext()) {
 			if(!it.next().estaMuerta())
 				return;		
 		}
-		throw new FinDePartidaException();
+		throw new PartidaGanadaException();
+		
 	}
 
 }

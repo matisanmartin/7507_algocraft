@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import common.Constantes;
 import common.Posicion;
@@ -99,23 +100,18 @@ public class CampoBatalla {
 		
 	}
 
-	public void eliminarElementoEnPosicion(Posicion pos, List<Elemento> espacio) {
+	public void eliminarElementoEnPosicion(Posicion pos, Espacio espacio) {
 		
-		Iterator<Elemento> it = espacio.iterator();
-		int indice = 0;
-		int i=0;
+		List<Elemento> elementosEnEspacio = espacio.obtenerElementosDeCampoDeBatalla();
 	
-		while(it.hasNext())
-		{	
+		ListIterator<Elemento> it = elementosEnEspacio.listIterator();
+	
+		while(it.hasNext()) {	
 			Elemento actual = it.next();
 			
 			if(actual.getPosicion().equals(pos))
-				indice=i;
-			i++;
+				it.remove();
 		}
-		
-		elementos.remove(indice);
-
 	}
 
 	public List<Elemento> obtenerElementosEnEspacio(Espacio espacioElementoActuante) {

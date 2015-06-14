@@ -22,9 +22,12 @@ import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.NombreJugadorRepetidoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
@@ -80,18 +83,18 @@ public class Enunciado2Test {
 	}
 	
 	@Test
-	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException {
+	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		//El templario debe lanzar tormenta psionica que requiere energia 75
 		//Con pasar 2 turnos, deberia llegar a 80, la energía necesaria
 		
-		JuegoController.getInstancia().intercambiarJugadores();
+		JuegoController.getInstancia().cambiarTurno();
 		assertEquals(65,JuegoController.getInstancia().getJugadorEnemigo()
 														.obtenerArmada()
 														.obtenerElementoEnPosicion(posicionAltoTemplario)
 														.getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();
+		JuegoController.getInstancia().cambiarTurno();
 		assertEquals(80,JuegoController.getInstancia().getJugadorActual()
 														.obtenerArmada()
 														.obtenerElementoEnPosicion(posicionAltoTemplario)
@@ -127,13 +130,13 @@ public class Enunciado2Test {
 	}
 	
 	@Test
-	public void testNumero2bEnunciado() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, NombreJugadorRepetidoException{
+	public void testNumero2bEnunciado() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException{
 		
 		//Dejo pasar los turnos para que alcance la energia	
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo
-		JuegoController.getInstancia().intercambiarJugadores();//actual
-		JuegoController.getInstancia().intercambiarJugadores();//enemigo
-		JuegoController.getInstancia().intercambiarJugadores();//actual
+		JuegoController.getInstancia().cambiarTurno();//enemigo
+		JuegoController.getInstancia().cambiarTurno();//actual
+		JuegoController.getInstancia().cambiarTurno();//enemigo
+		JuegoController.getInstancia().cambiarTurno();//actual
 		
 		//situo una unidad propia
 		Posicion posicionZealot= new Posicion(5,5);
