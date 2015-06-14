@@ -1,9 +1,14 @@
 package strategy;
 
-import model.Armada;
+import java.util.List;
+import java.util.ListIterator;
+
+import model.CampoBatalla;
+import model.Elemento;
 import model.ElementoArtificial;
+
 import common.Posicion;
-import controller.JuegoController;
+
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
@@ -17,28 +22,34 @@ public class Ataque implements Strategy {
 				
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 		
-		Long rangoDeVisionElementoActuante=Long.parseLong(((Unidad)elementoActuante).getRangoAtaque());
+		int rangoDeVisionElementoActuante=((Unidad)elementoActuante).getVision();
 		
 		//TODO msma: Test para excepcion FueraDeRangoDeVisionException
 		if(distancia>rangoDeVisionElementoActuante)
 			throw new FueraDeRangoDeVisionException();
 	
-		Armada armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
-		ElementoArtificial elementoAtacado=armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
-
-		String dañoAtaque=((Unidad)elementoActuante).getDaño();
-		int dañoAtaqueNum=Integer.parseInt(dañoAtaque);
+		//Armada armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
+		//ElementoArtificial elementoAtacado=armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
+		List<Elemento> elementosAtacados=CampoBatalla.getInstancia().obtenerElementosEnEspacio(elementoActuante.obtenerEspacio());
 		
-		//TODO msma: Test para distancia menor y test para distancia mayor
-		if(distancia<Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
-			elementoAtacado.restarVitalidad(dañoAtaqueNum);
-			armadaEnemiga.modificarElementoEnPosicion(posicionDestino,elementoAtacado);
+		
+		ListIterator<Elemento> it = elementosAtacados.listIterator();
+		
+		while(it.hasNext()) {
+			
+			Elemento elementoTemporal = it.next();
+			
+			if(elementoTemporal.getPosicion().equals(posicionDestino)){
+				String dañoAtaque=((Unidad)elementoActuante).getDaño();
+				int dañoAtaqueNum=Integer.parseInt(dañoAtaque);
+				
+				//TODO msma: Test para distancia menor y test para distancia mayor
+				if(distancia<Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
+					elementoTemporal.restarVitalidad(dañoAtaqueNum);
+					it.set(elementoTemporal);
+				}
+			}
 		}
+	
 	}			
 }
-		
-
-
-	
-	
-	
