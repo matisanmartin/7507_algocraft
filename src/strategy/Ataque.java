@@ -1,9 +1,9 @@
 package strategy;
 
-import juego.Juego;
 import model.Armada;
 import model.ElementoArtificial;
 import common.Posicion;
+import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
@@ -23,7 +23,7 @@ public class Ataque implements Strategy {
 		if(distancia>rangoDeVisionElementoActuante)
 			throw new FueraDeRangoDeVisionException();
 	
-		Armada armadaEnemiga=Juego.getInstancia().obtenerArmadaJugadorEnemigo();
+		Armada armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
 		ElementoArtificial elementoAtacado=armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
 
 		String dañoAtaque=((Unidad)elementoActuante).getDaño();

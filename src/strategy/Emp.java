@@ -3,10 +3,10 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
-import juego.Juego;
 import model.ElementoArtificial;
 import common.Posicion;
 import common.RangoAtaque;
+import controller.JuegoController;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FueraDeRangoDeVisionException;
 import factory.UnidadFactory;
@@ -57,7 +57,7 @@ public class Emp implements Strategy {
 //		
 //		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
 		
-		List<ElementoArtificial> armadaEnemiga=Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
+		List<ElementoArtificial> armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
 		
 		
 		ListIterator<ElementoArtificial> it = armadaEnemiga.listIterator();

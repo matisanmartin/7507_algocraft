@@ -3,9 +3,9 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
-import juego.Juego;
 import model.ElementoArtificial;
 import common.Posicion;
+import controller.JuegoController;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
@@ -32,7 +32,7 @@ public class TormentaPsionica implements Strategy {
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
-		List<ElementoArtificial> armadaEnemiga=Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
+		List<ElementoArtificial> armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
 		
 		ListIterator<ElementoArtificial> it = armadaEnemiga.listIterator();
 		

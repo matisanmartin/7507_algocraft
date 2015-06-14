@@ -1,8 +1,8 @@
 package strategy;
 
-import juego.Juego;
 import model.ElementoArtificial;
 import common.Posicion;
+import controller.JuegoController;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -16,7 +16,7 @@ public class ObtenerGas implements Strategy {
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
 	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException {
 		
-		Juego.getInstancia().getJugadorActual().agregarCantidadDeGas(CANTIDAD_DE_GAS);
+		JuegoController.getInstancia().getJugadorActual().agregarCantidadDeGas(CANTIDAD_DE_GAS);
 		
 	}
 

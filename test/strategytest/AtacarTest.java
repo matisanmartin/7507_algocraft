@@ -1,7 +1,6 @@
 package strategytest;
 
 import static org.junit.Assert.assertEquals;
-import juego.Juego;
 import jugador.Jugador;
 import jugador.TipoColor;
 
@@ -15,6 +14,7 @@ import razas.Terran;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
 import common.Posicion;
+import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -51,8 +51,8 @@ public class AtacarTest {
 		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
 		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
 		
-		Juego.getInstancia().setJugadorActual(jugadorActual);
-		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		JuegoController.getInstancia().setJugadorActual(jugadorActual);
+		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 	
 		contexto = new ContextoStrategy(new Ataque());
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
@@ -82,10 +82,10 @@ public class AtacarTest {
 	@Test
 	public void testMarineAtacaUnidadEnemigaEnRango() 
 	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {	
-		Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
-		unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
+		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
+		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		
-		assertEquals(54,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
+		assertEquals(54,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
 	}
 
 	/**
@@ -96,8 +96,8 @@ public class AtacarTest {
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testMarineAtacaUnidadEnemigaFueraDeRango() 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
-		Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
-		unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
+		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
+		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		
 		//assertEquals("60",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 	}
