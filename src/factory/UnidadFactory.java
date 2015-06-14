@@ -1,6 +1,8 @@
 package factory;
 
 import model.Base;
+import model.EspacioAereo;
+import model.EspacioTerrestre;
 
 import common.Costo;
 import common.Posicion;
@@ -47,7 +49,6 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 		UNIDAD_MARINE_DAÑO = "6A6T";
 	public static final int 		UNIDAD_MARINE_SUMINISTRO = 1;
 	public static final String 		UNIDAD_MARINE_RANGO_ATAQUE = "0A4T";
-	public static final Vitalidad 	UNIDAD_MARINE_VIDA = new Vitalidad(40,0);
 	public static final int			UNIDAD_MARINE_ALTO = 2;
 	public static final int			UNIDAD_MARINE_ANCHO = 2;
 	
@@ -80,7 +81,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_NAVE_CIENCIA_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_CIENCIA_SUMINISTRO = 2;
 	public static final String 	UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE = "0A0T";
-	public static final Vitalidad 	UNIDAD_NAVE_CIENCIA_VIDA = new Vitalidad(200,0);
+	
 	
 	//Atributos NaveTransporteTerran
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_TRANSPORTE = 8;
@@ -90,7 +91,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO = 2;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE = "0A0T";
-	public static final Vitalidad 	UNIDAD_NAVE_TRANSPORTE_TERRAN_VIDA = new Vitalidad(150,0);
+
 	
 	//Atributos Zealot
 	public static final int 	UNIDAD_ZEALOT_TRANSPORTE = 2;
@@ -100,7 +101,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_ZEALOT_DAÑO = "0A8T";
 	public static final int 	UNIDAD_ZEALOT_SUMINISTRO = 2;
 	public static final String 	UNIDAD_ZEALOT_RANGO_ATAQUE = "0A1T";
-	public static final Vitalidad 	UNIDAD_ZEALOT_VIDA = new Vitalidad(100,60);
+
 	
 	//Atributos Dragon
 	public static final int 	UNIDAD_DRAGON_TRANSPORTE = 4;
@@ -110,7 +111,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_DRAGON_DAÑO = "20A20T";
 	public static final int 	UNIDAD_DRAGON_SUMINISTRO = 2;
 	public static final String 	UNIDAD_DRAGON_RANGO_ATAQUE = "0A4T";
-	public static final Vitalidad	UNIDAD_DRAGON_VIDA = new Vitalidad(100,80);
+
 	
 	//Atributos Scout
 	public static final int 	UNIDAD_SCOUT_TRANSPORTE = 0;
@@ -120,7 +121,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_SCOUT_DAÑO = "14A8T";
 	public static final int 	UNIDAD_SCOUT_SUMINISTRO = 0;
 	public static final String 	UNIDAD_SCOUT_RANGO_ATAQUE = "4A0T";
-	public static final Vitalidad 	UNIDAD_SCOUT_VIDA = new Vitalidad(150,100);
+
 	
 	//Atributos AltoTemplario
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_TRANSPORTE = 2;
@@ -130,7 +131,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_DAÑO = "0A0T";
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_SUMINISTRO = 0;
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE = "0A0T";
-	public static final Vitalidad	UNIDAD_ALTO_TEMPLARIO_VIDA = new Vitalidad(40,40);
+
 	
 	//Atributos NaveTransporteProtoss
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TRANSPORTE = 8;
@@ -140,7 +141,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO = 0;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE = "0A0T";
-	public static final Vitalidad	UNIDAD_NAVE_TRANSPORTE_PROTOSS_VIDA = new Vitalidad(80,60);
+
 
 	
 	@Override
@@ -158,10 +159,11 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_MARINE_DAÑO,
 										UNIDAD_MARINE_SUMINISTRO,
 										UNIDAD_MARINE_RANGO_ATAQUE,
-										UNIDAD_MARINE_VIDA,
+										new Vitalidad(40,0),
 										UNIDAD_MARINE_ALTO,
 										UNIDAD_MARINE_ANCHO,
-										posicion);
+										posicion,
+										new EspacioTerrestre());
 			break;
 		
 		case TERRAN_GOLLIAT:
@@ -172,10 +174,11 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_GOLLIAT_DAÑO,
 										UNIDAD_GOLLIAT_SUMINISTRO,
 										UNIDAD_GOLLIAT_RANGO_ATAQUE,
-										UNIDAD_GOLLIAT_VIDA,
+										new Vitalidad(125,0),
 										UNIDAD_ALTO,
 										UNIDAD_ANCHO,
-										posicion);
+										posicion,
+										new EspacioTerrestre());
 			break;
 			
 		case TERRAN_ESPECTRO:
@@ -186,10 +189,11 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ESPECTRO_DAÑO,
 										UNIDAD_ESPECTRO_SUMINISTRO,
 										UNIDAD_ESPECTRO_RANGO_ATAQUE,
-										UNIDAD_ESPECTRO_VIDA,
+										new Vitalidad(120,0),
 										UNIDAD_ALTO,
 										UNIDAD_ANCHO,
-										posicion);
+										posicion,
+										new EspacioAereo());
 			break;
 			
 		case TERRAN_NAVE_CIENCIA:
@@ -200,10 +204,11 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_NAVE_CIENCIA_DAÑO,
 													UNIDAD_NAVE_CIENCIA_SUMINISTRO,
 													UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
-													UNIDAD_NAVE_CIENCIA_VIDA,
+													new Vitalidad(200,0),
 													UNIDAD_ALTO,
 													UNIDAD_ANCHO,
-													posicion);
+													posicion,
+													new EspacioAereo());
 			break;
 			
 		case TERRAN_NAVE_TRANSPORTE:
@@ -214,52 +219,55 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO,
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO,
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE,
-										UNIDAD_NAVE_TRANSPORTE_TERRAN_VIDA,
+										new Vitalidad(150,0),
 										UNIDAD_ALTO,
 										UNIDAD_ANCHO,
-										posicion);
+										posicion,
+										new EspacioAereo());
 			break;
-			
 		case PROTOSS_ZEALOT:
 			unidadCreada = new UnidadProtoss(	UNIDAD_ZEALOT_TRANSPORTE,
-										UNIDAD_ZEALOT_VISION,
-										new Costo(UNIDAD_ZEALOT_COSTO),
-										UNIDAD_ZEALOT_TIEMPO_CONSTRUCCION,
-										UNIDAD_ZEALOT_DAÑO,
-										UNIDAD_ZEALOT_SUMINISTRO,
-										UNIDAD_ZEALOT_RANGO_ATAQUE,
-										UNIDAD_ZEALOT_VIDA,
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
-										posicion);
+												UNIDAD_ZEALOT_VISION,
+												new Costo(UNIDAD_ZEALOT_COSTO),
+												UNIDAD_ZEALOT_TIEMPO_CONSTRUCCION,
+												UNIDAD_ZEALOT_DAÑO,
+												UNIDAD_ZEALOT_SUMINISTRO,
+												UNIDAD_ZEALOT_RANGO_ATAQUE,
+												new Vitalidad(100,60),
+												UNIDAD_ALTO,
+												UNIDAD_ANCHO,
+												posicion,
+												new EspacioTerrestre());
 			break;
 			
 		case PROTOSS_DRAGON:
 			unidadCreada = new UnidadProtoss(	UNIDAD_DRAGON_TRANSPORTE,
-										UNIDAD_DRAGON_VISION,
-										new Costo(UNIDAD_DRAGON_COSTO),
-										UNIDAD_DRAGON_TIEMPO_CONSTRUCCION,
-										UNIDAD_DRAGON_DAÑO,
-										UNIDAD_DRAGON_SUMINISTRO,
-										UNIDAD_DRAGON_RANGO_ATAQUE,
-										UNIDAD_DRAGON_VIDA,
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
-										posicion);
+												UNIDAD_DRAGON_VISION,
+												new Costo(UNIDAD_DRAGON_COSTO),
+												UNIDAD_DRAGON_TIEMPO_CONSTRUCCION,
+												UNIDAD_DRAGON_DAÑO,
+												UNIDAD_DRAGON_SUMINISTRO,
+												UNIDAD_DRAGON_RANGO_ATAQUE,
+												new Vitalidad(100,80),
+												UNIDAD_ALTO,
+												UNIDAD_ANCHO,
+												posicion,
+												new EspacioTerrestre());
 			break;
 			
 		case PROTOSS_SCOUT:
 			unidadCreada = new UnidadProtoss(	UNIDAD_SCOUT_TRANSPORTE,
-										UNIDAD_SCOUT_VISION,
-										new Costo(UNIDAD_SCOUT_COSTO),
-										UNIDAD_SCOUT_TIEMPO_CONSTRUCCION,
-										UNIDAD_SCOUT_DAÑO,
-										UNIDAD_SCOUT_SUMINISTRO,
-										UNIDAD_SCOUT_RANGO_ATAQUE,
-										UNIDAD_SCOUT_VIDA,
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
-										posicion);
+												UNIDAD_SCOUT_VISION,
+												new Costo(UNIDAD_SCOUT_COSTO),
+												UNIDAD_SCOUT_TIEMPO_CONSTRUCCION,
+												UNIDAD_SCOUT_DAÑO,
+												UNIDAD_SCOUT_SUMINISTRO,
+												UNIDAD_SCOUT_RANGO_ATAQUE,
+												new Vitalidad(150,100),
+												UNIDAD_ALTO,
+												UNIDAD_ANCHO,
+												posicion,
+												new EspacioAereo());
 			break;
 			
 		case PROTOSS_ALTO_TEMPLARIO:
@@ -270,24 +278,26 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_ALTO_TEMPLARIO_DAÑO,
 													UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
 													UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
-													UNIDAD_ALTO_TEMPLARIO_VIDA,
+													new Vitalidad(40,40),
 													UNIDAD_ALTO,
 													UNIDAD_ANCHO,
-													posicion);
+													posicion,
+													new EspacioTerrestre());
 			break;
 			
 		case PROTOSS_NAVE_TRANSPORTE:
 			unidadCreada = new UnidadProtoss(	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TRANSPORTE,
-										UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION,
-										new Costo(UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO),
-										UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION,
-										UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO,
-										UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO,
-										UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE,
-										UNIDAD_NAVE_TRANSPORTE_PROTOSS_VIDA,
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
-										posicion);
+												UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION,
+												new Costo(UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO),
+												UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION,
+												UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO,
+												UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO,
+												UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE,
+												new Vitalidad(80,60),
+												UNIDAD_ALTO,
+												UNIDAD_ANCHO,
+												posicion,
+												new EspacioAereo());
 			break;
 		default: 
 			throw new UnidadInvalidaException();

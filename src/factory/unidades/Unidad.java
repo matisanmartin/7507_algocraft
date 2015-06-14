@@ -4,12 +4,15 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import model.ElementoArtificial;
+import model.Espacio;
 import strategy.ContextoStrategy;
+
 import command.Accion;
 import command.AtaqueAccion;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -33,8 +36,8 @@ public class Unidad extends ElementoArtificial {
 
 
 	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, 
-			String daño, int suministro,String rangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion) throws FueraDeRangoException {
-		super(alto, ancho, posicion);
+			String daño, int suministro,String rangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException {
+		super(alto, ancho, posicion,espacio);
 		setTransporte(transporte);
 		setVision(vision);
 		setCosto(costo);
@@ -99,7 +102,7 @@ public class Unidad extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	

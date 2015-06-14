@@ -1,15 +1,16 @@
 package jugador;
 
 import model.Armada;
+import model.CampoBatalla;
 import model.ElementoArtificial;
+import model.Espacio;
 import razas.Raza;
-
 import common.Posicion;
-
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.NombreCortoException;
+import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 
 public class Jugador {
@@ -45,7 +46,7 @@ public class Jugador {
 		this.cantidadDeGas = 0;
 	}
 	
-	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException, RecursosInsuficientesException {
+	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException, RecursosInsuficientesException, PosicionInvalidaException {
 		
 		if(elem==null)
 			throw new ElementoInvalidoException();
@@ -99,10 +100,11 @@ public class Jugador {
 		armada.actualizarUnidades();
 		
 	}
-	public boolean elementoMePertenece(Posicion pos) {
+	public boolean elementoMePertenece(Posicion pos, Espacio espacio) {
 		
 		try
 		{
+			
 			armada.obtenerElementoEnPosicion(pos);
 		}
 		catch(ElementoNoEncontradoException ene)

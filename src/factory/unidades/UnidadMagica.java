@@ -1,5 +1,7 @@
 package factory.unidades;
 
+import model.Espacio;
+
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
@@ -14,9 +16,9 @@ public class UnidadMagica extends Unidad {
 	public UnidadMagica(int transporte, int vision, Costo costo,
 			int tiempoConstruccion, String daño, int suministro,
 			String rangoAtaque, Vitalidad vida, int alto, int ancho,
-			Posicion posicion) throws FueraDeRangoException {
+			Posicion posicion, Espacio espacio) throws FueraDeRangoException {
 		super(transporte, vision, costo, tiempoConstruccion, daño, suministro,
-				rangoAtaque, vida, alto, ancho, posicion);
+				rangoAtaque, vida, alto, ancho, posicion, espacio);
 		this.setEnergia(ENERGIA_INICIAL);
 		
 	}

@@ -1,10 +1,13 @@
 package factory.unidades;
 
+import model.Espacio;
+
 import command.EmpAccion;
 import command.RadiacionAccion;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.FueraDeRangoException;
 
 public class UnidadMagicaTerran extends UnidadMagica {
@@ -17,14 +20,14 @@ public class UnidadMagicaTerran extends UnidadMagica {
 			int unidadTiempoConstruccion,
 			String unidadDaño, int unidadSuministro,
 			String unidadRangoAtaque, Vitalidad unidadVida,
-			int unidadAlto, int unidadAncho, Posicion posicion) throws FueraDeRangoException {
+			int unidadAlto, int unidadAncho, Posicion posicion, Espacio espacio) throws FueraDeRangoException {
 
 		super(unidadTransporte,
 			unidadVision,unidadCosto,
 			unidadTiempoConstruccion,
 			unidadDaño,unidadSuministro,
 			unidadRangoAtaque, unidadVida,
-			unidadAlto,unidadAncho,posicion);
+			unidadAlto,unidadAncho,posicion, espacio);
 		
 		//Energia inicial de nave de ciencia
 		this.definirAccionesDisponibles();

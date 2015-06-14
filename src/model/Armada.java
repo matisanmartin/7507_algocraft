@@ -7,6 +7,7 @@ import java.util.ListIterator;
 
 import common.Posicion;
 import exceptions.ElementoNoEncontradoException;
+import exceptions.PosicionInvalidaException;
 
 public class Armada {
 	
@@ -31,7 +32,10 @@ public class Armada {
 		return elementos;
 	}
 	
-	public void agregarElemento(ElementoArtificial elem) {
+	public void agregarElemento(ElementoArtificial elem) throws PosicionInvalidaException {
+		
+		CampoBatalla.getInstancia().posicionarElemento(elem, elem.obtenerEspacio());
+		
 		elementos.add(elem);
 		dimensionArmada=elementos.size();
 	}
@@ -73,6 +77,20 @@ public class Armada {
 		}
 
 		throw new ElementoNoEncontradoException();
+		
+		
+		
+		
+//		Iterator<ElementoArtificial> it = elementos.iterator();
+//		
+//		while(it.hasNext())
+//		{
+//			ElementoArtificial actual = it.next();
+//			if(actual.getPosicion().equals(pos))
+//				return actual;
+//		}
+//
+//		throw new ElementoNoEncontradoException();
 	}
 
 	public void modificarElementoEnPosicion(Posicion posicionDestino, ElementoArtificial elementoAtacado) {

@@ -1,13 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import exceptions.PosicionInvalidaException;
 
 public class Espacio {
-	ArrayList<Elemento> espacio;
+	List<Elemento> espacio;
 	
-	public ArrayList<Elemento> getEspacio(){
+	public List<Elemento> getEspacio(){
 		return this.espacio;
 	}
 	public Espacio() {
@@ -21,7 +22,7 @@ public class Espacio {
 	public void agregarElemento(Elemento elementoParaAgregar) throws PosicionInvalidaException{
 		for (Elemento elemento : espacio) {
 			if(this.ocupanMismoEspacio(elementoParaAgregar,elemento)) throw new PosicionInvalidaException();
-		} this.espacio.add(elementoParaAgregar);
+		} //this.espacio.add(elementoParaAgregar);
 	}
 
 	private boolean ocupanMismoEspacio(Elemento elementoParaAgregar,Elemento elemento) {
@@ -32,6 +33,9 @@ public class Espacio {
 				(elementoParaAgregar.getPosicion().getPosY() <= elemento.getPosicion().getPosY()+elemento.getAncho()) );
 		
 		
+	}
+	public List<Elemento> obtenerElementosDeCampoDeBatalla() {
+		return null;
 	}
 
 }

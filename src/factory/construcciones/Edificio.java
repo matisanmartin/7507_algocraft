@@ -2,6 +2,7 @@ package factory.construcciones;
 
 import strategy.ContextoStrategy;
 import model.ElementoArtificial;
+import model.EspacioTerrestre;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -20,7 +21,7 @@ public class Edificio extends ElementoArtificial {
 
 	public Edificio(int alto, int ancho, Posicion posicion)
 			throws FueraDeRangoException {
-		super(alto, ancho, posicion);
+		super(alto, ancho, posicion, new EspacioTerrestre());
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -34,7 +35,7 @@ public class Edificio extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto,Posicion posicionDestino) 
-	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException{
+	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException{
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 

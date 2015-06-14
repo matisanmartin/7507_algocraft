@@ -14,8 +14,8 @@ public class CampoBatalla {
 	private int ancho;
 	private int alto;
 	private List<Elemento> elementos;
-	private Espacio espacioTerrestre;
-	private Espacio espacioAereo;
+	private EspacioTerrestre espacioTerrestre;
+	private EspacioAereo espacioAereo;
 	private static CampoBatalla INSTANCIA = null;
 
 	private CampoBatalla() {
@@ -23,8 +23,8 @@ public class CampoBatalla {
 		setAncho(Constantes.ANCHO_DEFECTO);
 		setAlto(Constantes.ALTO_DEFECTO);
 		this.elementos = new ArrayList<Elemento>();
-		this.espacioTerrestre = new Espacio();
-		this.espacioAereo = new Espacio();
+		this.espacioTerrestre = new EspacioTerrestre();
+		this.espacioAereo = new EspacioAereo();
 	};
 	
 	public static CampoBatalla getInstancia() {
@@ -116,6 +116,28 @@ public class CampoBatalla {
 		
 		elementos.remove(indice);
 
+	}
+
+	public List<Elemento> obtenerElementosEnEspacio(Espacio espacioElementoActuante) {
+		return espacioElementoActuante.obtenerElementosDeCampoDeBatalla();
+	}
+
+	public List<Elemento> obtenerElementosTerrestres() {
+		return espacioTerrestre.getEspacio();
+	}
+
+	public List<Elemento> obtenerElementosAereos() {
+		return espacioAereo.getEspacio();
+	}
+
+	public void posicionarElementoEnEspacioAereo(Elemento elementoParaAgregar) {
+		espacioAereo.getEspacio().add(elementoParaAgregar);
+		
+	}
+
+	public void posicionarElementoEnEspacioTerrestre(Elemento elementoParaAgregar) {
+		espacioTerrestre.getEspacio().add(elementoParaAgregar);
+		
 	}
 
 

@@ -22,13 +22,13 @@ import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 
 
-public abstract class ElementoArtificial extends Elemento {
+public abstract class ElementoArtificial extends Elemento implements Cloneable {
 	
 	private Map<String, Accion> accionesDisponibles;
 
-	public ElementoArtificial(int alto, int ancho, Posicion posicion)
+	public ElementoArtificial(int alto, int ancho, Posicion posicion, Espacio espacio)
 			throws FueraDeRangoException {
-		super(alto, ancho, posicion);
+		super(alto, ancho, posicion,espacio);
 		accionesDisponibles=new Hashtable<String,Accion>();
 	}
 
@@ -68,7 +68,7 @@ public abstract class ElementoArtificial extends Elemento {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException;
+			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException;
 
 	public Map<String,Accion> getAccionesDisponibles() {
 		return accionesDisponibles;
@@ -112,6 +112,13 @@ public abstract class ElementoArtificial extends Elemento {
 		setEscudo(getEscudo()+0);
 		
 	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+		ElementoArtificial clone = (ElementoArtificial)super.clone();
+		return clone;
+	}
+
 
 
 

@@ -1,10 +1,13 @@
 package factory.unidades;
 
+import model.Espacio;
+
 import command.AlucinacionAccion;
 import command.TormentaPsionicaAccion;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.FueraDeRangoException;
 
 public class UnidadMagicaProtoss extends UnidadMagica {
@@ -19,7 +22,7 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 			String unidadDaño, int unidadSuministro,
 			String unidadRangoAtaque,
 			Vitalidad unidadVida, int unidadAlto, int unidadAncho,
-			Posicion posicion) throws FueraDeRangoException {
+			Posicion posicion, Espacio espacio) throws FueraDeRangoException {
 		
 		super(unidadTransporte,
 			unidadVision, unidadCosto,
@@ -27,7 +30,7 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 			unidadDaño,unidadSuministro,
 			unidadRangoAtaque,
 			unidadVida,unidadAlto, unidadAncho,
-			posicion);
+			posicion, espacio);
 		
 		this.definirAccionesDisponibles();
 	}

@@ -10,6 +10,7 @@ public abstract class Elemento {
 
 	private Posicion posicion;
 	private ArrayList<Parte> partes;
+	private Espacio espacio;
 
 	//para probar dimension de elemento
 	private int alto;
@@ -33,11 +34,12 @@ public abstract class Elemento {
 	}
 
 	//habria que validad el alto y el ancho
-	public Elemento(int alto, int ancho, Posicion posicion) throws FueraDeRangoException {
+	public Elemento(int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException {
 		this.partes = new ArrayList<Parte>();
 		this.alto = alto; 
 		this.ancho = ancho;
 		this.posicion = posicion;
+		this.espacio = espacio;
 		crearPartes();
 	}
 
@@ -108,5 +110,9 @@ public abstract class Elemento {
 	
 	public void recibirEmp() {
 		getVitalidad().setEscudo(0);
+	}
+	
+	public Espacio obtenerEspacio() {
+		return this.espacio;
 	}
 }
