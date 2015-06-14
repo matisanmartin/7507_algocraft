@@ -24,9 +24,10 @@ public class Alucinacion implements Strategy {
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, CloneNotSupportedException {
 		
-		//TODO msma: En principio estas validaciones se realizan aca, pero deberian hacerse antes
+		//msma: En principio estas validaciones se realizan aca, pero deberian hacerse antes
 		//para elegir si se muestra o no la opción como válida para ejecutarse
 		//se supone que si el metodo llega a ejecutarse, es porque se puede
+		//Todo dependerá de como decidamos elegir la interacción con el usuario
 		
 		int energiaActual=elementoActuante.getEnergia();
 		
@@ -36,7 +37,6 @@ public class Alucinacion implements Strategy {
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 		//Long distanciaNum = Long.parseLong(distancia);
 		
-		//TODO msma: test para esta excepcion
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
 			throw new FueraDeRangoDeVisionException();
 		

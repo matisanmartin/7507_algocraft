@@ -321,17 +321,4 @@ public class UnidadFactory extends AbstractFactory{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-//	@Override
-//	public Construccion getConstruccion(TipoConstruccion construccionRequerida) {
-//		return null;
-//	}
-
-//	@Override
-//	public Unidad getUnidad(TipoUnidad unidadRequerida)
-//			throws UnidadInvalidaException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
 }

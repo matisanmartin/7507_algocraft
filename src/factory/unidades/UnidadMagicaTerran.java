@@ -29,7 +29,6 @@ public class UnidadMagicaTerran extends UnidadMagica {
 			unidadRangoAtaque, unidadVida,
 			unidadAlto,unidadAncho,posicion, espacio);
 		
-		//Energia inicial de nave de ciencia
 		this.definirAccionesDisponibles();
 	}
 
@@ -38,8 +37,6 @@ public class UnidadMagicaTerran extends UnidadMagica {
 	}
 
 	public void definirAccionesDisponibles(){
-		//super.definirAccionesDisponibles();
-		//TODO msma: Agregar validacion de vida/Energia cuando este implementado
 		agregarAccionDisponible("Emp", new EmpAccion(this));
 		agregarAccionDisponible("Radiacion",new RadiacionAccion(this));
 	}

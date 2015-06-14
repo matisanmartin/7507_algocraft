@@ -64,15 +64,12 @@ public abstract class Elemento {
 	}
 
 	public void setPosicion(Posicion posicion) {
-		//TODO msma: Acá se agregaría la validación de que la nueva posicion es valida
-		// Si no se puede, tira excepcion, si se puede, 
 		this.posicion = posicion;
 	}
 
 	public abstract void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException;
 
 	public Vitalidad getVitalidad() {
-		// TODO Auto-generated method stub
 		return vitalidad;
 	}
 	

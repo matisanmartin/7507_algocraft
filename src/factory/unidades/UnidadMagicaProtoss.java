@@ -36,13 +36,11 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 	}
 
 	public UnidadMagicaProtoss() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public void definirAccionesDisponibles(){
-		//super.definirAccionesDisponibles();
-		
-		//TODO msma: Agregar validacion de vida/Energia cuando este implementado
+
 		agregarAccionDisponible("TormentaPsionica", new TormentaPsionicaAccion(this));
 		agregarAccionDisponible("Alucinacion",new AlucinacionAccion(this));
 	}

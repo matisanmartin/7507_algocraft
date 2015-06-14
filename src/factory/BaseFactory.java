@@ -33,7 +33,6 @@ public class BaseFactory extends AbstractFactory {
 
 	@Override
 	public Base getBase(Posicion posicion) throws FueraDeRangoException {
-		// TODO Auto-generated method stub
 		return (new Base(posicion));
 	}
 

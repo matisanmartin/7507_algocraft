@@ -47,6 +47,7 @@ public class Ataque implements Strategy {
 				if(distancia<Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
 					elementoTemporal.restarVitalidad(dañoAtaqueNum);
 					it.set(elementoTemporal);
+					//break;
 				}
 			}
 		}

@@ -18,7 +18,6 @@ public abstract class EdificioGas extends Edificio {
 	}
 
 	public int getGas() {
-		// TODO Auto-generated method stub
 		return this.CANTIDAD_DE_MINERAL;
 	}
 

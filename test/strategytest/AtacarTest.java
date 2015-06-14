@@ -59,18 +59,14 @@ public class AtacarTest {
 		
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 
-		unidadAtacante.setDaño("6");//temporalmente para que ande la prueba
+		unidadAtacante.setDaño("6");//TODO msma: temporalmente para que ande la prueba
 		unidadAtacante.setRangoAtaque("4");
 		
 		posicionEnRango = new Posicion(1,2);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionEnRango);
-//		unidadDefensoraEnRango.setVida("60");
 		
 		posicionFueraDeRango = new Posicion(10,10);
-		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionFueraDeRango);
-//		unidadDefensoraFueraDeRango.setVida("60");
-		
-			
+		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionFueraDeRango);	
 	}
 
 	/**
@@ -101,7 +97,7 @@ public class AtacarTest {
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		
-		//assertEquals("60",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		assertEquals("60",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 	}
 
 }

@@ -138,8 +138,8 @@ public class Enunciado2Test {
 		//situo una unidad propia
 		Posicion posicionZealot= new Posicion(5,5);
 		Unidad zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
-		zealot.setRangoAtaque("2");//TODO msma: borrar luego y cambiarlo
-		zealot.setVision(4);//TODO modificar leugo
+		zealot.setRangoAtaque("2");//TODO msma: borrar luego y cambiarlo cuando se agrege Rango
+		zealot.setVision(4);//TODO msma: modificar leugo cuando se agregue Vision
 		
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(zealot);
 		
@@ -171,8 +171,6 @@ public class Enunciado2Test {
 		assertEquals(0,zealotFicticio2.getVida());
 		assertEquals(60,zealotFicticio2.getEscudo());
 		
-		
-		
 		ContextoStrategy contextoZealot = new ContextoStrategy(new Ataque());
 		
 		zealotFicticio1.realizarAccion(contextoZealot, posicionMarine);
@@ -183,16 +181,14 @@ public class Enunciado2Test {
 														.obtenerArmada()
 														.obtenerElementoEnPosicion(posicionMarine);
 														
-		
 		//vida marine = 40
 		assertEquals(40,marineObt.getVida());
 		
 		ContextoStrategy contextoAtaqueEmp = new ContextoStrategy(new Emp());
 		
-		//por las posiciones deberia afectar a ambos
+		//por las posiciones deberia afectar a ambos, ya que están muy cercanos
 		altoTemplario.realizarAccion(contextoAtaqueEmp, zealotFicticio1.getPosicion());
-		
-		
+			
 		//verifico que se le destuye el escudo
 		assertEquals(0,zealotFicticio1.getEscudo());
 		assertEquals(0,zealotFicticio2.getEscudo());

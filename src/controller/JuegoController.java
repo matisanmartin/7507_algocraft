@@ -8,10 +8,6 @@ import jugador.TipoColor;
 import model.Armada;
 import model.CampoBatalla;
 import model.ElementoArtificial;
-import model.Espacio;
-
-import common.Vitalidad;
-
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.NombreJugadorRepetidoException;
@@ -122,10 +118,6 @@ public class JuegoController {
 
 	public void agregarUnidadAJugadorEnemigo(ElementoArtificial elem) 
 	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException {
-		
-		//TODO msma: Luego verificar que el metodo posicionarElemento haya cambiado la firma
-		// 				y no requera espacio
-		CampoBatalla.getInstancia().posicionarElemento(elem, new Espacio());
 		getInstancia().getJugadorEnemigo().agregarElemento(elem);
 	
 	}
@@ -135,19 +127,13 @@ public class JuegoController {
 		
 		int cantidadDeCristal=getInstancia().getJugadorActual().getCantidadDeCristal();
 		int cantidadDeGas= getInstancia().getJugadorActual().getCantidadDeGas();
+		int costoMineral = elem.getCosto().getCostoMineral();
+		int costoGas = elem.getCosto().getCostoGas();
 		
-		if(	cantidadDeCristal<elem.getCosto().getCostoMineral()
-			&&cantidadDeGas<elem.getCosto().getCostoGas()){
+		if(cantidadDeCristal<costoMineral&&cantidadDeGas<costoGas)
 				throw new RecursosInsuficientesException();
-			}
-		else{
-			CampoBatalla.getInstancia().posicionarElemento(elem, new Espacio());
+		else
 			getInstancia().getJugadorActual().agregarElemento(elem);
-		}
-		
-		
-		
-		
 	}
 	
 	/**

@@ -24,11 +24,9 @@ public class TormentaPsionica implements Strategy {
 		
 		if(energiaActual<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException();
-		;
 		
-		//TODO msma: Test
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		//Long distanciaNum = Long.parseLong(distancia);
+
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
@@ -43,7 +41,6 @@ public class TormentaPsionica implements Strategy {
 			Posicion posicionTemporal = elementoTemporal.getPosicion();
 			
 			int distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
-			//Long distanciaNumTemp = Long.parseLong(distanciaTemp);
 			
 			if(distanciaTemp<RANGO_ATAQUE_TORMENTA_PSIONICA){
 				elementoTemporal.restarVitalidad(DAÑO_TORMENTA_PSIONICA);
