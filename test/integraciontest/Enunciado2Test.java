@@ -1,6 +1,7 @@
 package integraciontest;
 
 import static org.junit.Assert.assertEquals;
+import juego.Juego;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.ElementoArtificial;
@@ -13,7 +14,6 @@ import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.TormentaPsionica;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -54,10 +54,10 @@ public class Enunciado2Test {
 		jugadorActual = new Jugador("Jugador1",TipoColor.COLOR_ROJO,new Protoss());
 		jugadorEnemigo = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Terran());
 		
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
-		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		Juego.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 		
-		JuegoController.getInstancia().getJugadorActual().agregarElemento(altoTemplario);
+		Juego.getInstancia().getJugadorActual().agregarElemento(altoTemplario);
 		
 		posicionMarine = new Posicion(4,4);
 		marine = factoryUnidad.getUnidad(TipoUnidad.TERRAN_MARINE,posicionMarine);
@@ -68,9 +68,9 @@ public class Enunciado2Test {
 		posicionNaveCiencia = new Posicion(5,5);
 		naveCiencia = factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA,posicionNaveCiencia); 
 		
-		JuegoController.getInstancia().getJugadorEnemigo().agregarElemento(marine);
-		JuegoController.getInstancia().getJugadorEnemigo().agregarElemento(naveCiencia);
-		JuegoController.getInstancia().getJugadorEnemigo().agregarElemento(golliat);
+		Juego.getInstancia().getJugadorEnemigo().agregarElemento(marine);
+		Juego.getInstancia().getJugadorEnemigo().agregarElemento(naveCiencia);
+		Juego.getInstancia().getJugadorEnemigo().agregarElemento(golliat);
 		
 	}
 	@Test
@@ -79,14 +79,14 @@ public class Enunciado2Test {
 		//El templario debe lanzar tormenta psionica que requiere energia 75
 		//Con pasar 2 turnos, deberia llegar a 80, la energía necesaria
 		
-		JuegoController.getInstancia().intercambiarJugadores();
-		assertEquals(65,JuegoController.getInstancia().getJugadorEnemigo()
+		Juego.getInstancia().intercambiarJugadores();
+		assertEquals(65,Juego.getInstancia().getJugadorEnemigo()
 														.obtenerArmada()
 														.obtenerElementoEnPosicion(posicionAltoTemplario)
 														.getEnergia());
 		
-		JuegoController.getInstancia().intercambiarJugadores();
-		assertEquals(80,JuegoController.getInstancia().getJugadorActual()
+		Juego.getInstancia().intercambiarJugadores();
+		assertEquals(80,Juego.getInstancia().getJugadorActual()
 														.obtenerArmada()
 														.obtenerElementoEnPosicion(posicionAltoTemplario)
 														.getEnergia());
@@ -94,7 +94,7 @@ public class Enunciado2Test {
 
 		ContextoStrategy contexto = new ContextoStrategy(new TormentaPsionica());
 		
-		ElementoArtificial altoTemplarioObt = JuegoController.getInstancia().getJugadorActual()
+		ElementoArtificial altoTemplarioObt = Juego.getInstancia().getJugadorActual()
 																			.obtenerArmada()
 																			.obtenerElementoEnPosicion(posicionAltoTemplario);
 		

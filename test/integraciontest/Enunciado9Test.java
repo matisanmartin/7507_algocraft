@@ -1,6 +1,7 @@
 package integraciontest;
 
 import static org.junit.Assert.assertEquals;
+import juego.Juego;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.ElementoArtificial;
@@ -9,10 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import razas.Protoss;
-
 import common.Posicion;
-
-import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.NombreJugadorRepetidoException;
 import factory.AbstractFactory;
@@ -40,10 +38,10 @@ public class Enunciado9Test {
 
 		jugadorEnemigo = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Protoss());
 		
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
-		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		Juego.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 		
-		JuegoController.getInstancia().getJugadorActual().agregarElemento(protoss);
+		Juego.getInstancia().getJugadorActual().agregarElemento(protoss);
 		
 	}
 		
@@ -52,15 +50,15 @@ public class Enunciado9Test {
 	public void testRecuperacionEscudoCambioDeTurno() throws NombreJugadorRepetidoException, ElementoNoEncontradoException {
 		
 		//Escudo inicial 10
-		assertEquals(10,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
+		assertEquals(10,Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
 
 		//Pasa un turno, deberia ser 20
-		JuegoController.getInstancia().intercambiarJugadores();
-		assertEquals(20,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
+		Juego.getInstancia().intercambiarJugadores();
+		assertEquals(20,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
 		
 		//Pasa otro turno, deberia ser 30
-		JuegoController.getInstancia().intercambiarJugadores();
-		assertEquals(30,JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
+		Juego.getInstancia().intercambiarJugadores();
+		assertEquals(30,Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionProtoss).getEscudo());
 		
 	}
 
