@@ -159,7 +159,8 @@ public class JuegoController {
 	}
 
 
-	private void verificarPartidaPerdida() throws PartidaPerdidaException {
+	private void verificarPartidaPerdida() throws PartidaPerdidaException{
+
 		Armada armadaActual = JuegoController.getInstancia().obtenerArmadaJugadorActual();
 		
 		List<ElementoArtificial> unidadesActual = armadaActual.getArmada();
@@ -170,6 +171,7 @@ public class JuegoController {
 			if(!it.next().estaMuerta())
 				return;		
 		}
+
 		throw new PartidaPerdidaException();
 		
 	}

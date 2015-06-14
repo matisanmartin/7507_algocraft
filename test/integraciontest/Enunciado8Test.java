@@ -19,6 +19,7 @@ import strategy.Emp;
 import strategy.Mover;
 import strategy.Radiacion;
 import common.Posicion;
+import common.Vitalidad;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -187,7 +188,54 @@ public class Enunciado8Test {
 	}
 	
 	@Test(expected = PartidaPerdidaException.class)
-	public void testPartidaPerdida() {
+	public void testPartidaPerdida() throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException {
+		//El test se medio rudimentario pero no se me ocurrio otra forma de simular una partida perdida
+		//salvo que la accion sea un """suicidio"""
+		
+		//Genero una unidad, la agrego al jugador actual y la mato
+		factoryEdificio = new EdificioFactory();
+		//El jugador crea una barraca
+		Posicion posicionBarraca=new Posicion(6,7);
+		ElementoArtificial barraca = factoryEdificio.getEdificio(TipoEdificio.TERRAN_BARRACA,posicionBarraca);
+		JuegoController.getInstancia().agregarUnidadAJugadorActual(barraca);
+		
+		
+		//Selecciono la barraca para crear un marine
+		ElementoArtificial barracaObt = JuegoController.getInstancia()
+														.obtenerArmadaJugadorActual()
+														.obtenerElementoEnPosicion(posicionBarraca);
+		
+		//creo el marine
+		contexto = new ContextoStrategy(new CrearMarine());
+		Posicion posicionNuevoMarine = new Posicion(3,3);
+		barracaObt.realizarAccion(contexto, posicionNuevoMarine);
+		
+		//cambia el turno, se crea una unidad enemiga viva para que no lanze PartidaGanadaException
+		JuegoController.getInstancia().cambiarTurno();
+		
+		//El jugador crea un Acceso
+		Posicion posicionAcceso = new Posicion(10,10);
+		ElementoArtificial acceso = factoryEdificio.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicionAcceso);
+		JuegoController.getInstancia().agregarUnidadAJugadorActual(acceso);
+		
+		//Selecciono el acceso para obtener un zealot
+		ElementoArtificial accesoObt = JuegoController.getInstancia()
+													  .obtenerArmadaJugadorActual()
+													  .obtenerElementoEnPosicion(posicionAcceso);
+		
+		contexto = new ContextoStrategy(new CrearZealot());
+		Posicion posicionNuevoZealot = new Posicion(6,3);
+		accesoObt.realizarAccion(contexto, posicionNuevoZealot);
+
+		//cambia el turno
+		JuegoController.getInstancia().cambiarTurno();
+		ElementoArtificial marine = JuegoController.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posicionNuevoMarine);
+		
+		//suicido al marine
+		marine.setVitalidad(new Vitalidad(0,0));
+		
+		//verifico manualmente porque las excepciones, por ahora, se lanzan cuando se realiza una accion
+		JuegoController.getInstancia().verificarFinDePartida();
 		
 	}
 
