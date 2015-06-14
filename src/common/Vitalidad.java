@@ -29,7 +29,10 @@ public class Vitalidad {
 	}
 
 	public void setVida(int i) {
-		vida=i;
+		if(i<=0)
+			vida=0;
+		else
+			vida=i;
 		
 	}
 
