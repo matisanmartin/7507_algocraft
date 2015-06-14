@@ -28,7 +28,7 @@ public class AtaqueAccion implements Accion {
 			throws FactoryInvalidaException, UnidadInvalidaException,
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
-			FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
+			FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException {
 		elemento.realizarAccion(new ContextoStrategy(new Ataque()), posicionDestino);
 		
 	}
