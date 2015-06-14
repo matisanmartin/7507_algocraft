@@ -13,6 +13,7 @@ import razas.Terran;
 import strategy.Alucinacion;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
+import strategy.Emp;
 import strategy.TormentaPsionica;
 import common.Posicion;
 import controller.JuegoController;
@@ -134,7 +135,7 @@ public class Enunciado2Test {
 		JuegoController.getInstancia().intercambiarJugadores();//enemigo
 		JuegoController.getInstancia().intercambiarJugadores();//actual
 		
-		
+		//situo una unidad propia
 		Posicion posicionZealot= new Posicion(5,5);
 		Unidad zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
 		zealot.setRangoAtaque("2");//TODO msma: borrar luego y cambiarlo
@@ -157,6 +158,7 @@ public class Enunciado2Test {
 															.obtenerElementoEnPosicion(new Posicion(3,2));
 		
 		
+		//verifico que solo tiene escudo y no vida
 		assertEquals(0,zealotFicticio1.getVida());
 		assertEquals(60,zealotFicticio1.getEscudo());
 		
@@ -165,6 +167,7 @@ public class Enunciado2Test {
 															.obtenerArmada()
 															.obtenerElementoEnPosicion(new Posicion(1,2));
 		
+		//verifico que solo tiene escudo y no vida
 		assertEquals(0,zealotFicticio2.getVida());
 		assertEquals(60,zealotFicticio2.getEscudo());
 		
@@ -183,6 +186,17 @@ public class Enunciado2Test {
 		
 		//vida marine = 40
 		assertEquals(40,marineObt.getVida());
+		
+		ContextoStrategy contextoAtaqueEmp = new ContextoStrategy(new Emp());
+		
+		//por las posiciones deberia afectar a ambos
+		altoTemplario.realizarAccion(contextoAtaqueEmp, zealotFicticio1.getPosicion());
+		
+		
+		//verifico que se le destuye el escudo
+		assertEquals(0,zealotFicticio1.getEscudo());
+		assertEquals(0,zealotFicticio2.getEscudo());
+		
 	}
 
 }
