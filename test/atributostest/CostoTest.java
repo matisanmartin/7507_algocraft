@@ -19,8 +19,8 @@ public class CostoTest {
 	@Test
 	public void costoCantidadesCorrectas() throws CostoInvalidoException {
 		costo = new Costo("50M35G");
-		assertEquals(costo.getCantidadM(),50);
-		assertEquals(costo.getCantidadG(),35);
+		assertEquals(costo.getCostoMineral(),50);
+		assertEquals(costo.getCostoGas(),35);
 	}
 	
 	@Test
@@ -40,21 +40,21 @@ public class CostoTest {
 	@Test
 	public void costoGEsCero() throws CostoInvalidoException {
 		Costo costo = new Costo("100M");
-		assertEquals(costo.getCantidadM(),100);
-		assertEquals(costo.getCantidadG(),0);
+		assertEquals(costo.getCostoMineral(),100);
+		assertEquals(costo.getCostoGas(),0);
 	}
 	
 	@Test
 	public void costoAlcanzanRecursos() throws CostoInvalidoException {
 		Costo costo = new Costo("100M50G");
-		assertTrue(costo.alcanzaCantidadM(120));
-		assertTrue(costo.alcanzaCantidadG(50));
+		assertTrue(costo.alcanzaCantidadMineral(120));
+		assertTrue(costo.alcanzaCantidadGas(50));
 	}
 	
 	@Test
 	public void costoNoAlcanzanRecursos() throws CostoInvalidoException {
 		Costo costo = new Costo("80M30G");
-		assertFalse(costo.alcanzaCantidadM(70));
-		assertFalse(costo.alcanzaCantidadG(20));
+		assertFalse(costo.alcanzaCantidadMineral(70));
+		assertFalse(costo.alcanzaCantidadGas(20));
 	}
 }

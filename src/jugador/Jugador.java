@@ -8,7 +8,9 @@ import common.Posicion;
 
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
+import exceptions.ElementoNoEncontradoException;
 import exceptions.NombreCortoException;
+import exceptions.RecursosInsuficientesException;
 
 public class Jugador {
 	
@@ -43,13 +45,12 @@ public class Jugador {
 		this.cantidadDeGas = 0;
 	}
 	
-	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException {
+	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException, RecursosInsuficientesException {
 		
 		if(elem==null)
 			throw new ElementoInvalidoException();
-		
 		armada.agregarElemento(elem);
-//		CampoBatalla.getInstancia().posicionarElemento(wlwm, espacio);
+
 	}
 	
 //	public void generarNuevaUnidad(TipoUnidad unidad){
@@ -93,6 +94,23 @@ public class Jugador {
 	public void agregarCantidadDeGas(int cantidadDeGas) {
 		this.cantidadDeGas=this.cantidadDeGas+cantidadDeGas;
 		
+	}
+	public void actualizarUnidades() {
+		armada.actualizarUnidades();
+		
+	}
+	public boolean elementoMePertenece(Posicion pos) {
+		
+		try
+		{
+			armada.obtenerElementoEnPosicion(pos);
+		}
+		catch(ElementoNoEncontradoException ene)
+		{
+			return false;
+		}
+		
+		return true;
 	}
 
 

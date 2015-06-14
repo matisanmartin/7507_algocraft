@@ -51,7 +51,7 @@ public class Armada {
 		{	
 			ElementoArtificial actual = it.next();
 			
-			if(actual.getPosicion().equals(pos)&&actual.getVida().equals("0"))
+			if(actual.getPosicion().equals(pos)&&actual.estaMuerta())
 				indice=i;
 			i++;
 		}
@@ -89,6 +89,20 @@ public class Armada {
 				break;	
 			}
 		}
+	}
+
+	public void actualizarUnidades() {
+		
+		ListIterator<ElementoArtificial> it = elementos.listIterator();
+		
+		while(it.hasNext())
+		{
+			ElementoArtificial elementoTemporal = it.next();
+			elementoTemporal.agregarEnergiaPorPasoDeTurno();
+			elementoTemporal.agregarEscudoPorPasoDeTurno();
+			it.set(elementoTemporal);
+		}
+		
 	}
 		
 }

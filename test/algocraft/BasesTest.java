@@ -2,10 +2,11 @@ package algocraft;
 
 import static org.junit.Assert.*;
 import model.Base;
-import model.Volcan;
 
 import org.junit.Test;
 
+import recursos.Cristal;
+import recursos.Volcan;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
 

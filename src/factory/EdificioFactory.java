@@ -1,9 +1,8 @@
 package factory;
 
 import model.Base;
-
 import common.Posicion;
-
+import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.construcciones.Acceso;
@@ -57,7 +56,7 @@ public class EdificioFactory extends AbstractFactory {
 	
 	@Override
 	public Edificio getEdificio(TipoEdificio construccionRequerida,
-			Posicion posicion) throws FueraDeRangoException {
+			Posicion posicion) throws FueraDeRangoException, CostoInvalidoException {
 		
 		Edificio edificioCreado = null;
 		

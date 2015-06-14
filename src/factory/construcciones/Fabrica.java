@@ -1,18 +1,21 @@
 package factory.construcciones;
 
 import command.CrearGolliatAccion;
+import common.Costo;
 import common.Posicion;
+import common.Vitalidad;
 
+import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 
 public class Fabrica extends Edificio {
 
 	public Fabrica(int alto, int ancho, Posicion posicion)
-			throws FueraDeRangoException {
+			throws FueraDeRangoException, CostoInvalidoException {
 		super(alto, ancho, posicion);
-		this.setCosto("200M100G");
+		this.setCosto(new Costo("200M100G"));
 		this.setTiempoDeConstruccion(12);
-		this.setVida("1250");
+		this.setVitalidad(new Vitalidad(1250,0));
 		this.definirAccionesDisponibles();
 	}
 	

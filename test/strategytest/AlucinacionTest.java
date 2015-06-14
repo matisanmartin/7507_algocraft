@@ -12,8 +12,11 @@ import razas.Protoss;
 import razas.Terran;
 import strategy.Alucinacion;
 import strategy.ContextoStrategy;
+
 import common.Posicion;
+
 import controller.JuegoController;
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -21,6 +24,7 @@ import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
@@ -69,12 +73,14 @@ public class AlucinacionTest {
 	/**
 	 * La posicion de la unidad del jugador actual es (2,2), por lo tanto deberian crearse una en (3,2) y otra en (1,2)
 	 * Si tira excepcion, el test falla
+	 * @throws CostoInvalidoException 
+	 * @throws RecursosInsuficientesException 
 	 */
 	@Test
 	public void testAlucinacionCreaUnidadesGemelasYEnemigoEstaEnRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		
-		unidadAtacante.setVida("150");
+		unidadAtacante.setEnergia(100);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
 		
 		
@@ -93,21 +99,25 @@ public class AlucinacionTest {
 	
 	/**
 	 * Test "negativo" debería tirar excepcion si el jugador está fuera de rango de vision de la unidad que ataca
+	 * @throws CostoInvalidoException 
+	 * @throws RecursosInsuficientesException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testAlucinacionCreaUnidadesEnemigoNoEstaEnRango() 
-	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		unidadAtacante.setVida("150");
+	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
+		unidadAtacante.setEnergia(100);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaFueraDeRango);
 	}
 	
 	/**
 	 * Test "negativo", tiene 50 de vida y se requiere 100 para poder  hacer el ataque
+	 * @throws CostoInvalidoException 
+	 * @throws RecursosInsuficientesException 
 	 */
 	@Test(expected = EnergiaInsuficienteException.class)
 	public void testAlucinacionUnidadConEnergiaInsuficiente() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
-		unidadAtacante.setVida("50");
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
+//		unidadAtacante.setVitalidad(new Vitalidad(150,0));
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
 	}
 	

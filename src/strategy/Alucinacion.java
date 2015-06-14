@@ -3,12 +3,14 @@ package strategy;
 import model.ElementoArtificial;
 import common.Posicion;
 import controller.JuegoController;
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
@@ -23,23 +25,22 @@ public class Alucinacion implements Strategy {
 	
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		
 		//TODO msma: En principio estas validaciones se realizan aca, pero deberian hacerse antes
 		//para elegir si se muestra o no la opción como válida para ejecutarse
 		//se supone que si el metodo llega a ejecutarse, es porque se puede
-		String vida = elementoActuante.getVida();
-		int vidaNum = Integer.parseInt(vida);
 		
-		//TODO msma: Test para esta excepcion
-		if(vidaNum<ENERGIA_NECESARIA)
+		int energiaActual=elementoActuante.getEnergia();
+		
+		if(energiaActual<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException();
 		
-		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		Long distanciaNum = Long.parseLong(distancia);
+		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+		//Long distanciaNum = Long.parseLong(distancia);
 		
 		//TODO msma: test para esta excepcion
-		if(distanciaNum>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
+		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);

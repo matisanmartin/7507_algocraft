@@ -15,6 +15,7 @@ import strategy.Ataque;
 import strategy.ContextoStrategy;
 import common.Posicion;
 import controller.JuegoController;
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -22,6 +23,7 @@ import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
@@ -62,34 +64,38 @@ public class AtacarTest {
 		
 		posicionEnRango = new Posicion(1,2);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionEnRango);
-		unidadDefensoraEnRango.setVida("60");
+//		unidadDefensoraEnRango.setVida("60");
 		
 		posicionFueraDeRango = new Posicion(10,10);
 		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionFueraDeRango);
-		unidadDefensoraFueraDeRango.setVida("60");
+//		unidadDefensoraFueraDeRango.setVida("60");
 		
 			
 	}
 
 	/**
 	 * Un Marine ataca a un zealot en rango, por lo tanto, como el daño del Marine es 6
-	 * la vida del Zealot deberia resultar en 60-6 (ya que daña el escudo y no llega a quitarle vida)
+	 * el escudo del Zealot deberia resultar en 60-6 (ya que daña el escudo y no llega a quitarle vida)
+	 * @throws CostoInvalidoException 
+	 * @throws RecursosInsuficientesException 
 	 */
 	@Test
 	public void testMarineAtacaUnidadEnemigaEnRango() 
-	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {	
+	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {	
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		
-		assertEquals("54",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());		
+		assertEquals(54,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
 	}
 
 	/**
 	 * Un marine ataca a un zealot fuera de rango, por lo tanto, debería tirar excepcion
+	 * @throws CostoInvalidoException 
+	 * @throws RecursosInsuficientesException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testMarineAtacaUnidadEnemigaFueraDeRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		

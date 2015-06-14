@@ -4,9 +4,13 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import strategy.ContextoStrategy;
+
 import command.Accion;
 import command.AtaqueAccion;
+import common.Costo;
 import common.Posicion;
+
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -14,6 +18,7 @@ import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 
 
@@ -32,26 +37,16 @@ public abstract class ElementoArtificial extends Elemento {
 		// TODO temporal
 	}
 	
-	private String costo;
-	private String vida;	
+	private Costo costo;
 	
-	public String getCosto() {
+	
+	public Costo getCosto() {
 		return costo;
 	}
 
-	public void setCosto(String costo) {
-		this.costo = costo;
+	public void setCosto(Costo costo2) {
+		this.costo = costo2;
 	}
-	
-	
-	public String getVida() {
-		return vida;
-	}
-	
-	public void setVida(String vida) {
-		this.vida=vida;	
-	}
-
 	
 	public void posicionar(Posicion posicionInicial) throws FueraDeRangoException{
 		setPosicion(new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY()));	
@@ -63,16 +58,7 @@ public abstract class ElementoArtificial extends Elemento {
 	}
 
 	
-	public void restarVida(String daño) {
-		
-		Long dañoNum = Long.parseLong(daño);
-		
-		Long vida = Long.parseLong(this.getVida());
-		
-		this.setVida(Long.toString(vida-dañoNum));
-//		this.setVida(this.vida - daño);
-		
-	}
+
 	
 	public abstract void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino)
 	throws 	FactoryInvalidaException, 
@@ -82,7 +68,7 @@ public abstract class ElementoArtificial extends Elemento {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException;
+			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException;
 
 	public Map<String,Accion> getAccionesDisponibles() {
 		return accionesDisponibles;
@@ -104,5 +90,31 @@ public abstract class ElementoArtificial extends Elemento {
 	public void agregarAccionDisponible(String keyAccion, Accion accion) {
 		accionesDisponibles.put(keyAccion, accion);
 	}
+
+	public void agregarEnergiaPorPasoDeTurno() {
+		setEnergia(getEnergia()+0);
+	}
+
+	public int getEnergia() {
+		return 0;
+	}
+
+	public void setEnergia(int energia) {
+		return;
+	}
+
+	public void restarEnergiaPorAccion(int energiaNecesaria) {
+		setEnergia(getEnergia()-energiaNecesaria);
+		
+	}
+
+	public void agregarEscudoPorPasoDeTurno() {
+		setEscudo(getEscudo()+0);
+		
+	}
+
+
+
+
 
 }

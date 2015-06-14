@@ -5,11 +5,12 @@ import java.util.Map;
 
 import model.ElementoArtificial;
 import strategy.ContextoStrategy;
-
 import command.Accion;
 import command.AtaqueAccion;
+import common.Costo;
 import common.Posicion;
-
+import common.Vitalidad;
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -17,6 +18,7 @@ import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 
 public class Unidad extends ElementoArtificial {
@@ -30,8 +32,8 @@ public class Unidad extends ElementoArtificial {
 	private String rangoAtaque;
 
 
-	public Unidad(int transporte, int vision, String costo, int tiempoConstruccion, 
-			String daño, int suministro,String rangoAtaque, String unidadMarineVida,int alto, int ancho, Posicion posicion) throws FueraDeRangoException {
+	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, 
+			String daño, int suministro,String rangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion) throws FueraDeRangoException {
 		super(alto, ancho, posicion);
 		setTransporte(transporte);
 		setVision(vision);
@@ -40,7 +42,7 @@ public class Unidad extends ElementoArtificial {
 		setDaño(daño);
 		setSuministro(suministro);
 		setRangoAtaque(rangoAtaque);
-		setVida(unidadMarineVida);
+		setVitalidad(vida);
 		this.definirAccionesDisponibles();
 
 	}
@@ -97,7 +99,7 @@ public class Unidad extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	

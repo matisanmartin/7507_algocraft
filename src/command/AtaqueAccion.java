@@ -3,9 +3,8 @@ package command;
 import model.ElementoArtificial;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
-
 import common.Posicion;
-
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -13,6 +12,7 @@ import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 
 public class AtaqueAccion implements Accion {
@@ -28,7 +28,7 @@ public class AtaqueAccion implements Accion {
 			throws FactoryInvalidaException, UnidadInvalidaException,
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
-			FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+			FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		elemento.realizarAccion(new ContextoStrategy(new Ataque()), posicionDestino);
 		
 	}

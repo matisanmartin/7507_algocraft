@@ -20,16 +20,16 @@ public class TormentaPsionica implements Strategy {
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException, EnergiaInsuficienteException, FueraDeRangoDeVisionException {
 		
-
-		//TODO msma: test 
-		Long vidaElementoActuante = Long.parseLong(elementoActuante.getVida());
-		if(vidaElementoActuante<ENERGIA_NECESARIA)
+		int energiaActual=elementoActuante.getEnergia();
+		
+		if(energiaActual<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException();
+		;
 		
 		//TODO msma: Test
-		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		Long distanciaNum = Long.parseLong(distancia);
-		if(distanciaNum>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
+		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+		//Long distanciaNum = Long.parseLong(distancia);
+		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
 		List<ElementoArtificial> armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
@@ -42,12 +42,11 @@ public class TormentaPsionica implements Strategy {
 	
 			Posicion posicionTemporal = elementoTemporal.getPosicion();
 			
-			String distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
-			Long distanciaNumTemp = Long.parseLong(distanciaTemp);
-			String dañoTormentaPsionica=Long.toString(DAÑO_TORMENTA_PSIONICA);
+			int distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
+			//Long distanciaNumTemp = Long.parseLong(distanciaTemp);
 			
-			if(distanciaNumTemp<RANGO_ATAQUE_TORMENTA_PSIONICA){
-				elementoTemporal.restarVida(dañoTormentaPsionica);
+			if(distanciaTemp<RANGO_ATAQUE_TORMENTA_PSIONICA){
+				elementoTemporal.restarVitalidad(DAÑO_TORMENTA_PSIONICA);
 				it.set(elementoTemporal);
 			}
 		}

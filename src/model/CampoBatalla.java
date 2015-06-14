@@ -1,8 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import common.Constantes;
+import common.Posicion;
 
 import exceptions.PosicionInvalidaException;
 
@@ -10,7 +13,7 @@ public class CampoBatalla {
 	
 	private int ancho;
 	private int alto;
-	private ArrayList<Elemento> elementos;
+	private List<Elemento> elementos;
 	private Espacio espacioTerrestre;
 	private Espacio espacioAereo;
 	private static CampoBatalla INSTANCIA = null;
@@ -66,7 +69,7 @@ public class CampoBatalla {
 //		getElementos().add(elem);
 //	}
 
-	public ArrayList<Elemento> getElementos() {
+	public List<Elemento> getElementos() {
 		return elementos;
 	}
 
@@ -94,6 +97,25 @@ public class CampoBatalla {
 	public void posicionarElemento(Elemento elemento, Espacio espacio) throws PosicionInvalidaException {
 		espacio.agregarElemento(elemento);
 		
+	}
+
+	public void eliminarElementoEnPosicion(Posicion pos, List<Elemento> espacio) {
+		
+		Iterator<Elemento> it = espacio.iterator();
+		int indice = 0;
+		int i=0;
+	
+		while(it.hasNext())
+		{	
+			Elemento actual = it.next();
+			
+			if(actual.getPosicion().equals(pos))
+				indice=i;
+			i++;
+		}
+		
+		elementos.remove(indice);
+
 	}
 
 

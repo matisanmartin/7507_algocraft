@@ -1,19 +1,18 @@
-package algocraft;
+package recursos;
 
-import common.Posicion;
-
-import exceptions.FueraDeRangoException;
 import model.Elemento;
+import common.Posicion;
+import exceptions.FueraDeRangoException;
 
-public class Cristal extends Elemento {
+public class Volcan extends Elemento {
 
-	public Cristal(int alto, int ancho, Posicion posicion)
+	public Volcan(int alto, int ancho, Posicion posicion)
 			throws FueraDeRangoException {
 		super(alto, ancho, posicion);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cristal() {
+	public Volcan() {
 		// TODO Auto-generated constructor stub
 	}
 

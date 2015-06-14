@@ -22,15 +22,15 @@ public class Radiacion implements Strategy {
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
 	throws ElementoNoEncontradoException, FueraDeRangoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
 				
-		//TODO msma: test para vida insuficiente
-		Long vidaElementoActuante = Long.parseLong(elementoActuante.getVida());
-		if(vidaElementoActuante<ENERGIA_NECESARIA)
+		int energiaActual=elementoActuante.getEnergia();
+		
+		if(energiaActual<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException();
 		
 		//TODO msma: Test para rango de vision
-		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		Long distanciaNum = Long.parseLong(distancia);
-		if(distanciaNum>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION)
+		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+		//Long distanciaNum = Long.parseLong(distancia);
+		if(distancia>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
 		Armada armadaEnemiga = JuegoController.getInstancia()
@@ -39,7 +39,7 @@ public class Radiacion implements Strategy {
 		
 		ElementoArtificial elementoAtacado = armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
 		
-		elementoAtacado.setVida("0");
+		elementoAtacado.morir();
 		
 		Posicion posicionElementoDerecha 	= new Posicion(posicionDestino.getPosX()+1,posicionDestino.getPosY());
 		Posicion posicionElementoIzquierda 	= new Posicion(posicionDestino.getPosX()-1,posicionDestino.getPosY());
@@ -52,44 +52,44 @@ public class Radiacion implements Strategy {
 			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDelante);
 			//TODO msma: Para este y todos, de encotnrarlos, deberia drenarle la vida hasta que el otro se muera, luego no.
 			// Por ahora se le saca vida para probar la funcionalidad
-			elementoCandidato.setVida("0");
+			elementoCandidato.morir();
 			JuegoController.getInstancia()
 						   .getJugadorEnemigo()
 						   .obtenerArmada()
-						   .modificarElementoEnPosicion(posicionElementoDelante, elementoAtacado);
+						   .modificarElementoEnPosicion(posicionElementoDelante, elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
 		try
 		{
 			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDetras);
-			elementoCandidato.setVida("0");
+			elementoCandidato.morir();
 			JuegoController.getInstancia()
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
-			   .modificarElementoEnPosicion(posicionElementoDetras, elementoAtacado);
+			   .modificarElementoEnPosicion(posicionElementoDetras, elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
 		try
 		{
 			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDerecha);
-			elementoCandidato.setVida("0");
+			elementoCandidato.morir();
 			JuegoController.getInstancia()
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
-			   .modificarElementoEnPosicion(posicionElementoDerecha, elementoAtacado);
+			   .modificarElementoEnPosicion(posicionElementoDerecha, elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
 		try
 		{
 			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoIzquierda);
-			elementoCandidato.setVida("0");
+			elementoCandidato.morir();
 			JuegoController.getInstancia()
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
-			   .modificarElementoEnPosicion(posicionElementoIzquierda, elementoAtacado);
+			   .modificarElementoEnPosicion(posicionElementoIzquierda, elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 				

@@ -4,8 +4,13 @@ import exceptions.CostoInvalidoException;
 
 public class Costo {
 
-	private int cantidadM = 0;
-	private int cantidadG = 0;
+	private int costoMineral = 0;
+	private int costoGas = 0;
+	
+	public Costo(int costoMineral, int costoGas){
+		this.costoMineral=costoMineral;
+		this.costoGas=costoGas;
+	}
 	
 	public Costo(String costoConcatenado) throws CostoInvalidoException {
 		String stringCantidadM;
@@ -24,29 +29,33 @@ public class Costo {
 		else {
 			stringCantidadG = costoConcatenado.substring(posicionM+1,posicionG);
 		}
-		this.cantidadM = Integer.parseInt(stringCantidadM);
-		this.cantidadG = Integer.parseInt(stringCantidadG);
+		this.costoMineral = Integer.parseInt(stringCantidadM);
+		this.costoGas = Integer.parseInt(stringCantidadG);
 	}
 	
-	public int getCantidadM() {
-		return cantidadM;
+	public int getCostoMineral() {
+		return costoMineral;
 	}
 
-	public int getCantidadG() {
-		return cantidadG;
+	public int getCostoGas() {
+		return costoGas;
 	}
 
 	public boolean cubreCosto(Costo costoAComparar) throws CostoInvalidoException {
-		if (costoAComparar.getCantidadM() >= this.cantidadM && 
-				costoAComparar.getCantidadG() >= this.cantidadG) return true;
+		if (costoAComparar.getCostoMineral() >= this.costoMineral && 
+				costoAComparar.getCostoGas() >= this.costoGas) return true;
 		return false;
 	}
 	
-	public boolean alcanzaCantidadM(int cantidadMRecibida) {
-		return (cantidadMRecibida >= this.getCantidadM());
+	public boolean alcanzaCantidadMineral(int cantidadMRecibida) {
+		return (cantidadMRecibida >= this.getCostoMineral());
 	}
 	
-	public boolean alcanzaCantidadG(int cantidadGRecibida) {
-		return (cantidadGRecibida >= this.getCantidadG());
+	public boolean alcanzaCantidadGas( int cantidadGRecibida) {
+		return (cantidadGRecibida >= this.getCostoGas());
+	}
+	
+	public boolean equals(Costo costo){
+		return (this.costoGas==costo.getCostoGas()&&this.costoMineral==costo.getCostoMineral());
 	}
 }

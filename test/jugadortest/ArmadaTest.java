@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import common.Posicion;
+import common.Vitalidad;
 
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
@@ -35,10 +36,10 @@ public class ArmadaTest {
 		
 		unidadMuerta = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		unidadMuerta.posicionar(pos);
-		unidadMuerta.setVida("0");
+		unidadMuerta.setVitalidad(new Vitalidad(0,0));
 		
 		unidadMuertaNueva = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(1, 1));
-		unidadMuertaNueva.setVida("0");
+		unidadMuertaNueva.setVitalidad(new Vitalidad(0,0));
 		unidadMuertaNueva.posicionar(new Posicion(2,3));
 	}
 

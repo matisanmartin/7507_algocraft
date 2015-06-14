@@ -9,8 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import command.Accion;
+import common.Costo;
 import common.Posicion;
+import common.Vitalidad;
 
+import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import factory.construcciones.Acceso;
 import factory.construcciones.ArchivoTemplario;
@@ -37,110 +40,110 @@ public class EdificioTest {
 	}
 	
 	@Test
-	public void creaUnaBarraca() throws FueraDeRangoException {
+	public void creaUnaBarraca() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new Barraca(2, 2, new Posicion(10, 10));
-		assertEquals("150M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M")));
 		assertEquals(12, edificio.getTiempoDeConstruccion());
-		assertEquals("1000", edificio.getVida());
+		assertEquals(1000, edificio.getVida());
 		
 	}
 	
 	@Test
-	public void creaUnaFabrica() throws FueraDeRangoException{
+	public void creaUnaFabrica() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = new Fabrica(2,2, new Posicion(10, 10));
-		assertEquals("200M100G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("200M100G")));
 		assertEquals(12, edificio.getTiempoDeConstruccion());
-		assertEquals("1250", edificio.getVida());
+		assertEquals(1250, edificio.getVida());
 	}
 	
 	@Test
-	public void creaUnAcceso() throws FueraDeRangoException{
+	public void creaUnAcceso() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = new Acceso(2,2, new Posicion(10, 10));
-		assertEquals("150M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M")));
 		assertEquals(8, edificio.getTiempoDeConstruccion());
-		assertEquals("500/500", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(500,500)));
 	}
 	
 	@Test
-	public void creaUnPuertoEstelarTerran() throws FueraDeRangoException{
+	public void creaUnPuertoEstelarTerran() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = new PuertoEstelarTerran(2,2, new Posicion(10, 10));
-		assertEquals("150M100G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M100G")));
 		assertEquals(10, edificio.getTiempoDeConstruccion());
-		assertEquals("1300", edificio.getVida());
+		assertEquals(1300, edificio.getVida());
 	}
 	
 	
 	@Test
-	public void creaUnPuertoEstelarProtoss() throws FueraDeRangoException{
+	public void creaUnPuertoEstelarProtoss() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = new PuertoEstelarProtoss(2,2, new Posicion(10, 10));
-		assertEquals("150M150G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M150G")));
 		assertEquals(10, edificio.getTiempoDeConstruccion());
-		assertEquals("600/600", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(600,600)));
 	}
 	
 	@Test
-	public void creaUnArchivoTemplario() throws FueraDeRangoException{
+	public void creaUnArchivoTemplario() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = new ArchivoTemplario(2,2, new Posicion(2, 2));
-		assertEquals("150M200G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M200G")));
 		assertEquals(9, edificio.getTiempoDeConstruccion());
-		assertEquals("500/500", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(500,500)));
 	}
 	
 
 	@Test
-	public void crearUnEdificioMineral() throws FueraDeRangoException{
+	public void crearUnEdificioMineral() throws FueraDeRangoException, CostoInvalidoException{
 		EdificioMineral centro = new CentroMineral(2,2, new Posicion(2, 2));
 		EdificioMineral nexo = new NexoMineral(2,2, new Posicion(2, 2));
-		assertEquals("50M", centro.getCosto());
+		assertEquals(true, centro.getCosto().equals(new Costo("50M")));
 		assertEquals(4, centro.getTiempoDeConstruccion());
-		assertEquals("500", centro.getVida());
-		assertEquals("250/250", nexo.getVida());
+		assertEquals(500, centro.getVida());
+		assertEquals(true, nexo.getVitalidad().equals(new Vitalidad(250,250)));
 		assertEquals(5, centro.getMineral());
 		assertEquals(5, nexo.getMineral());
 	}
 	
 	@Test
-	public void crearEdificioDeGas() throws FueraDeRangoException{
+	public void crearEdificioDeGas() throws FueraDeRangoException, CostoInvalidoException{
 		EdificioGas refineria = new Refineria(2, 2, new Posicion(10, 10));
 		EdificioGas asimilador = new Asimilador(2,2, new Posicion(10, 10));
-		assertEquals("100M", refineria.getCosto());
+		assertEquals(true, refineria.getCosto().equals(new Costo("100M")));
 		assertEquals(6, refineria.getTiempoDeConstruccion());
-		assertEquals("750", refineria.getVida());
-		assertEquals("450/450", asimilador.getVida());
+		assertEquals(750, refineria.getVida());
+		assertEquals(true, asimilador.getVitalidad().equals(new Vitalidad(450,450)));
 		assertEquals(5, refineria.getGas());
 		assertEquals(5, asimilador.getGas());
 	}
 	
 	@Test
-	public void testBarracaPuedeCrearMarine() throws FueraDeRangoException {
+	public void testBarracaPuedeCrearMarine() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new Barraca(2, 2, new Posicion(10, 10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Marine"));
 	}
 	
 	@Test
-	public void testBarracaNoPuedeCrearZealot() throws FueraDeRangoException {
+	public void testBarracaNoPuedeCrearZealot() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new Barraca(2, 2, new Posicion(10, 10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Crear Zealot"));	
 	}
 	
 	@Test
-	public void testAccesoPuedeCrearZealot() throws FueraDeRangoException {
+	public void testAccesoPuedeCrearZealot() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new Acceso(2,2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Zealot"));
 	}
 	
 	@Test
-	public void testAccesoNoPuedeCrearMarine() throws FueraDeRangoException {
+	public void testAccesoNoPuedeCrearMarine() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new Acceso(2,2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Crear Marine"));	
 	}
 	
 	@Test
-	public void testArchivoTemplarioCreaAltoTemplario() throws FueraDeRangoException {
+	public void testArchivoTemplarioCreaAltoTemplario() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new ArchivoTemplario(2, 2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Alto Templario"));
@@ -148,7 +151,7 @@ public class EdificioTest {
 	}
 	
 	@Test
-	public void testArchivoTemplarioNoPuedeCrearMarine() throws FueraDeRangoException {
+	public void testArchivoTemplarioNoPuedeCrearMarine() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new ArchivoTemplario(2, 2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Crear Marine"));
@@ -156,7 +159,7 @@ public class EdificioTest {
 	}
 	
 	@Test
-	public void testFabricaPuedeCrearGolliat() throws FueraDeRangoException {
+	public void testFabricaPuedeCrearGolliat() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new Fabrica(2, 2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true, mapaPrueba.containsKey("Crear Golliat"));
@@ -164,28 +167,28 @@ public class EdificioTest {
 	}
 	
 	@Test
-	public void testFabricaNoPuedeCrearMarine() throws FueraDeRangoException {
+	public void testFabricaNoPuedeCrearMarine() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new Fabrica(2,2,new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Crear Marine"));
 	}
 	
 	@Test
-	public void testPuertoEstelarProtossCreaScout() throws FueraDeRangoException {
+	public void testPuertoEstelarProtossCreaScout() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new PuertoEstelarProtoss(2, 2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true, mapaPrueba.containsKey("Crear Scout"));
 	}
 	
 	@Test
-	public void testPuertoEstelarProtossCreaNaveTransporteProtoss() throws FueraDeRangoException {
+	public void testPuertoEstelarProtossCreaNaveTransporteProtoss() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new PuertoEstelarProtoss(2,2,new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true, mapaPrueba.containsKey("Crear Nave Transporte Protoss"));
 	}
 	
 	@Test
-	public void testPuertoEstelarProtossNoPuedeCrearMarine() throws FueraDeRangoException {
+	public void testPuertoEstelarProtossNoPuedeCrearMarine() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new PuertoEstelarProtoss(2,2,new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Crear Marine"));
@@ -193,28 +196,28 @@ public class EdificioTest {
 	}
 	
 	@Test
-	public void testPuertoEstelarTerranPuedeCrearEspectro() throws FueraDeRangoException {
+	public void testPuertoEstelarTerranPuedeCrearEspectro() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new PuertoEstelarTerran(2,2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Espectro"));
 	}
 	
 	@Test
-	public void testPuertoEstelarTerranPuedeCrearNaveTransporteTerran () throws FueraDeRangoException {
+	public void testPuertoEstelarTerranPuedeCrearNaveTransporteTerran () throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new PuertoEstelarTerran(2,2, new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true, mapaPrueba.containsKey("Crear Nave Transporte Terran"));
 	}
 	
 	@Test
-	public void testPuertoEstelarTerranPuedeCrearNaveCiencia() throws FueraDeRangoException {
+	public void testPuertoEstelarTerranPuedeCrearNaveCiencia() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new PuertoEstelarTerran(2,2,new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Crear Nave Ciencia"));
 	}
 	
 	@Test
-	public void testPuertoEstelarTerranNoPuedeCrearMarine() throws FueraDeRangoException {
+	public void testPuertoEstelarTerranNoPuedeCrearMarine() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = new PuertoEstelarTerran(2,2,new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Crear Marine"));

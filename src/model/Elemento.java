@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import common.Posicion;
-
+import common.Vitalidad;
 import exceptions.FueraDeRangoException;
 
 public abstract class Elemento {
@@ -14,6 +14,7 @@ public abstract class Elemento {
 	//para probar dimension de elemento
 	private int alto;
 	private	int ancho;
+	private Vitalidad vitalidad;
 
 	public void setAlto(int alto){
 		this.alto = alto;
@@ -67,4 +68,45 @@ public abstract class Elemento {
 	}
 
 	public abstract void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException;
+
+	public Vitalidad getVitalidad() {
+		// TODO Auto-generated method stub
+		return vitalidad;
+	}
+	
+	public void restarVitalidad(int daño) {
+		getVitalidad().restarVitalidad(daño);
+
+		
+	}
+
+	public void setVitalidad(Vitalidad vitalidad) {
+		this.vitalidad=vitalidad;
+		
+	}
+	
+	public boolean estaMuerta() {
+		return getVitalidad().getVida()<=0;
+	}
+
+	public int getVida() {
+		return getVitalidad().getVida();
+	}
+	
+	public int getEscudo() {
+		return getVitalidad().getEscudo();
+	}
+	
+	public void setEscudo(int escudo) {
+		getVitalidad().setEscudo(escudo);
+	}
+
+	public void morir() {
+		setVitalidad(new Vitalidad(0,0));
+		
+	}
+	
+	public void recibirEmp() {
+		getVitalidad().setEscudo(0);
+	}
 }

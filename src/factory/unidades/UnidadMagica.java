@@ -1,17 +1,24 @@
 package factory.unidades;
 
+import common.Costo;
 import common.Posicion;
+import common.Vitalidad;
 
 import exceptions.FueraDeRangoException;
 
 public class UnidadMagica extends Unidad {
 	
-	public UnidadMagica(int transporte, int vision, String costo,
+	private static final int ENERGIA_INICIAL=50;
+	private int energia;
+	
+	public UnidadMagica(int transporte, int vision, Costo costo,
 			int tiempoConstruccion, String daño, int suministro,
-			String rangoAtaque, String unidadMarineVida, int alto, int ancho,
+			String rangoAtaque, Vitalidad vida, int alto, int ancho,
 			Posicion posicion) throws FueraDeRangoException {
 		super(transporte, vision, costo, tiempoConstruccion, daño, suministro,
-				rangoAtaque, unidadMarineVida, alto, ancho, posicion);
+				rangoAtaque, vida, alto, ancho, posicion);
+		this.setEnergia(ENERGIA_INICIAL);
+		
 	}
 	
 	public UnidadMagica() {
@@ -21,6 +28,22 @@ public class UnidadMagica extends Unidad {
 
 	public void definirAccionesDisponibles(){
 		super.definirAccionesDisponibles();
+	}
+
+	@Override
+	public int getEnergia() {
+		return energia;
+	}
+
+	@Override
+	public void setEnergia(int energia) {
+		this.energia = energia;
+	}
+	
+	@Override
+	public void recibirEmp() {
+		setEnergia(0);
+		
 	}
 
 }

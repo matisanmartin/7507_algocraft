@@ -11,10 +11,9 @@ import razas.Protoss;
 import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.Radiacion;
-
 import common.Posicion;
-
 import controller.JuegoController;
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -22,6 +21,7 @@ import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
@@ -51,6 +51,7 @@ public class RadiacionTest {
 		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
 		posicionUnidadAtacante = new Posicion(2,2);
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, posicionUnidadAtacante);
+		unidadAtacante.setEnergia(100);
 		jugadorActual.agregarElemento(unidadAtacante);
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
 
@@ -68,64 +69,68 @@ public class RadiacionTest {
 
 	/**
 	 * La vida del enemigo deberia queda en 0
+	 * @throws CostoInvalidoException 
+	 * @throws RecursosInsuficientesException 
 	 */
 	@Test
 	public void testAtacaElementoSinUnidadesAlLado() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 	}
 	
 	/**
 	 * La vida del enemigo deberia ser cero y la del que esta al lado tambien
+	 * @throws CostoInvalidoException 
+	 * @throws RecursosInsuficientesException 
 	 */
 	@Test
 	public void testAtacaElementoConUnidadADerecha() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		Unidad unidadADerecha= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(3,4));
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadADerecha);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);	
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
 		JuegoController.getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(new Posicion(3,4));
 	}
 
 	@Test
 	public void testAtacaElementoConUnidadAIzquierda() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		Unidad unidadAIzquierda= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1,4));
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadAIzquierda);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
 		//JuegoController.getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(new Posicion(1,4));
 	}
 	
 	@Test
 	public void testAtacaElementoConUnidadDelante() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		Unidad unidadDelante= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2,3));
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDelante);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
 		//JuegoController.getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(new Posicion(3,3));
 	}
 	
 	@Test
 	public void testAtacaElementoConUnidadDetras() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		Unidad unidadDetras= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2,5));	
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDetras);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
 		//JuegoController.getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(new Posicion(3,5));
 		
 	}
 	
 	//@Test
-	public void testAtacaElementoConUnidadDetrasEIzquierda() throws UnidadInvalidaException, FueraDeRangoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException {
+	public void testAtacaElementoConUnidadDetrasEIzquierda() throws UnidadInvalidaException, FueraDeRangoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException {
 		Unidad unidadDetras= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(3,5));
 		Unidad unidadAIzquierda= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1,4));
 		
@@ -134,9 +139,9 @@ public class RadiacionTest {
 		
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
 		
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
-		assertEquals("0",JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(2).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
+		assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(2).getVida());
 
 	}
 }

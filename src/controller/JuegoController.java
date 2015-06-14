@@ -9,10 +9,14 @@ import model.Armada;
 import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Espacio;
+
+import common.Vitalidad;
+
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.NombreJugadorRepetidoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 
 public class JuegoController {
 	
@@ -104,10 +108,20 @@ public class JuegoController {
 		Jugador jugadorTemp = getInstancia().getJugadorActual();
 		getInstancia().setJugadorActual(jugadorEnemigo);
 		getInstancia().setJugadorEnemigo(jugadorTemp);
+		
+		getInstancia().actualizar();
 	}
 
+	private void actualizar() {
+		
+		getInstancia().getJugadorActual().actualizarUnidades();
+		getInstancia().getJugadorEnemigo().actualizarUnidades();
+		
+	}
+
+
 	public void agregarUnidadAJugadorEnemigo(ElementoArtificial elem) 
-	throws ElementoInvalidoException, PosicionInvalidaException {
+	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException {
 		
 		//TODO msma: Luego verificar que el metodo posicionarElemento haya cambiado la firma
 		// 				y no requera espacio
@@ -117,12 +131,23 @@ public class JuegoController {
 	}
 	
 	public void agregarUnidadAJugadorActual(ElementoArtificial elem) 
-	throws ElementoInvalidoException, PosicionInvalidaException {
+	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException {
 		
-		//TODO msma: Luego verificar que el metodo posicionarElemento haya cambiado la firma
-		// 				y no requera espacio
-		CampoBatalla.getInstancia().posicionarElemento(elem, new Espacio());
-		getInstancia().getJugadorActual().agregarElemento(elem);
+		int cantidadDeCristal=getInstancia().getJugadorActual().getCantidadDeCristal();
+		int cantidadDeGas= getInstancia().getJugadorActual().getCantidadDeGas();
+		
+		if(	cantidadDeCristal<elem.getCosto().getCostoMineral()
+			&&cantidadDeGas<elem.getCosto().getCostoGas()){
+				throw new RecursosInsuficientesException();
+			}
+		else{
+			CampoBatalla.getInstancia().posicionarElemento(elem, new Espacio());
+			getInstancia().getJugadorActual().agregarElemento(elem);
+		}
+		
+		
+		
+		
 	}
 	
 	/**
@@ -130,13 +155,14 @@ public class JuegoController {
 	 * @throws FinDePartidaException
 	 */
 	public void verificarFinDePartida() throws FinDePartidaException {
+		
 		Armada armadaEnemiga = JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada();
 		
 		List<ElementoArtificial> unidadesEnemigas = armadaEnemiga.getArmada();
 		Iterator<ElementoArtificial> it = unidadesEnemigas.iterator();
 		
 		while(it.hasNext()) {
-			if(!it.next().getVida().equals("0"))
+			if(!it.next().estaMuerta())
 				return;		
 		}
 		throw new FinDePartidaException();

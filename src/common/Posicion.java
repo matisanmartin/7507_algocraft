@@ -37,14 +37,14 @@ public class Posicion {
 		return (this.posX ==  ((Posicion) pos).getPosX() && this.posY == ((Posicion) pos).getPosY());
 	}
 
-	public String getDistancia(Posicion otraPosicion) {
+	public int getDistancia(Posicion otraPosicion) {
 		
 		double restaEnX = (otraPosicion.getPosX() - this.getPosX());
 		double restaEnY = (otraPosicion.getPosY() - this.getPosY()); 
 		
-		Long distancia = (long) Math.sqrt(Math.pow(restaEnX, 2)+Math.pow(restaEnY,2));
+		int distancia = (int) Math.sqrt(Math.pow(restaEnX, 2)+Math.pow(restaEnY,2));
 		
-		return Long.toString(distancia);
+		return distancia;
 	}
 
 	

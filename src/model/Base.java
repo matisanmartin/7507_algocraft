@@ -2,7 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
-import algocraft.Cristal;
+import recursos.Cristal;
+import recursos.Volcan;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
 

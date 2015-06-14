@@ -5,8 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import common.Costo;
 import common.Posicion;
+import common.Vitalidad;
 
+import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import factory.EdificioFactory;
 import factory.construcciones.Edificio;
@@ -25,103 +28,103 @@ public class EdificioFactoryTest {
 	}
 
 	@Test
-	public void crearUnCentroMineral() throws FueraDeRangoException {
+	public void crearUnCentroMineral() throws FueraDeRangoException, CostoInvalidoException {
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_CENTRO_MINERAL,posicion);
-		assertEquals("50M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("50M")));
 		assertEquals(4, edificio.getTiempoDeConstruccion());
-		assertEquals("500", edificio.getVida());
+		assertEquals(500, edificio.getVida());
 	}
 	
 	@Test
-	public void crearUnaRefineria() throws FueraDeRangoException{
+	public void crearUnaRefineria() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_REFINERIA, posicion);
-		assertEquals("100M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(6, edificio.getTiempoDeConstruccion());
-		assertEquals("750", edificio.getVida());
+		assertEquals(750, edificio.getVida());
 	}
 	
 	@Test
-	public void crearUnaBarraca() throws FueraDeRangoException{
+	public void crearUnaBarraca() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_BARRACA, posicion);
-		assertEquals("150M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M")));
 		assertEquals(12, edificio.getTiempoDeConstruccion());
-		assertEquals("1000", edificio.getVida());
+		assertEquals(1000, edificio.getVida());
 	}
 	
 	@Test
-	public void crearUnaFabrica() throws FueraDeRangoException{
+	public void crearUnaFabrica() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_FABRICA, posicion);
-		assertEquals("200M100G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("200M100G")));
 		assertEquals(12, edificio.getTiempoDeConstruccion());
-		assertEquals("1250", edificio.getVida());
+		assertEquals(1250, edificio.getVida());
 	}
 	
 	@Test
-	public void crearUnPuertoEstelar() throws FueraDeRangoException{
+	public void crearUnPuertoEstelar() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posicion);
-		assertEquals("150M100G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M100G")));
 		assertEquals(10, edificio.getTiempoDeConstruccion());
-		assertEquals("1300", edificio.getVida());
+		assertEquals(1300, edificio.getVida());
 		
 	}
 	
 	@Test
-	public void creaUnNexoMineral() throws FueraDeRangoException{
+	public void creaUnNexoMineral() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_NEXO_MINERAL, posicion);
-		assertEquals("50M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("50M")));
 		assertEquals(4, edificio.getTiempoDeConstruccion());
-		assertEquals("250/250", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(250,250)));
 		
 	}
 	
 	@Test
-	public void creaUnAsimilador() throws FueraDeRangoException{
+	public void creaUnAsimilador() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_ASIMILADOR, posicion);
-		assertEquals("100M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(6, edificio.getTiempoDeConstruccion());
-		assertEquals("450/450", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(450,450)));
 	}	
 		
 	@Test
-	public void creaUnAcceso() throws FueraDeRangoException{
+	public void creaUnAcceso() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicion);
-		assertEquals("150M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M")));
 		assertEquals(8, edificio.getTiempoDeConstruccion());
-		assertEquals("500/500", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(500,500)));
 			
 	}
 	
 	@Test
-	public void creaUnPuertoEstelar() throws FueraDeRangoException{
+	public void creaUnPuertoEstelar() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posicion);
-		assertEquals("150M150G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M150G")));
 		assertEquals(10, edificio.getTiempoDeConstruccion());
-		assertEquals("600/600", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(600,600)));
 	}
 	
 	@Test
-	public void creaUnArchivoTemplario() throws FueraDeRangoException{
+	public void creaUnArchivoTemplario() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posicion);
-		assertEquals("150M200G", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("150M200G")));
 		assertEquals(9, edificio.getTiempoDeConstruccion());
-		assertEquals("500/500", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(500,500)));
 		
 	}
 	
 	@Test
-	public void creaDepositoDeSuministros() throws FueraDeRangoException{
+	public void creaDepositoDeSuministros() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_DEPOSITO_SUMINISTROS, posicion);
-		assertEquals("100M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(6, edificio.getTiempoDeConstruccion());
-		assertEquals("500", edificio.getVida());
+		assertEquals(500, edificio.getVida());
 	}
 	
 	@Test
-	public void creaPilon() throws FueraDeRangoException{
+	public void creaPilon() throws FueraDeRangoException, CostoInvalidoException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_PILON, posicion);
-		assertEquals("100M", edificio.getCosto());
+		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(5, edificio.getTiempoDeConstruccion());
-		assertEquals("300/300", edificio.getVida());
+		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(300,300)));
 	}
 	
 	

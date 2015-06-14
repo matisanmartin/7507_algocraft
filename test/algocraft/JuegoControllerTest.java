@@ -14,11 +14,13 @@ import org.junit.runners.JUnit4;
 import razas.Protoss;
 import razas.Terran;
 import common.Posicion;
+import common.Vitalidad;
 import controller.JuegoController;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.NombreJugadorRepetidoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
 
@@ -37,10 +39,10 @@ public class JuegoControllerTest {
 		UnidadFactory unidadFactory = new UnidadFactory();
 		
 		unidadMuerta = unidadFactory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2,2));
-		unidadMuerta.setVida("0");
+		unidadMuerta.setVitalidad(new Vitalidad(0,0));
 		
 		unidadNoMuerta = unidadFactory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(2,3));
-		unidadNoMuerta.setVida("10");
+		unidadNoMuerta.setVitalidad(new Vitalidad(10,0));
 		
 		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
 		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
@@ -77,7 +79,7 @@ public class JuegoControllerTest {
 	//Este test no tiene assert, pues el exito es que no tire excepcion
 	@Test
 	public void testVerificarPartidaSinFinalizarJugadoEnemigoTieneUnaUnidadVivayOtraMuerta() 
-	throws FinDePartidaException, ElementoInvalidoException, PosicionInvalidaException {
+	throws FinDePartidaException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException {
 			
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadNoMuerta);
 			JuegoController.getInstancia().verificarFinDePartida();

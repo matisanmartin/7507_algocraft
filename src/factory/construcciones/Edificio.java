@@ -3,6 +3,7 @@ package factory.construcciones;
 import strategy.ContextoStrategy;
 import model.ElementoArtificial;
 import common.Posicion;
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -10,6 +11,7 @@ import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 
 public class Edificio extends ElementoArtificial {
@@ -32,7 +34,7 @@ public class Edificio extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto,Posicion posicionDestino) 
-	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException{
+	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException{
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 

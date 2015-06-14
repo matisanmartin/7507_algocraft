@@ -17,22 +17,23 @@ public class Ataque implements Strategy {
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
 	throws FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException {
 				
-		String distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		Long distanciaNum = Long.parseLong(distancia);
+		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+		
 		Long rangoDeVisionElementoActuante=Long.parseLong(((Unidad)elementoActuante).getRangoAtaque());
 		
 		//TODO msma: Test para excepcion FueraDeRangoDeVisionException
-		if(distanciaNum>rangoDeVisionElementoActuante)
+		if(distancia>rangoDeVisionElementoActuante)
 			throw new FueraDeRangoDeVisionException();
 	
 		Armada armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
 		ElementoArtificial elementoAtacado=armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
 
-		String dañoTormentaPsionica=((Unidad)elementoActuante).getDaño();
+		String dañoAtaque=((Unidad)elementoActuante).getDaño();
+		int dañoAtaqueNum=Integer.parseInt(dañoAtaque);
 		
 		//TODO msma: Test para distancia menor y test para distancia mayor
-		if(distanciaNum<Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
-			elementoAtacado.restarVida(dañoTormentaPsionica);
+		if(distancia<Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
+			elementoAtacado.restarVitalidad(dañoAtaqueNum);
 			armadaEnemiga.modificarElementoEnPosicion(posicionDestino,elementoAtacado);
 		}
 	}			
