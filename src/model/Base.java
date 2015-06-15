@@ -6,20 +6,22 @@ import recursos.Cristal;
 import recursos.Volcan;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
-public abstract class Base {
+public abstract class Base extends Elemento{
 	
 	private static final int CANTIDAD_DE_VOLCANES = 1;
 	private static final int CANTIDAD_DE_CRISTALES = 6;
-	private static final int VOLCAN_ALTO = 2;
-	private static final int VOLCAN_ANCHO = 2;
-	private static final int CRISTAL_ALTO = 2;
-	private static final int CRISTAL_ANCHO = 2;
+	private static final int VOLCAN_ALTO = 1;
+	private static final int VOLCAN_ANCHO = 1;
+	private static final int CRISTAL_ALTO = 1;
+	private static final int CRISTAL_ANCHO = 1;
 	Posicion posicion;
 	ArrayList<Volcan> volcan;
 	ArrayList<Cristal> cristal;
 
-	public Base(Posicion pos) throws FueraDeRangoException {
+	public Base(Posicion pos) throws FueraDeRangoException, PosicionInvalidaException {
+		super(0, 0, pos, new EspacioTerrestre());
 		this.posicion = pos;
 		this.volcan = new ArrayList<Volcan>();
 		this.cristal = new ArrayList<Cristal>();

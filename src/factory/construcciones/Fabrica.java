@@ -4,14 +4,14 @@ import command.CrearGolliatAccion;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class Fabrica extends Edificio {
 
 	public Fabrica(int alto, int ancho, Posicion posicion)
-			throws FueraDeRangoException, CostoInvalidoException {
+			throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		super(alto, ancho, posicion);
 		this.setCosto(new Costo("200M100G"));
 		this.setTiempoDeConstruccion(12);

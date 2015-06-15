@@ -11,6 +11,7 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
+import exceptions.PosicionInvalidaException;
 import factory.UnidadFactory;
 
 /**
@@ -23,7 +24,7 @@ public class Radiacion implements Strategy {
 
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws ElementoNoEncontradoException, FueraDeRangoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws ElementoNoEncontradoException, FueraDeRangoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, PosicionInvalidaException {
 				
 		int energiaActual=elementoActuante.getEnergia();
 		

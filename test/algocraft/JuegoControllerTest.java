@@ -13,13 +13,12 @@ import org.junit.runners.JUnit4;
 
 import razas.Protoss;
 import razas.Terran;
-
 import common.Posicion;
 import common.Vitalidad;
-
 import controller.JuegoController;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
+import exceptions.FueraDeRangoException;
 import exceptions.NombreJugadorRepetidoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
@@ -87,7 +86,7 @@ public class JuegoControllerTest {
 	//Este test no tiene assert, pues el exito es que no tire excepcion
 	@Test
 	public void testVerificarPartidaSinFinalizarJugadoEnemigoTieneUnaUnidadVivayOtraMuerta() 
-	throws FinDePartidaException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, PartidaGanadaException, PartidaPerdidaException {
+	throws FinDePartidaException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, PartidaGanadaException, PartidaPerdidaException, FueraDeRangoException {
 			
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadNoMuerta);
 			JuegoController.getInstancia().verificarFinDePartida();

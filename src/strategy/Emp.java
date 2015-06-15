@@ -7,18 +7,17 @@ import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Espacio;
-import model.EspacioAereo;
 import model.EspacioTerrestre;
 import common.Posicion;
-import common.RangoAtaque;
 import controller.JuegoController;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
+import exceptions.FueraDeRangoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
+import exceptions.PosicionInvalidaException;
 import factory.UnidadFactory;
-import factory.unidades.Unidad;
 
 public class Emp implements Strategy {
 	
@@ -26,7 +25,7 @@ public class Emp implements Strategy {
 	private static final int ENERGIA_NECESARIA=100;
 
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) throws EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) throws EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, PosicionInvalidaException, FueraDeRangoException {
 		
 		int energiaActual=elementoActuante.getEnergia();
 		

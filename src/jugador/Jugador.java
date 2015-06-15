@@ -1,7 +1,6 @@
 package jugador;
 
 import model.Armada;
-import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Espacio;
 import razas.Raza;
@@ -9,6 +8,7 @@ import common.Posicion;
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
+import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
@@ -46,7 +46,7 @@ public class Jugador {
 		this.cantidadDeGas = 0;
 	}
 	
-	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException, RecursosInsuficientesException, PosicionInvalidaException {
+	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException, RecursosInsuficientesException, PosicionInvalidaException, FueraDeRangoException {
 		
 		if(elem==null)
 			throw new ElementoInvalidoException();

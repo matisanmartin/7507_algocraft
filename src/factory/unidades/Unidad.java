@@ -41,7 +41,7 @@ public class Unidad extends ElementoArtificial {
 
 
 	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, 
-			String daño, int suministro,String rangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException {
+			String daño, int suministro,String rangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
 		super(alto, ancho, posicion,espacio);
 		setTransporte(transporte);
 		setVision(vision);

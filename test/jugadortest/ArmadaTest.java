@@ -49,13 +49,13 @@ public class ArmadaTest {
 	}
 	
 	@Test
-	public void testArmadaConUnElementoDimension1() throws PosicionInvalidaException {
+	public void testArmadaConUnElementoDimension1() throws PosicionInvalidaException, FueraDeRangoException {
 		armada.agregarElemento(unidadMuerta);
 		assertEquals(1,armada.getDimensionArmada());
 	}
 	
 	@Test
-	public void testArmadaEliminarElementoEnPosicion() throws PosicionInvalidaException {
+	public void testArmadaEliminarElementoEnPosicion() throws PosicionInvalidaException, FueraDeRangoException {
 		armada.agregarElemento(unidadMuerta);
 		Posicion posicion = unidadMuerta.getPosicion();
 		armada.eliminarElementoMuertoEnPosicion(posicion);

@@ -1,7 +1,5 @@
 package factory;
 
-import model.Base;
-
 import common.Posicion;
 
 import exceptions.FueraDeRangoException;

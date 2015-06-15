@@ -1,7 +1,7 @@
 package algocraft;
 
-import static org.junit.Assert.*;
-import model.Base;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import model.BaseInfDer;
 import model.BaseInfIzq;
 import model.BaseSupDer;
@@ -14,11 +14,12 @@ import recursos.Volcan;
 import common.Constantes;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class BasesTest {
 
 	@Test
-	public void crearCristalYVolcanDeberianSerNoNull() throws FueraDeRangoException {
+	public void crearCristalYVolcanDeberianSerNoNull() throws FueraDeRangoException, PosicionInvalidaException {
 		Cristal cristal = new Cristal(2,2,new Posicion(2, 2));
 		Volcan volcan = new Volcan(5,5,new Posicion(3, 3));
 		assertNotNull(cristal);
@@ -26,7 +27,7 @@ public class BasesTest {
 	}
 	
 	@Test
-	public void unaBaseTieneUnVolcanYSeisCristales() throws FueraDeRangoException{
+	public void unaBaseTieneUnVolcanYSeisCristales() throws FueraDeRangoException, PosicionInvalidaException{
 		BaseSupIzq base = new BaseSupIzq(new Posicion(2,2));
 		assertEquals(1,base.getVolcan().size());
 		assertEquals(6,base.getCristales().size());
@@ -37,7 +38,7 @@ public class BasesTest {
 	 * (1,2)(1,3),(1,4) / (2,1)(3,1),(4,1)
 	 */
 	@Test
-	public void crearBaseSuperiorIzquierda() throws FueraDeRangoException{
+	public void crearBaseSuperiorIzquierda() throws FueraDeRangoException, PosicionInvalidaException{
 		BaseSupIzq base = new BaseSupIzq(new Posicion(1,1));
 		assertEquals(new Posicion(1,1),base.getVolcan().get(0).getPosicion());
 		assertEquals(new Posicion(1,2), base.getCristales().get(0).getPosicion());
@@ -51,7 +52,7 @@ public class BasesTest {
 	}
 	
 	@Test
-	public void crearBaseSuperiorIzquierdaEn31() throws FueraDeRangoException{
+	public void crearBaseSuperiorIzquierdaEn31() throws FueraDeRangoException, PosicionInvalidaException{
 		BaseSupIzq base = new BaseSupIzq(new Posicion(3,1));
 		assertEquals(new Posicion(3,1),base.getVolcan().get(0).getPosicion());
 		
@@ -71,7 +72,7 @@ public class BasesTest {
 	 * (1, max col - 3) (1,max col - 2), (1, max col -1) / (max col, 2) (max col, 3) (max col, 4)
 	 */
 	@Test
-	public void crearBaseSuperiorDerecha() throws FueraDeRangoException{
+	public void crearBaseSuperiorDerecha() throws FueraDeRangoException, PosicionInvalidaException{
 		BaseSupDer base = new BaseSupDer(new Posicion(3, 5));
 		
 		//volcan
@@ -88,7 +89,7 @@ public class BasesTest {
 	}
 	
 	@Test
-	public void crearBaseInfIzq() throws FueraDeRangoException{
+	public void crearBaseInfIzq() throws FueraDeRangoException, PosicionInvalidaException{
 		BaseInfIzq base = new BaseInfIzq(new Posicion(6, 3));
 		
 		//volcan
@@ -105,7 +106,7 @@ public class BasesTest {
 	}
 	
 	@Test
-	public void crearBaseInferiorDerecha() throws FueraDeRangoException{
+	public void crearBaseInferiorDerecha() throws FueraDeRangoException, PosicionInvalidaException{
 		BaseInfDer base = new BaseInfDer(new Posicion(6, 7));
 		
 		//volcan 
@@ -122,5 +123,11 @@ public class BasesTest {
 		
 		
 		
+	}
+	
+	@Test 
+	public void creaVolcanEnBordeInferiorIzquierdoDelCampoBatalla() throws FueraDeRangoException, PosicionInvalidaException{
+		Volcan volcan = new Volcan(1, 1, new Posicion(Constantes.ALTO_DEFECTO, 0));
+		assertEquals(new Posicion(Constantes.ALTO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA), volcan.getPosicion());
 	}
 }

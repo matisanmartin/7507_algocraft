@@ -1,13 +1,13 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import algocraft.CampoBatallaTest;
 import common.Constantes;
 import common.Posicion;
-
+import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
 public class CampoBatalla {
@@ -19,7 +19,7 @@ public class CampoBatalla {
 	private EspacioAereo espacioAereo;
 	private static CampoBatalla INSTANCIA = null;
 
-	private CampoBatalla() {
+	private CampoBatalla() throws PosicionInvalidaException {
 		
 		setAncho(Constantes.ANCHO_DEFECTO);
 		setAlto(Constantes.ALTO_DEFECTO);
@@ -28,7 +28,19 @@ public class CampoBatalla {
 		this.espacioAereo = new EspacioAereo();
 	};
 	
-	public static CampoBatalla getInstancia() {
+	/*
+	 * POST:setea las bases en el campo
+	 */
+	public void setUpBases() throws PosicionInvalidaException, FueraDeRangoException{
+				
+		this.espacioTerrestre.agregarBase(new BaseSupIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.POS_INICIAL_CAMPO_BATALLA)));
+		this.espacioTerrestre.agregarBase(new BaseInfIzq(new Posicion(Constantes.ALTO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA)));
+		this.espacioTerrestre.agregarBase(new BaseSupDer(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.ANCHO_DEFECTO)));
+		this.espacioTerrestre.agregarBase(new BaseInfDer(new Posicion(Constantes.ALTO_DEFECTO, Constantes.ANCHO_DEFECTO)));
+	
+		
+	}
+	public static CampoBatalla getInstancia() throws PosicionInvalidaException, FueraDeRangoException {
 		
 		if (INSTANCIA == null) {
 			crearInstancia();
@@ -41,7 +53,7 @@ public class CampoBatalla {
 		INSTANCIA = null;
 	}
 	
-	private synchronized static void crearInstancia() {
+	private synchronized static void crearInstancia() throws PosicionInvalidaException, FueraDeRangoException {
 		
 		if (INSTANCIA == null) { 
 	       INSTANCIA = new CampoBatalla();
@@ -95,12 +107,12 @@ public class CampoBatalla {
 //		
 //	}
 
-	public void posicionarElemento(Elemento elemento, Espacio espacio) throws PosicionInvalidaException {
+	public void posicionarElemento(Elemento elemento, Espacio espacio) throws PosicionInvalidaException, FueraDeRangoException {
 		espacio.agregarElemento(elemento);
 		
 	}
 
-	public void eliminarElementoEnPosicion(Posicion pos, Espacio espacio) {
+	public void eliminarElementoEnPosicion(Posicion pos, Espacio espacio) throws PosicionInvalidaException, FueraDeRangoException {
 		
 		List<Elemento> elementosEnEspacio = espacio.obtenerElementosDeCampoDeBatalla();
 	
@@ -114,7 +126,7 @@ public class CampoBatalla {
 		}
 	}
 
-	public List<Elemento> obtenerElementosEnEspacio(Espacio espacioElementoActuante) {
+	public List<Elemento> obtenerElementosEnEspacio(Espacio espacioElementoActuante) throws PosicionInvalidaException, FueraDeRangoException {
 		return espacioElementoActuante.obtenerElementosDeCampoDeBatalla();
 	}
 

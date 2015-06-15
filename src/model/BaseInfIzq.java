@@ -3,10 +3,11 @@ package model;
 import recursos.Cristal;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class BaseInfIzq extends Base {
 
-	public BaseInfIzq(Posicion pos) throws FueraDeRangoException {
+	public BaseInfIzq(Posicion pos) throws FueraDeRangoException, PosicionInvalidaException {
 		super(pos);
 		//TODO jl:agregar metodo que detecte la posicion de los cristales a crear
 	int posIInicial = this.getVolcan().get(0).getPosicion().getPosX() - this.getCantidadDeCristales()/2;
@@ -23,6 +24,12 @@ public class BaseInfIzq extends Base {
 				}
 			}
 		}
+		
+	}
+
+	@Override
+	public void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException {
+		// TODO Auto-generated method stub
 		
 	}
 }

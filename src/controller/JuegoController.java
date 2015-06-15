@@ -10,6 +10,7 @@ import model.CampoBatalla;
 import model.ElementoArtificial;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
+import exceptions.FueraDeRangoException;
 import exceptions.NombreJugadorRepetidoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
@@ -123,13 +124,13 @@ public class JuegoController {
 
 
 	public void agregarUnidadAJugadorEnemigo(ElementoArtificial elem) 
-	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException {
+	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException {
 		getInstancia().getJugadorEnemigo().agregarElemento(elem);
 	
 	}
 	
 	public void agregarUnidadAJugadorActual(ElementoArtificial elem) 
-	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException {
+	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException {
 		
 		int cantidadDeCristal=getInstancia().getJugadorActual().getCantidadDeCristal();
 		int cantidadDeGas= getInstancia().getJugadorActual().getCantidadDeGas();

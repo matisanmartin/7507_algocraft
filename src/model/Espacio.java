@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
 public class Espacio {
@@ -19,7 +20,8 @@ public class Espacio {
 		return (this.espacio.size());
 	}
 	
-	public void agregarElemento(Elemento elementoParaAgregar) throws PosicionInvalidaException{
+	
+	public void agregarElemento(Elemento elementoParaAgregar) throws PosicionInvalidaException, FueraDeRangoException{
 		for (Elemento elemento : espacio) {
 			if(this.ocupanMismoEspacio(elementoParaAgregar,elemento)) throw new PosicionInvalidaException();
 		} //this.espacio.add(elementoParaAgregar);
@@ -34,7 +36,7 @@ public class Espacio {
 		
 		
 	}
-	public List<Elemento> obtenerElementosDeCampoDeBatalla() {
+	public List<Elemento> obtenerElementosDeCampoDeBatalla() throws PosicionInvalidaException, FueraDeRangoException {
 		return null;
 	}
 

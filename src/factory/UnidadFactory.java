@@ -1,15 +1,13 @@
 package factory;
 
-import model.Base;
 import model.EspacioAereo;
 import model.EspacioTerrestre;
-
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
 import factory.construcciones.Edificio;
 import factory.construcciones.TipoEdificio;
@@ -145,7 +143,7 @@ public class UnidadFactory extends AbstractFactory{
 
 	
 	@Override
-	public Unidad getUnidad(TipoUnidad unidadRequerida,Posicion posicion) throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public Unidad getUnidad(TipoUnidad unidadRequerida,Posicion posicion) throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		
 		Unidad unidadCreada = null;
 		

@@ -15,9 +15,9 @@ import org.junit.runners.JUnit4;
 import command.Accion;
 import common.Costo;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
@@ -39,7 +39,7 @@ public class UnidadFactoryTest {
 	}
 
 	@Test
-	public void testAtributosMarine() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosMarine() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_MARINE_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_VISION, unidad.getVision());
@@ -52,7 +52,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosGolliat() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosGolliat() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_VISION, unidad.getVision());
@@ -65,7 +65,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosEspectro() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosEspectro() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_ESPECTRO, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_VISION, unidad.getVision());
@@ -78,7 +78,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosNaveCiencia() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosNaveCiencia() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION, unidad.getVision());
@@ -91,7 +91,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosNaveTransporteTerran() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosNaveTransporteTerran() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION, unidad.getVision());
@@ -104,7 +104,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosZealot() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosZealot() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_VISION, unidad.getVision());
@@ -117,7 +117,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosDragon() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosDragon() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.PROTOSS_DRAGON, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_VISION, unidad.getVision());
@@ -130,7 +130,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosScout() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosScout() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.PROTOSS_SCOUT, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_VISION, unidad.getVision());
@@ -143,7 +143,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosAltoTemplario() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosAltoTemplario() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION, unidad.getVision());
@@ -156,7 +156,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testAtributosNaveTransporteProtoss() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testAtributosNaveTransporteProtoss() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.PROTOSS_NAVE_TRANSPORTE, new Posicion(1, 1));
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION, unidad.getVision());
@@ -175,13 +175,13 @@ public class UnidadFactoryTest {
 //	}
 	
 	@Test
-	public void testUnMarineDe2x2DeberiaTener4Partes() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException{
+	public void testUnMarineDe2x2DeberiaTener4Partes() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		assertEquals(4,unidad.getPartes().size());
 	}
 	
 	@Test
-	public void testUnMarineDe2x2ConPosX1Y1DeberiaTenerSusPartesEnPosicionesCorrectas() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException{
+	public void testUnMarineDe2x2ConPosX1Y1DeberiaTenerSusPartesEnPosicionesCorrectas() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		assertEquals((new Parte(new Posicion(1, 1)).getPosicion()), unidad.getPartes().get(0).getPosicion() );
 		assertEquals((new Parte(new Posicion(1, 2)).getPosicion()), unidad.getPartes().get(1).getPosicion() );
@@ -191,14 +191,14 @@ public class UnidadFactoryTest {
 	
 	@Test
 	public void testUnaUnidadTieneAccionAtacar() 
-	throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		mapaPrueba = unidad.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Atacar"));
 	}
 	
 	@Test
-	public void testUnaUnidadNoTieneAccionesMagica() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testUnaUnidadNoTieneAccionesMagica() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		mapaPrueba = unidad.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Emp"));
@@ -209,7 +209,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testUnaUnidadMagicaNoTienAccionAtacar() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testUnaUnidadMagicaNoTienAccionAtacar() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(1, 1));
 		mapaPrueba = unidad.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Atacar"));
@@ -217,7 +217,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testUnaUnidadMagicaProtossTieneAccionesAlucinacionYTormentaPsionica() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testUnaUnidadMagicaProtossTieneAccionesAlucinacionYTormentaPsionica() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(1, 1));
 		mapaPrueba = unidad.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Alucinacion"));
@@ -226,7 +226,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testUnaUnidadMagicaProtosNoTieneAccionEmpNiRadiacion() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testUnaUnidadMagicaProtosNoTieneAccionEmpNiRadiacion() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(1, 1));
 		mapaPrueba = unidad.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Emp"));
@@ -234,7 +234,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testUnaUnidadMagicaTerranTieneAccionesEmpYRadiacion() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testUnaUnidadMagicaTerranTieneAccionesEmpYRadiacion() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(1, 1));
 		mapaPrueba = unidad.getAccionesDisponibles();
 		assertEquals(true,mapaPrueba.containsKey("Emp"));
@@ -243,7 +243,7 @@ public class UnidadFactoryTest {
 	}
 	
 	@Test
-	public void testUnaUnidadMagicaTerranNoTieneAccionesAlucinacionYTormentaPsionica() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException {
+	public void testUnaUnidadMagicaTerranNoTieneAccionesAlucinacionYTormentaPsionica() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		unidad = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(1, 1));
 		mapaPrueba = unidad.getAccionesDisponibles();
 		assertEquals(false,mapaPrueba.containsKey("Alucinacion"));

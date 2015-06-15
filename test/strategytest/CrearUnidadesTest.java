@@ -59,7 +59,7 @@ public class CrearUnidadesTest {
 	Posicion posicionDestino;
 	
 	@Before
-	public void setUp() throws NombreCortoException, ColorInvalidoException, FueraDeRangoException {
+	public void setUp() throws NombreCortoException, ColorInvalidoException, FueraDeRangoException, PosicionInvalidaException {
 		
 		posicionOrigen=new Posicion(10,10);
 		posicionDestino = new Posicion(15,15);

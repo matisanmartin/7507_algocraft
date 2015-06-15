@@ -8,9 +8,9 @@ import org.junit.Test;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 import factory.EdificioFactory;
 import factory.construcciones.Edificio;
 import factory.construcciones.TipoEdificio;
@@ -22,13 +22,13 @@ public class EdificioFactoryTest {
 	Posicion posicion;
 	
 	@Before
-	public void setUp() throws FueraDeRangoException{
+	public void setUp() throws FueraDeRangoException, PosicionInvalidaException{
 		factory = new EdificioFactory();
 		posicion = new Posicion(10, 10);
 	}
 
 	@Test
-	public void crearUnCentroMineral() throws FueraDeRangoException, CostoInvalidoException {
+	public void crearUnCentroMineral() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_CENTRO_MINERAL,posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("50M")));
 		assertEquals(4, edificio.getTiempoDeConstruccion());
@@ -36,7 +36,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void crearUnaRefineria() throws FueraDeRangoException, CostoInvalidoException{
+	public void crearUnaRefineria() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_REFINERIA, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(6, edificio.getTiempoDeConstruccion());
@@ -44,7 +44,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void crearUnaBarraca() throws FueraDeRangoException, CostoInvalidoException{
+	public void crearUnaBarraca() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_BARRACA, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("150M")));
 		assertEquals(12, edificio.getTiempoDeConstruccion());
@@ -52,7 +52,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void crearUnaFabrica() throws FueraDeRangoException, CostoInvalidoException{
+	public void crearUnaFabrica() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_FABRICA, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("200M100G")));
 		assertEquals(12, edificio.getTiempoDeConstruccion());
@@ -60,7 +60,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void crearUnPuertoEstelar() throws FueraDeRangoException, CostoInvalidoException{
+	public void crearUnPuertoEstelar() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("150M100G")));
 		assertEquals(10, edificio.getTiempoDeConstruccion());
@@ -69,7 +69,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void creaUnNexoMineral() throws FueraDeRangoException, CostoInvalidoException{
+	public void creaUnNexoMineral() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_NEXO_MINERAL, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("50M")));
 		assertEquals(4, edificio.getTiempoDeConstruccion());
@@ -78,7 +78,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void creaUnAsimilador() throws FueraDeRangoException, CostoInvalidoException{
+	public void creaUnAsimilador() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_ASIMILADOR, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(6, edificio.getTiempoDeConstruccion());
@@ -86,7 +86,7 @@ public class EdificioFactoryTest {
 	}	
 		
 	@Test
-	public void creaUnAcceso() throws FueraDeRangoException, CostoInvalidoException{
+	public void creaUnAcceso() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("150M")));
 		assertEquals(8, edificio.getTiempoDeConstruccion());
@@ -95,7 +95,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void creaUnPuertoEstelar() throws FueraDeRangoException, CostoInvalidoException{
+	public void creaUnPuertoEstelar() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("150M150G")));
 		assertEquals(10, edificio.getTiempoDeConstruccion());
@@ -103,7 +103,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void creaUnArchivoTemplario() throws FueraDeRangoException, CostoInvalidoException{
+	public void creaUnArchivoTemplario() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("150M200G")));
 		assertEquals(9, edificio.getTiempoDeConstruccion());
@@ -112,7 +112,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void creaDepositoDeSuministros() throws FueraDeRangoException, CostoInvalidoException{
+	public void creaDepositoDeSuministros() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.TERRAN_DEPOSITO_SUMINISTROS, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(6, edificio.getTiempoDeConstruccion());
@@ -120,7 +120,7 @@ public class EdificioFactoryTest {
 	}
 	
 	@Test
-	public void creaPilon() throws FueraDeRangoException, CostoInvalidoException{
+	public void creaPilon() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
 		edificio = factory.getEdificio(TipoEdificio.PROTOSS_PILON, posicion);
 		assertEquals(true, edificio.getCosto().equals(new Costo("100M")));
 		assertEquals(5, edificio.getTiempoDeConstruccion());

@@ -1,15 +1,15 @@
 package common;
 
-import model.CampoBatalla;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class Posicion {
 	private int posX;
 	private int posY;
 	
-	public Posicion(int posX, int posY) throws FueraDeRangoException{
+	public Posicion(int posX, int posY) throws FueraDeRangoException, PosicionInvalidaException{
 		
-		if( posX>CampoBatalla.getInstancia().getAncho()||posY>CampoBatalla.getInstancia().getAlto()||posX<0||posY<0)
+		if( posX>Constantes.ANCHO_DEFECTO||posY>Constantes.ALTO_DEFECTO||posX<0||posY<0)
 			throw new FueraDeRangoException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO);
 	
 		this.setPosX(posX);

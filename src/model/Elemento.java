@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import common.Posicion;
 import common.Vitalidad;
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public abstract class Elemento {
 
@@ -34,7 +35,7 @@ public abstract class Elemento {
 	}
 
 	//habria que validad el alto y el ancho
-	public Elemento(int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException {
+	public Elemento(int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
 		this.partes = new ArrayList<Parte>();
 		this.alto = alto; 
 		this.ancho = ancho;
@@ -47,7 +48,7 @@ public abstract class Elemento {
 		// TODO Auto-generated constructor stub
 	}
 
-	private void crearPartes() throws FueraDeRangoException {
+	private void crearPartes() throws FueraDeRangoException, PosicionInvalidaException {
 		for (int i = 0; i < this.alto; i++) {
 			for (int j = 0; j < this.ancho; j++) {
 				Parte parte = new Parte(new Posicion(this.posicion.getPosX() + i, this.posicion.getPosY() + j));
@@ -67,7 +68,7 @@ public abstract class Elemento {
 		this.posicion = posicion;
 	}
 
-	public abstract void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException;
+	public abstract void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException, PosicionInvalidaException;
 
 	public Vitalidad getVitalidad() {
 		return vitalidad;

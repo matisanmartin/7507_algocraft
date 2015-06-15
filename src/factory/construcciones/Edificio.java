@@ -24,7 +24,7 @@ public class Edificio extends ElementoArtificial {
 	private int tiempoDeConstruccion;
 
 	public Edificio(int alto, int ancho, Posicion posicion)
-			throws FueraDeRangoException {
+			throws FueraDeRangoException, PosicionInvalidaException {
 		super(alto, ancho, posicion, new EspacioTerrestre());
 		// TODO Auto-generated constructor stub
 	}

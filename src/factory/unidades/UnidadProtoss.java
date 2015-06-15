@@ -1,12 +1,11 @@
 package factory.unidades;
 
 import model.Espacio;
-
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class UnidadProtoss extends Unidad {
 	
@@ -16,7 +15,7 @@ public class UnidadProtoss extends Unidad {
 			Costo costo, int tiempoConstruccion,
 			String daño, int suministro,
 			String rangoAtaque, Vitalidad vida,
-			int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException {
+			int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
 		super(transporte, vision, costo, tiempoConstruccion, daño, suministro, rangoAtaque, vida, alto, ancho, posicion, espacio);
 	}
 

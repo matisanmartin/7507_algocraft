@@ -1,15 +1,14 @@
 package recursos;
 
 import model.EspacioTerrestre;
-
 import common.Posicion;
-
 import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class Volcan extends Recurso {
 
 	public Volcan(int alto, int ancho, Posicion posicion)
-			throws FueraDeRangoException {
+			throws FueraDeRangoException, PosicionInvalidaException {
 		super(alto, ancho, posicion, new EspacioTerrestre());
 	}
 

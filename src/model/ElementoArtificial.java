@@ -29,7 +29,7 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 	private Map<String, Accion> accionesDisponibles;
 
 	public ElementoArtificial(int alto, int ancho, Posicion posicion, Espacio espacio)
-			throws FueraDeRangoException {
+			throws FueraDeRangoException, PosicionInvalidaException {
 		super(alto, ancho, posicion,espacio);
 		accionesDisponibles=new Hashtable<String,Accion>();
 	}
@@ -50,12 +50,12 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 		this.costo = costo2;
 	}
 	
-	public void posicionar(Posicion posicionInicial) throws FueraDeRangoException{
+	public void posicionar(Posicion posicionInicial) throws FueraDeRangoException, PosicionInvalidaException{
 		setPosicion(new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY()));	
 	}
 	
 	
-	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException {	
+	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException, PosicionInvalidaException {	
 		setPosicion(new Posicion(nuevaPosicion.getPosX(),nuevaPosicion.getPosY()));
 	}
 

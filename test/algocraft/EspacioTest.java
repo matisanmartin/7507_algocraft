@@ -37,7 +37,7 @@ public class EspacioTest {
 	}
 	
 	@Test
-	public void alCrearElEspacioNoDeberiaTenerElementos(){
+	public void alCrearElEspacioNoDeberiaTenerElementos() throws PosicionInvalidaException, FueraDeRangoException{
 		assertEquals(0, CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());
 	}
 	

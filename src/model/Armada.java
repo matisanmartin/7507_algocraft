@@ -7,6 +7,7 @@ import java.util.ListIterator;
 
 import common.Posicion;
 import exceptions.ElementoNoEncontradoException;
+import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
 public class Armada {
@@ -32,7 +33,7 @@ public class Armada {
 		return elementos;
 	}
 	
-	public void agregarElemento(ElementoArtificial elem) throws PosicionInvalidaException {
+	public void agregarElemento(ElementoArtificial elem) throws PosicionInvalidaException, FueraDeRangoException {
 		
 		CampoBatalla.getInstancia().posicionarElemento(elem, elem.obtenerEspacio());
 		
