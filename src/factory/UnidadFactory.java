@@ -316,9 +316,9 @@ public class UnidadFactory extends AbstractFactory{
 	}
 
 
-	@Override
-	public Base getBase(Posicion posicion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Base getBase(Posicion posicion) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }

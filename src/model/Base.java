@@ -7,7 +7,7 @@ import recursos.Volcan;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
 
-public class Base {
+public abstract class Base {
 	
 	private static final int CANTIDAD_DE_VOLCANES = 1;
 	private static final int CANTIDAD_DE_CRISTALES = 6;
@@ -26,10 +26,7 @@ public class Base {
 		for (int i = 0; i < CANTIDAD_DE_VOLCANES;i++) {
 			this.volcan.add(new Volcan(VOLCAN_ALTO, VOLCAN_ANCHO, new Posicion(this.posicion.getPosX(), this.posicion.getPosY())));
 		}
-		for (int i = 0; i < CANTIDAD_DE_CRISTALES; i++) {
-			//TODO jl:agregar metodo que detecte la posicion de los cristales a crear
-			this.cristal.add(new Cristal(CRISTAL_ALTO, CRISTAL_ANCHO, new Posicion(3, 3)));
-		}
+
 	}
 
 	public ArrayList<Volcan> getVolcan() {
@@ -40,6 +37,18 @@ public class Base {
 	public ArrayList<Cristal> getCristales() {
 
 		return this.cristal;
+	}
+	
+	public int getCantidadDeCristales(){
+		return CANTIDAD_DE_CRISTALES;
+	}
+	
+	public int getAltoCristal(){
+		return CRISTAL_ALTO;
+	}
+	
+	public int getAnchoCristal(){
+		return CRISTAL_ANCHO;
 	}
 
 }

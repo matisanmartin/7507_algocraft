@@ -17,5 +17,5 @@ public abstract class AbstractFactory {
 	
 	public abstract Edificio getEdificio(TipoEdificio construccionRequerida, Posicion posicion) throws FueraDeRangoException, CostoInvalidoException;
 	
-	public abstract Base getBase(Posicion posicion) throws FueraDeRangoException;
+//	public abstract Base getBase(Posicion posicion) throws FueraDeRangoException;
 }

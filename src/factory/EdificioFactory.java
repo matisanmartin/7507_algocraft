@@ -130,11 +130,11 @@ public class EdificioFactory extends AbstractFactory {
 		return null;
 	}
 
-	@Override
-	public Base getBase(Posicion posicion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Base getBase(Posicion posicion) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 	
 

@@ -31,9 +31,9 @@ public class BaseFactory extends AbstractFactory {
 		return null;
 	}
 
-	@Override
-	public Base getBase(Posicion posicion) throws FueraDeRangoException {
-		return (new Base(posicion));
-	}
+//	@Override
+//	public Base getBase(Posicion posicion) throws FueraDeRangoException {
+//		return (new Base(posicion));
+//	}
 
 }

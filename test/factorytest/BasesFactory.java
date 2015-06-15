@@ -20,12 +20,12 @@ public class BasesFactory {
 		factory = new BaseFactory();
 	}
 
-	@Test
-	public void creaUnaBase() throws FueraDeRangoException {
-		base = factory.getBase(new Posicion(1, 1));
-		assertEquals(1, base.getVolcan().size());
-		assertEquals(6,base.getCristales().size());
-		
-	}
+//	@Test
+//	public void creaUnaBase() throws FueraDeRangoException {
+//		base = factory.getBase(new Posicion(1, 1));
+//		assertEquals(1, base.getVolcan().size());
+//		assertEquals(6,base.getCristales().size());
+//		
+//	}
 
 }
