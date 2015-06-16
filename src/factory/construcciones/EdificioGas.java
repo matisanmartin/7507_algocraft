@@ -19,7 +19,7 @@ public abstract class EdificioGas extends Edificio {
 	}
 
 	public int getGas() {
-		return this.CANTIDAD_DE_MINERAL;
+		return CANTIDAD_DE_MINERAL;
 	}
 
 }

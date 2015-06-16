@@ -18,7 +18,7 @@ public abstract class EdificioMineral extends Edificio {
 	}
 
 	public int getMineral() {
-		return this.CANTIDAD_DE_MINERAL;
+		return CANTIDAD_DE_MINERAL;
 	}
 
 }

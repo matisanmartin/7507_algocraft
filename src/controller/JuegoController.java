@@ -131,15 +131,6 @@ public class JuegoController {
 	
 	public void agregarUnidadAJugadorActual(ElementoArtificial elem) 
 	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException {
-		
-		int cantidadDeCristal=getInstancia().getJugadorActual().getCantidadDeCristal();
-		int cantidadDeGas= getInstancia().getJugadorActual().getCantidadDeGas();
-		int costoMineral = elem.getCosto().getCostoMineral();
-		int costoGas = elem.getCosto().getCostoGas();
-		
-		if(cantidadDeCristal<costoMineral&&cantidadDeGas<costoGas)
-				throw new RecursosInsuficientesException();
-		else
 			getInstancia().getJugadorActual().agregarElemento(elem);
 	}
 	

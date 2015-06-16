@@ -12,7 +12,9 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
@@ -34,6 +36,6 @@ public interface Strategy {
 			FinDePartidaException, 
 			PartidaGanadaException, 
 			PartidaPerdidaException, 
-			UnidadLlenaException;
+			UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException;
 
 }

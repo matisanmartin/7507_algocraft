@@ -4,18 +4,22 @@ import model.Armada;
 import model.ElementoArtificial;
 import model.Espacio;
 import razas.Raza;
+
 import common.Posicion;
+
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 
 public class Jugador {
 	
 	public static final int MIN_CARACT_NOMBRE=4;
+	public static final int MAX_CANTIDAD_POBLACION = 200;
 	
 	String nombre;
 	TipoColor color;
@@ -24,6 +28,11 @@ public class Jugador {
 
 	private int cantidadDeCristal;
 	private int cantidadDeGas;
+	private int poblacionActual;
+	private int poblacionDisponible;
+	private int excesoPoblacion; //cuando se crea una "casa" y ya se llego a la maxima cant de poblacion (200)
+	                             //la poblacion ganada se suma al exceso. Analogamente cuando se destruye una
+	
 	
 	public Jugador() {
 	}
@@ -44,6 +53,9 @@ public class Jugador {
 		
 		this.cantidadDeCristal = 200;
 		this.cantidadDeGas = 0;
+		this.poblacionActual = 0;
+		this.poblacionDisponible = 100;
+		this.excesoPoblacion = 0;
 	}
 	
 	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException, RecursosInsuficientesException, PosicionInvalidaException, FueraDeRangoException {
@@ -92,9 +104,22 @@ public class Jugador {
 	public void agregarCantidadDeCristal(int cantidadDeMineral) {	
 		this.cantidadDeCristal=this.cantidadDeCristal+cantidadDeMineral;
 	}
+	
 	public void agregarCantidadDeGas(int cantidadDeGas) {
 		this.cantidadDeGas=this.cantidadDeGas+cantidadDeGas;
 		
+	}
+
+	
+	private void disminuirCantidadDeGas(int cantidadDeGas) {
+		this.cantidadDeGas=this.cantidadDeGas-cantidadDeGas;	
+	}
+	private void disminuirCantidadDeCristal(int cantidadDeMineral) {	
+		this.cantidadDeCristal=this.cantidadDeCristal-cantidadDeMineral;
+	}
+	public void disminuirRecursos(int cantidadDeMineral, int cantidadDeGas) {
+		disminuirCantidadDeCristal(cantidadDeMineral);
+		disminuirCantidadDeGas(cantidadDeGas);
 	}
 	public void actualizarUnidades() {
 		armada.actualizarUnidades();
@@ -114,6 +139,67 @@ public class Jugador {
 		
 		return true;
 	}
+	
+	public void validarCreacion(ElementoArtificial elemento) throws PoblacionFaltanteException, RecursosInsuficientesException {
+		int costoMinerales = elemento.getCosto().getCostoMineral();
+		int costoGasVespeno = elemento.getCosto().getCostoGas();
+		int suministro = elemento.sumarPoblacion();
+		
+		if (this.cantidadDeCristal - costoMinerales < 0 || this.cantidadDeGas - costoGasVespeno < 0) {
+			throw new RecursosInsuficientesException();
+		}
+		
+		if (this.poblacionActual + suministro > this.poblacionDisponible) {
+			throw new PoblacionFaltanteException();
+		}
+		
+	}
+	public void aumentarPoblacionDisponible(int aumento) {
+		
+		if (this.poblacionDisponible == MAX_CANTIDAD_POBLACION) {
+			this.excesoPoblacion += aumento;
+		}
+		else {
+			this.poblacionDisponible += aumento;
+		}
+	}
+		
+	public void disminuirPoblacionDisponble(int disminucion) {
+		if (this.excesoPoblacion == 0) {
+			this.poblacionDisponible -= disminucion;
+		}
+		else {
+			this.excesoPoblacion -= disminucion;
+		}
+		
+	}
+		
+		
 
+	
+	public void aumentarPoblacionActual(int aumento) {
+		this.poblacionActual += aumento;
+		
+	}
+	public int getPoblacionActual() {
+		return poblacionActual;
+	}
+	public void setPoblacionActual(int poblacionActual) {
+		this.poblacionActual = poblacionActual;
+	}
+	public int getPoblacionDisponible() {
+		return poblacionDisponible;
+	}
+	public void setPoblacionDisponible(int poblacionDisponible) {
+		this.poblacionDisponible = poblacionDisponible;
+	}
+	public void setMinerales(int cantM) {
+		this.cantidadDeCristal = cantM;
+		
+	}
+	public void setGas(int cantG) {
+		this.cantidadDeGas = cantG;
+		
+	}
 
 }

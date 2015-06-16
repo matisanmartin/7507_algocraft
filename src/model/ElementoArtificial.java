@@ -18,7 +18,9 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
@@ -70,7 +72,7 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException;
+			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException;
 
 	public Map<String,Accion> getAccionesDisponibles() {
 		return accionesDisponibles;
@@ -124,6 +126,26 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 	public abstract void agregarUnidad(ElementoArtificial elementoActuante) throws UnidadLlenaException;
 
 	public abstract int getCantidadDeUnidadesTransportadas();
+	
+	public int sumarPoblacion() { //el elemento pasa a ser parte de la poblacion actual, aumenta la poblacion actual
+		return 0;
+	}
+	
+	public int restarPoblacion() { //el elemento deja de ser parte de la poblacion actual, resta a la poblacion actual
+		return 0;
+	}
+	
+	public int aumentoPoblacion() { //aumenta la poblacion disponible
+		return 0;
+	}
+	
+	public int disminuirMineral() {
+		return this.getCosto().getCostoMineral();
+	}
+	
+	public int disminuirGas() {
+		return this.getCosto().getCostoGas();
+	}
 
 
 

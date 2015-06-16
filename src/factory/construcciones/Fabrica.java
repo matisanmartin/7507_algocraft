@@ -1,6 +1,7 @@
 package factory.construcciones;
 
 import command.CrearGolliatAccion;
+import command.CrearPuertoEstelarTerranAccion;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
@@ -21,6 +22,7 @@ public class Fabrica extends Edificio {
 	
 	public void definirAccionesDisponibles() {
 		agregarAccionDisponible("Crear Golliat", new CrearGolliatAccion(this));
+		agregarAccionDisponible("Crear PuertoEstelarTerran", new CrearPuertoEstelarTerranAccion(this));
 	}
 	
 }

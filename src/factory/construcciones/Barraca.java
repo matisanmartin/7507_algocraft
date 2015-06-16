@@ -1,5 +1,6 @@
 package factory.construcciones;
 
+import command.CrearFabricaAccion;
 import command.CrearMarineAccion;
 import common.Costo;
 import common.Posicion;
@@ -21,5 +22,6 @@ public class Barraca extends Edificio {
 	
 	public void definirAccionesDisponibles() {
 		agregarAccionDisponible("Crear Marine", new CrearMarineAccion(this));
+		agregarAccionDisponible("Crear Fabrica", new CrearFabricaAccion(this));
 	}
 }

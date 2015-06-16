@@ -1,5 +1,6 @@
 package factory.construcciones;
 
+import command.CrearArchivosTemplariosAccion;
 import command.CrearNaveTransporteProtossAccion;
 import command.CrearScoutAccion;
 import common.Costo;
@@ -22,6 +23,7 @@ public class PuertoEstelarProtoss extends PuertoEstelar {
 	public void definirAccionesDisponibles() {
 		agregarAccionDisponible("Crear Scout", new CrearScoutAccion(this));
 		agregarAccionDisponible("Crear Nave Transporte Protoss", new CrearNaveTransporteProtossAccion(this));
+		agregarAccionDisponible("Crear ArchivosTemplarios", new CrearArchivosTemplariosAccion(this));
 	}
 
 }

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import model.Elemento;
 
 import org.junit.Before;
-import org.junit.Test;
 
 import strategy.ContextoStrategy;
 
