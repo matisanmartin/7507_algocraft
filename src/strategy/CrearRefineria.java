@@ -26,7 +26,6 @@ public class CrearRefineria implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial refineria = factory.getEdificio(TipoEdificio.TERRAN_REFINERIA, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(refineria);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(refineria);
 		
 	}

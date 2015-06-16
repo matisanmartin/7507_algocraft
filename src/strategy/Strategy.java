@@ -3,6 +3,7 @@ package strategy;
 import model.ElementoArtificial;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -36,6 +37,6 @@ public interface Strategy {
 			FinDePartidaException, 
 			PartidaGanadaException, 
 			PartidaPerdidaException, 
-			UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException;
+			UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException;
 
 }

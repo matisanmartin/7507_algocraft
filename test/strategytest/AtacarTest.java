@@ -16,6 +16,7 @@ import strategy.ContextoStrategy;
 import common.Posicion;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -64,9 +65,6 @@ public class AtacarTest {
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
-
-		unidadAtacante.setDaño("6");//TODO msma: temporalmente para que ande la prueba
-		unidadAtacante.setRangoAtaque("4");
 		
 		posicionEnRango = new Posicion(1,2);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionEnRango);
@@ -87,10 +85,11 @@ public class AtacarTest {
 	 * @throws UnidadLlenaException 
 	 * @throws PoblacionFaltanteException 
 	 * @throws RecursosFaltantesException 
+	 * @throws DanioInvalidoException 
 	 */
 	@Test
 	public void testMarineAtacaUnidadEnemigaEnRango() 
-	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {	
+	throws UnidadInvalidaException, FactoryInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {	
 		
 		try
 		{
@@ -115,10 +114,11 @@ public class AtacarTest {
 	 * @throws UnidadLlenaException 
 	 * @throws PoblacionFaltanteException 
 	 * @throws RecursosFaltantesException 
+	 * @throws DanioInvalidoException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testMarineAtacaUnidadEnemigaFueraDeRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 		

@@ -2,6 +2,9 @@ package model;
 
 import java.util.List;
 
+import common.Danio;
+import common.RangoAtaque;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
@@ -18,9 +21,18 @@ public class EspacioTerrestre extends Espacio {
 		CampoBatalla.getInstancia().posicionarElementoEnEspacioTerrestre(elementoParaAgregar);
 	}
 	
+	@Override
+	public int getDaño(Danio daño) {
+		return daño.getDanioT();
+	}
+	
 	//TODO jl:agregado provisoriamente
 	public void agregarBase(Base base){
 		this.espacio.add(base);
 	}
 
+	@Override
+	public int getRangoDeAtaque(RangoAtaque rangoAtaque) {
+		return rangoAtaque.getRangoAtaqueTerrestre();
+	}
 }

@@ -3,6 +3,7 @@ package strategy;
 import model.ElementoArtificial;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -28,7 +29,7 @@ public class ContextoStrategy {
 	}
 	
 	public void ejecutarStrategy(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		strategy.realizarAccion(elementoActuante,posicionDestino);
 	}
 	

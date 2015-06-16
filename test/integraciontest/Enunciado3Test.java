@@ -14,6 +14,7 @@ import strategy.ContextoStrategy;
 import common.Posicion;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -65,13 +66,10 @@ public class Enunciado3Test {
 		posUnidadTerrestre = new Posicion(3,3); 
 		
 		unidadTerrestre = factory.getUnidad(TipoUnidad.TERRAN_MARINE,posUnidadTerrestre);
-		unidadTerrestre.setDaño("6");//TODO arreglar luego
-		unidadTerrestre.setRangoAtaque("4");
 		jugadorActual.agregarElemento(unidadTerrestre);
 		
 		unidadAerea = factory.getUnidad(TipoUnidad.PROTOSS_SCOUT,posUnidadAerea);
-		unidadAerea.setDaño("14");//TODO arreglar luego
-		unidadAerea.setRangoAtaque("4");
+
 		jugadorEnemigo.agregarElemento(unidadAerea);
 		
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
@@ -80,7 +78,7 @@ public class Enunciado3Test {
 
 	@Test
 	public void testUnidadTerrestreNoPuedeAtacarUnidadAerea() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		unidadTerrestre.realizarAccion(contexto, posUnidadAerea);
 		assertEquals(150,unidadAerea.getVida());
@@ -88,7 +86,7 @@ public class Enunciado3Test {
 	
 	@Test
 	public void testUnidadAereaNoPuedeAtacarUnidadTerrestre() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		//intercambio el turno
 		JuegoController.getInstancia().cambiarTurno();

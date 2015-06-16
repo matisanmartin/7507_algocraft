@@ -26,7 +26,6 @@ public class CrearPuertoEstelarProtoss implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial puertoEstelarProtoss = factory.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(puertoEstelarProtoss);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarProtoss);
 		
 	}

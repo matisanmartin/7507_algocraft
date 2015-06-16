@@ -26,7 +26,6 @@ public class CrearPuertoEstelarTerran implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial puertoEstelarTerran = factory.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(puertoEstelarTerran);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelarTerran);
 		
 	}

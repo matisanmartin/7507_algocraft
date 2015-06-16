@@ -2,6 +2,9 @@ package model;
 
 import java.util.List;
 
+import common.Danio;
+import common.RangoAtaque;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
@@ -16,5 +19,15 @@ public class EspacioAereo extends Espacio{
 	public void agregarElemento(Elemento elementoParaAgregar) throws PosicionInvalidaException, FueraDeRangoException{
 		super.agregarElemento(elementoParaAgregar);
 		CampoBatalla.getInstancia().posicionarElementoEnEspacioAereo(elementoParaAgregar);
+	}
+	
+	@Override
+	public int getDaño(Danio daño) {
+		return daño.getDanioA();
+	}
+	
+	@Override
+	public int getRangoDeAtaque(RangoAtaque rangoAtaque) {
+		return rangoAtaque.getRangoAtaqueAereo();
 	}
 }

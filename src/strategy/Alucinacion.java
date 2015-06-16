@@ -1,9 +1,11 @@
 package strategy;
 
 import model.ElementoArtificial;
+import common.Danio;
 import common.Posicion;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -13,6 +15,7 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
@@ -25,7 +28,7 @@ public class Alucinacion implements Strategy {
 	
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, DanioInvalidoException, PoblacionFaltanteException {
 		
 		//msma: En principio estas validaciones se realizan aca, pero deberian hacerse antes
 		//para elegir si se muestra o no la opción como válida para ejecutarse
@@ -53,13 +56,14 @@ public class Alucinacion implements Strategy {
 		ElementoArtificial copiaFicticia1 = (ElementoArtificial) elementoCopiado.clone();
 		copiaFicticia1.setPosicion(posicionFicticia1);
 		copiaFicticia1.getVitalidad().setVida(0);
-		((Unidad) copiaFicticia1).setDaño("0");//TODO casteo temporal
+		Danio danio0 = new Danio("0A0T");
+		((Unidad) copiaFicticia1).setDaño(danio0);//TODO casteo temporal
 	
 		Posicion posicionFicticia2 = new Posicion(posX-1,posY);
 		ElementoArtificial copiaFicticia2 = (ElementoArtificial)copiaFicticia1.clone();
 		copiaFicticia2.setPosicion(posicionFicticia2);
 		copiaFicticia2.getVitalidad().setVida(0);	
-		((Unidad) copiaFicticia2).setDaño("0");//TODO casteo temporal
+		((Unidad) copiaFicticia2).setDaño(danio0);//TODO casteo temporal
 	
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);

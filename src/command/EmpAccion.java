@@ -5,6 +5,7 @@ import strategy.ContextoStrategy;
 import strategy.Emp;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -35,7 +36,7 @@ public class EmpAccion implements Accion {
 			throws FactoryInvalidaException, UnidadInvalidaException,
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
-			FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+			FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		elemento.realizarAccion(new ContextoStrategy(new Emp()), posicionDestino);
 		
 	}

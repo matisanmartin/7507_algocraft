@@ -15,6 +15,7 @@ import strategy.ContextoStrategy;
 import common.Posicion;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -86,10 +87,11 @@ public class AlucinacionTest {
 	 * @throws UnidadLlenaException 
 	 * @throws PoblacionFaltanteException 
 	 * @throws RecursosFaltantesException 
+	 * @throws DanioInvalidoException 
 	 */
 	@Test
 	public void testAlucinacionCreaUnidadesGemelasYEnemigoEstaEnRango() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		try {
 			unidadAtacante.setEnergia(100);
@@ -123,10 +125,11 @@ public class AlucinacionTest {
 	 * @throws UnidadLlenaException 
 	 * @throws PoblacionFaltanteException 
 	 * @throws RecursosFaltantesException 
+	 * @throws DanioInvalidoException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testAlucinacionCreaUnidadesEnemigoNoEstaEnRango() 
-	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		unidadAtacante.setEnergia(100);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaFueraDeRango);
 	}
@@ -142,10 +145,11 @@ public class AlucinacionTest {
 	 * @throws UnidadLlenaException 
 	 * @throws PoblacionFaltanteException 
 	 * @throws RecursosFaltantesException 
+	 * @throws DanioInvalidoException 
 	 */
 	@Test(expected = EnergiaInsuficienteException.class)
 	public void testAlucinacionUnidadConEnergiaInsuficiente() 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 //		unidadAtacante.setVitalidad(new Vitalidad(150,0));
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
 	}

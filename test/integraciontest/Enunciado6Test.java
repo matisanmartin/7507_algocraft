@@ -23,11 +23,10 @@ import strategy.CrearNaveTransporteProtoss;
 import strategy.CrearNaveTransporteTerran;
 import strategy.CrearScout;
 import strategy.CrearZealot;
-
 import common.Posicion;
-
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -68,7 +67,7 @@ public class Enunciado6Test {
 	
 	}
 	@Test
-	public void testAumentoDePoblacionActualMarineOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualMarineOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(100);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -79,7 +78,7 @@ public class Enunciado6Test {
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
 		Posicion posMarine = new Posicion(1,2);
-		barraca.realizarAccion(contexto, posMarine);
+		extracted(contexto, barraca, posMarine);
 		int poblacionActual = jugadorTerran.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -88,7 +87,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualGolliatOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualGolliatOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(100);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -99,7 +98,7 @@ public class Enunciado6Test {
 		Posicion posFabrica = new Posicion(1,1);
 		ElementoArtificial fabrica = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_FABRICA, posFabrica);
 		Posicion posGolliat = new Posicion(1,2);
-		fabrica.realizarAccion(contexto, posGolliat);
+		extracted(contexto, fabrica, posGolliat);
 		int poblacionActual = jugadorTerran.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -107,7 +106,7 @@ public class Enunciado6Test {
 		assertEquals(golliat.getSuministro(), poblacionActual);
 	}
 	@Test
-	public void testAumentoDePoblacionActualEspectroOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualEspectroOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(100);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -118,7 +117,7 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posEspectro = new Posicion(1,2);
-		puertoEstelar.realizarAccion(contexto, posEspectro);
+		extracted(contexto, puertoEstelar, posEspectro);
 		int poblacionActual = jugadorTerran.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -127,7 +126,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualNaveDeTransporteTerranOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualNaveDeTransporteTerranOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(100);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -138,16 +137,29 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posNaveDeTransporte = new Posicion(1,2);
-		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
+		extracted(contexto, puertoEstelar, posNaveDeTransporte);
 		int poblacionActual = jugadorTerran.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
 		Unidad naveDeTransporte = (Unidad) jugadorTerran.obtenerArmada().obtenerElementoEnPosicion(posNaveDeTransporte);
 		assertEquals(naveDeTransporte.getSuministro(), poblacionActual);
 	}
+	private void extracted(ContextoStrategy contexto,
+			ElementoArtificial puertoEstelar, Posicion posNaveDeTransporte)
+			throws FactoryInvalidaException, UnidadInvalidaException,
+			FueraDeRangoException, ElementoInvalidoException,
+			PosicionInvalidaException, ElementoNoEncontradoException,
+			FueraDeRangoDeVisionException, EnergiaInsuficienteException,
+			CostoInvalidoException, RecursosInsuficientesException,
+			CloneNotSupportedException, FinDePartidaException,
+			PartidaGanadaException, PartidaPerdidaException,
+			UnidadLlenaException, RecursosFaltantesException,
+			PoblacionFaltanteException, DanioInvalidoException {
+		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
+	}
 	
 	@Test
-	public void testAumentoDePoblacionActualNaveDeCienciaOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualNaveDeCienciaOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(100);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -158,7 +170,7 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posNaveDeCiencia = new Posicion(1,2);
-		puertoEstelar.realizarAccion(contexto, posNaveDeCiencia);
+		extracted(contexto, puertoEstelar, posNaveDeCiencia);
 		int poblacionActual = jugadorTerran.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -167,7 +179,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualTerranOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualTerranOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(100);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -178,7 +190,7 @@ public class Enunciado6Test {
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
 		Posicion posMarine = new Posicion(1,2);
-		barraca.realizarAccion(contexto, posMarine);
+		extracted(contexto, barraca, posMarine);
 		int poblacionActual = jugadorTerran.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -190,7 +202,7 @@ public class Enunciado6Test {
 		Posicion posFabrica = new Posicion(2,2);
 		ElementoArtificial fabrica = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_FABRICA, posFabrica);
 		Posicion posGolliat = new Posicion(2,3);
-		fabrica.realizarAccion(contexto, posGolliat);
+		extracted(contexto, fabrica, posGolliat);
 		poblacionActual = jugadorTerran.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -200,7 +212,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualProtossOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualProtossOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(100);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -211,7 +223,7 @@ public class Enunciado6Test {
 		Posicion posAcceso = new Posicion(3,3);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
 		Posicion posZealot = new Posicion(3,2);
-		acceso.realizarAccion(contexto, posZealot);
+		extracted(contexto, acceso, posZealot);
 		int poblacionActual = jugadorProtoss.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -221,7 +233,7 @@ public class Enunciado6Test {
 		//Creo un Dragon
 		contexto = new ContextoStrategy(new CrearDragon());
 		Posicion posDragon = new Posicion(3,4);
-		acceso.realizarAccion(contexto, posDragon);
+		extracted(contexto, acceso, posDragon);
 		poblacionActual = jugadorProtoss.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -231,7 +243,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualZealotOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualZealotOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(100);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -242,7 +254,7 @@ public class Enunciado6Test {
 		Posicion posAcceso = new Posicion(3,3);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
 		Posicion posZealot = new Posicion(3,2);
-		acceso.realizarAccion(contexto, posZealot);
+		extracted(contexto, acceso, posZealot);
 		int poblacionActual = jugadorProtoss.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -251,7 +263,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualDragonOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualDragonOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(100);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -262,7 +274,7 @@ public class Enunciado6Test {
 		Posicion posAcceso = new Posicion(3,3);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
 		Posicion posDragon = new Posicion(3,2);
-		acceso.realizarAccion(contexto, posDragon);
+		extracted(contexto, acceso, posDragon);
 		int poblacionActual = jugadorProtoss.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -270,7 +282,7 @@ public class Enunciado6Test {
 		assertEquals(dragon.getSuministro(), poblacionActual);
 	}
 	@Test
-	public void testAumentoDePoblacionActualScoutOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualScoutOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(100);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -281,7 +293,7 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(3,3);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posScout = new Posicion(3,2);
-		puertoEstelar.realizarAccion(contexto, posScout);
+		extracted(contexto, puertoEstelar, posScout);
 		int poblacionActual = jugadorProtoss.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -290,7 +302,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualNaveDeTransporteProtossOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualNaveDeTransporteProtossOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(100);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -301,7 +313,7 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(3,3);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posNaveDeTransporte = new Posicion(3,2);
-		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
+		extracted(contexto, puertoEstelar, posNaveDeTransporte);
 		int poblacionActual = jugadorProtoss.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
@@ -310,7 +322,7 @@ public class Enunciado6Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionActualAltoTemplariosOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testAumentoDePoblacionActualAltoTemplariosOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(100);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -321,7 +333,7 @@ public class Enunciado6Test {
 		Posicion posArchivosTemplarios = new Posicion(3,3);
 		ElementoArtificial archivosTemplarios = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posArchivosTemplarios);
 		Posicion posAltoTemplario = new Posicion(3,2);
-		archivosTemplarios.realizarAccion(contexto, posAltoTemplario);
+		extracted(contexto, archivosTemplarios, posAltoTemplario);
 		int poblacionActual = jugadorProtoss.getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento

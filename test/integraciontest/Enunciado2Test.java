@@ -18,6 +18,7 @@ import strategy.TormentaPsionica;
 import common.Posicion;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -86,7 +87,7 @@ public class Enunciado2Test {
 	}
 	
 	@Test
-	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		//El templario debe lanzar tormenta psionica que requiere energia 75
 		//Con pasar 2 turnos, deberia llegar a 80, la energía necesaria
@@ -133,7 +134,7 @@ public class Enunciado2Test {
 	}
 	
 	@Test
-	public void testNumero2bEnunciado() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException{
+	public void testNumero2bEnunciado() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException{
 		
 		//Dejo pasar los turnos para que alcance la energia	
 		JuegoController.getInstancia().cambiarTurno();//enemigo
@@ -144,7 +145,6 @@ public class Enunciado2Test {
 		//situo una unidad propia
 		Posicion posicionZealot= new Posicion(5,5);
 		Unidad zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
-		zealot.setRangoAtaque("2");//TODO msma: borrar luego y cambiarlo cuando se agrege Rango
 		zealot.setVision(4);//TODO msma: modificar leugo cuando se agregue Vision
 		
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(zealot);

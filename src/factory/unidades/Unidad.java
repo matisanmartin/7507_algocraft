@@ -11,9 +11,12 @@ import strategy.ContextoStrategy;
 import command.Accion;
 import command.AtaqueAccion;
 import common.Costo;
+import common.Danio;
 import common.Posicion;
+import common.RangoAtaque;
 import common.Vitalidad;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -35,15 +38,13 @@ public class Unidad extends ElementoArtificial {
 	private int transporte;
 	private int vision;
 	private int tiempoConstruccion;
-	private String daño;
-//	private int daño;
+	private Danio daño;
 	private int suministro;
-	private String rangoAtaque;
+	private RangoAtaque rangoAtaque;
 	List<Unidad> unidadesTransportadas;
 
 
-	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, 
-			String daño, int suministro,String rangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
+	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, Danio daño, int suministro,RangoAtaque unidadMarineRangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
 		super(alto, ancho, posicion,espacio);
 		setTransporte(transporte);
 		setVision(vision);
@@ -51,7 +52,7 @@ public class Unidad extends ElementoArtificial {
 		setTiempoConstruccion(tiempoConstruccion);
 		setDaño(daño);
 		setSuministro(suministro);
-		setRangoAtaque(rangoAtaque);
+		setRangoAtaque(unidadMarineRangoAtaque);
 		setVitalidad(vida);
 		this.definirAccionesDisponibles();
 		unidadesTransportadas=new ArrayList<Unidad>();
@@ -84,11 +85,11 @@ public class Unidad extends ElementoArtificial {
 		this.tiempoConstruccion = tiempoConstruccion;
 	}
 
-	public String getDaño() {
+	public Danio getDaño() {
 		return daño;
 	}
 
-	public void setDaño(String daño) {
+	public void setDaño(Danio daño) {
 		this.daño = daño;
 	}
 
@@ -100,17 +101,17 @@ public class Unidad extends ElementoArtificial {
 		this.suministro = suministro;
 	}
 
-	public String getRangoAtaque() {
+	public RangoAtaque getRangoAtaque() {
 		return rangoAtaque;
 	}
 
-	public void setRangoAtaque(String rangoAtaque) {
-		this.rangoAtaque = rangoAtaque;
+	public void setRangoAtaque(RangoAtaque unidadMarineRangoAtaque) {
+		this.rangoAtaque = unidadMarineRangoAtaque;
 	}
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws UnidadLlenaException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, DanioInvalidoException, CloneNotSupportedException, RecursosFaltantesException, PoblacionFaltanteException {
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	
@@ -141,10 +142,4 @@ public class Unidad extends ElementoArtificial {
 		return unidadesTransportadas.size();
 	}
 	
-	@Override
-	public int sumarPoblacion(){
-		return this.getSuministro();
-	}
-
-
 }

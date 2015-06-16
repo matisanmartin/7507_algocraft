@@ -18,10 +18,13 @@ import strategy.CrearZealot;
 import strategy.Emp;
 import strategy.Mover;
 import strategy.Radiacion;
+
 import common.Posicion;
 import common.Vitalidad;
+
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -41,7 +44,6 @@ import exceptions.UnidadLlenaException;
 import factory.AbstractFactory;
 import factory.EdificioFactory;
 import factory.construcciones.TipoEdificio;
-import factory.unidades.Unidad;
 /**
  * Simular, jugar y ganar/perder una partida
  *
@@ -73,7 +75,7 @@ public class Enunciado8Test {
 
 	
 	@Test(expected = PartidaGanadaException.class)
-	public void testPartidaGanada() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testPartidaGanada() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		factoryEdificio = new EdificioFactory();
 		//El jugador crea una barraca
@@ -114,9 +116,7 @@ public class Enunciado8Test {
 		ElementoArtificial zealotObt = JuegoController.getInstancia()
 														.obtenerArmadaJugadorActual()
 														.obtenerElementoEnPosicion(posicionNuevoZealot);
-		((Unidad)zealotObt).setDaño("8");//TODO cambiar luego
-		((Unidad)zealotObt).setRangoAtaque("1");
-		
+
 		contexto = new ContextoStrategy(new Mover());
 		zealotObt.realizarAccion(contexto, proximaPosicionZealot);
 		
@@ -128,7 +128,7 @@ public class Enunciado8Test {
 		zealotObtDeNuevo.realizarAccion(contexto, posicionNuevoMarine);
 		
 		//verifico que le quite vida
-		assertEquals(32,JuegoController.getInstancia()
+		assertEquals(34,JuegoController.getInstancia()
 										.obtenerArmadaJugadorEnemigo()
 										.obtenerElementoEnPosicion(posicionNuevoMarine)
 										.getVida());
@@ -194,7 +194,7 @@ public class Enunciado8Test {
 	}
 	
 	@Test(expected = PartidaPerdidaException.class)
-	public void testPartidaPerdida() throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	public void testPartidaPerdida() throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		//El test se medio rudimentario pero no se me ocurrio otra forma de simular una partida perdida
 		//salvo que la accion sea un """suicidio"""
 		

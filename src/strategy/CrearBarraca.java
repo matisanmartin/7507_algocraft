@@ -26,7 +26,6 @@ public class CrearBarraca implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial barraca = factory.getEdificio(TipoEdificio.TERRAN_BARRACA, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(barraca);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(barraca);
 		
 	}

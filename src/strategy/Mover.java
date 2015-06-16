@@ -2,10 +2,8 @@ package strategy;
 
 import model.CampoBatalla;
 import model.ElementoArtificial;
-
 import common.Posicion;
 import common.Vitalidad;
-
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -14,6 +12,7 @@ import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
@@ -27,7 +26,7 @@ public class Mover implements Strategy {
 			ElementoInvalidoException, PosicionInvalidaException,
 			ElementoNoEncontradoException, FueraDeRangoDeVisionException,
 			EnergiaInsuficienteException, CostoInvalidoException,
-			RecursosInsuficientesException, CloneNotSupportedException {
+			RecursosInsuficientesException, CloneNotSupportedException, PoblacionFaltanteException {
 		
 		
 		ElementoArtificial copia = (ElementoArtificial) elementoActuante.clone();

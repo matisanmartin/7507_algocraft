@@ -26,7 +26,6 @@ public class CrearAsimilador implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial asimilador = factory.getEdificio(TipoEdificio.PROTOSS_ASIMILADOR, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(asimilador);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(asimilador);
 		
 	}

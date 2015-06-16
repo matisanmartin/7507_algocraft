@@ -26,7 +26,6 @@ public class CrearArchivosTemplarios implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial archivosTemplarios = factory.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(archivosTemplarios);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(archivosTemplarios);
 		
 	}

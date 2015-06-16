@@ -26,7 +26,6 @@ public class CrearCentroDeMineral implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial centroDeMineral = factory.getEdificio(TipoEdificio.TERRAN_CENTRO_MINERAL, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(centroDeMineral);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(centroDeMineral);
 		
 	}

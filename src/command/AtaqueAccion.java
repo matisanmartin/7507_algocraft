@@ -5,6 +5,7 @@ import strategy.Ataque;
 import strategy.ContextoStrategy;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -34,7 +35,7 @@ public class AtaqueAccion implements Accion {
 			throws FactoryInvalidaException, UnidadInvalidaException,
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
-			FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+			FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		elemento.realizarAccion(new ContextoStrategy(new Ataque()), posicionDestino);
 		
 	}

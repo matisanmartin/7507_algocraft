@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import common.Danio;
+import common.RangoAtaque;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
@@ -38,6 +41,13 @@ public class Espacio {
 	}
 	public List<Elemento> obtenerElementosDeCampoDeBatalla() throws PosicionInvalidaException, FueraDeRangoException {
 		return null;
+	}
+	
+	public int getDaño(Danio daño) {
+		return 0;
+	}
+	public int getRangoDeAtaque(RangoAtaque rangoAtaque) {
+		return 0;
 	}
 
 }

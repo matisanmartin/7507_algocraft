@@ -26,7 +26,6 @@ public class CrearAcceso implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial acceso = factory.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(acceso);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(acceso);
 		
 	}

@@ -26,7 +26,6 @@ public class CrearNexoMineral implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial nexoMineral = factory.getEdificio(TipoEdificio.PROTOSS_NEXO_MINERAL, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(nexoMineral);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(nexoMineral);
 		
 	}

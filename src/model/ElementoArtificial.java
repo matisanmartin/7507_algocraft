@@ -9,6 +9,7 @@ import command.AtaqueAccion;
 import common.Costo;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -72,7 +73,7 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException;
+			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException;
 
 	public Map<String,Accion> getAccionesDisponibles() {
 		return accionesDisponibles;
@@ -127,9 +128,8 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 
 	public abstract int getCantidadDeUnidadesTransportadas();
 	
-	public int sumarPoblacion() { //el elemento pasa a ser parte de la poblacion actual, aumenta la poblacion actual
-		return 0;
-	}
+	public abstract int getSuministro();  //el elemento pasa a ser parte de la poblacion actual, aumenta la poblacion actual
+
 	
 	public int restarPoblacion() { //el elemento deja de ser parte de la poblacion actual, resta a la poblacion actual
 		return 0;

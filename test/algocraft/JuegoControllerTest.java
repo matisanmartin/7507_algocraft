@@ -13,8 +13,10 @@ import org.junit.runners.JUnit4;
 
 import razas.Protoss;
 import razas.Terran;
+
 import common.Posicion;
 import common.Vitalidad;
+
 import controller.JuegoController;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
@@ -53,6 +55,12 @@ public class JuegoControllerTest {
 		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
 		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
 		
+		jugadorActual.setGas(150);
+		jugadorActual.setMinerales(50);
+		
+		jugadorEnemigo.setGas(50);
+
+		
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
 		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadActual);
@@ -80,7 +88,7 @@ public class JuegoControllerTest {
 	@Test(expected = PartidaGanadaException.class)
 	public void testVerificarPartidaFinalizadaJugadorEnemigoTieneUnaUnidadSolaUnidadConVida0() 
 	throws FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
-		JuegoController.getInstancia().verificarFinDePartida();	
+			JuegoController.getInstancia().verificarFinDePartida();	
 	}
 	
 	//Este test no tiene assert, pues el exito es que no tire excepcion

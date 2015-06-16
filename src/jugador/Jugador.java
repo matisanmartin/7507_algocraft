@@ -143,7 +143,7 @@ public class Jugador {
 	public void validarCreacion(ElementoArtificial elemento) throws PoblacionFaltanteException, RecursosInsuficientesException {
 		int costoMinerales = elemento.getCosto().getCostoMineral();
 		int costoGasVespeno = elemento.getCosto().getCostoGas();
-		int suministro = elemento.sumarPoblacion();
+		int suministro = elemento.getSuministro();
 		
 		if (this.cantidadDeCristal - costoMinerales < 0 || this.cantidadDeGas - costoGasVespeno < 0) {
 			throw new RecursosInsuficientesException();

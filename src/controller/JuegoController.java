@@ -14,6 +14,7 @@ import exceptions.FueraDeRangoException;
 import exceptions.NombreJugadorRepetidoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 
@@ -130,8 +131,28 @@ public class JuegoController {
 	}
 	
 	public void agregarUnidadAJugadorActual(ElementoArtificial elem) 
-	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException {
+	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, PoblacionFaltanteException {
+		
+		int cantidadDeCristal=getInstancia().getJugadorActual().getCantidadDeCristal();
+		int cantidadDeGas= getInstancia().getJugadorActual().getCantidadDeGas();
+		int costoMineral = elem.getCosto().getCostoMineral();
+		int costoGas = elem.getCosto().getCostoGas();
+		int poblacionActual = getInstancia().getJugadorActual().getPoblacionActual();
+		int poblacionDisponible = getInstancia().getJugadorActual().getPoblacionDisponible();
+		int suministro = elem.getSuministro();
+		
+		if (poblacionActual + suministro > poblacionDisponible) {
+			throw new PoblacionFaltanteException();
+		}
+		
+		if(cantidadDeCristal<costoMineral||cantidadDeGas<costoGas)
+				throw new RecursosInsuficientesException();
+		else{
 			getInstancia().getJugadorActual().agregarElemento(elem);
+			getInstancia().getJugadorActual().disminuirRecursos(elem.disminuirMineral(),elem.disminuirGas());
+			getInstancia().getJugadorActual().aumentarPoblacionActual(elem.getSuministro());
+		}
+			
 	}
 	
 	/**

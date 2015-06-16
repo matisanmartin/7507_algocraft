@@ -1,12 +1,14 @@
 package strategy;
-
 import java.util.List;
 import java.util.ListIterator;
 
 import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
+import model.Espacio;
+
 import common.Posicion;
+
 import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
@@ -38,17 +40,19 @@ public class Ataque implements Strategy {
 		
 		
 		ListIterator<Elemento> it = elementosAtacados.listIterator();
+		Espacio espacioUnidad = elementoActuante.obtenerEspacio();
 		
 		while(it.hasNext()) {
 			
 			Elemento elementoTemporal = it.next();
 			
-			if(elementoTemporal.getPosicion().equals(posicionDestino)){
-				String dañoAtaque=((Unidad)elementoActuante).getDaño();
-				int dañoAtaqueNum=Integer.parseInt(dañoAtaque);
+			if(elementoTemporal.getPosicion().equals(posicionDestino)) {
+				Espacio espacioTemporal = ((ElementoArtificial) elementoTemporal).obtenerEspacio();
 				
+				int dañoAtaqueNum=espacioTemporal.getDaño(((Unidad) elementoTemporal).getDaño());
+				int rangoAtaqueAtacante = espacioUnidad.getRangoDeAtaque(((Unidad) elementoActuante).getRangoAtaque());
 				//TODO msma: Test para distancia menor y test para distancia mayor
-				if(distancia<=Long.parseLong(((Unidad)elementoActuante).getRangoAtaque())){
+				if(distancia<=rangoAtaqueAtacante){
 					elementoTemporal.restarVitalidad(dañoAtaqueNum);
 					it.set(elementoTemporal);
 					//break;

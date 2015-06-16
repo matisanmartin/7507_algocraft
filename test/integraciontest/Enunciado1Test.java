@@ -17,6 +17,7 @@ import strategy.Emp;
 import common.Posicion;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -65,7 +66,7 @@ public class Enunciado1Test {
 
 	@Test
 	public void testNumero1aEnunciado() 
-	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		//Se construye una nave ciencia
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(naveCiencia);
@@ -117,7 +118,7 @@ public class Enunciado1Test {
 	
 	@Test
 	public void testNumero1bEnunciado() 
-	throws ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		//Se construye una nave ciencia
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(naveCiencia);
@@ -173,7 +174,7 @@ public class Enunciado1Test {
 	
 	@Test
 	public void testNumero1cEnunciado() 
-	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		//Se construye una nave ciencia
 		JuegoController.getInstancia().getJugadorActual().agregarElemento(naveCiencia);

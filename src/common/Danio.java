@@ -30,5 +30,9 @@ public class Danio {
 	public int getDanioT() {
 		return danioT;
 	}
+	
+	public boolean equals(Danio danio){
+		return (this.danioA==danio.getDanioA()&&this.danioT==danio.getDanioT());
+	}
 
 }

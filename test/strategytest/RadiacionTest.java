@@ -14,6 +14,7 @@ import strategy.Radiacion;
 import common.Posicion;
 import controller.JuegoController;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -103,10 +104,11 @@ public class RadiacionTest {
 	 * @throws UnidadLlenaException 
 	 * @throws PoblacionFaltanteException 
 	 * @throws RecursosFaltantesException 
+	 * @throws DanioInvalidoException 
 	 */
 	@Test
 	public void testAtacaElementoConUnidadADerecha() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		try {
 			Unidad unidadADerecha= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(3,4));
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadADerecha);
@@ -120,7 +122,7 @@ public class RadiacionTest {
 
 	@Test
 	public void testAtacaElementoConUnidadAIzquierda() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		try {
 			Unidad unidadAIzquierda= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1,4));
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadAIzquierda);
@@ -134,7 +136,7 @@ public class RadiacionTest {
 	
 	@Test
 	public void testAtacaElementoConUnidadDelante() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		try {
 			Unidad unidadDelante= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2,3));
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDelante);
@@ -148,7 +150,7 @@ public class RadiacionTest {
 	
 	@Test
 	public void testAtacaElementoConUnidadDetras() 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		try {
 			Unidad unidadDetras= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2,5));	
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDetras);
@@ -163,7 +165,7 @@ public class RadiacionTest {
 	
 	//@Test
 	public void testAtacaElementoConUnidadDetrasEIzquierda() 
-	throws UnidadInvalidaException, FueraDeRangoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws UnidadInvalidaException, FueraDeRangoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		Unidad unidadDetras= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(3,5));
 		Unidad unidadAIzquierda= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1,4));
 		

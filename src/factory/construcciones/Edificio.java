@@ -5,6 +5,7 @@ import model.ElementoArtificial;
 import model.EspacioTerrestre;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -41,7 +42,7 @@ public class Edificio extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto,Posicion posicionDestino) 
-	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException{
+	throws FactoryInvalidaException,UnidadInvalidaException, FueraDeRangoException,ElementoInvalidoException, PosicionInvalidaException,ElementoNoEncontradoException, FueraDeRangoDeVisionException,EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException{
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	
@@ -62,6 +63,11 @@ public class Edificio extends ElementoArtificial {
 	@Override
 	public int getCantidadDeUnidadesTransportadas() {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getSuministro() {
 		return 0;
 	}
 

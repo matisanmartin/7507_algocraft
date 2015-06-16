@@ -26,7 +26,6 @@ public class CrearDepositoSuministro implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial depositoSuministro = factory.getEdificio(TipoEdificio.TERRAN_DEPOSITO_SUMINISTROS, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().validarCreacion(depositoSuministro);
 		JuegoController.getInstancia().getJugadorActual().aumentarPoblacionDisponible(depositoSuministro.aumentoPoblacion());
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(depositoSuministro);
 		
