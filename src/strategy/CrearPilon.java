@@ -26,6 +26,7 @@ public class CrearPilon implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial pilon = factory.getEdificio(TipoEdificio.PROTOSS_PILON, posicionDestino);
+		JuegoController.getInstancia().getJugadorActual().aumentarPoblacionDisponible(pilon.aumentoPoblacion());
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(pilon);
 		
 	}

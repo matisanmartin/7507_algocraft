@@ -123,7 +123,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_SCOUT_COSTO = "300M150G";
 	public static final int 	UNIDAD_SCOUT_TIEMPO_CONSTRUCCION = 9;
 	public static final String 	UNIDAD_SCOUT_DAÑO = "14A8T";
-	public static final int 	UNIDAD_SCOUT_SUMINISTRO = 0;
+	public static final int 	UNIDAD_SCOUT_SUMINISTRO = 3;
 	public static final RangoAtaque	UNIDAD_SCOUT_RANGO_ATAQUE = new RangoAtaque(4,0);
 
 	
@@ -133,7 +133,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_COSTO = "50M150G";
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION = 7;
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_DAÑO = "0A0T";
-	public static final int 	UNIDAD_ALTO_TEMPLARIO_SUMINISTRO = 0;
+	public static final int 	UNIDAD_ALTO_TEMPLARIO_SUMINISTRO = 2;
 	public static final RangoAtaque	UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE = new RangoAtaque(0,0);
 
 	
@@ -143,7 +143,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO = "200M";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION = 8;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO = "0A0T";
-	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO = 0;
+	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE = new RangoAtaque(0,0);
 
 

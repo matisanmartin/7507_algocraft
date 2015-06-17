@@ -34,6 +34,9 @@ public class Jugador {
 	                             //la poblacion ganada se suma al exceso. Analogamente cuando se destruye una
 	
 	
+	public int getExcesoPoblacion() {
+		return excesoPoblacion;
+	}
 	public Jugador() {
 	}
 	public Jugador(String nombre,TipoColor color,Raza raza) 

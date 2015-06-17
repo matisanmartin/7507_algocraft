@@ -145,7 +145,7 @@ public class Enunciado6Test {
 		assertEquals(naveDeTransporte.getSuministro(), poblacionActual);
 	}
 	private void extracted(ContextoStrategy contexto,
-			ElementoArtificial puertoEstelar, Posicion posNaveDeTransporte)
+			ElementoArtificial elem, Posicion posUnidad)
 			throws FactoryInvalidaException, UnidadInvalidaException,
 			FueraDeRangoException, ElementoInvalidoException,
 			PosicionInvalidaException, ElementoNoEncontradoException,
@@ -155,7 +155,7 @@ public class Enunciado6Test {
 			PartidaGanadaException, PartidaPerdidaException,
 			UnidadLlenaException, RecursosFaltantesException,
 			PoblacionFaltanteException, DanioInvalidoException {
-		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
+		elem.realizarAccion(contexto, posUnidad);
 	}
 	
 	@Test
