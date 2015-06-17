@@ -10,7 +10,7 @@ import common.Posicion;
 import exceptions.FueraDeRangoException;
 import factory.BaseFactory;
 
-public class BasesFactory {
+public class BasesFactoryTest {
 	
 	BaseFactory factory;
 	Base base;

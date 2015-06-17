@@ -88,8 +88,8 @@ public class RadiacionTest {
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		try {
 			unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
-			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 		} catch (Exception e) {
+			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 		}
 	}
 	
@@ -113,10 +113,11 @@ public class RadiacionTest {
 			Unidad unidadADerecha= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(3,4));
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadADerecha);
 			unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);	
+			
+		} catch (PartidaGanadaException e) {
 			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
 			JuegoController.getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(new Posicion(3,4));
-		} catch (PartidaGanadaException e) {
 		}
 	}
 
@@ -127,10 +128,11 @@ public class RadiacionTest {
 			Unidad unidadAIzquierda= factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1,4));
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadAIzquierda);
 			unidadAtacante.realizarAccion(contexto, posicionUnidadAtacadaEnRango);
-			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
-			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
 			//JuegoController.getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(new Posicion(1,4));
 		} catch (PartidaGanadaException e) {
+			
+			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+			assertEquals(0,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(1).getVida());
 		}
 	}
 	

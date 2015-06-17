@@ -67,20 +67,6 @@ public class CampoBatallaTest {
 	}
 	
 	
-	//TODO msma: Comente este test temporalmente
-//	@Test
-//	public void testPosicionarMarine() {
-//		
-//		CampoBatalla.getInstancia().agregarElemento(factory.getUnidad(TipoUnidad.TERRAN_MARINE));
-//		
-//		List<Elemento> elementos = CampoBatalla.getInstancia().getElementos();
-//		
-//		Marine marine = (Marine) elementos.get(0);
-//		
-//		assertEquals(Constantes.UNIDAD_MARINE_VIDA, marine.getVida());
-//
-//	}
-	
 	@Test
 	public void alCrearseDebeTenerCuatroBases() throws PosicionInvalidaException, FueraDeRangoException{
 		CampoBatalla campo = CampoBatalla.getInstancia();

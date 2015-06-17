@@ -99,7 +99,6 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO)));
-		Danio danio = unidad.getDanio();
 		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO, unidad.getSuministro());

@@ -98,16 +98,18 @@ public class AlucinacionTest {
 			unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
 			
 			
-			JuegoController.getInstancia()
-						   .getJugadorActual()
-						   .obtenerArmada()
-						   .obtenerElementoEnPosicion(new Posicion(3,2));
+			
+		} catch (PartidaGanadaException e) {
 			
 			JuegoController.getInstancia()
-						   .getJugadorActual()
-						   .obtenerArmada()
-						   .obtenerElementoEnPosicion(new Posicion(1,2));
-		} catch (PartidaGanadaException e) {
+			   .getJugadorActual()
+			   .obtenerArmada()
+			   .obtenerElementoEnPosicion(new Posicion(3,2));
+
+			JuegoController.getInstancia()
+			   .getJugadorActual()
+			   .obtenerArmada()
+			   .obtenerElementoEnPosicion(new Posicion(1,2));
 
 		}
 		

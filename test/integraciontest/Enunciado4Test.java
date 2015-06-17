@@ -179,11 +179,12 @@ public class Enunciado4Test {
 		{
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
 			unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
-			
-			assertEquals(114,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
+						
 		}
 		catch(PartidaPerdidaException pge)
-		{}
+		{
+			assertEquals(120,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		}
 	}
 
 	@Test(expected = FueraDeRangoDeVisionException.class)
@@ -197,8 +198,6 @@ public class Enunciado4Test {
 
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
-		
-		assertEquals(120,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 	}
 
 	@Test
@@ -210,15 +209,13 @@ public class Enunciado4Test {
 		posicionEnRango = new Posicion(1,2);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, posicionEnRango);
 		
-		try
-		{
+		try{
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
-			unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
-			
-			assertEquals(194,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
+			unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());		
 		}
-		catch(PartidaPerdidaException pge)
-		{}
+		catch(PartidaPerdidaException pge){
+			assertEquals(200,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		}
 	}
 
 	@Test(expected = FueraDeRangoDeVisionException.class)
@@ -232,8 +229,6 @@ public class Enunciado4Test {
 
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
-		
-		assertEquals(200,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 	}
 	
 	@Test
@@ -245,15 +240,13 @@ public class Enunciado4Test {
 		posicionEnRango = new Posicion(1,2);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posicionEnRango);
 		
-		try
-		{
+		try{
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
-			unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
-			
-			assertEquals(144,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
+			unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());			
 		}
-		catch(PartidaPerdidaException pge)
-		{}
+		catch(PartidaPerdidaException pge){
+			assertEquals(150,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		}
 	}
 
 	@Test(expected = FueraDeRangoDeVisionException.class)
@@ -267,8 +260,6 @@ public class Enunciado4Test {
 
 		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
 		unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
-		
-		assertEquals(150,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 	}
 
 }

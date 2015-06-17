@@ -96,10 +96,12 @@ public class AtacarTest {
 			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
 			unidadAtacante.realizarAccion(contexto,JuegoController.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 			
-			assertEquals(54,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
+					
 		}
-		catch(PartidaPerdidaException pge)
-		{}
+		catch(PartidaPerdidaException ppe)
+		{
+			assertEquals(52,JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());
+		}
 		
 	}
 
