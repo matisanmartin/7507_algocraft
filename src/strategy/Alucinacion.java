@@ -56,14 +56,14 @@ public class Alucinacion implements Strategy {
 		ElementoArtificial copiaFicticia1 = (ElementoArtificial) elementoCopiado.clone();
 		copiaFicticia1.setPosicion(posicionFicticia1);
 		copiaFicticia1.getVitalidad().setVida(0);
-		Danio danio0 = new Danio("0A0T");
-		((Unidad) copiaFicticia1).setDaño(danio0);//TODO casteo temporal
+		Danio danioNulo = new Danio("0A0T");
+		((Unidad) copiaFicticia1).setDanio(danioNulo);//TODO casteo temporal
 	
 		Posicion posicionFicticia2 = new Posicion(posX-1,posY);
 		ElementoArtificial copiaFicticia2 = (ElementoArtificial)copiaFicticia1.clone();
 		copiaFicticia2.setPosicion(posicionFicticia2);
 		copiaFicticia2.getVitalidad().setVida(0);	
-		((Unidad) copiaFicticia2).setDaño(danio0);//TODO casteo temporal
+		((Unidad) copiaFicticia2).setDanio(danioNulo);//TODO casteo temporal
 	
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
 		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);

@@ -49,11 +49,11 @@ public class Ataque implements Strategy {
 			if(elementoTemporal.getPosicion().equals(posicionDestino)) {
 				Espacio espacioTemporal = ((ElementoArtificial) elementoTemporal).obtenerEspacio();
 				
-				int dañoAtaqueNum=espacioTemporal.getDaño(((Unidad) elementoTemporal).getDaño());
+				int danioAtaqueNum=espacioTemporal.getDanio(((Unidad) elementoTemporal).getDanio());
 				int rangoAtaqueAtacante = espacioUnidad.getRangoDeAtaque(((Unidad) elementoActuante).getRangoAtaque());
 				//TODO msma: Test para distancia menor y test para distancia mayor
 				if(distancia<=rangoAtaqueAtacante){
-					elementoTemporal.restarVitalidad(dañoAtaqueNum);
+					elementoTemporal.restarVitalidad(danioAtaqueNum);
 					it.set(elementoTemporal);
 					//break;
 				}

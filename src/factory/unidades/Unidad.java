@@ -38,19 +38,19 @@ public class Unidad extends ElementoArtificial {
 	private int transporte;
 	private int vision;
 	private int tiempoConstruccion;
-	private Danio daño;
+	private Danio danio;
 	private int suministro;
 	private RangoAtaque rangoAtaque;
 	List<Unidad> unidadesTransportadas;
 
 
-	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, Danio daño, int suministro,RangoAtaque unidadMarineRangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
+	public Unidad(int transporte, int vision, Costo costo, int tiempoConstruccion, Danio danio, int suministro,RangoAtaque unidadMarineRangoAtaque, Vitalidad vida,int alto, int ancho, Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
 		super(alto, ancho, posicion,espacio);
 		setTransporte(transporte);
 		setVision(vision);
 		setCosto(costo);
 		setTiempoConstruccion(tiempoConstruccion);
-		setDaño(daño);
+		setDanio(danio);
 		setSuministro(suministro);
 		setRangoAtaque(unidadMarineRangoAtaque);
 		setVitalidad(vida);
@@ -85,12 +85,12 @@ public class Unidad extends ElementoArtificial {
 		this.tiempoConstruccion = tiempoConstruccion;
 	}
 
-	public Danio getDaño() {
-		return daño;
+	public Danio getDanio() {
+		return danio;
 	}
 
-	public void setDaño(Danio daño) {
-		this.daño = daño;
+	public void setDanio(Danio danio) {
+		this.danio = danio;
 	}
 
 	public int getSuministro() {

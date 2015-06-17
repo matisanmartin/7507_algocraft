@@ -10,17 +10,17 @@ public class Vitalidad {
 		this.escudo=escudo;
 	}
 	
-	public void restarVitalidad(int daño){
+	public void restarVitalidad(int danio){
 		
 		if(getEscudo()==0){
-			setVida(getVida()-daño);
+			setVida(getVida()-danio);
 		}
-		else if(escudo<daño){
+		else if(escudo<danio){
 			setEscudo(0);
-			setVida(getVida()-(daño-getEscudo()));
+			setVida(getVida()-(danio-getEscudo()));
 		}
 		else
-			setEscudo(getEscudo()-daño);
+			setEscudo(getEscudo()-danio);
 	}
 
 	public void setEscudo(int i) {

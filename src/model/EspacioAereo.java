@@ -22,8 +22,8 @@ public class EspacioAereo extends Espacio{
 	}
 	
 	@Override
-	public int getDaño(Danio daño) {
-		return daño.getDanioA();
+	public int getDanio(Danio danio) {
+		return danio.getDanioA();
 	}
 	
 	@Override

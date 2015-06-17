@@ -47,7 +47,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_MARINE_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_MARINE_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_MARINE_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_MARINE_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_MARINE_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_SUMINISTRO, unidad.getSuministro());
 		assertEquals(40, unidad.getVida());
@@ -60,7 +60,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_GOLLIAT_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_GOLLIAT_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_GOLLIAT_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_GOLLIAT_SUMINISTRO, unidad.getSuministro());
 		assertEquals(125, unidad.getVida());
@@ -73,7 +73,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_ESPECTRO_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_ESPECTRO_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_ESPECTRO_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_ESPECTRO_SUMINISTRO, unidad.getSuministro());
 		assertEquals(120, unidad.getVida());
@@ -86,7 +86,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_NAVE_CIENCIA_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_NAVE_CIENCIA_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_NAVE_CIENCIA_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_CIENCIA_SUMINISTRO, unidad.getSuministro());
 		assertEquals(200, unidad.getVida());
@@ -99,8 +99,8 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO)));
-		Danio danio = unidad.getDaño();
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO)));
+		Danio danio = unidad.getDanio();
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO, unidad.getSuministro());
 		assertEquals(150, unidad.getVida());
@@ -113,7 +113,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_ZEALOT_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_ZEALOT_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_ZEALOT_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_ZEALOT_SUMINISTRO, unidad.getSuministro());
 		assertEquals(100, unidad.getVida());
@@ -126,7 +126,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_VISION, unidad.getVision());
 		assertEquals(true, (unidad.getCosto()).equals(new Costo(UnidadFactory.UNIDAD_DRAGON_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_DRAGON_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_DRAGON_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_DRAGON_SUMINISTRO, unidad.getSuministro());
 		assertEquals(100, unidad.getVida());
@@ -139,7 +139,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_SCOUT_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_SCOUT_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_SCOUT_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_SCOUT_SUMINISTRO, unidad.getSuministro());
 		assertEquals(150, unidad.getVida());
@@ -152,7 +152,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_ALTO_TEMPLARIO_SUMINISTRO, unidad.getSuministro());
 		assertEquals(40, unidad.getVida());
@@ -165,7 +165,7 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_TRANSPORTE, unidad.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO)));
-		assertEquals(true, unidad.getDaño().equals(new Danio(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO)));
+		assertEquals(true, unidad.getDanio().equals(new Danio(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO)));
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE, unidad.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO, unidad.getSuministro());
 		assertEquals(80, unidad.getVida());

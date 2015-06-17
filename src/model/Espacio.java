@@ -43,7 +43,7 @@ public class Espacio {
 		return null;
 	}
 	
-	public int getDaño(Danio daño) {
+	public int getDanio(Danio danio) {
 		return 0;
 	}
 	public int getRangoDeAtaque(RangoAtaque rangoAtaque) {

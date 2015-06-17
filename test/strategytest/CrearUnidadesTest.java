@@ -94,7 +94,7 @@ public class CrearUnidadesTest {
 		assertEquals(7, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("100M")));
 		assertEquals(4, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("0A8T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("0A8T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(0,1).equals(unidad.getRangoAtaque()));
 		assertEquals(true, unidad.getVitalidad().equals(new Vitalidad(100,60)));
 	}
@@ -116,7 +116,7 @@ public class CrearUnidadesTest {
 		assertEquals(7, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("50M150G")));
 		assertEquals(7, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("0A0T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("0A0T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(0,0).equals(unidad.getRangoAtaque()));
 		assertEquals(true, unidad.getVitalidad().equals(new Vitalidad(40,40)));	
 		
@@ -140,7 +140,7 @@ public class CrearUnidadesTest {
 		assertEquals(7, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("50M")));
 		assertEquals(3, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("6A6T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("6A6T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(0,4).equals(unidad.getRangoAtaque()));
 		assertEquals(40, unidad.getVida());	
 
@@ -163,7 +163,7 @@ public class CrearUnidadesTest {
 		assertEquals(8, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("100M50G")));
 		assertEquals(6, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("10A12T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("10A12T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(5,6).equals(unidad.getRangoAtaque()));
 		assertEquals(125, unidad.getVida());	
 	}
@@ -195,7 +195,7 @@ public class CrearUnidadesTest {
 		assertEquals(7, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("300M150G")));
 		assertEquals(9, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("14A8T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("14A8T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(4,0).equals(unidad.getRangoAtaque()));
 		assertEquals(true, unidad.getVitalidad().equals(new Vitalidad(150,100)));	
 
@@ -218,7 +218,7 @@ public class CrearUnidadesTest {
 		assertEquals(8, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("200M")));
 		assertEquals(8, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("0A0T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("0A0T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(0,0).equals(unidad.getRangoAtaque()));
 		assertEquals(true, unidad.getVitalidad().equals(new Vitalidad(80,60)));	
 		
@@ -240,7 +240,7 @@ public class CrearUnidadesTest {
 		assertEquals(7, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("150M100G")));
 		assertEquals(8, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("20A8T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("20A8T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(5,0).equals(unidad.getRangoAtaque()));
 		assertEquals(120, unidad.getVida());	
 		
@@ -262,7 +262,7 @@ public class CrearUnidadesTest {
 		assertEquals(8, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("100M100G")));
 		assertEquals(7, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("0A0T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("0A0T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(0,0).equals(unidad.getRangoAtaque()));
 		assertEquals(150, unidad.getVida());	
 	}
@@ -280,7 +280,7 @@ public class CrearUnidadesTest {
 		assertEquals(10, unidad.getVision());
 		assertEquals(true, unidad.getCosto().equals(new Costo("100M225G")));
 		assertEquals(10, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("0A0T").equals(unidad.getDaño()));
+		assertEquals(true, new Danio("0A0T").equals(unidad.getDanio()));
 		assertEquals(true, new RangoAtaque(0,0).equals(unidad.getRangoAtaque()));
 		assertEquals(200, unidad.getVida());	
 

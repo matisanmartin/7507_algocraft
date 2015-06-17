@@ -74,8 +74,8 @@ public abstract class Elemento {
 		return vitalidad;
 	}
 	
-	public void restarVitalidad(int daño) {
-		getVitalidad().restarVitalidad(daño);
+	public void restarVitalidad(int danio) {
+		getVitalidad().restarVitalidad(danio);
 
 		
 	}

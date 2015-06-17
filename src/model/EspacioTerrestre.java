@@ -22,8 +22,8 @@ public class EspacioTerrestre extends Espacio {
 	}
 	
 	@Override
-	public int getDaño(Danio daño) {
-		return daño.getDanioT();
+	public int getDanio(Danio danio) {
+		return danio.getDanioT();
 	}
 	
 	//TODO jl:agregado provisoriamente
