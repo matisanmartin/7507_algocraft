@@ -90,14 +90,13 @@ public class RecursosValidosTest {
 	public void testRecursosInsuficientesMarine() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(100);
-		jugadorTerran.setMinerales(150);	
+		jugadorTerran.setMinerales(49);	
 		jugadorTerran.setGas(0);
 		
 		//Creo un Marine
 		ContextoStrategy contexto = new ContextoStrategy(new CrearMarine());
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(barraca);
 		Posicion posMarine = new Posicion(1,2);
 		barraca.realizarAccion(contexto, posMarine);
 	}

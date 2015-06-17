@@ -140,20 +140,6 @@ public class Jugador {
 		return true;
 	}
 	
-	public void validarCreacion(ElementoArtificial elemento) throws PoblacionFaltanteException, RecursosInsuficientesException {
-		int costoMinerales = elemento.getCosto().getCostoMineral();
-		int costoGasVespeno = elemento.getCosto().getCostoGas();
-		int suministro = elemento.getSuministro();
-		
-		if (this.cantidadDeCristal - costoMinerales < 0 || this.cantidadDeGas - costoGasVespeno < 0) {
-			throw new RecursosInsuficientesException();
-		}
-		
-		if (this.poblacionActual + suministro > this.poblacionDisponible) {
-			throw new PoblacionFaltanteException();
-		}
-		
-	}
 	public void aumentarPoblacionDisponible(int aumento) {
 		
 		if (this.poblacionDisponible == MAX_CANTIDAD_POBLACION) {
@@ -173,9 +159,6 @@ public class Jugador {
 		}
 		
 	}
-		
-		
-
 	
 	public void aumentarPoblacionActual(int aumento) {
 		this.poblacionActual += aumento;
