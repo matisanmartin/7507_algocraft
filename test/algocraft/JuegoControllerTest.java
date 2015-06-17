@@ -55,10 +55,11 @@ public class JuegoControllerTest {
 		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
 		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
 		
-		jugadorActual.setGas(150);
-		jugadorActual.setMinerales(50);
+		jugadorActual.setGas(1000);
+		jugadorActual.setMinerales(1000);
 		
-		jugadorEnemigo.setGas(50);
+		jugadorEnemigo.setGas(1000);
+		jugadorActual.setMinerales(1000);
 
 		
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);

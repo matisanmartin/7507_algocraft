@@ -70,6 +70,9 @@ public class Enunciado8Test {
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
 		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 		
+		JuegoController.getInstancia().getJugadorActual().setGas(1000);
+		JuegoController.getInstancia().getJugadorActual().setMinerales(1000);
+		
 		
 	}
 
@@ -109,7 +112,10 @@ public class Enunciado8Test {
 		
 		contexto = new ContextoStrategy(new CrearZealot());
 		Posicion posicionNuevoZealot = new Posicion(6,3);
+		JuegoController.getInstancia().getJugadorActual().setMinerales(100);
 		accesoObt.realizarAccion(contexto, posicionNuevoZealot);
+
+		
 		
 		//acerco al zealot al marine
 		Posicion proximaPosicionZealot = new Posicion(4,3);
@@ -231,6 +237,8 @@ public class Enunciado8Test {
 		
 		contexto = new ContextoStrategy(new CrearZealot());
 		Posicion posicionNuevoZealot = new Posicion(6,3);
+		//recolecto 50 para obtener un zealot
+		JuegoController.getInstancia().getJugadorActual().agregarCantidadDeCristal(50);
 		accesoObt.realizarAccion(contexto, posicionNuevoZealot);
 
 		//cambia el turno

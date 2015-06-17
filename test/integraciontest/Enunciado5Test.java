@@ -56,18 +56,17 @@ public class Enunciado5Test {
 		jugadorActual = new Jugador("pepito",TipoColor.COLOR_AMARILLO,new Terran());
 		
 		JuegoController.getInstancia().setJugadorActual(jugadorActual);
+		
+		//Se los setea para que no haya problemas de recursos que estorben con el fin de la prueba
+		JuegoController.getInstancia().getJugadorActual().setGas(100000);
+		JuegoController.getInstancia().getJugadorActual().setMinerales(100000);
 	}
 
 	@Test(expected = UnidadLlenaException.class)
 	public void testNaveDeTransporteLlena() 
 	throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		
 
-			//Se los setea para que no haya problemas de recursos que estorben con el fin de la prueba
-			JuegoController.getInstancia().getJugadorActual().setGas(100000);
-			JuegoController.getInstancia().getJugadorActual().setMinerales(100000);
-		
-			//Creo una nave de transporte
+		//Creo una nave de transporte
 			posNaveTransporte = new Posicion(2,3);
 			naveTransporte=factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posNaveTransporte);
 			JuegoController.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
