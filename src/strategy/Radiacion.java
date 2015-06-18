@@ -45,10 +45,10 @@ public class Radiacion implements Strategy {
 		
 		elementoAtacado.morir();
 		
-		Posicion posicionElementoDerecha 	= new Posicion(posicionDestino.getPosX()+1,posicionDestino.getPosY());
-		Posicion posicionElementoIzquierda 	= new Posicion(posicionDestino.getPosX()-1,posicionDestino.getPosY());
-		Posicion posicionElementoDetras		= new Posicion(posicionDestino.getPosX(),posicionDestino.getPosY()+1);
-		Posicion posicionElementoDelante	= new Posicion(posicionDestino.getPosX(),posicionDestino.getPosY()-1);
+		Posicion posicionElementoDerecha 	= new Posicion(posicionDestino.getX()+1,posicionDestino.getY());
+		Posicion posicionElementoIzquierda 	= new Posicion(posicionDestino.getX()-1,posicionDestino.getY());
+		Posicion posicionElementoDetras		= new Posicion(posicionDestino.getX(),posicionDestino.getY()+1);
+		Posicion posicionElementoDelante	= new Posicion(posicionDestino.getX(),posicionDestino.getY()-1);
 		
  
 		try

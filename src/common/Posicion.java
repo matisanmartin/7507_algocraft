@@ -2,10 +2,13 @@ package common;
 
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
-public class Posicion {
+public class Posicion implements ObjetoPosicionable {
 	private int posX;
 	private int posY;
+	private static int tamanioDePosicionX = 0;
+	private static int tamanioDePosicionY = 0;
 	
 	public Posicion(int posX, int posY) throws FueraDeRangoException, PosicionInvalidaException{
 		
@@ -17,7 +20,7 @@ public class Posicion {
 
 	}
 
-	public int getPosX() {
+	public int getX() {
 		return posX;
 	}
 
@@ -25,7 +28,7 @@ public class Posicion {
 		this.posX = posX;
 	}
 
-	public int getPosY() {
+	public int getY() {
 		return posY;
 	}
 
@@ -34,18 +37,28 @@ public class Posicion {
 	}
 	
 	public boolean equals(Object pos){
-		return (this.posX ==  ((Posicion) pos).getPosX() && this.posY == ((Posicion) pos).getPosY());
+		return (this.posX ==  ((Posicion) pos).getX() && this.posY == ((Posicion) pos).getY());
 	}
 
 	public int getDistancia(Posicion otraPosicion) {
 		
-		double restaEnX = (otraPosicion.getPosX() - this.getPosX());
-		double restaEnY = (otraPosicion.getPosY() - this.getPosY()); 
+		double restaEnX = (otraPosicion.getX() - this.getX());
+		double restaEnY = (otraPosicion.getY() - this.getY()); 
 		
 		int distancia = (int) Math.sqrt(Math.pow(restaEnX, 2)+Math.pow(restaEnY,2));
 		
 		return distancia;
 	}
+	
+	public static void setTamanioDePosicionX(int tamanio) {
+		tamanioDePosicionX = tamanio;
+	}
+	
+	public static void setTamanioDePosicionY(int tamanio) {
+		tamanioDePosicionY = tamanio;
+	}
+
+
 
 	
 }

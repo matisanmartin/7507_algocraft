@@ -46,8 +46,8 @@ public class Alucinacion implements Strategy {
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
-		int posX=elementoActuante.getPosicion().getPosX();
-		int posY=elementoActuante.getPosicion().getPosY();
+		int posX=elementoActuante.getPosicion().getX();
+		int posY=elementoActuante.getPosicion().getY();
 		
 		//TODO msma: podria mejorarse y que la posicion ficticia sea aleatoria en un rango acotado cerca de la unidad
 		//TODO msma: Si se cambian estas posiciones, van a fallar luego los tests, ojo, repararlos!!

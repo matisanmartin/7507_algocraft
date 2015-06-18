@@ -54,12 +54,12 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 	}
 	
 	public void posicionar(Posicion posicionInicial) throws FueraDeRangoException, PosicionInvalidaException{
-		setPosicion(new Posicion(posicionInicial.getPosX(),posicionInicial.getPosY()));	
+		setPosicion(new Posicion(posicionInicial.getX(),posicionInicial.getY()));	
 	}
 	
 	
 	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException, PosicionInvalidaException {	
-		setPosicion(new Posicion(nuevaPosicion.getPosX(),nuevaPosicion.getPosY()));
+		setPosicion(new Posicion(nuevaPosicion.getX(),nuevaPosicion.getY()));
 	}
 
 	

@@ -32,10 +32,10 @@ public class Espacio {
 
 	private boolean ocupanMismoEspacio(Elemento elementoParaAgregar,Elemento elemento) {
 		
-		return ( (elementoParaAgregar.getPosicion().getPosX() >= elemento.getPosicion().getPosX()-1) || 
-				(elementoParaAgregar.getPosicion().getPosX() <= elemento.getPosicion().getPosX()+elemento.getAlto()) ) &&
-				( (elementoParaAgregar.getPosicion().getPosY() >= elemento.getPosicion().getPosY()-1) || 
-				(elementoParaAgregar.getPosicion().getPosY() <= elemento.getPosicion().getPosY()+elemento.getAncho()) );
+		return ( (elementoParaAgregar.getPosicion().getX() >= elemento.getPosicion().getX()-1) || 
+				(elementoParaAgregar.getPosicion().getX() <= elemento.getPosicion().getX()+elemento.getAlto()) ) &&
+				( (elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()-1) || 
+				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAncho()) );
 		
 		
 	}

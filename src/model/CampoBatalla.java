@@ -9,8 +9,9 @@ import common.Constantes;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
-public class CampoBatalla {
+public class CampoBatalla implements ObjetoVivo {
 	
 	private int ancho;
 	private int alto;
@@ -145,6 +146,12 @@ public class CampoBatalla {
 
 	public void posicionarElementoEnEspacioTerrestre(Elemento elementoParaAgregar) {
 		espacioTerrestre.getEspacio().add(elementoParaAgregar);
+		
+	}
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -9,10 +9,10 @@ public class BaseSupDer extends Base {
 
 	public BaseSupDer(Posicion pos) throws FueraDeRangoException, PosicionInvalidaException {
 		super(pos);
-		int posIInicial = this.getVolcan().get(0).getPosicion().getPosX() ;
-		int posIFinal = this.getVolcan().get(0).getPosicion().getPosX() + (this.getCantidadDeCristales()/2);
-		int posJInicial = this.getVolcan().get(0).getPosicion().getPosY() - (this.getCantidadDeCristales()/2) ;
-		int posJFinal = this.getVolcan().get(0).getPosicion().getPosY();
+		int posIInicial = this.getVolcan().get(0).getPosicion().getX() ;
+		int posIFinal = this.getVolcan().get(0).getPosicion().getX() + (this.getCantidadDeCristales()/2);
+		int posJInicial = this.getVolcan().get(0).getPosicion().getY() - (this.getCantidadDeCristales()/2) ;
+		int posJFinal = this.getVolcan().get(0).getPosicion().getY();
 		
 			for (int i = (posIInicial); i <= (posIFinal); i++) {
 				for (int j = (posJInicial); j <= (posJFinal); j++) {

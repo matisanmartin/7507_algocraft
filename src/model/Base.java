@@ -26,7 +26,7 @@ public abstract class Base extends Elemento{
 		this.volcan = new ArrayList<Volcan>();
 		this.cristal = new ArrayList<Cristal>();
 		for (int i = 0; i < CANTIDAD_DE_VOLCANES;i++) {
-			this.volcan.add(new Volcan(VOLCAN_ALTO, VOLCAN_ANCHO, new Posicion(this.posicion.getPosX(), this.posicion.getPosY())));
+			this.volcan.add(new Volcan(VOLCAN_ALTO, VOLCAN_ANCHO, new Posicion(this.posicion.getX(), this.posicion.getY())));
 		}
 
 	}
