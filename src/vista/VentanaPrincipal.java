@@ -9,15 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.CampoBatalla;
+
 import common.Constantes;
 import common.Posicion;
-import model.CampoBatalla;
-import model.UnidadModelo;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import fiuba.algo3.titiritero.dibujables.Cuadrado;
 import fiuba.algo3.titiritero.dibujables.Figura;
-import fiuba.algo3.titiritero.dibujables.Imagen;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
