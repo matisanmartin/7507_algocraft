@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.ElementoArtificial;
+import model.Juego;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +27,6 @@ import strategy.CrearPilon;
 import strategy.CrearScout;
 import strategy.CrearZealot;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -72,7 +72,7 @@ public class Enunciado7Test {
 	
 	@Test
 	public void testAumentoDePoblacionDisponibleDepositoSuministroOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
+		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.setGas(10000);
 		jugadorTerran.setMinerales(10000);
@@ -97,7 +97,7 @@ public class Enunciado7Test {
 	
 	@Test
 	public void testNoAumentarPoblacionDispoibleConPoblacionMaximaAlcanzadaCreandoDepositoSuministro() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
+		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(200);
 		jugadorTerran.setGas(10000);
 		jugadorTerran.setMinerales(10000);
@@ -128,7 +128,7 @@ public class Enunciado7Test {
 	
 	@Test
 	public void testAumentoDePoblacionDisponiblePilonOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
+		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.setGas(10000);
 		jugadorProtoss.setMinerales(10000);
@@ -153,7 +153,7 @@ public class Enunciado7Test {
 	
 	@Test
 	public void testNoAumentarPoblacionDispoibleConPoblacionMaximaAlcanzadaCreandoPilon() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
+		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(200);
 		jugadorProtoss.setGas(10000);
 		jugadorProtoss.setMinerales(10000);
@@ -198,7 +198,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearMarinePorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
+		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
 		jugadorTerran.agregarCantidadDeGas(100000);
@@ -213,7 +213,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearGolliatPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
+		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
 		jugadorTerran.agregarCantidadDeGas(100000);
@@ -227,7 +227,7 @@ public class Enunciado7Test {
 	}
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearEspectroPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
+		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
 		jugadorTerran.agregarCantidadDeGas(100000);
@@ -242,7 +242,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearNaveTransporteTerranPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
+		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
 		jugadorTerran.agregarCantidadDeGas(100000);
@@ -257,7 +257,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearNaveCienciaPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorTerran);
+		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
 		jugadorTerran.agregarCantidadDeGas(100000);
@@ -272,7 +272,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearZealotPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
+		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
 		jugadorProtoss.agregarCantidadDeGas(100000);
@@ -287,7 +287,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearDragonPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
+		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
 		jugadorProtoss.agregarCantidadDeGas(100000);
@@ -301,7 +301,7 @@ public class Enunciado7Test {
 	}
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearScoutPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
+		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
 		jugadorProtoss.agregarCantidadDeGas(100000);
@@ -316,7 +316,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearNaveTransporteProtossPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
+		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
 		jugadorProtoss.agregarCantidadDeGas(100000);
@@ -332,7 +332,7 @@ public class Enunciado7Test {
 	
 	@Test (expected = PoblacionFaltanteException.class)
 	public void testNoSePuedeCrearAltoTemplarioPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
-		JuegoController.getInstancia().setJugadorActual(jugadorProtoss);
+		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
 		jugadorProtoss.agregarCantidadDeGas(100000);

@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -25,7 +25,7 @@ public class CrearDragon implements Strategy {
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial dragon = factory.getUnidad(TipoUnidad.PROTOSS_DRAGON, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(dragon);
+		Juego.getInstancia().agregarUnidadAJugadorActual(dragon);
 		
 	}
 

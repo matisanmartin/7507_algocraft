@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FactoryInvalidaException;
@@ -26,7 +26,7 @@ public class CrearCentroDeMineral implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial centroDeMineral = factory.getEdificio(TipoEdificio.TERRAN_CENTRO_MINERAL, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(centroDeMineral);
+		Juego.getInstancia().agregarUnidadAJugadorActual(centroDeMineral);
 		
 	}
 

@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -16,7 +16,7 @@ public class ObtenerCristal implements Strategy {
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
 	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException {
 		
-		JuegoController.getInstancia().getJugadorActual().agregarCantidadDeCristal(CANTIDAD_DE_CRISTAL);
+		Juego.getInstancia().getJugadorActual().agregarCantidadDeCristal(CANTIDAD_DE_CRISTAL);
 	}
 
 }

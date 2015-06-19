@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -25,7 +25,7 @@ public class CrearMarine implements Strategy {
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial marine = factory.getUnidad(TipoUnidad.TERRAN_MARINE, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(marine);
+		Juego.getInstancia().agregarUnidadAJugadorActual(marine);
 		
 	}
 

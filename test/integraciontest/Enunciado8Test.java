@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.ElementoArtificial;
+import model.Juego;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,11 +19,8 @@ import strategy.CrearZealot;
 import strategy.Emp;
 import strategy.Mover;
 import strategy.Radiacion;
-
 import common.Posicion;
 import common.Vitalidad;
-
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -67,11 +65,11 @@ public class Enunciado8Test {
 		jugadorActual.setMinerales(10000);
 		jugadorActual.setGas(10000);
 		
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
-		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		Juego.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 		
-		JuegoController.getInstancia().getJugadorActual().setGas(1000);
-		JuegoController.getInstancia().getJugadorActual().setMinerales(1000);
+		Juego.getInstancia().getJugadorActual().setGas(1000);
+		Juego.getInstancia().getJugadorActual().setMinerales(1000);
 		
 		
 	}
@@ -84,11 +82,11 @@ public class Enunciado8Test {
 		//El jugador crea una barraca
 		Posicion posicionBarraca=new Posicion(6,7);
 		ElementoArtificial barraca = factoryEdificio.getEdificio(TipoEdificio.TERRAN_BARRACA,posicionBarraca);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(barraca);
+		Juego.getInstancia().agregarUnidadAJugadorActual(barraca);
 		
 		
 		//Selecciono la barraca para crear un marine
-		ElementoArtificial barracaObt = JuegoController.getInstancia()
+		ElementoArtificial barracaObt = Juego.getInstancia()
 														.obtenerArmadaJugadorActual()
 														.obtenerElementoEnPosicion(posicionBarraca);
 		
@@ -98,28 +96,28 @@ public class Enunciado8Test {
 		barracaObt.realizarAccion(contexto, posicionNuevoMarine);
 		
 		//cambia el turno
-		JuegoController.getInstancia().cambiarTurno();
+		Juego.getInstancia().cambiarTurno();
 		
 		//El jugador crea un Acceso
 		Posicion posicionAcceso = new Posicion(10,10);
 		ElementoArtificial acceso = factoryEdificio.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicionAcceso);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(acceso);
+		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
 		
 		//Selecciono el acceso para obtener un zealot
-		ElementoArtificial accesoObt = JuegoController.getInstancia()
+		ElementoArtificial accesoObt = Juego.getInstancia()
 													  .obtenerArmadaJugadorActual()
 													  .obtenerElementoEnPosicion(posicionAcceso);
 		
 		contexto = new ContextoStrategy(new CrearZealot());
 		Posicion posicionNuevoZealot = new Posicion(6,3);
-		JuegoController.getInstancia().getJugadorActual().setMinerales(100);
+		Juego.getInstancia().getJugadorActual().setMinerales(100);
 		accesoObt.realizarAccion(contexto, posicionNuevoZealot);
 
 		
 		
 		//acerco al zealot al marine
 		Posicion proximaPosicionZealot = new Posicion(4,3);
-		ElementoArtificial zealotObt = JuegoController.getInstancia()
+		ElementoArtificial zealotObt = Juego.getInstancia()
 														.obtenerArmadaJugadorActual()
 														.obtenerElementoEnPosicion(posicionNuevoZealot);
 
@@ -127,30 +125,30 @@ public class Enunciado8Test {
 		zealotObt.realizarAccion(contexto, proximaPosicionZealot);
 		
 		//ataco al marine
-		ElementoArtificial zealotObtDeNuevo = JuegoController.getInstancia()
+		ElementoArtificial zealotObtDeNuevo = Juego.getInstancia()
 																.obtenerArmadaJugadorActual()
 																.obtenerElementoEnPosicion(proximaPosicionZealot);
 		contexto = new ContextoStrategy(new Ataque());
 		zealotObtDeNuevo.realizarAccion(contexto, posicionNuevoMarine);
 		
 		//verifico que le quite vida
-		assertEquals(34,JuegoController.getInstancia()
+		assertEquals(34,Juego.getInstancia()
 										.obtenerArmadaJugadorEnemigo()
 										.obtenerElementoEnPosicion(posicionNuevoMarine)
 										.getVida());
 		
 		//cambia turno
-		JuegoController.getInstancia().cambiarTurno();
+		Juego.getInstancia().cambiarTurno();
 		
 		//jugador actual crea puerto estelar
 		Posicion posPuertoEstelar = new Posicion(4,4);
 		ElementoArtificial puertoEstelar = factoryEdificio.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(puertoEstelar);
+		Juego.getInstancia().agregarUnidadAJugadorActual(puertoEstelar);
 		
 			
 		//jugador actual crea una nave ciencia seleccionando el puerto estelar
 		Posicion posNaveCiencia = new Posicion(5,5);
-		ElementoArtificial puertoEstelarObt = JuegoController.getInstancia()
+		ElementoArtificial puertoEstelarObt = Juego.getInstancia()
 																.obtenerArmadaJugadorActual()
 																.obtenerElementoEnPosicion(posPuertoEstelar);
 		
@@ -160,7 +158,7 @@ public class Enunciado8Test {
 		
 		
 		//nave ciencia ataca zealot con misil emp
-		ElementoArtificial naveCienciaObt = JuegoController.getInstancia()
+		ElementoArtificial naveCienciaObt = Juego.getInstancia()
 															.obtenerArmadaJugadorActual()
 															.obtenerElementoEnPosicion(posNaveCiencia);
 		
@@ -181,7 +179,7 @@ public class Enunciado8Test {
 		assertEquals(0,zealotObtDeNuevo.getEscudo());
 		
 		//nave ciencia vuelve a atacar zealot con radiacion  y zealot deberia morir, por lo tanto, partida ganada
-		ElementoArtificial naveCienciaObtDeNuevo = JuegoController.getInstancia()
+		ElementoArtificial naveCienciaObtDeNuevo = Juego.getInstancia()
 																	.obtenerArmadaJugadorActual()
 																	.obtenerElementoEnPosicion(posNaveCiencia);
 		
@@ -209,11 +207,11 @@ public class Enunciado8Test {
 		//El jugador crea una barraca
 		Posicion posicionBarraca=new Posicion(6,7);
 		ElementoArtificial barraca = factoryEdificio.getEdificio(TipoEdificio.TERRAN_BARRACA,posicionBarraca);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(barraca);
+		Juego.getInstancia().agregarUnidadAJugadorActual(barraca);
 		
 		
 		//Selecciono la barraca para crear un marine
-		ElementoArtificial barracaObt = JuegoController.getInstancia()
+		ElementoArtificial barracaObt = Juego.getInstancia()
 														.obtenerArmadaJugadorActual()
 														.obtenerElementoEnPosicion(posicionBarraca);
 		
@@ -223,34 +221,34 @@ public class Enunciado8Test {
 		barracaObt.realizarAccion(contexto, posicionNuevoMarine);
 		
 		//cambia el turno, se crea una unidad enemiga viva para que no lanze PartidaGanadaException
-		JuegoController.getInstancia().cambiarTurno();
+		Juego.getInstancia().cambiarTurno();
 		
 		//El jugador crea un Acceso
 		Posicion posicionAcceso = new Posicion(10,10);
 		ElementoArtificial acceso = factoryEdificio.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicionAcceso);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(acceso);
+		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
 		
 		//Selecciono el acceso para obtener un zealot
-		ElementoArtificial accesoObt = JuegoController.getInstancia()
+		ElementoArtificial accesoObt = Juego.getInstancia()
 													  .obtenerArmadaJugadorActual()
 													  .obtenerElementoEnPosicion(posicionAcceso);
 		
 		contexto = new ContextoStrategy(new CrearZealot());
 		Posicion posicionNuevoZealot = new Posicion(6,3);
 		//recolecto 50 para obtener un zealot
-		JuegoController.getInstancia().getJugadorActual().agregarCantidadDeCristal(50);
+		Juego.getInstancia().getJugadorActual().agregarCantidadDeCristal(50);
 		accesoObt.realizarAccion(contexto, posicionNuevoZealot);
 
 		//cambia el turno
-		JuegoController.getInstancia().cambiarTurno();
-		ElementoArtificial marine = JuegoController.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posicionNuevoMarine);
+		Juego.getInstancia().cambiarTurno();
+		ElementoArtificial marine = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posicionNuevoMarine);
 		
 		//suicido al marine
 		marine.setVitalidad(new Vitalidad(0,0));
 		
 		//verifico manualmente porque las excepciones vinculadas con el fin de partida, 
 		//por ahora, se lanzan cuando se realiza una accion
-		JuegoController.getInstancia().verificarFinDePartida();
+		Juego.getInstancia().verificarFinDePartida();
 		
 	}
 

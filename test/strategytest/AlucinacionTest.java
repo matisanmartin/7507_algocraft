@@ -2,6 +2,7 @@ package strategytest;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.Juego;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,6 @@ import razas.Terran;
 import strategy.Alucinacion;
 import strategy.ContextoStrategy;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -60,7 +60,7 @@ public class AlucinacionTest {
 		posicionUnidadAtacante = new Posicion(2,2);
 		unidadAtacante=factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, posicionUnidadAtacante);
 		jugadorActual.agregarElemento(unidadAtacante);
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorActual(jugadorActual);
 
 		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
 		posicionUnidadAmigaEnRango = new Posicion(2,4);//El rango de vision del alto templario es 7
@@ -71,7 +71,7 @@ public class AlucinacionTest {
 		unidadAmigaFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaFueraDeRango);
 		jugadorActual.agregarElemento(unidadAmigaFueraDeRango);
 		
-		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 	
 	}
 
@@ -101,12 +101,12 @@ public class AlucinacionTest {
 			
 		} catch (PartidaGanadaException e) {
 			
-			JuegoController.getInstancia()
+			Juego.getInstancia()
 			   .getJugadorActual()
 			   .obtenerArmada()
 			   .obtenerElementoEnPosicion(new Posicion(3,2));
 
-			JuegoController.getInstancia()
+			Juego.getInstancia()
 			   .getJugadorActual()
 			   .obtenerArmada()
 			   .obtenerElementoEnPosicion(new Posicion(1,2));

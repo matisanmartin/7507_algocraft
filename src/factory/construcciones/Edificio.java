@@ -3,8 +3,8 @@ package factory.construcciones;
 import strategy.ContextoStrategy;
 import model.ElementoArtificial;
 import model.EspacioTerrestre;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -74,7 +74,7 @@ public class Edificio extends ElementoArtificial {
 
 	@Override
 	public void disminuirPoblacion() {
-		JuegoController.getInstancia().getJugadorEnemigo().disminuirPoblacionDisponble(0);
+		Juego.getInstancia().getJugadorEnemigo().disminuirPoblacionDisponble(0);
 		
 	}
 

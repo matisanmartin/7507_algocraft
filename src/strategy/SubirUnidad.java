@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -37,7 +37,7 @@ public class SubirUnidad implements Strategy {
 			FinDePartidaException, PartidaGanadaException,
 			PartidaPerdidaException, UnidadLlenaException {
 		
-		ElementoArtificial unidadASubir = JuegoController.getInstancia()
+		ElementoArtificial unidadASubir = Juego.getInstancia()
 															.obtenerArmadaJugadorActual()
 															.obtenerElementoEnPosicion(posicionDestino);
 		

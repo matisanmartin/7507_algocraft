@@ -3,6 +3,7 @@ package integraciontest;
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.Juego;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,6 @@ import razas.Terran;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -72,8 +72,8 @@ public class Enunciado3Test {
 
 		jugadorEnemigo.agregarElemento(unidadAerea);
 		
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
-		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		Juego.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 	}
 
 	@Test
@@ -89,7 +89,7 @@ public class Enunciado3Test {
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
 		
 		//intercambio el turno
-		JuegoController.getInstancia().cambiarTurno();
+		Juego.getInstancia().cambiarTurno();
 		
 		unidadAerea.realizarAccion(contexto, posUnidadTerrestre);
 		assertEquals(40,unidadTerrestre.getVida());

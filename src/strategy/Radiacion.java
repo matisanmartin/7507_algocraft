@@ -2,8 +2,8 @@ package strategy;
 
 import model.Armada;
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FinDePartidaException;
@@ -37,7 +37,7 @@ public class Radiacion implements Strategy {
 		if(distancia>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION)
 			throw new FueraDeRangoDeVisionException();
 		
-		Armada armadaEnemiga = JuegoController.getInstancia()
+		Armada armadaEnemiga = Juego.getInstancia()
 			       							 .getJugadorEnemigo()
 			       							 .obtenerArmada();
 		
@@ -57,7 +57,7 @@ public class Radiacion implements Strategy {
 			//TODO msma: Para este y todos, de encotnrarlos, deberia drenarle la vida hasta que el otro se muera, luego no.
 			// Por ahora se le saca vida para probar la funcionalidad
 			elementoCandidato.morir();
-			JuegoController.getInstancia()
+			Juego.getInstancia()
 						   .getJugadorEnemigo()
 						   .obtenerArmada()
 						   .modificarElementoEnPosicion(posicionElementoDelante, elementoCandidato);
@@ -68,7 +68,7 @@ public class Radiacion implements Strategy {
 		{
 			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDetras);
 			elementoCandidato.morir();
-			JuegoController.getInstancia()
+			Juego.getInstancia()
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
 			   .modificarElementoEnPosicion(posicionElementoDetras, elementoCandidato);
@@ -79,7 +79,7 @@ public class Radiacion implements Strategy {
 		{
 			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDerecha);
 			elementoCandidato.morir();
-			JuegoController.getInstancia()
+			Juego.getInstancia()
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
 			   .modificarElementoEnPosicion(posicionElementoDerecha, elementoCandidato);
@@ -90,14 +90,14 @@ public class Radiacion implements Strategy {
 		{
 			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoIzquierda);
 			elementoCandidato.morir();
-			JuegoController.getInstancia()
+			Juego.getInstancia()
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
 			   .modificarElementoEnPosicion(posicionElementoIzquierda, elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
-		JuegoController.getInstancia().verificarFinDePartida();
+		Juego.getInstancia().verificarFinDePartida();
 				
 	}
 	

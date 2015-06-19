@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -25,7 +25,7 @@ public class CrearNaveTransporteProtoss implements Strategy {
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial naveTransporte = factory.getUnidad(TipoUnidad.PROTOSS_NAVE_TRANSPORTE, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
+		Juego.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
 		
 	}
 

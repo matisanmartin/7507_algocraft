@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FactoryInvalidaException;
@@ -26,8 +26,8 @@ public class CrearPilon implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial pilon = factory.getEdificio(TipoEdificio.PROTOSS_PILON, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().aumentarPoblacionDisponible(pilon.aumentoPoblacion());
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(pilon);
+		Juego.getInstancia().getJugadorActual().aumentarPoblacionDisponible(pilon.aumentoPoblacion());
+		Juego.getInstancia().agregarUnidadAJugadorActual(pilon);
 		
 	}
 

@@ -5,6 +5,7 @@ import jugador.Jugador;
 import jugador.TipoColor;
 import model.CampoBatalla;
 import model.ElementoArtificial;
+import model.Juego;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,11 +14,8 @@ import org.junit.runners.JUnit4;
 
 import razas.Protoss;
 import razas.Terran;
-
 import common.Posicion;
 import common.Vitalidad;
-
-import controller.JuegoController;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoException;
@@ -62,34 +60,34 @@ public class JuegoControllerTest {
 		jugadorActual.setMinerales(1000);
 
 		
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
-		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadActual);
-		JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadMuerta);
+		Juego.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		Juego.getInstancia().agregarUnidadAJugadorActual(unidadActual);
+		Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadMuerta);
 		
 	}
 
 	@Test
 	public void testObtenerNombreJugadorActualEsJugador1yJugadorEnemigoEsJugador2() {
-		assertEquals("jugador1",JuegoController.getInstancia().obtenerNombreJugadorActual());
-		assertEquals("jugador2",JuegoController.getInstancia().obtenerNombreJugadorEnemigo());
-		assertEquals(TipoColor.COLOR_ROJO,JuegoController.getInstancia().obtenerColorJugadorActual());
-		assertEquals(TipoColor.COLOR_AZUL,JuegoController.getInstancia().obtenerColorJugadorEnemigo());
+		assertEquals("jugador1",Juego.getInstancia().obtenerNombreJugadorActual());
+		assertEquals("jugador2",Juego.getInstancia().obtenerNombreJugadorEnemigo());
+		assertEquals(TipoColor.COLOR_ROJO,Juego.getInstancia().obtenerColorJugadorActual());
+		assertEquals(TipoColor.COLOR_AZUL,Juego.getInstancia().obtenerColorJugadorEnemigo());
 	}
 	
 	@Test
 	public void testIntercambiarJugadoresJugadorActualEsJugador2yJugadorEnemigoEsJugador1() throws NombreJugadorRepetidoException {	
-		JuegoController.getInstancia().cambiarTurno();
-		assertEquals("jugador2",JuegoController.getInstancia().obtenerNombreJugadorActual());
-		assertEquals("jugador1",JuegoController.getInstancia().obtenerNombreJugadorEnemigo());	
-		assertEquals(TipoColor.COLOR_AZUL,JuegoController.getInstancia().obtenerColorJugadorActual());
-		assertEquals(TipoColor.COLOR_ROJO,JuegoController.getInstancia().obtenerColorJugadorEnemigo());
+		Juego.getInstancia().cambiarTurno();
+		assertEquals("jugador2",Juego.getInstancia().obtenerNombreJugadorActual());
+		assertEquals("jugador1",Juego.getInstancia().obtenerNombreJugadorEnemigo());	
+		assertEquals(TipoColor.COLOR_AZUL,Juego.getInstancia().obtenerColorJugadorActual());
+		assertEquals(TipoColor.COLOR_ROJO,Juego.getInstancia().obtenerColorJugadorEnemigo());
 	}
 	
 	@Test(expected = PartidaGanadaException.class)
 	public void testVerificarPartidaFinalizadaJugadorEnemigoTieneUnaUnidadSolaUnidadConVida0() 
 	throws FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
-			JuegoController.getInstancia().verificarFinDePartida();	
+			Juego.getInstancia().verificarFinDePartida();	
 	}
 	
 	//Este test no tiene assert, pues el exito es que no tire excepcion
@@ -97,8 +95,8 @@ public class JuegoControllerTest {
 	public void testVerificarPartidaSinFinalizarJugadoEnemigoTieneUnaUnidadVivayOtraMuerta() 
 	throws FinDePartidaException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, PartidaGanadaException, PartidaPerdidaException, FueraDeRangoException {
 			
-			JuegoController.getInstancia().agregarUnidadAJugadorEnemigo(unidadNoMuerta);
-			JuegoController.getInstancia().verificarFinDePartida();
+			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadNoMuerta);
+			Juego.getInstancia().verificarFinDePartida();
 
 	}
 

@@ -8,8 +8,8 @@ import model.Elemento;
 import model.ElementoArtificial;
 import model.Espacio;
 import model.EspacioTerrestre;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
@@ -73,7 +73,7 @@ public class Emp implements Strategy {
 
 		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
 
-		JuegoController.getInstancia().verificarFinDePartida();
+		Juego.getInstancia().verificarFinDePartida();
 	}
 	
 

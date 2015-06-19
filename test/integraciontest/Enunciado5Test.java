@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.ElementoArtificial;
+import model.Juego;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +12,7 @@ import org.junit.Test;
 import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.SubirUnidad;
-
 import common.Posicion;
-
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -55,11 +53,11 @@ public class Enunciado5Test {
 		factory = new UnidadFactory();
 		jugadorActual = new Jugador("pepito",TipoColor.COLOR_AMARILLO,new Terran());
 		
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorActual(jugadorActual);
 		
 		//Se los setea para que no haya problemas de recursos que estorben con el fin de la prueba
-		JuegoController.getInstancia().getJugadorActual().setGas(100000);
-		JuegoController.getInstancia().getJugadorActual().setMinerales(100000);
+		Juego.getInstancia().getJugadorActual().setGas(100000);
+		Juego.getInstancia().getJugadorActual().setMinerales(100000);
 	}
 
 	@Test(expected = UnidadLlenaException.class)
@@ -69,16 +67,16 @@ public class Enunciado5Test {
 		//Creo una nave de transporte
 			posNaveTransporte = new Posicion(2,3);
 			naveTransporte=factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posNaveTransporte);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
+			Juego.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
 	
 			//Creo 8 unidades
 			Posicion posMarine1= new Posicion(2,2);
 			ElementoArtificial unidadMarine1= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine1);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine1);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine1);
 			
 			Posicion posMarine2= new Posicion(3,3);
 			ElementoArtificial unidadMarine2= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine2);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine2);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine2);
 			
 			Posicion posMarine3;
 			Posicion posMarine4;
@@ -89,27 +87,27 @@ public class Enunciado5Test {
 
 			posMarine3 = new Posicion(4,4);
 			ElementoArtificial unidadMarine3= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine3);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine3);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine3);
 			
 			posMarine4 = new Posicion(5,5);
 			ElementoArtificial unidadMarine4= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine4);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine4);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine4);
 			
 			posMarine5 = new Posicion(6,6);
 			ElementoArtificial unidadMarine5= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine5);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine5);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine5);
 			
 			posMarine6 = new Posicion(7,7);
 			ElementoArtificial unidadMarine6= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine6);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine6);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine6);
 			
 			posMarine7 = new Posicion(8,8);
 			ElementoArtificial unidadMarine7= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine7);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine7);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine7);
 			
 			posMarine8 = new Posicion(9,9);
 			ElementoArtificial unidadMarine8= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine8);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine8);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine8);
 			
 			//Las subo
 			contexto = new ContextoStrategy(new SubirUnidad());
@@ -128,7 +126,7 @@ public class Enunciado5Test {
 			//creo una mas
 			Posicion posMarine9= new Posicion(9,9);
 			ElementoArtificial unidadMarine9= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine9);
-			JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine9);
+			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine9);
 			
 			//intento subirla, deberia tirar excepcion
 			naveTransporte.realizarAccion(contexto,posMarine9);
@@ -145,12 +143,12 @@ public class Enunciado5Test {
 		//Creo una nave de transporte
 		posNaveTransporte = new Posicion(2,3);
 		naveTransporte=factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posNaveTransporte);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
+		Juego.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
 
 		//Creo 1 unidad
 		Posicion posMarine1= new Posicion(2,2);
 		ElementoArtificial unidadMarine1= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine1);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(unidadMarine1);
+		Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine1);
 		
 		contexto = new ContextoStrategy(new SubirUnidad());
 		unidadMarine1.realizarAccion(contexto,posNaveTransporte);

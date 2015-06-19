@@ -1,9 +1,9 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Danio;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -52,7 +52,7 @@ public class Alucinacion implements Strategy {
 		//TODO msma: podria mejorarse y que la posicion ficticia sea aleatoria en un rango acotado cerca de la unidad
 		//TODO msma: Si se cambian estas posiciones, van a fallar luego los tests, ojo, repararlos!!
 		Posicion posicionFicticia1 = new Posicion(posX+1,posY);
-		ElementoArtificial elementoCopiado = JuegoController.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
+		ElementoArtificial elementoCopiado = Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		ElementoArtificial copiaFicticia1 = (ElementoArtificial) elementoCopiado.clone();
 		copiaFicticia1.setPosicion(posicionFicticia1);
 		copiaFicticia1.getVitalidad().setVida(0);
@@ -65,10 +65,10 @@ public class Alucinacion implements Strategy {
 		copiaFicticia2.getVitalidad().setVida(0);	
 		((Unidad) copiaFicticia2).setDanio(danioNulo);//TODO casteo temporal
 	
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
+		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
+		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
 		
-		JuegoController.getInstancia().verificarFinDePartida();
+		Juego.getInstancia().verificarFinDePartida();
 
 	}
 

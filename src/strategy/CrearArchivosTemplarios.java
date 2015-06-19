@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FactoryInvalidaException;
@@ -26,7 +26,7 @@ public class CrearArchivosTemplarios implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial archivosTemplarios = factory.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(archivosTemplarios);
+		Juego.getInstancia().agregarUnidadAJugadorActual(archivosTemplarios);
 		
 	}
 

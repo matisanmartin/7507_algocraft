@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FactoryInvalidaException;
@@ -26,8 +26,8 @@ public class CrearDepositoSuministro implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial depositoSuministro = factory.getEdificio(TipoEdificio.TERRAN_DEPOSITO_SUMINISTROS, posicionDestino);
-		JuegoController.getInstancia().getJugadorActual().aumentarPoblacionDisponible(depositoSuministro.aumentoPoblacion());
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(depositoSuministro);
+		Juego.getInstancia().getJugadorActual().aumentarPoblacionDisponible(depositoSuministro.aumentoPoblacion());
+		Juego.getInstancia().agregarUnidadAJugadorActual(depositoSuministro);
 		
 	}
 

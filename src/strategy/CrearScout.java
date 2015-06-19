@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -25,7 +25,7 @@ public class CrearScout implements Strategy{
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial scout = factory.getUnidad(TipoUnidad.PROTOSS_SCOUT, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(scout);
+		Juego.getInstancia().agregarUnidadAJugadorActual(scout);
 		
 	}
 	

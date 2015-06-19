@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -25,7 +25,7 @@ public class CrearZealot implements Strategy {
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial zealot = factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(zealot);
+		Juego.getInstancia().agregarUnidadAJugadorActual(zealot);
 		
 	}
 

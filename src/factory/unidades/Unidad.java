@@ -7,6 +7,7 @@ import java.util.Map;
 
 import model.ElementoArtificial;
 import model.Espacio;
+import model.Juego;
 import strategy.ContextoStrategy;
 import command.Accion;
 import command.AtaqueAccion;
@@ -15,7 +16,6 @@ import common.Danio;
 import common.Posicion;
 import common.RangoAtaque;
 import common.Vitalidad;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -145,7 +145,7 @@ public class Unidad extends ElementoArtificial {
 
 	@Override
 	public void disminuirPoblacion() {
-		JuegoController.getInstancia().getJugadorEnemigo().disminuirPoblacionActual(this.getSuministro());
+		Juego.getInstancia().getJugadorEnemigo().disminuirPoblacionActual(this.getSuministro());
 		
 	}
 	

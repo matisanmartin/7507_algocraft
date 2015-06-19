@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FactoryInvalidaException;
@@ -26,7 +26,7 @@ public class CrearAcceso implements Strategy {
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
 		ElementoArtificial acceso = factory.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(acceso);
+		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
 		
 	}
 

@@ -6,10 +6,8 @@ import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Espacio;
-
+import model.Juego;
 import common.Posicion;
-
-import controller.JuegoController;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FinDePartidaException;
@@ -60,7 +58,7 @@ public class Ataque implements Strategy {
 			}
 		}
 		
-		JuegoController.getInstancia().verificarFinDePartida();
+		Juego.getInstancia().verificarFinDePartida();
 	
 	}			
 }

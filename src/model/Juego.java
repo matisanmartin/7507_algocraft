@@ -1,13 +1,10 @@
-package controller;
+package model;
 
 import java.util.Iterator;
 import java.util.List;
 
 import jugador.Jugador;
 import jugador.TipoColor;
-import model.Armada;
-import model.CampoBatalla;
-import model.ElementoArtificial;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoException;
@@ -18,21 +15,21 @@ import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 
-public class JuegoController {
+public class Juego {
 	
 	private static Jugador jugadorActual;
 	private static Jugador jugadorEnemigo;
 //	private static CampoBatalla campoDeBatalla;
-	private static JuegoController INSTANCIA = null;
+	private static Juego INSTANCIA = null;
 	
-	private JuegoController(){
+	private Juego(){
 		jugadorActual = new Jugador();
 		jugadorEnemigo = new Jugador();
 		//campoDeBatalla=CampoBatalla.getInstancia();
 	}
 	
 	
-	public static JuegoController getInstancia() {
+	public static Juego getInstancia() {
 			
 			if (INSTANCIA == null) {
 				crearInstancia();
@@ -48,14 +45,14 @@ public class JuegoController {
 		private synchronized static void crearInstancia() {
 			
 			if (INSTANCIA == null) { 
-		       INSTANCIA = new JuegoController();
+		       INSTANCIA = new Juego();
 		    }
 		}
 	
 	
-	private JuegoController(Jugador jugadorActual, Jugador jugadorEnemigo,CampoBatalla campoDeBatalla) throws NombreJugadorRepetidoException{
-		JuegoController.getInstancia().setJugadorActual(jugadorActual);
-		JuegoController.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+	private Juego(Jugador jugadorActual, Jugador jugadorEnemigo,CampoBatalla campoDeBatalla) throws NombreJugadorRepetidoException{
+		Juego.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 //		JuegoController.getInstancia().setCampoDeBatalla(campoDeBatalla);
 	}
 	
@@ -63,7 +60,7 @@ public class JuegoController {
 	
 	
 	public Armada obtenerArmadaJugadorEnemigo() {
-		return JuegoController.getInstancia().getJugadorEnemigo().obtenerArmada();
+		return Juego.getInstancia().getJugadorEnemigo().obtenerArmada();
 	}
 	
 	public Armada obtenerArmadaJugadorActual() {
@@ -75,9 +72,9 @@ public class JuegoController {
 	}
 
 	public void setJugadorEnemigo(Jugador jugadorEnemigo) throws NombreJugadorRepetidoException {
-		if(jugadorEnemigo.getNombre().equals(JuegoController.getInstancia().getJugadorActual().getNombre()))
+		if(jugadorEnemigo.getNombre().equals(Juego.getInstancia().getJugadorActual().getNombre()))
 			throw new NombreJugadorRepetidoException();
-		JuegoController.jugadorEnemigo = jugadorEnemigo;
+		Juego.jugadorEnemigo = jugadorEnemigo;
 	}
 
 	public Jugador getJugadorActual() {
@@ -85,7 +82,7 @@ public class JuegoController {
 	}
 
 	public void setJugadorActual(Jugador jugadorActual) {
-		JuegoController.jugadorActual = jugadorActual;
+		Juego.jugadorActual = jugadorActual;
 	}
 	
 	public String obtenerNombreJugadorActual() {
@@ -101,7 +98,7 @@ public class JuegoController {
 	}
 
 	public TipoColor obtenerColorJugadorEnemigo() {
-		return JuegoController.getInstancia().getJugadorEnemigo().getColor();
+		return Juego.getInstancia().getJugadorEnemigo().getColor();
 	}
 	
 	private void intercambiarJugadores() throws NombreJugadorRepetidoException {
@@ -174,7 +171,7 @@ public class JuegoController {
 
 	private void verificarPartidaPerdida() throws PartidaPerdidaException{
 
-		Armada armadaActual = JuegoController.getInstancia().obtenerArmadaJugadorActual();
+		Armada armadaActual = Juego.getInstancia().obtenerArmadaJugadorActual();
 		
 		List<ElementoArtificial> unidadesActual = armadaActual.getArmada();
 		
@@ -191,7 +188,7 @@ public class JuegoController {
 
 
 	private void verificarPartidaGanada() throws PartidaGanadaException {
-		Armada armadaEnemiga = JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
+		Armada armadaEnemiga = Juego.getInstancia().obtenerArmadaJugadorEnemigo();
 		
 		List<ElementoArtificial> unidadesEnemigas = armadaEnemiga.getArmada();
 		

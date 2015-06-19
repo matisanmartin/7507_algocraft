@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -25,7 +25,7 @@ public class CrearGolliat implements Strategy {
 		UnidadFactory factory = new UnidadFactory();
 		
 		ElementoArtificial golliat = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, posicionDestino);
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(golliat);
+		Juego.getInstancia().agregarUnidadAJugadorActual(golliat);
 		
 	}
 

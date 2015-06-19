@@ -1,8 +1,8 @@
 package strategy;
 
 import model.ElementoArtificial;
+import model.Juego;
 import common.Posicion;
-import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -26,7 +26,7 @@ public class CrearEspectro implements Strategy{
 		
 		ElementoArtificial espectro = factory.getUnidad(TipoUnidad.TERRAN_ESPECTRO, posicionDestino);
 
-		JuegoController.getInstancia().agregarUnidadAJugadorActual(espectro);
+		Juego.getInstancia().agregarUnidadAJugadorActual(espectro);
 	}
 
 }
