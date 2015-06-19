@@ -128,14 +128,14 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 
 	public abstract int getCantidadDeUnidadesTransportadas();
 	
-	public abstract int getSuministro();  //el elemento pasa a ser parte de la poblacion actual, aumenta la poblacion actual
+	public abstract int getSuministro();  
 
 	
-	public int restarPoblacion() { //el elemento deja de ser parte de la poblacion actual, resta a la poblacion actual
+	public int restarPoblacion() {
 		return 0;
 	}
 	
-	public int aumentoPoblacion() { //aumenta la poblacion disponible
+	public int aumentoPoblacion() { 
 		return 0;
 	}
 	
@@ -146,6 +146,10 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 	public int disminuirGas() {
 		return this.getCosto().getCostoGas();
 	}
+	
+	public abstract void disminuirPoblacion();
+	
+	
 
 
 

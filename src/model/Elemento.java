@@ -13,10 +13,16 @@ public abstract class Elemento {
 	private ArrayList<Parte> partes;
 	private Espacio espacio;
 
+
+
 	//para probar dimension de elemento
 	private int alto;
 	private	int ancho;
 	private Vitalidad vitalidad;
+	
+	public Espacio getEspacio() {
+		return espacio;
+	}
 
 	public void setAlto(int alto){
 		this.alto = alto;

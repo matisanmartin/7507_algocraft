@@ -15,6 +15,7 @@ import common.Danio;
 import common.Posicion;
 import common.RangoAtaque;
 import common.Vitalidad;
+import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -140,6 +141,12 @@ public class Unidad extends ElementoArtificial {
 	@Override
 	public int getCantidadDeUnidadesTransportadas() {
 		return unidadesTransportadas.size();
+	}
+
+	@Override
+	public void disminuirPoblacion() {
+		JuegoController.getInstancia().getJugadorEnemigo().disminuirPoblacionActual(this.getSuministro());
+		
 	}
 	
 }

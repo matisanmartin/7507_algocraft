@@ -205,4 +205,14 @@ public class JuegoController {
 		
 	}
 
+
+	public void eliminarElementoDeJugadorEnemigo(ElementoArtificial elem) throws PosicionInvalidaException, FueraDeRangoException {
+		getInstancia().getJugadorEnemigo().disminuirPoblacionActual(elem.getSuministro());
+		
+		//elem.disminuirPoblacion();
+		getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(elem.getPosicion());
+		CampoBatalla.getInstancia().eliminarElementoEnPosicion(elem.getPosicion(), elem.getEspacio());
+		
+	}
+
 }

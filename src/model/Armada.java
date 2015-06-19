@@ -48,9 +48,10 @@ public class Armada {
 	//se asume que existen como mucho 2 elementos en una misma posicion
 	//uno en aire y otro en tierra
 		
- 		Iterator<ElementoArtificial> it = elementos.iterator();
+		Iterator<ElementoArtificial> it = elementos.iterator();
 		int indice = 0;
 		int i=0;
+		
 	
 		while(it.hasNext())
 		{	

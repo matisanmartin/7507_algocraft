@@ -2,6 +2,7 @@ package factory.construcciones;
 
 import common.Costo;
 import common.Posicion;
+import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -21,5 +22,10 @@ public abstract class EdificioPoblacion extends Edificio{
 	}
 
 
+	@Override
+	public void disminuirPoblacion() {
+		JuegoController.getInstancia().getJugadorEnemigo().disminuirPoblacionDisponble(this.getSuministro());
+		
+	}
 
 }

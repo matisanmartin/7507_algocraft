@@ -4,6 +4,7 @@ import strategy.ContextoStrategy;
 import model.ElementoArtificial;
 import model.EspacioTerrestre;
 import common.Posicion;
+import controller.JuegoController;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -69,6 +70,12 @@ public class Edificio extends ElementoArtificial {
 	@Override
 	public int getSuministro() {
 		return 0;
+	}
+
+	@Override
+	public void disminuirPoblacion() {
+		JuegoController.getInstancia().getJugadorEnemigo().disminuirPoblacionDisponble(0);
+		
 	}
 
 

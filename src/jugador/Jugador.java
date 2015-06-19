@@ -4,15 +4,12 @@ import model.Armada;
 import model.ElementoArtificial;
 import model.Espacio;
 import razas.Raza;
-
 import common.Posicion;
-
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
-import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 
@@ -75,6 +72,7 @@ public class Jugador {
 	public void eliminarElementoMuertoEnPosicion(Posicion pos){
 		
 		armada.eliminarElementoMuertoEnPosicion(pos);
+
 	}
 	
 	public int obtenerDimensionArmada(){
@@ -160,6 +158,11 @@ public class Jugador {
 		else {
 			this.excesoPoblacion -= disminucion;
 		}
+		
+	}
+	
+	public void disminuirPoblacionActual(int disminucion) {
+		poblacionActual -= disminucion;
 		
 	}
 	
