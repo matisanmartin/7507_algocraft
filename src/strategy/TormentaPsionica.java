@@ -3,6 +3,7 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
+import strategy.Strategy;
 import common.Posicion;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
