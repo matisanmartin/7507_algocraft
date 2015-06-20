@@ -1,8 +1,5 @@
 package jugador;
 
-import model.Armada;
-import model.ElementoArtificial;
-import model.Espacio;
 import razas.Raza;
 import common.Posicion;
 import exceptions.ColorInvalidoException;
@@ -12,6 +9,9 @@ import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
+import model.Armada;
+import model.ElementoArtificial;
+import model.Espacio;
 
 public class Jugador {
 	

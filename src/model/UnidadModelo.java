@@ -1,6 +1,7 @@
 package model;
 
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;

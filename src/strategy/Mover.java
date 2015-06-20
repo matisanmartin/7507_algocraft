@@ -1,8 +1,5 @@
 package strategy;
 
-import model.CampoBatalla;
-import model.ElementoArtificial;
-import model.Juego;
 import common.Posicion;
 import common.Vitalidad;
 import exceptions.CostoInvalidoException;
@@ -16,6 +13,9 @@ import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
+import model.CampoBatalla;
+import model.ElementoArtificial;
+import model.Juego;
 
 public class Mover implements Strategy {
 
@@ -42,6 +42,7 @@ public class Mover implements Strategy {
 		Juego.getInstancia().getJugadorActual().agregarCantidadDeGas(copia.getCosto().getCostoGas());
 		
 		Juego.getInstancia().agregarUnidadAJugadorActual(copia);
+		Juego.getInstancia().getListener().seMovioUnidad(copia);
 		
 	}
 

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-import algocraft.CampoBatallaTest;
 import common.Constantes;
 import common.Posicion;
+import algocraft.CampoBatallaTest;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;

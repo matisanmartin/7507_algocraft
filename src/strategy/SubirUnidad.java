@@ -1,7 +1,5 @@
 package strategy;
 
-import model.ElementoArtificial;
-import model.Juego;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -17,6 +15,8 @@ import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
+import model.ElementoArtificial;
+import model.Juego;
 
 public class SubirUnidad implements Strategy {
 

@@ -3,12 +3,6 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
-import model.CampoBatalla;
-import model.Elemento;
-import model.ElementoArtificial;
-import model.Espacio;
-import model.EspacioTerrestre;
-import model.Juego;
 import common.Posicion;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FinDePartidaException;
@@ -18,6 +12,12 @@ import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import factory.UnidadFactory;
+import model.CampoBatalla;
+import model.Elemento;
+import model.ElementoArtificial;
+import model.Espacio;
+import model.EspacioTerrestre;
+import model.Juego;
 
 public class Emp implements Strategy {
 	
@@ -56,8 +56,8 @@ public class Emp implements Strategy {
 		
 		while(it.hasNext()){
 			
-			Elemento elemTemporal = it.next();
-			Posicion posTemporal = elemTemporal.getPosicion();
+			Elemento elemTemporalAtacado = it.next();
+			Posicion posTemporal = elemTemporalAtacado.getPosicion();
 			
 			int distanciaTemp = posTemporal.getDistancia(posicionDestino);
 			//Long distanciaNumTemp = Long.parseLong(distanciaTemp);
@@ -65,8 +65,9 @@ public class Emp implements Strategy {
 			//Valido que este en el radio y que no sea el elemento que actua
 			//En principio, no podria atacar a una unidad que este en otro espacio y misma posicion
 			if(distanciaTemp<RADIO_ACCION_MISIL_EMP&&!posTemporal.equals(elementoActuante.getPosicion())){
-				elemTemporal.recibirEmp();
-				it.set(elemTemporal);
+				Juego.getInstancia().getListener().seRealizoEmp((ElementoArtificial)elemTemporalAtacado);
+				elemTemporalAtacado.recibirEmp();
+				it.set(elemTemporalAtacado);
 	
 			}
 		}

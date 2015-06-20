@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -73,7 +74,7 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 			PosicionInvalidaException, 
 			ElementoNoEncontradoException, 
 			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException;
+			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException;
 
 	public Map<String,Accion> getAccionesDisponibles() {
 		return accionesDisponibles;

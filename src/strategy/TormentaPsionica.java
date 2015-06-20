@@ -3,8 +3,6 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
-import model.ElementoArtificial;
-import model.Juego;
 import common.Posicion;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
@@ -13,6 +11,8 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import factory.UnidadFactory;
+import model.ElementoArtificial;
+import model.Juego;
 
 public class TormentaPsionica implements Strategy {
 	
@@ -39,17 +39,19 @@ public class TormentaPsionica implements Strategy {
 		
 		while(it.hasNext())
 		{
-			ElementoArtificial elementoTemporal = it.next();
+			ElementoArtificial elementoTemporalAtacado = it.next();
 	
-			Posicion posicionTemporal = elementoTemporal.getPosicion();
+			Posicion posicionTemporal = elementoTemporalAtacado.getPosicion();
 			
 			int distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
 			
 			if(distanciaTemp<RANGO_ATAQUE_TORMENTA_PSIONICA){
-				elementoTemporal.restarVitalidad(DAÑO_TORMENTA_PSIONICA);
-				it.set(elementoTemporal);
+				Juego.getInstancia().getListener().seRealizoTormentaPsionica(elementoTemporalAtacado);
+				elementoTemporalAtacado.restarVitalidad(DAÑO_TORMENTA_PSIONICA);
+				it.set(elementoTemporalAtacado);
 			}
 		}
+		
 		Juego.getInstancia().verificarFinDePartida();
 	}
 }

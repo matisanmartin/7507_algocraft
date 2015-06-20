@@ -1,7 +1,5 @@
 package strategy;
 
-import model.ElementoArtificial;
-import model.Juego;
 import common.Danio;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
@@ -21,6 +19,8 @@ import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
 import factory.unidades.Unidad;
+import model.ElementoArtificial;
+import model.Juego;
 
 public class Alucinacion implements Strategy {
 
@@ -66,7 +66,9 @@ public class Alucinacion implements Strategy {
 		((Unidad) copiaFicticia2).setDanio(danioNulo);//TODO casteo temporal
 	
 		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
+		Juego.getInstancia().getListener().seCreoCopiaFicticia(copiaFicticia1);
 		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
+		Juego.getInstancia().getListener().seCreoCopiaFicticia(copiaFicticia2);
 		
 		Juego.getInstancia().verificarFinDePartida();
 

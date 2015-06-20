@@ -1,6 +1,7 @@
 package command;
 
-import model.ElementoArtificial;
+import java.io.IOException;
+
 import strategy.ContextoStrategy;
 import strategy.CrearAsimilador;
 import common.Posicion;
@@ -21,6 +22,7 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
+import model.ElementoArtificial;
 
 public class CrearAsimiladorAccion implements Accion {
 	ElementoArtificial elemento;
@@ -31,7 +33,7 @@ public class CrearAsimiladorAccion implements Accion {
 	
 	@Override
 	public void execute(Posicion posicionDestino) 
-	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		elemento.realizarAccion(new ContextoStrategy(new CrearAsimilador()), posicionDestino);
 		
 	}

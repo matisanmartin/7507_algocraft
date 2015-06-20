@@ -1,7 +1,7 @@
 package strategy;
 
-import model.ElementoArtificial;
-import model.Juego;
+import java.io.IOException;
+
 import common.Posicion;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
@@ -15,18 +15,19 @@ import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
 import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
+import model.ElementoArtificial;
+import model.Juego;
 
 public class CrearEspectro implements Strategy{
 	
 	@Override
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
-	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, CostoInvalidoException, RecursosInsuficientesException, RecursosFaltantesException, PoblacionFaltanteException, UnidadLlenaException, DanioInvalidoException {
+	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, CostoInvalidoException, RecursosInsuficientesException, RecursosFaltantesException, PoblacionFaltanteException, UnidadLlenaException, DanioInvalidoException, IOException {
 		
-		UnidadFactory factory = new UnidadFactory();
-		
+		UnidadFactory factory = new UnidadFactory();		
 		ElementoArtificial espectro = factory.getUnidad(TipoUnidad.TERRAN_ESPECTRO, posicionDestino);
-
 		Juego.getInstancia().agregarUnidadAJugadorActual(espectro);
+		Juego.getInstancia().getListener().seCreoEspectro(espectro);
 	}
 
 }

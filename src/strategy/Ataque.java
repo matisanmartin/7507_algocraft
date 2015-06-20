@@ -2,11 +2,6 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
-import model.CampoBatalla;
-import model.Elemento;
-import model.ElementoArtificial;
-import model.Espacio;
-import model.Juego;
 import common.Posicion;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
@@ -17,6 +12,11 @@ import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import factory.unidades.Unidad;
+import model.CampoBatalla;
+import model.Elemento;
+import model.ElementoArtificial;
+import model.Espacio;
+import model.Juego;
 
 public class Ataque implements Strategy {
 
@@ -53,6 +53,7 @@ public class Ataque implements Strategy {
 				if(distancia<=rangoAtaqueAtacante){
 					elementoTemporal.restarVitalidad(danioAtaqueNum);
 					it.set(elementoTemporal);
+					Juego.getInstancia().getListener().seRealizoAtaque((ElementoArtificial)elementoTemporal);
 					//break;
 				}
 			}

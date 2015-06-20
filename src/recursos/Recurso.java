@@ -1,10 +1,10 @@
 package recursos;
 
-import model.Elemento;
-import model.Espacio;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import model.Elemento;
+import model.Espacio;
 
 public class Recurso extends Elemento {
 

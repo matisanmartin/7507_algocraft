@@ -1,12 +1,12 @@
 package strategy;
 
-import model.ElementoArtificial;
-import model.Juego;
 import common.Posicion;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
+import model.ElementoArtificial;
+import model.Juego;
 
 public class ObtenerCristal implements Strategy {
 	

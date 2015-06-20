@@ -4,7 +4,6 @@ import java.util.List;
 
 import common.Danio;
 import common.RangoAtaque;
-
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 

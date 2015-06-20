@@ -14,6 +14,8 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
+import listener.JuegoListener;
+import vista.VentanaPrincipal;
 
 public class Juego {
 	
@@ -21,13 +23,23 @@ public class Juego {
 	private static Jugador jugadorEnemigo;
 //	private static CampoBatalla campoDeBatalla;
 	private static Juego INSTANCIA = null;
+	private static JuegoListener listener;
 	
 	private Juego(){
-		jugadorActual = new Jugador();
-		jugadorEnemigo = new Jugador();
-		//campoDeBatalla=CampoBatalla.getInstancia();
+		try
+		{
+			jugadorActual = new Jugador();
+			jugadorEnemigo = new Jugador();
+			//campoDeBatalla=CampoBatalla.getInstancia();
+			listener= new VentanaPrincipal();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
 	}
-	
 	
 	public static Juego getInstancia() {
 			
@@ -209,6 +221,21 @@ public class Juego {
 		//elem.disminuirPoblacion();
 		getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(elem.getPosicion());
 		CampoBatalla.getInstancia().eliminarElementoEnPosicion(elem.getPosicion(), elem.getEspacio());
+		
+	}
+	
+	public String pruebaListener() {
+		return listener.pruebaListener();
+	}
+	
+	public JuegoListener getListener() {
+		return listener;
+	}
+	
+	public static void main(String[] args) {
+		
+		VentanaPrincipal listener = (VentanaPrincipal) Juego.getInstancia().getListener();
+		listener.getGameLoop().iniciarEjecucion();
 		
 	}
 
