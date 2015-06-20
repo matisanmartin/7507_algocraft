@@ -1,4 +1,4 @@
-package vista;
+package vista.unidades;
 
 import java.io.IOException;
 

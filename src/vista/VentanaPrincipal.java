@@ -9,6 +9,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import vista.unidades.VistaAltoTemplario;
+import vista.unidades.VistaDragon;
+import vista.unidades.VistaEspectro;
+import vista.unidades.VistaGolliat;
+import vista.unidades.VistaMarine;
+import vista.unidades.VistaNaveCiencia;
+import vista.unidades.VistaNaveTransporteProtoss;
+import vista.unidades.VistaNaveTransporteTerran;
+import vista.unidades.VistaScout;
+import vista.unidades.VistaZealot;
 import common.Constantes;
 import common.Posicion;
 import listener.JuegoListener;
