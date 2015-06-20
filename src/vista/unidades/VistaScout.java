@@ -8,7 +8,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 public class VistaScout extends Imagen {
 	
 	public VistaScout(ObjetoPosicionable modelo) throws IOException {
-		super(VistaScout.class.getResource("/imagenes/scout.png"), modelo);
+		super(VistaScout.class.getResource("/vista/imagenes/scout.png"), modelo);
 	}
 
 }

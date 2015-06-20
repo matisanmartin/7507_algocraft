@@ -8,7 +8,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 public class VistaAltoTemplario extends Imagen {
 	
 	public VistaAltoTemplario(ObjetoPosicionable modelo) throws IOException {
-		super(VistaAltoTemplario.class.getResource("/imagenes/altotemplario.png"), modelo);
+		super(VistaAltoTemplario.class.getResource("/vista/imagenes/altotemplario.png"), modelo);
 	}
 
 }

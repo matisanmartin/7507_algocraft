@@ -8,7 +8,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 public class VistaEspectro extends Imagen {
 	
 	public VistaEspectro(ObjetoPosicionable modelo) throws IOException {
-		super(VistaEspectro.class.getResource("/imagenes/espectro.png"), modelo);
+		super(VistaEspectro.class.getResource("/vista/imagenes/espectro.png"), modelo);
 	}
 
 }

@@ -8,7 +8,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 public class VistaNaveTransporteProtoss extends Imagen {
 	
 	public VistaNaveTransporteProtoss(ObjetoPosicionable modelo) throws IOException {
-		super(VistaNaveTransporteProtoss.class.getResource("/imagenes/navetransporteprotoss.png"), modelo);
+		super(VistaNaveTransporteProtoss.class.getResource("/vista/imagenes/navetransporteprotoss.png"), modelo);
 	}
 
 }

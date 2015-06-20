@@ -8,7 +8,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 public class VistaGolliat extends Imagen {
 	
 	public VistaGolliat(ObjetoPosicionable modelo) throws IOException {
-		super(VistaGolliat.class.getResource("/imagenes/golliat.png"), modelo);
+		super(VistaGolliat.class.getResource("/vista/imagenes/golliat.png"), modelo);
 	}
 
 }
