@@ -9,9 +9,7 @@ import model.Elemento;
 import org.junit.Before;
 
 import strategy.ContextoStrategy;
-
 import common.Posicion;
-
 import factory.AbstractFactory;
 import factory.unidades.Unidad;
 

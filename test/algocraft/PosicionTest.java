@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 

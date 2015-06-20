@@ -12,7 +12,6 @@ import org.junit.runners.JUnit4;
 
 import common.Constantes;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;

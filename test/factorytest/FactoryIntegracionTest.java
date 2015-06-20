@@ -10,7 +10,6 @@ import org.junit.runners.JUnit4;
 import common.Costo;
 import common.Danio;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.FactoryInvalidaException;

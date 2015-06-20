@@ -6,6 +6,7 @@ import model.Parte;
 import org.junit.Test;
 
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 

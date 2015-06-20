@@ -1,6 +1,9 @@
 package integraciontest;
 
 import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.ElementoArtificial;
@@ -50,7 +53,6 @@ import factory.TipoFactory;
 import factory.construcciones.CentroComandoProtoss;
 import factory.construcciones.CentroComandoTerran;
 import factory.construcciones.TipoEdificio;
-import factory.unidades.Unidad;
 
 @RunWith(JUnit4.class)
 public class Enunciado7Test {
@@ -71,7 +73,7 @@ public class Enunciado7Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionDisponibleDepositoSuministroOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testAumentoDePoblacionDisponibleDepositoSuministroOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.setGas(10000);
@@ -82,21 +84,21 @@ public class Enunciado7Test {
 		//Creo un deposito de suministros
 		ContextoStrategy contexto = new ContextoStrategy(new CrearDepositoSuministro());
 		Posicion posDepositoSuministro = new Posicion(1,1);
-		extracted(contexto, centro, posDepositoSuministro);
+		centro.realizarAccion(contexto, posDepositoSuministro);
 		int poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//Debe aumentar en 5 la poblacion disponible
 		assertEquals(poblacionDisponible,5);
 		
 		//Creo otro deposito de suministros
 		posDepositoSuministro = new Posicion(2,2);
-		extracted(contexto, centro, posDepositoSuministro);
+		centro.realizarAccion(contexto, posDepositoSuministro);
 		poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//Debe aumentar en 5 la poblacion disponible
 		assertEquals(poblacionDisponible,10);
 	}
 	
 	@Test
-	public void testNoAumentarPoblacionDispoibleConPoblacionMaximaAlcanzadaCreandoDepositoSuministro() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoAumentarPoblacionDispoibleConPoblacionMaximaAlcanzadaCreandoDepositoSuministro() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(200);
 		jugadorTerran.setGas(10000);
@@ -107,7 +109,7 @@ public class Enunciado7Test {
 		//Creo un deposito de suministros
 		ContextoStrategy contexto = new ContextoStrategy(new CrearDepositoSuministro());
 		Posicion posDepositoSuministro = new Posicion(1,1);
-		extracted(contexto, centro, posDepositoSuministro);
+		centro.realizarAccion(contexto, posDepositoSuministro);
 		int poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible
 		assertEquals(poblacionDisponible,200);
@@ -117,7 +119,7 @@ public class Enunciado7Test {
 		
 		//Creo otro deposito de suministros
 		posDepositoSuministro = new Posicion(2,2);
-		extracted(contexto, centro, posDepositoSuministro);
+		centro.realizarAccion(contexto, posDepositoSuministro);
 		poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible
 		assertEquals(poblacionDisponible,200);
@@ -127,7 +129,7 @@ public class Enunciado7Test {
 	}
 	
 	@Test
-	public void testAumentoDePoblacionDisponiblePilonOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testAumentoDePoblacionDisponiblePilonOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.setGas(10000);
@@ -138,21 +140,21 @@ public class Enunciado7Test {
 		//Creo un deposito de suministros
 		ContextoStrategy contexto = new ContextoStrategy(new CrearPilon());
 		Posicion posPilon = new Posicion(1,1);
-		extracted(contexto, centro, posPilon);
+		centro.realizarAccion(contexto, posPilon);
 		int poblacionDisponible = jugadorProtoss.getPoblacionDisponible();
 		//Debe aumentar en 5 la poblacion disponible
 		assertEquals(poblacionDisponible,5);
 		
 		//Creo otro deposito de suministros
 		posPilon = new Posicion(2,2);
-		extracted(contexto, centro, posPilon);
+		centro.realizarAccion(contexto, posPilon);
 		poblacionDisponible = jugadorProtoss.getPoblacionDisponible();
 		//Debe aumentar en 5 la poblacion disponible
 		assertEquals(poblacionDisponible,10);
 	}
 	
 	@Test
-	public void testNoAumentarPoblacionDispoibleConPoblacionMaximaAlcanzadaCreandoPilon() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoAumentarPoblacionDispoibleConPoblacionMaximaAlcanzadaCreandoPilon() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(200);
 		jugadorProtoss.setGas(10000);
@@ -163,7 +165,7 @@ public class Enunciado7Test {
 		//Creo un deposito de suministros
 		ContextoStrategy contexto = new ContextoStrategy(new CrearPilon());
 		Posicion posPilon = new Posicion(1,1);
-		extracted(contexto, centro, posPilon);
+		centro.realizarAccion(contexto, posPilon);
 		int poblacionDisponible = jugadorProtoss.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible
 		assertEquals(poblacionDisponible,200);
@@ -173,7 +175,7 @@ public class Enunciado7Test {
 		
 		//Creo otro deposito de suministros
 		posPilon = new Posicion(2,2);
-		extracted(contexto, centro, posPilon);
+		centro.realizarAccion(contexto, posPilon);
 		poblacionDisponible = jugadorProtoss.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible
 		assertEquals(poblacionDisponible,200);
@@ -182,22 +184,9 @@ public class Enunciado7Test {
 		assertEquals(exceso,10);
 	}
 	
-	private void extracted(ContextoStrategy contexto,
-			ElementoArtificial elem, Posicion posUnidad)
-			throws FactoryInvalidaException, UnidadInvalidaException,
-			FueraDeRangoException, ElementoInvalidoException,
-			PosicionInvalidaException, ElementoNoEncontradoException,
-			FueraDeRangoDeVisionException, EnergiaInsuficienteException,
-			CostoInvalidoException, RecursosInsuficientesException,
-			CloneNotSupportedException, FinDePartidaException,
-			PartidaGanadaException, PartidaPerdidaException,
-			UnidadLlenaException, RecursosFaltantesException,
-			PoblacionFaltanteException, DanioInvalidoException {
-		elem.realizarAccion(contexto, posUnidad);
-	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearMarinePorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearMarinePorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -208,11 +197,11 @@ public class Enunciado7Test {
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
 		Posicion posMarine = new Posicion(1,2);
-		extracted(contexto, barraca, posMarine);
+		barraca.realizarAccion(contexto, posMarine);
 	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearGolliatPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearGolliatPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -223,10 +212,10 @@ public class Enunciado7Test {
 		Posicion posFabrica = new Posicion(1,1);
 		ElementoArtificial fabrica = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_FABRICA, posFabrica);
 		Posicion posGolliat = new Posicion(1,2);
-		extracted(contexto, fabrica, posGolliat);
+		fabrica.realizarAccion(contexto, posGolliat);
 	}
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearEspectroPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearEspectroPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -237,11 +226,11 @@ public class Enunciado7Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posEspectro = new Posicion(1,2);
-		extracted(contexto, puertoEstelar, posEspectro);
+		puertoEstelar.realizarAccion(contexto, posEspectro);
 	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearNaveTransporteTerranPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearNaveTransporteTerranPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -252,11 +241,11 @@ public class Enunciado7Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posNaveDeTransporte = new Posicion(1,2);
-		extracted(contexto, puertoEstelar, posNaveDeTransporte);
+		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
 	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearNaveCienciaPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearNaveCienciaPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
 		jugadorTerran.setPoblacionDisponible(0);
 		jugadorTerran.agregarCantidadDeCristal(100000);
@@ -267,11 +256,11 @@ public class Enunciado7Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posNaveDeCiencia = new Posicion(1,2);
-		extracted(contexto, puertoEstelar, posNaveDeCiencia);
+		puertoEstelar.realizarAccion(contexto, posNaveDeCiencia);
 	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearZealotPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearZealotPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -282,11 +271,11 @@ public class Enunciado7Test {
 		Posicion posAcceso = new Posicion(3,3);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
 		Posicion posZealot = new Posicion(3,2);
-		extracted(contexto, acceso, posZealot);
+		acceso.realizarAccion(contexto, posZealot);
 	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearDragonPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearDragonPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -297,10 +286,10 @@ public class Enunciado7Test {
 		Posicion posAcceso = new Posicion(3,3);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
 		Posicion posDragon = new Posicion(3,2);
-		extracted(contexto, acceso, posDragon);
+		acceso.realizarAccion(contexto, posDragon);
 	}
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearScoutPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearScoutPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -311,11 +300,11 @@ public class Enunciado7Test {
 		Posicion posPuertoEstelar = new Posicion(3,3);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posScout = new Posicion(3,2);
-		extracted(contexto, puertoEstelar, posScout);
+		puertoEstelar.realizarAccion(contexto, posScout);
 	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearNaveTransporteProtossPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearNaveTransporteProtossPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -326,12 +315,12 @@ public class Enunciado7Test {
 		Posicion posPuertoEstelar = new Posicion(3,3);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
 		Posicion posNaveDeTransporte = new Posicion(3,2);
-		extracted(contexto, puertoEstelar, posNaveDeTransporte);
+		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
 		
 	}
 	
 	@Test (expected = PoblacionFaltanteException.class)
-	public void testNoSePuedeCrearAltoTemplarioPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException {
+	public void testNoSePuedeCrearAltoTemplarioPorFaltaDePoblacion() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorProtoss);
 		jugadorProtoss.setPoblacionDisponible(0);
 		jugadorProtoss.agregarCantidadDeCristal(100000);
@@ -342,7 +331,7 @@ public class Enunciado7Test {
 		Posicion posArchivosTemplarios = new Posicion(3,3);
 		ElementoArtificial archivosTemplarios = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posArchivosTemplarios);
 		Posicion posAltoTemplario = new Posicion(3,2);
-		extracted(contexto, archivosTemplarios, posAltoTemplario);
+		archivosTemplarios.realizarAccion(contexto, posAltoTemplario);
 	}
 		
 

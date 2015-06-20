@@ -3,7 +3,9 @@ package atributostest;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
 import common.Costo;
+
 import exceptions.CostoInvalidoException;
 
 public class CostoTest {

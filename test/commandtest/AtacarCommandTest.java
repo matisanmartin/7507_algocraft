@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import command.Accion;
 import common.Posicion;
-
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
