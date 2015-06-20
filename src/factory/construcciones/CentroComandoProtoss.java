@@ -3,7 +3,6 @@ package factory.construcciones;
 import command.CrearAccesoAccion;
 import command.CrearAsimiladorAccion;
 import common.Posicion;
-
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 

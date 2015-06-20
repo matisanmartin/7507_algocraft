@@ -1,11 +1,11 @@
 package factory.construcciones;
 
-import model.Juego;
 import common.Costo;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import model.Juego;
 
 public abstract class EdificioPoblacion extends Edificio{
 	

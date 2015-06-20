@@ -2,6 +2,7 @@ package factory.construcciones;
 
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;

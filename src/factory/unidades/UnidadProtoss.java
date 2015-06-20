@@ -1,8 +1,5 @@
 package factory.unidades;
 
-import model.Espacio;
-import model.EspacioAereo;
-import model.EspacioTerrestre;
 import common.Costo;
 import common.Danio;
 import common.Posicion;
@@ -10,6 +7,9 @@ import common.RangoAtaque;
 import common.Vitalidad;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import model.Espacio;
+import model.EspacioAereo;
+import model.EspacioTerrestre;
 
 public class UnidadProtoss extends Unidad {
 	

@@ -1,14 +1,10 @@
 package factory;
 
-import model.EspacioAereo;
-import model.EspacioTerrestre;
-
 import common.Costo;
 import common.Danio;
 import common.Posicion;
 import common.RangoAtaque;
 import common.Vitalidad;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -22,6 +18,8 @@ import factory.unidades.Unidad;
 import factory.unidades.UnidadMagicaProtoss;
 import factory.unidades.UnidadMagicaTerran;
 import factory.unidades.UnidadProtoss;
+import model.EspacioAereo;
+import model.EspacioTerrestre;
 
 public class UnidadFactory extends AbstractFactory{
 	

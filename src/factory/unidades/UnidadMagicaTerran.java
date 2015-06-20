@@ -1,7 +1,5 @@
 package factory.unidades;
 
-import model.Espacio;
-
 import command.EmpAccion;
 import command.RadiacionAccion;
 import common.Costo;
@@ -9,9 +7,9 @@ import common.Danio;
 import common.Posicion;
 import common.RangoAtaque;
 import common.Vitalidad;
-
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import model.Espacio;
 
 public class UnidadMagicaTerran extends UnidadMagica {
 	

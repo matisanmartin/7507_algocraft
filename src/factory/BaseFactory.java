@@ -1,7 +1,6 @@
 package factory;
 
 import common.Posicion;
-
 import exceptions.FueraDeRangoException;
 import exceptions.UnidadInvalidaException;
 import factory.construcciones.Edificio;

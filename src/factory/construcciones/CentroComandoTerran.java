@@ -3,7 +3,6 @@ package factory.construcciones;
 import command.CrearBarracaAccion;
 import command.CrearDepositoSuministroAccion;
 import common.Posicion;
-
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 

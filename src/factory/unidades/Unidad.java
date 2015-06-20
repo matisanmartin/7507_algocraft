@@ -1,13 +1,11 @@
 package factory.unidades;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import model.ElementoArtificial;
-import model.Espacio;
-import model.Juego;
 import strategy.ContextoStrategy;
 import command.Accion;
 import command.AtaqueAccion;
@@ -33,6 +31,9 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
+import model.ElementoArtificial;
+import model.Espacio;
+import model.Juego;
 
 public class Unidad extends ElementoArtificial {
 
@@ -112,7 +113,7 @@ public class Unidad extends ElementoArtificial {
 
 	@Override
 	public void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino) 
-	throws UnidadLlenaException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, DanioInvalidoException, CloneNotSupportedException, RecursosFaltantesException, PoblacionFaltanteException {
+	throws UnidadLlenaException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, DanioInvalidoException, CloneNotSupportedException, RecursosFaltantesException, PoblacionFaltanteException, IOException {
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	
