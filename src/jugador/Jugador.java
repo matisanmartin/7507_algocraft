@@ -22,7 +22,7 @@ public class Jugador {
 	TipoColor color;
 	Raza raza;
 	Armada armada;
-
+//uncomentario
 	private int cantidadDeCristal;
 	private int cantidadDeGas;
 	private int poblacionActual;
