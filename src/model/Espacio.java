@@ -31,11 +31,31 @@ public class Espacio {
 
 	private boolean ocupanMismoEspacio(Elemento elementoParaAgregar,Elemento elemento) {
 		
-		return ( (elementoParaAgregar.getPosicion().getX() >= elemento.getPosicion().getX()-1) || 
-				(elementoParaAgregar.getPosicion().getX() <= elemento.getPosicion().getX()+elemento.getAlto()) ) &&
-				( (elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()-1) || 
-				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAncho()) );
+//		return ( (elementoParaAgregar.getPosicion().getX() >= elemento.getPosicion().getX()-1) || 
+//				(elementoParaAgregar.getPosicion().getX() <= elemento.getPosicion().getX()+elemento.getAlto()) ) &&
+//				( (elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()-1) || 
+//				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAncho()) );
+//		
+//		boolean res =  ( (elementoParaAgregar.getPosicion().getX() >= elemento.getPosicion().getX()-1) || 
+//				(elementoParaAgregar.getPosicion().getX() <= elemento.getPosicion().getX()+elemento.getAlto()) ) &&
+//				( (elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()-1) || 
+//				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAncho()) );
+//		
+//		return res;
 		
+//		return ( (elementoParaAgregar.getPosicion().getX() >= elemento.getPosicion().getX()) && 
+//				((elementoParaAgregar.getPosicion().getX() <= (elemento.getPosicion().getX()+elemento.getAlto()-1)))&&
+//				((elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()) && 
+//				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAncho()-1))
+//				);
+		
+		boolean res = ( (elementoParaAgregar.getPosicion().getX() >= elemento.getPosicion().getX()) && 
+				((elementoParaAgregar.getPosicion().getX() <= (elemento.getPosicion().getX()+elemento.getAlto()-1)))&&
+				((elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()) && 
+				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAncho()-1))
+				);
+		
+		return res;
 		
 	}
 	public List<Elemento> obtenerElementosDeCampoDeBatalla() throws PosicionInvalidaException, FueraDeRangoException {

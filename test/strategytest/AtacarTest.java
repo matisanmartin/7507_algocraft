@@ -6,8 +6,10 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.CampoBatalla;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,6 +78,11 @@ public class AtacarTest {
 		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionFueraDeRango);	
 	}
 
+	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
+	}
 	/**
 	 * Un Marine ataca a un zealot en rango, por lo tanto, como el daño del Marine es 6
 	 * el escudo del Zealot deberia resultar en 60-6 (ya que daña el escudo y no llega a quitarle vida)

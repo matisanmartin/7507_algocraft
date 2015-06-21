@@ -7,9 +7,11 @@ import java.io.IOException;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.Armada;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,11 +26,13 @@ import strategy.CrearNaveTransporteProtoss;
 import strategy.CrearNaveTransporteTerran;
 import strategy.CrearScout;
 import strategy.CrearZealot;
+
 import common.Costo;
 import common.Danio;
 import common.Posicion;
 import common.RangoAtaque;
 import common.Vitalidad;
+
 import exceptions.ColorInvalidoException;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
@@ -79,6 +83,34 @@ public class CrearUnidadesTest {
 
 	}
 	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
+	}
+	
+	/*
+	 * Jugador pide a barraca crear marine
+	 */
+	@Test
+	public void testJugadorConBarracaCreaMarine() 
+	throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
+		Edificio barraca = new Barraca(2, 2, posicionOrigen);
+		Juego.getInstancia().agregarUnidadAJugadorActual(barraca);
+		contexto = new ContextoStrategy(new CrearMarine());
+		armada = Juego.getInstancia().getJugadorActual().obtenerArmada();
+		Edificio barracaObtenida = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
+		barracaObtenida.realizarAccion(contexto, posicionDestino);
+		Unidad unidad = (Unidad) Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
+		assertEquals(1,unidad.getTransporte());
+		assertEquals(7, unidad.getVision());
+		assertEquals(true, unidad.getCosto().equals(new Costo("50M")));
+		assertEquals(3, unidad.getTiempoConstruccion());	
+		assertEquals(true, new Danio("6A6T").equals(unidad.getDanio()));
+		assertEquals(true, new RangoAtaque(0,4).equals(unidad.getRangoAtaque()));
+		assertEquals(40, unidad.getVida());	
+
+	}
+	
 	/*
 	 * Jugador pide a Acceso crear Zealot
 	 */
@@ -126,28 +158,7 @@ public class CrearUnidadesTest {
 		
 	}
 	
-	/*
-	 * Jugador pide a barraca crear marine
-	 */
-	@Test
-	public void testJugadorConBarracaCreaMarine() 
-	throws ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
-		Edificio barraca = new Barraca(2, 2, posicionOrigen);
-		Juego.getInstancia().agregarUnidadAJugadorActual(barraca);
-		contexto = new ContextoStrategy(new CrearMarine());
-		armada = Juego.getInstancia().getJugadorActual().obtenerArmada();
-		Edificio barracaObtenida = (Edificio) armada.obtenerElementoEnPosicion(posicionOrigen);
-		barracaObtenida.realizarAccion(contexto, posicionDestino);
-		Unidad unidad = (Unidad) Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
-		assertEquals(1,unidad.getTransporte());
-		assertEquals(7, unidad.getVision());
-		assertEquals(true, unidad.getCosto().equals(new Costo("50M")));
-		assertEquals(3, unidad.getTiempoConstruccion());	
-		assertEquals(true, new Danio("6A6T").equals(unidad.getDanio()));
-		assertEquals(true, new RangoAtaque(0,4).equals(unidad.getRangoAtaque()));
-		assertEquals(40, unidad.getVida());	
 
-	}
 	
 	/*
 	 * Jugador pide a fabrica crear golliat

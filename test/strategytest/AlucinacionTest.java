@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.CampoBatalla;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +17,9 @@ import razas.Protoss;
 import razas.Terran;
 import strategy.Alucinacion;
 import strategy.ContextoStrategy;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -65,7 +69,7 @@ public class AlucinacionTest {
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 
 		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
-		posicionUnidadAmigaEnRango = new Posicion(2,4);//El rango de vision del alto templario es 7
+		posicionUnidadAmigaEnRango = new Posicion(2,5);//El rango de vision del alto templario es 7
 		unidadAmigaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaEnRango);
 		jugadorActual.agregarElemento(unidadAmigaEnRango);
 		
@@ -75,6 +79,11 @@ public class AlucinacionTest {
 		
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 	
+	}
+	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
 	}
 
 	/**

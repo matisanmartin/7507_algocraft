@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import model.Juego;
 import vista.VentanaPrincipal;
 
 public class ControladorMouse implements MouseListener {
@@ -16,8 +17,9 @@ public class ControladorMouse implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent event) {
+		Juego juego = this.ventana.getJuego();
 		
-
+		
 	}
 
 	@Override

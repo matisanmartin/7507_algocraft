@@ -6,9 +6,11 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -77,6 +79,12 @@ public class Enunciado6Test {
 		jugadorProtoss.agregarCantidadDeCristal(100000);
 		jugadorProtoss.agregarCantidadDeGas(100000);
 	
+	}
+	
+	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
 	}
 	/* A continuacion se prueba que la construccion de unidades sume poblacion
 	 * y que la destruccion de las mismas reste */

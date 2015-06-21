@@ -6,9 +6,11 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,6 +69,11 @@ public class Enunciado1Test {
 		
 	}
 
+	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
+	}
 	@Test
 	public void testNumero1aEnunciado() 
 	throws ElementoInvalidoException, RecursosInsuficientesException, NombreJugadorRepetidoException, ElementoNoEncontradoException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {

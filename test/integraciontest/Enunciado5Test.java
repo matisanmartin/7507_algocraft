@@ -6,9 +6,11 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -63,6 +65,12 @@ public class Enunciado5Test {
 		Juego.getInstancia().getJugadorActual().setMinerales(100000);
 	}
 
+	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
+	}
+	
 	@Test(expected = UnidadLlenaException.class)
 	public void testNaveDeTransporteLlena() 
 	throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {

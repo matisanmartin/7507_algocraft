@@ -6,9 +6,11 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +21,9 @@ import strategy.Ataque;
 import strategy.ContextoStrategy;
 import strategy.Emp;
 import strategy.TormentaPsionica;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -89,6 +93,10 @@ public class Enunciado2Test {
 		
 	}
 	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
+	}
 	@Test
 	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		

@@ -4,26 +4,20 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.sun.glass.events.MouseEvent;
-
 import listener.JuegoListener;
 import model.CampoBatalla;
 import model.ElementoArtificial;
+import model.Juego;
 import model.UnidadModelo;
-import titiritero.dibujables.Cuadrado;
-import titiritero.dibujables.Figura;
 import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
-import titiritero.modelo.ObjetoPosicionable;
 import titiritero.modelo.SuperficieDeDibujo;
 import vista.unidades.VistaAltoTemplario;
 import vista.unidades.VistaDragon;
@@ -35,8 +29,9 @@ import vista.unidades.VistaNaveTransporteProtoss;
 import vista.unidades.VistaNaveTransporteTerran;
 import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
-import common.Constantes;
+
 import common.Posicion;
+
 import controller.ControladorMouse;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
@@ -56,6 +51,7 @@ public class VentanaPrincipal implements JuegoListener {
 	private int tamanioCasillaX;
 	private int tamanioCasillaY;
 	private CampoBatalla campoBatalla;
+	private Juego juego;
 	
 	public static void main(String[] args){
 		EventQueue.invokeLater(new Runnable() {
@@ -156,6 +152,10 @@ public class VentanaPrincipal implements JuegoListener {
 		panel.addMouseListener(new ControladorMouse(this));
 		
 		
+	}
+	
+	public Juego getJuego(){
+		return this.juego;
 	}
 		
 	public GameLoop getGameLoop() {

@@ -3,9 +3,11 @@ package integraciontest;
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,6 +45,12 @@ public class Enunciado9Test {
 		
 		Juego.getInstancia().getJugadorActual().agregarElemento(protoss);
 		
+	}
+	
+	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
 	}
 		
 
