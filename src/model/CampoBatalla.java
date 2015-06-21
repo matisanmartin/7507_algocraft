@@ -27,17 +27,24 @@ public class CampoBatalla implements ObjetoVivo {
 		this.elementos = new ArrayList<Elemento>();
 		this.espacioTerrestre = new EspacioTerrestre();
 		this.espacioAereo = new EspacioAereo();
-	};
+	}
 	
 	/*
 	 * POST:setea las bases en el campo
 	 */
 	public void setUpBases() throws PosicionInvalidaException, FueraDeRangoException{
 				
-		this.espacioTerrestre.agregarBase(new BaseSupIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.POS_INICIAL_CAMPO_BATALLA)));
-		this.espacioTerrestre.agregarBase(new BaseInfIzq(new Posicion(Constantes.ALTO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA)));
-		this.espacioTerrestre.agregarBase(new BaseSupDer(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.ANCHO_DEFECTO)));
-		this.espacioTerrestre.agregarBase(new BaseInfDer(new Posicion(Constantes.ALTO_DEFECTO, Constantes.ANCHO_DEFECTO)));
+//		this.espacioTerrestre.agregarBase(new BaseSupIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA+1, Constantes.POS_INICIAL_CAMPO_BATALLA+1)));
+		Posicion pos = new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA+1, Constantes.POS_INICIAL_CAMPO_BATALLA+1);
+//		Base base1 = new BaseSupIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA+1, Constantes.POS_INICIAL_CAMPO_BATALLA+1));
+		Base base1 = new BaseSupIzq(pos);
+		this.espacioTerrestre.agregarElemento(base1.getVolcan().get(0));
+		for (int i = 0; i < 6; i++) {
+			this.espacioTerrestre.agregarElemento(base1.getCristales().get(i));
+		}
+//		this.espacioTerrestre.agregarBase(new BaseInfIzq(new Posicion(Constantes.ALTO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA)));
+//		this.espacioTerrestre.agregarBase(new BaseSupDer(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.ANCHO_DEFECTO)));
+//		this.espacioTerrestre.agregarBase(new BaseInfDer(new Posicion(Constantes.ALTO_DEFECTO, Constantes.ANCHO_DEFECTO)));
 	
 		
 	}
@@ -45,7 +52,9 @@ public class CampoBatalla implements ObjetoVivo {
 		
 		if (INSTANCIA == null) {
 			crearInstancia();
+			
 		}
+		
 		return INSTANCIA;
 	}
 	

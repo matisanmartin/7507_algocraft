@@ -2,12 +2,14 @@ package model;
 
 import java.util.ArrayList;
 
+import titiritero.modelo.ObjetoPosicionable;
+import titiritero.modelo.ObjetoVivo;
 import common.Posicion;
 import common.Vitalidad;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
-public abstract class Elemento {
+public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
 
 	private Posicion posicion;
 	private ArrayList<Parte> partes;
@@ -119,4 +121,16 @@ public abstract class Elemento {
 	public Espacio obtenerEspacio() {
 		return this.espacio;
 	}
+	
+	public int getX(){
+		return this.posicion.getX();
+	}
+	public int getY(){
+		return this.posicion.getY();
+	}
+	
+	public void vivir(){
+		System.out.println("Clase elemento viviendo");
+	}
+
 }

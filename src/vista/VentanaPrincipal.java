@@ -22,6 +22,7 @@ import model.Juego;
 import model.UnidadModelo;
 import razas.Protoss;
 import razas.Terran;
+import recursos.Volcan;
 import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
@@ -33,6 +34,7 @@ import vista.edificios.VistaBarraca;
 import vista.edificios.VistaCentroMineral;
 import vista.edificios.VistaDepositoDeSuministros;
 import vista.edificios.VistaFabrica;
+import vista.edificios.VistaGas;
 import vista.edificios.VistaNexoMineral;
 import vista.edificios.VistaPilon;
 import vista.edificios.VistaPuertoEstelarProtoss;
@@ -163,8 +165,10 @@ public class VentanaPrincipal implements JuegoListener {
 		
 		Unidad unidad = null;
 		UnidadFactory factory = new UnidadFactory();
+		Volcan volcan = null;
 		try {
-			unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(50, 50));
+			unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(100, 100));
+			volcan = new Volcan(65, 65, new Posicion(1, 1));
 		} catch (UnidadLlenaException | UnidadInvalidaException
 				| CostoInvalidoException | DanioInvalidoException e) {
 			// TODO Auto-generated catch block
@@ -184,15 +188,17 @@ public class VentanaPrincipal implements JuegoListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-	
-
 		
 		
+
+		Imagen vistaVolcan = new VistaGas(volcan);	
 		
 		this.gameLoop.agregar(unidad);
 		Imagen imagenmarine = new VistaMarine(unidad);
 		this.gameLoop.agregar(imagenmarine);
+		
+		this.gameLoop.agregar(volcan);
+		this.gameLoop.agregar(vistaVolcan);
 		
 		panel.addMouseListener(new ControladorMouse(this));
 		
@@ -217,7 +223,7 @@ public class VentanaPrincipal implements JuegoListener {
 			
 		}
 		
-		
+//	private void 	
 		
 		
 	}

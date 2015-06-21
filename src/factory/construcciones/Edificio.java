@@ -80,5 +80,14 @@ public class Edificio extends ElementoArtificial {
 		
 	}
 
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 
 }
