@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import common.Posicion;
+
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -74,8 +75,16 @@ public class Armada {
 		while(it.hasNext())
 		{
 			ElementoArtificial actual = it.next();
-			if(actual.getPosicion().equals(pos))
-				return actual;
+			ArrayList<Parte> partesActuales = actual.getPartes();
+			for (Parte unaParte : partesActuales) {
+				if (unaParte.posicionEsParte(pos)){
+					return actual;
+				}
+			}
+			
+//			boolean esParte = partesActuales.posicionEsParte(pos);
+//			if(actual.getPosicion().equals(pos))
+//				return actual;
 		}
 
 		throw new ElementoNoEncontradoException();

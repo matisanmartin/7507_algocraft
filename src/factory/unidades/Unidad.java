@@ -11,6 +11,7 @@ import titiritero.modelo.ObjetoPosicionable;
 import titiritero.modelo.ObjetoVivo;
 import command.Accion;
 import command.AtaqueAccion;
+import command.MoverAccion;
 import common.Costo;
 import common.Danio;
 import common.Posicion;
@@ -122,6 +123,7 @@ public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosi
 	public void definirAccionesDisponibles(){
 		Map<String, Accion> acciones = new Hashtable<String, Accion>();
 		acciones.put("Atacar", new AtaqueAccion(this));
+		acciones.put("Mover", new MoverAccion(this));
 		setAccionesDisponibles(acciones);
 	}
 	

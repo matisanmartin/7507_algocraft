@@ -7,6 +7,7 @@ import java.util.Map;
 import strategy.ContextoStrategy;
 import command.Accion;
 import command.AtaqueAccion;
+import command.MoverAccion;
 import common.Costo;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
@@ -86,7 +87,7 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 	
 	public void definirAccionesDisponibles() {
 		accionesDisponibles.put("Atacar",new AtaqueAccion(this));
-		//TODO agregar mover
+		accionesDisponibles.put("Mover", new MoverAccion(this));
 	}
 	
 	public void EliminarAccionDisponible(String keyAccion){

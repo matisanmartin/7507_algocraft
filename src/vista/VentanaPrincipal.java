@@ -5,16 +5,23 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import jugador.Jugador;
+import jugador.TipoColor;
 import listener.JuegoListener;
 import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 import model.UnidadModelo;
+import razas.Protoss;
+import razas.Terran;
 import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
@@ -41,13 +48,15 @@ import vista.unidades.VistaNaveTransporteProtoss;
 import vista.unidades.VistaNaveTransporteTerran;
 import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
-
+import command.Accion;
 import common.Posicion;
-
 import controller.ControladorMouse;
+import exceptions.ColorInvalidoException;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.NombreCortoException;
+import exceptions.NombreJugadorRepetidoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
@@ -64,7 +73,6 @@ public class VentanaPrincipal implements JuegoListener {
 	private int tamanioCasillaY;
 	private CampoBatalla campoBatalla;
 	private Juego juego;
-	
 	public static void main(String[] args){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -134,6 +142,12 @@ public class VentanaPrincipal implements JuegoListener {
 		btnFinalizar.setBounds(135, 25, 100, 25);
 		frame.getContentPane().add(btnFinalizar);
 		
+//		JButton botonAccion = new JButton("pruebaa");
+//		botonAccion.setBounds(300, 25, 100, 25);
+//		frame.getContentPane().add(botonAccion);
+//		botonAccion.setFocusable(true);
+	
+		
 		//superficie donde se dibujarn los elementos
 		JPanel panel = new SuperficiePanel();
 		panel.setBackground(new Color(0, 0, 0));
@@ -157,6 +171,25 @@ public class VentanaPrincipal implements JuegoListener {
 			e.printStackTrace();
 		}
 		
+		Jugador jugadorActual;
+		Jugador jugadorEnemigo;
+		try {
+			jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
+			jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
+
+			Juego.getInstancia().setJugadorActual(jugadorActual);
+			Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+			Juego.getInstancia().obtenerArmadaJugadorActual().agregarElemento(unidad);
+		} catch (NombreCortoException | ColorInvalidoException | NombreJugadorRepetidoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+	
+
+		
+		
+		
 		this.gameLoop.agregar(unidad);
 		Imagen imagenmarine = new VistaMarine(unidad);
 		this.gameLoop.agregar(imagenmarine);
@@ -166,6 +199,28 @@ public class VentanaPrincipal implements JuegoListener {
 		
 	}
 	
+	public void agregarPanelDeOpciones(Map<String, Accion> opciones){
+		Set<String> keys = opciones.keySet();
+		int posX = 1100;
+		int posY = 25;
+		
+		Iterator<String> it = keys.iterator();
+		while (it.hasNext()){
+			String keyActual = it.next();
+			JButton botonAccion = new JButton(keyActual);
+			Accion accionActual = opciones.get(keyActual);
+			botonAccion.addActionListener(new CreadorBotonDinamico(accionActual));
+			botonAccion.setBounds(posX, posY, 100, 25);
+			frame.getContentPane().add(botonAccion);
+			botonAccion.setFocusable(true);
+			posY += 25;
+			
+		}
+		
+		
+		
+		
+	}
 	public Juego getJuego(){
 		return this.juego;
 	}

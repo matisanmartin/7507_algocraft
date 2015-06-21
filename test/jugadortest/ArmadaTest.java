@@ -1,19 +1,51 @@
 package jugadortest;
 
 import static org.junit.Assert.assertEquals;
-import model.Armada;
-import model.ElementoArtificial;
 
+import java.io.IOException;
+
+import jugador.Jugador;
+import jugador.TipoColor;
+import model.Armada;
+import model.CampoBatalla;
+import model.Elemento;
+import model.ElementoArtificial;
+import model.Juego;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import razas.Protoss;
+import razas.Terran;
+import strategy.ContextoStrategy;
+import strategy.Mover;
+
 import common.Posicion;
 import common.Vitalidad;
+
+import exceptions.ColorInvalidoException;
+import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
+import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
+import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.NombreCortoException;
+import exceptions.NombreJugadorRepetidoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosFaltantesException;
+import exceptions.RecursosInsuficientesException;
+import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 import factory.AbstractFactory;
 import factory.GeneradorDeFactory;
 import factory.TipoFactory;
@@ -41,6 +73,12 @@ public class ArmadaTest {
 		unidadMuertaNueva = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(1, 1));
 		unidadMuertaNueva.setVitalidad(new Vitalidad(0,0));
 		unidadMuertaNueva.posicionar(new Posicion(2,3));
+	}
+	
+	@After
+	public void detroy(){
+		Juego.destruirInstancia();
+		CampoBatalla.DestruirInstancia();
 	}
 
 	@Test
@@ -73,6 +111,55 @@ public class ArmadaTest {
 		
 		ElementoArtificial ElementoUnico = armada.obtenerElementoEnPosicion(pos);
 		assertEquals(true,pos.equals(ElementoUnico.getPosicion()));	
+	}
+	
+	@Test 
+	public void deberiaRetornarElementoQueContieneLaParte() throws PosicionInvalidaException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, DanioInvalidoException, UnidadLlenaException, ElementoNoEncontradoException{
+		Unidad unidad1 = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(50, 50));
+		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
+		armada.agregarElemento(unidad1);
+		armada.agregarElemento(unidad2);
+		ElementoArtificial unidadObtenida = armada.obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
+		assertEquals(new Posicion(2, 3), unidadObtenida.getPosicion());
+		assertEquals(new Posicion(3,3), unidadObtenida.getPartes().get(2).getPosicion());
+		
+	}
+	
+	@Test (expected = ElementoNoEncontradoException.class)
+	public void noDeberiaRetornarElementoQueContieneLaParte() throws PosicionInvalidaException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, DanioInvalidoException, UnidadLlenaException, ElementoNoEncontradoException{
+		Unidad unidad1 = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(50, 50));
+		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
+		armada.agregarElemento(unidad1);
+		armada.agregarElemento(unidad2);
+		ElementoArtificial unidadObtenida = armada.obtenerElementoEnPosicion(new Posicion(100, 100));
+		assertEquals(new Posicion(2, 3), unidadObtenida.getPosicion());
+		assertEquals(new Posicion(3,3), unidadObtenida.getPartes().get(2).getPosicion());
+		
+	}
+	
+	@Test
+	public void siMuevoUnaUnidadTambienSeCambiaEnElCampoDeBatalla() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException, UnidadLlenaException, NombreCortoException, ColorInvalidoException, NombreJugadorRepetidoException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, ElementoNoEncontradoException, FactoryInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, RecursosFaltantesException, IOException{
+		Jugador jugadorActual;
+		Jugador jugadorEnemigo;
+		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
+		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
+		
+		Juego.getInstancia().setJugadorActual(jugadorActual);
+		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		
+		Unidad unidad1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(50, 50));
+		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
+		Juego.getInstancia().agregarUnidadAJugadorActual(unidad1);
+		Juego.getInstancia().agregarUnidadAJugadorActual(unidad2);
+		
+		ElementoArtificial unidadObtenida = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
+		ContextoStrategy contextoStrategy = new ContextoStrategy(new Mover());
+		unidadObtenida.realizarAccion(contextoStrategy, new Posicion(400, 400));
+//		ElementoArtificial unidadDeArmada = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(new Posicion(400,400));
+		Elemento unidadDeCampo = CampoBatalla.getInstancia().getEspacioTerrestre().getEspacio().get(1);
+		assertEquals(new Posicion(400, 400), unidadDeCampo.getPosicion());
+		assertEquals(unidadObtenida.getPosicion(), unidadDeCampo.getPosicion());
+		
 	}
 
 }

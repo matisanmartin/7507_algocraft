@@ -55,8 +55,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 		UNIDAD_MARINE_DAÑO = "6A6T";
 	public static final int 		UNIDAD_MARINE_SUMINISTRO = 1;
 	public static final RangoAtaque UNIDAD_MARINE_RANGO_ATAQUE = new RangoAtaque(0,4);
-	public static final int			UNIDAD_MARINE_ALTO = 2;
-	public static final int			UNIDAD_MARINE_ANCHO = 2;
+	public static final int			UNIDAD_MARINE_ALTO = 30;
+	public static final int			UNIDAD_MARINE_ANCHO = 30;
 	
 	
 	//Atributos Golliat

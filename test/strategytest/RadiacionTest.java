@@ -53,7 +53,7 @@ public class RadiacionTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		Juego.DestruirInstancia();
+		Juego.destruirInstancia();
 		
 		factory = new UnidadFactory();
 		contexto=new ContextoStrategy(new Radiacion());

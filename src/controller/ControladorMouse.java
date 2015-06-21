@@ -2,13 +2,22 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Map;
 
+import model.Elemento;
+import model.ElementoArtificial;
 import model.Juego;
 import vista.VentanaPrincipal;
+import command.Accion;
+import common.Posicion;
+import exceptions.ElementoNoEncontradoException;
+import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class ControladorMouse implements MouseListener {
 	
 	private VentanaPrincipal ventana;
+
 
 	public ControladorMouse(VentanaPrincipal vp) {
 		this.ventana = vp;
@@ -17,7 +26,19 @@ public class ControladorMouse implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent event) {
-		Juego juego = this.ventana.getJuego();
+		Juego juego = Juego.getInstancia();
+		try {
+			Posicion pos = new Posicion(event.getX(), event.getY());
+			Elemento elemento = juego.getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(pos);
+			Map<String, Accion> acciones = ((ElementoArtificial)elemento).getAccionesDisponibles();
+			this.ventana.agregarPanelDeOpciones(acciones);
+			
+		} catch (ElementoNoEncontradoException | FueraDeRangoException | PosicionInvalidaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 		
 		
 	}

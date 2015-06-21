@@ -122,7 +122,7 @@ public class CampoBatallaTest {
 		CampoBatalla.getInstancia().getEspacioTerrestre().agregarElemento(unidad3);
 		
 		
-//		Elemento elemento = CampoBatalla.getInstancia().getElementoDeParte(unidad3.getPartes().get(3));
+//		Elemento elemento = CampoBatalla.getInstancia().getElementoDeParte(unidad3.getPartes().get(3).getPosicion());
 		
 	}
 	

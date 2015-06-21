@@ -31,7 +31,9 @@ public class Juego {
 			jugadorActual = new Jugador();
 			jugadorEnemigo = new Jugador();
 			//campoDeBatalla=CampoBatalla.getInstancia();
-			listener= new VentanaPrincipal();
+			
+			//TODO temporal porque pincha
+//			listener= new VentanaPrincipal();
 		}
 		catch(Exception e)
 		{
@@ -50,7 +52,7 @@ public class Juego {
 		}
 		
 		//para probar
-		public static void DestruirInstancia(){
+		public static void destruirInstancia(){
 			INSTANCIA = null;
 		}
 		
@@ -61,7 +63,7 @@ public class Juego {
 		    }
 		}
 	
-	
+
 	private Juego(Jugador jugadorActual, Jugador jugadorEnemigo,CampoBatalla campoDeBatalla) throws NombreJugadorRepetidoException{
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);

@@ -29,20 +29,22 @@ public class Mover implements Strategy {
 			RecursosInsuficientesException, CloneNotSupportedException, PoblacionFaltanteException {
 		
 		
-		ElementoArtificial copia = (ElementoArtificial) elementoActuante.clone();
-		copia.setPosicion(posicionDestino);
+//		ElementoArtificial copia = (ElementoArtificial) elementoActuante.clone();
+//		copia.setPosicion(posicionDestino);
+//		
+//		CampoBatalla.getInstancia().eliminarElementoEnPosicion(elementoActuante.getPosicion(), elementoActuante.obtenerEspacio());
+//		
+//		elementoActuante.setVitalidad(new Vitalidad(0,0));//TODO msma: esto es temporal hasta hacer un metodo que elimine de una sin necesidad de estar muerto
+//		Juego.getInstancia().getJugadorActual().eliminarElementoMuertoEnPosicion(elementoActuante.getPosicion());
+//		
+//		//Agrego los recursos suficientes para que se le agregue la unidad copiada al jugador actual, ya que sino podria tirar excepcion
+//		Juego.getInstancia().getJugadorActual().agregarCantidadDeCristal(copia.getCosto().getCostoMineral());
+//		Juego.getInstancia().getJugadorActual().agregarCantidadDeGas(copia.getCosto().getCostoGas());
+//		
+//		Juego.getInstancia().agregarUnidadAJugadorActual(copia);
+//		Juego.getInstancia().getListener().seMovioUnidad(copia);
 		
-		CampoBatalla.getInstancia().eliminarElementoEnPosicion(elementoActuante.getPosicion(), elementoActuante.obtenerEspacio());
-		
-		elementoActuante.setVitalidad(new Vitalidad(0,0));//TODO msma: esto es temporal hasta hacer un metodo que elimine de una sin necesidad de estar muerto
-		Juego.getInstancia().getJugadorActual().eliminarElementoMuertoEnPosicion(elementoActuante.getPosicion());
-		
-		//Agrego los recursos suficientes para que se le agregue la unidad copiada al jugador actual, ya que sino podria tirar excepcion
-		Juego.getInstancia().getJugadorActual().agregarCantidadDeCristal(copia.getCosto().getCostoMineral());
-		Juego.getInstancia().getJugadorActual().agregarCantidadDeGas(copia.getCosto().getCostoGas());
-		
-		Juego.getInstancia().agregarUnidadAJugadorActual(copia);
-		Juego.getInstancia().getListener().seMovioUnidad(copia);
+		elementoActuante.setPosicion(posicionDestino);
 		
 	}
 
