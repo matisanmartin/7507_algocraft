@@ -8,7 +8,7 @@ import titiritero.modelo.ObjetoPosicionable;
 public class VistaZealot extends Imagen {
 
 	public VistaZealot(ObjetoPosicionable modelo) throws IOException {
-		super(VistaZealot.class.getResource("/vista/imagenes/zealot.png"), modelo);
+		super(VistaZealot.class.getResource("/vista/imagenes/zealot30-30.png"), modelo);
 	}
 
 }

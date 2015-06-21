@@ -8,7 +8,7 @@ import titiritero.modelo.ObjetoPosicionable;
 public class VistaNaveTransporteProtoss extends Imagen {
 	
 	public VistaNaveTransporteProtoss(ObjetoPosicionable modelo) throws IOException {
-		super(VistaNaveTransporteProtoss.class.getResource("/vista/imagenes/navetransporteprotoss.png"), modelo);
+		super(VistaNaveTransporteProtoss.class.getResource("/vista/imagenes/naveTransporteProtoss100-100.png"), modelo);
 	}
 
 }

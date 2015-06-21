@@ -8,7 +8,7 @@ import titiritero.modelo.ObjetoPosicionable;
 public class VistaAltoTemplario extends Imagen {
 	
 	public VistaAltoTemplario(ObjetoPosicionable modelo) throws IOException {
-		super(VistaAltoTemplario.class.getResource("/vista/imagenes/altotemplario.png"), modelo);
+		super(VistaAltoTemplario.class.getResource("/vista/imagenes/altoTemplario30-30.png"), modelo);
 	}
 
 }

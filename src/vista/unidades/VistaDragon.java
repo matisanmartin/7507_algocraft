@@ -8,6 +8,6 @@ import titiritero.modelo.ObjetoPosicionable;
 public class VistaDragon extends Imagen {
 
 	public VistaDragon(ObjetoPosicionable modelo) throws IOException {
-		super(VistaDragon.class.getResource("/vista/imagenes/dragoon.png"), modelo);
+		super(VistaDragon.class.getResource("/vista/imagenes/dragon50-50.png"), modelo);
 	}
 }

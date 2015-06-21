@@ -19,6 +19,18 @@ import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
 import titiritero.modelo.SuperficieDeDibujo;
+import vista.edificios.VistaAcceso;
+import vista.edificios.VistaArchivosTemplarios;
+import vista.edificios.VistaAsimilador;
+import vista.edificios.VistaBarraca;
+import vista.edificios.VistaCentroMineral;
+import vista.edificios.VistaDepositoDeSuministros;
+import vista.edificios.VistaFabrica;
+import vista.edificios.VistaNexoMineral;
+import vista.edificios.VistaPilon;
+import vista.edificios.VistaPuertoEstelarProtoss;
+import vista.edificios.VistaPuertoEstelarTerran;
+import vista.edificios.VistaRefineria;
 import vista.unidades.VistaAltoTemplario;
 import vista.unidades.VistaDragon;
 import vista.unidades.VistaEspectro;
@@ -284,74 +296,110 @@ public class VentanaPrincipal implements JuegoListener {
 	}
 
 	@Override
-	public void seCreoCentroMineral(ElementoArtificial elemento)  {
-		// TODO Auto-generated method stub
+	public void seCreoCentroMineral(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException  {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaCentroMineral(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoBarraca(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoBarraca(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaBarraca(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoDepositoDeSuministro(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoDepositoDeSuministro(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaDepositoDeSuministros(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoRefineria(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoRefineria(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaRefineria(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoFabrica(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoFabrica(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaFabrica(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoPuertoEstelarTerran(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoPuertoEstelarTerran(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaPuertoEstelarTerran(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoNexoMineral(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoNexoMineral(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaNexoMineral(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoPilon(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoPilon(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaPilon(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoAsimilador(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoAsimilador(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaAsimilador(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoAcceso(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoAcceso(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaAcceso(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoPuertoEstelarProtoss(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoPuertoEstelarProtoss(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaPuertoEstelarProtoss(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
-	public void seCreoArchivosTemplarios(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seCreoArchivosTemplarios(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
+		final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(modelo);
+		Imagen imagen = new VistaArchivosTemplarios(modelo);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
