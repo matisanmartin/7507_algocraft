@@ -2,8 +2,8 @@ package vista.unidades;
 
 import java.io.IOException;
 
-import fiuba.algo3.titiritero.dibujables.Imagen;
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import titiritero.dibujables.Imagen;
+import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaDragon extends Imagen {
 

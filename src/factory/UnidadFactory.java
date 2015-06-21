@@ -1,10 +1,16 @@
 package factory;
 
+import model.CampoBatalla;
+import model.Espacio;
+import model.EspacioAereo;
+import model.EspacioTerrestre;
+
 import common.Costo;
 import common.Danio;
 import common.Posicion;
 import common.RangoAtaque;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -18,8 +24,6 @@ import factory.unidades.Unidad;
 import factory.unidades.UnidadMagicaProtoss;
 import factory.unidades.UnidadMagicaTerran;
 import factory.unidades.UnidadProtoss;
-import model.EspacioAereo;
-import model.EspacioTerrestre;
 
 public class UnidadFactory extends AbstractFactory{
 	
@@ -150,6 +154,8 @@ public class UnidadFactory extends AbstractFactory{
 	public Unidad getUnidad(TipoUnidad unidadRequerida,Posicion posicion) throws UnidadLlenaException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException {
 		
 		Unidad unidadCreada = null;
+		Espacio espacioTerrestre = CampoBatalla.getInstancia().getEspacioTerrestre();
+		Espacio espacioAereo = CampoBatalla.getInstancia().getEspacioAereo();
 		
 		switch (unidadRequerida) {
 		case TERRAN_MARINE:
@@ -165,7 +171,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_MARINE_ALTO,
 										UNIDAD_MARINE_ANCHO,
 										posicion,
-										new EspacioTerrestre());
+										espacioTerrestre);
 			break;
 		
 		case TERRAN_GOLLIAT:
@@ -180,7 +186,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ALTO,
 										UNIDAD_ANCHO,
 										posicion,
-										new EspacioTerrestre());
+										espacioTerrestre);
 			break;
 			
 		case TERRAN_ESPECTRO:
@@ -195,7 +201,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ALTO,
 										UNIDAD_ANCHO,
 										posicion,
-										new EspacioAereo());
+										espacioAereo);
 			break;
 			
 		case TERRAN_NAVE_CIENCIA:
@@ -210,7 +216,7 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_ALTO,
 													UNIDAD_ANCHO,
 													posicion,
-													new EspacioAereo());
+													espacioAereo);
 			break;
 			
 		case TERRAN_NAVE_TRANSPORTE:
@@ -225,7 +231,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ALTO,
 										UNIDAD_ANCHO,
 										posicion,
-										new EspacioAereo());
+										espacioAereo);
 			break;
 		case PROTOSS_ZEALOT:
 			unidadCreada = new UnidadProtoss(	UNIDAD_ZEALOT_TRANSPORTE,
@@ -239,7 +245,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_ALTO,
 												UNIDAD_ANCHO,
 												posicion,
-												new EspacioTerrestre());
+												espacioTerrestre);
 			break;
 			
 		case PROTOSS_DRAGON:
@@ -254,7 +260,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_ALTO,
 												UNIDAD_ANCHO,
 												posicion,
-												new EspacioTerrestre());
+												espacioTerrestre);
 			break;
 			
 		case PROTOSS_SCOUT:
@@ -269,7 +275,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_ALTO,
 												UNIDAD_ANCHO,
 												posicion,
-												new EspacioAereo());
+												espacioTerrestre);
 			break;
 			
 		case PROTOSS_ALTO_TEMPLARIO:
@@ -284,7 +290,7 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_ALTO,
 													UNIDAD_ANCHO,
 													posicion,
-													new EspacioTerrestre());
+													espacioTerrestre);
 			break;
 			
 		case PROTOSS_NAVE_TRANSPORTE:
@@ -299,7 +305,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_ALTO,
 												UNIDAD_ANCHO,
 												posicion,
-												new EspacioAereo());
+												espacioAereo);
 			break;
 		default: 
 			throw new UnidadInvalidaException();

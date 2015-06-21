@@ -1,11 +1,10 @@
 package model;
 
+import titiritero.modelo.ObjetoPosicionable;
+import titiritero.modelo.ObjetoVivo;
 import common.Posicion;
-
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 public class UnidadModelo implements ObjetoPosicionable, ObjetoVivo {
 	

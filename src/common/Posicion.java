@@ -1,8 +1,8 @@
 package common;
 
+import titiritero.modelo.ObjetoPosicionable;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class Posicion implements ObjetoPosicionable {
 	private int posX;

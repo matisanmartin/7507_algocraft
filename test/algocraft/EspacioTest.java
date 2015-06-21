@@ -1,6 +1,8 @@
 package algocraft;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import model.CampoBatalla;
 import model.Espacio;
 
@@ -9,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -77,6 +80,37 @@ public class EspacioTest {
 		Unidad marine2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10,14));
 		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
 		CampoBatalla.getInstancia().posicionarElemento(marine2, CampoBatalla.getInstancia().getEspacioTerrestre());
+	}
+	
+	@Test
+	public void dosUnidadesTerrestresPertenecenAlMismoEspacio() throws PosicionInvalidaException, FueraDeRangoException, UnidadLlenaException, UnidadInvalidaException, CostoInvalidoException, DanioInvalidoException{
+		Unidad unidad1, unidad2 = null;
+		UnidadFactory factory = new UnidadFactory();
+		unidad1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(30,30));
+		unidad2 = factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(100, 100));
+		assertEquals(unidad1.getEspacio(), unidad2.getEspacio());
+		
+	}
+
+	
+	@Test
+	public void unaUnidadTerrestreYUnaUnidadAereaNoPertencenAlMismoEspacio() throws UnidadLlenaException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException{
+		Unidad unidad1, unidad2 = null;
+		UnidadFactory factory = new UnidadFactory();
+		unidad1 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(10, 10));
+		unidad2 = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(4, 4));
+		assertNotEquals(unidad1.getEspacio(), unidad2.getEspacio());
+		
+		
+	}
+	
+	@Test
+	public void dosUnidadesAereasPertenecenAlMismoEspacio() throws UnidadLlenaException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException{
+		Unidad unidad1, unidad2 = null;
+		UnidadFactory factory = new UnidadFactory();
+		unidad1 = factory.getUnidad(TipoUnidad.PROTOSS_NAVE_TRANSPORTE, new Posicion(10, 10));
+		unidad2 = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(40, 40));
+		assertEquals(unidad1.getEspacio(), unidad2.getEspacio());
 	}
 	
 	

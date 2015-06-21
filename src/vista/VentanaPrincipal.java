@@ -1,14 +1,30 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.sun.glass.events.MouseEvent;
+
+import listener.JuegoListener;
+import model.CampoBatalla;
+import model.ElementoArtificial;
+import model.UnidadModelo;
+import titiritero.dibujables.Cuadrado;
+import titiritero.dibujables.Figura;
+import titiritero.dibujables.Imagen;
+import titiritero.dibujables.SuperficiePanel;
+import titiritero.modelo.GameLoop;
+import titiritero.modelo.ObjetoPosicionable;
+import titiritero.modelo.SuperficieDeDibujo;
 import vista.unidades.VistaAltoTemplario;
 import vista.unidades.VistaDragon;
 import vista.unidades.VistaEspectro;
@@ -21,18 +37,16 @@ import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
 import common.Constantes;
 import common.Posicion;
-import listener.JuegoListener;
-import model.CampoBatalla;
-import model.ElementoArtificial;
-import model.UnidadModelo;
+import controller.ControladorMouse;
+import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import fiuba.algo3.titiritero.dibujables.Cuadrado;
-import fiuba.algo3.titiritero.dibujables.Figura;
-import fiuba.algo3.titiritero.dibujables.Imagen;
-import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
-import fiuba.algo3.titiritero.modelo.GameLoop;
-import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
+import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
+import factory.UnidadFactory;
+import factory.unidades.TipoUnidad;
+import factory.unidades.Unidad;
 
 
 public class VentanaPrincipal implements JuegoListener {
@@ -43,19 +57,19 @@ public class VentanaPrincipal implements JuegoListener {
 	private int tamanioCasillaY;
 	private CampoBatalla campoBatalla;
 	
-//		public static void main(String[] args)
-//		{
-//			
-//			VentanaPrincipal window;
-//			try {
-//				window = new VentanaPrincipal();
-//				window.getGameLoop().iniciarEjecucion();
-//			} catch (FueraDeRangoException | PosicionInvalidaException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			
-//		}
+	public static void main(String[] args){
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaPrincipal windows = new VentanaPrincipal();
+					windows.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
+	}
 	
 	/**
 	 * Create the application.
@@ -78,100 +92,68 @@ public class VentanaPrincipal implements JuegoListener {
 	 * @throws FueraDeRangoException 
 	 */
 	private void initialize() throws IOException, FueraDeRangoException, PosicionInvalidaException {
-		frame = new JFrame();
+		//ventana principal
+		frame = new JFrame("Algocraft");
 		frame.setForeground(new Color(0,0,0));
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(1, 1, 1366, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.setVisible(true);
+//		frame.setVisible(true);
 		
+		//boton iniciar juego
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				getGameLoop().iniciarEjecucion();
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameLoop.iniciarEjecucion();
+				
 			}
 		});
-		btnIniciar.setBounds(42, 16, 77, 25);
+		btnIniciar.setBounds(25, 25, 100, 25);
 		frame.getContentPane().add(btnIniciar);
 		
-		JButton btnDetener = new JButton("Detener");
-		btnDetener.addActionListener(new ActionListener() {
+		//boto finalizar juego
+		JButton btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.addActionListener(new ActionListener() {
+			
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				getGameLoop().detenerEjecucion();
+				gameLoop.detenerEjecucion();
+				
 			}
 		});
-		btnDetener.setBounds(325, 16, 92, 25);
-		frame.getContentPane().add(btnDetener);
+		btnFinalizar.setBounds(135, 25, 100, 25);
+		frame.getContentPane().add(btnFinalizar);
 		
+		//superficie donde se dibujarn los elementos
 		JPanel panel = new SuperficiePanel();
-		panel.setBackground(new Color(255, 0, 0));
-		panel.setBounds(42, 53, 375, 187);
+		panel.setBackground(new Color(0, 0, 0));
+		panel.setBounds(25, 60, 1000, 600);
 		frame.getContentPane().add(panel);
 		
-
-		
-		this.setGameLoop(new GameLoop(200, (SuperficieDeDibujo) panel));
+		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
 	
+
 		frame.setFocusable(true);
-		btnDetener.setFocusable(false);
 		btnIniciar.setFocusable(false);
-		this.dibujarCuadriculaDeTablero(panel);
+		btnFinalizar.setFocusable(false);
 		
-			//zealot
-//			final UnidadModelo modelo = new UnidadModelo();
-//			this.getGameLoop().agregar(modelo);
-//			Imagen imagen = new VistaZealot(modelo);
-//			this.getGameLoop().agregar(imagen);
-//			
+		Unidad unidad = null;
+		UnidadFactory factory = new UnidadFactory();
+		try {
+			unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(50, 50));
+		} catch (UnidadLlenaException | UnidadInvalidaException
+				| CostoInvalidoException | DanioInvalidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		this.gameLoop.agregar(unidad);
+		Imagen imagenmarine = new VistaMarine(unidad);
+		this.gameLoop.agregar(imagenmarine);
 		
-//			Circulo circulo = new VistaObjetoMultiforma(modelo);
-//			this.gameLoop.agregar(circulo);
-//			
-//			ObjetoMultiforma modelo2 = new ObjetoMultiforma();
-//			modelo2.mutar();
-//			this.gameLoop.agregar(modelo2);
-//			Figura cuadrado = new Vista2ObjetoMultiforma(modelo2);
-//			this.gameLoop.agregar(cuadrado);
-//
-//			ObjetoMultiforma modelo3 = new ObjetoMultiforma();
-//			modelo3.inmutar();
-//			this.gameLoop.agregar(modelo3);
-//			Imagen imagen = new Vista3ObjetoMultiforma(modelo3);
-//			this.gameLoop.agregar(imagen);
-		
-//			panel.addMouseListener(new MouseAdapter() {
-//						
-//				@Override
-//				public void mouseClicked(MouseEvent arg0) {
-//					modelo.moverA(arg0.getX(), arg0.getY());
-//						
-//				}});
-
-
-//			frame.addKeyListener(new KeyListener(
-//					) {
-//				
-//				@Override
-//				public void keyTyped(KeyEvent arg0) {
-//					System.out.println("Key pressed");
-//				}
-//				
-//				@Override
-//				public void keyReleased(KeyEvent arg0) {
-//					// TODO Auto-generated method stub
-//					
-//				}
-//				
-//				@Override
-//				public void keyPressed(KeyEvent arg0) {
-//				
-//					System.out.println("Ping");
-//					
-//				}  
-//				 	
-//			});
-		
+		panel.addMouseListener(new ControladorMouse(this));
 		
 		
 	}
@@ -184,28 +166,28 @@ public class VentanaPrincipal implements JuegoListener {
 		this.gameLoop = gameLoop;
 	}
 		
-	private void dibujarCuadriculaDeTablero(JPanel panel) throws PosicionInvalidaException, FueraDeRangoException{
-		this.campoBatalla = CampoBatalla.getInstancia();
-		this.getGameLoop().agregar(campoBatalla);
-		
-		//lineas en x
-		this.tamanioCasillaX = panel.getHeight()/this.campoBatalla.getAncho();
-		Posicion.setTamanioDePosicionX(tamanioCasillaX);
-		for (int i = Constantes.POS_INICIAL_CAMPO_BATALLA; i < Constantes.ANCHO_DEFECTO; i++) {
-			Posicion posicion = new Posicion(i*tamanioCasillaX, 1);
-			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
-			this.getGameLoop().agregar(linea);
-		}
-		
-		//lineas en Y
-		this.tamanioCasillaY = panel.getWidth()/this.campoBatalla.getAlto();
-		Posicion.setTamanioDePosicionY(tamanioCasillaY);
-		for (int i = Constantes.POS_INICIAL_CAMPO_BATALLA; i < Constantes.ALTO_DEFECTO; i++) {
-			Posicion posicion = new Posicion(1, i*tamanioCasillaY);
-			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
-			this.getGameLoop().agregar(linea);
-		}
-	}
+//	private void dibujarCuadriculaDeTablero(JPanel panel) throws PosicionInvalidaException, FueraDeRangoException{
+//		this.campoBatalla = CampoBatalla.getInstancia();
+//		this.getGameLoop().agregar(campoBatalla);
+//		
+//		//lineas en x
+//		this.tamanioCasillaX = panel.getHeight()/this.campoBatalla.getAncho();
+//		Posicion.setTamanioDePosicionX(tamanioCasillaX);
+//		for (int i = Constantes.POS_INICIAL_CAMPO_BATALLA; i < Constantes.ANCHO_DEFECTO; i++) {
+//			Posicion posicion = new Posicion(i*tamanioCasillaX, 1);
+//			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
+//			this.getGameLoop().agregar(linea);
+//		}
+//		
+//		//lineas en Y
+//		this.tamanioCasillaY = panel.getWidth()/this.campoBatalla.getAlto();
+//		Posicion.setTamanioDePosicionY(tamanioCasillaY);
+//		for (int i = Constantes.POS_INICIAL_CAMPO_BATALLA; i < Constantes.ALTO_DEFECTO; i++) {
+//			Posicion posicion = new Posicion(1, i*tamanioCasillaY);
+//			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
+//			this.getGameLoop().agregar(linea);
+//		}
+//	}
 
 	@Override
 	public String pruebaListener() {

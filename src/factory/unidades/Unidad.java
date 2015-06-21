@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import strategy.ContextoStrategy;
+import titiritero.modelo.ObjetoPosicionable;
+import titiritero.modelo.ObjetoVivo;
 import command.Accion;
 import command.AtaqueAccion;
 import common.Costo;
@@ -35,7 +37,7 @@ import model.ElementoArtificial;
 import model.Espacio;
 import model.Juego;
 
-public class Unidad extends ElementoArtificial {
+public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosicionable {
 
 	private int transporte;
 	private int vision;
@@ -148,6 +150,24 @@ public class Unidad extends ElementoArtificial {
 	public void disminuirPoblacion() {
 		Juego.getInstancia().getJugadorEnemigo().disminuirPoblacionActual(this.getSuministro());
 		
+	}
+
+	@Override
+	public void vivir() {
+		System.out.println("Estoy viviendo!!!");
+		
+	}
+
+	@Override
+	public int getX() {
+		
+		return this.getPosicion().getX();
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return this.getPosicion().getY();
 	}
 	
 }

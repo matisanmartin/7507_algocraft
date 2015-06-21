@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import titiritero.modelo.ObjetoVivo;
 import common.Constantes;
 import common.Posicion;
 import algocraft.CampoBatallaTest;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 public class CampoBatalla implements ObjetoVivo {
 	
@@ -101,6 +101,11 @@ public class CampoBatalla implements ObjetoVivo {
 
 	public Espacio getEspacioTerrestre() {
 		return this.espacioTerrestre;
+	}
+	
+	public Espacio getEspacioAereo(){
+		 
+		return this.espacioAereo;
 	}
 
 //	public void agregarElementoTerrestre(Elemento elemento) throws PosicionInvalidaException {
