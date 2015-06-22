@@ -1,6 +1,9 @@
 package model;
 
+import java.io.IOException;
+
 import recursos.Cristal;
+import recursos.Volcan;
 import common.Posicion;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -9,20 +12,75 @@ public class BaseInfDer extends Base {
 
 	public BaseInfDer(Posicion pos) throws FueraDeRangoException, PosicionInvalidaException {
 		super(pos);
-		int posIInicial = this.getVolcan().get(0).getPosicion().getX() - (this.getCantidadDeCristales()/2);
-		int posIFinal = this.getVolcan().get(0).getPosicion().getX();
-		int posJInicial = this.getVolcan().get(0).getPosicion().getY() - (this.getCantidadDeCristales()/2) ;
-		int posJFinal = this.getVolcan().get(0).getPosicion().getY();
+		int ancho = this.getAnchoCristal();
+		int alto = this.getAltoCristal();
+
+		//crea volcan
+		Volcan nuevoVolcan = new Volcan(VOLCAN_ALTO, VOLCAN_ANCHO, new Posicion(this.posicion.getX()-ancho, this.posicion.getY()-ancho));
+		this.volcan.add(nuevoVolcan);
+		try {
+			Juego.getInstancia().getListener().seCreoVolcan(nuevoVolcan);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-			for (int i = (posIInicial); i <= (posIFinal); i++) {
-				for (int j = (posJInicial); j <= (posJFinal); j++) {
-					if( i == posIFinal || (j == posJFinal )){ 
-						if( (i != posIFinal) || (j != posJFinal) ){ //no es la pos del volcan
-							this.cristal.add(new Cristal(this.getAltoCristal(), this.getAnchoCristal(), new Posicion(i, j)));
-						}
-					}
-				}
-			}
+		//crea cristales
+		Cristal cristal = null; 
+		
+		cristal = new Cristal(alto, ancho, new Posicion(pos.getX()-ancho, pos.getY()-(ancho*2)));
+		this.cristal.add(cristal);
+		try {
+			Juego.getInstancia().getListener().seCreoCristal(cristal);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		cristal = new Cristal(alto, ancho, new Posicion(pos.getX()-ancho, pos.getY()-(ancho*3)));
+		this.cristal.add(cristal);
+		try {
+			Juego.getInstancia().getListener().seCreoCristal(cristal);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		cristal = new Cristal(alto, ancho, new Posicion(pos.getX()-ancho, pos.getY()-(ancho*4)));
+		this.cristal.add(cristal);
+		try {
+			Juego.getInstancia().getListener().seCreoCristal(cristal);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		cristal = new Cristal(alto, ancho, new Posicion(pos.getX()-(ancho*2), pos.getY()-ancho));
+		this.cristal.add(cristal);
+		try {
+			Juego.getInstancia().getListener().seCreoCristal(cristal);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		cristal = new Cristal(alto, ancho, new Posicion(pos.getX()-(ancho*3), pos.getY()-ancho));
+		this.cristal.add(cristal);
+		try {
+			Juego.getInstancia().getListener().seCreoCristal(cristal);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		cristal = new Cristal(alto, ancho, new Posicion(pos.getX()-(ancho*4), pos.getY()-ancho));
+		this.cristal.add(cristal);
+		try {
+			Juego.getInstancia().getListener().seCreoCristal(cristal);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			
 		}
 

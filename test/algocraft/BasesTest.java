@@ -97,20 +97,33 @@ public class BasesTest {
 	 * (1, max col - 3) (1,max col - 2), (1, max col -1) / (max col, 2) (max col, 3) (max col, 4)
 	 */
 	@Test
-	public void crearBaseSuperiorDerecha() throws FueraDeRangoException, PosicionInvalidaException{
-		BaseSupDer base = new BaseSupDer(new Posicion(3, 5));
+	public void crearBaseSuperiorDerechaEnX1Y800() throws FueraDeRangoException, PosicionInvalidaException{
+		CampoBatalla.getInstancia().setUpBases();
+		List<Elemento> base = CampoBatalla.getInstancia().getEspacioTerrestre().getEspacio();
+		assertEquals(14, base.size());
+		assertEquals(new Posicion(1,1101), base.get(7).getPosicion());
+		assertEquals(new Posicion(1,1036), base.get(8).getPosicion());
+		assertEquals(new Posicion(66,1101), base.get(9).getPosicion());
+		assertEquals(new Posicion(1,971), base.get(10).getPosicion());
+		assertEquals(new Posicion(131,1101), base.get(11).getPosicion());
+		assertEquals(new Posicion(1,906), base.get(12).getPosicion());
+		assertEquals(new Posicion(196,1101), base.get(13).getPosicion());
 		
-		//volcan
-		assertEquals(new Posicion(3, 5), base.getVolcan().get(0).getPosicion());
 		
-		//cristales
-		assertEquals(new Posicion(3, 2), base.getCristales().get(0).getPosicion());
-		assertEquals(new Posicion(3, 3), base.getCristales().get(1).getPosicion());
-		assertEquals(new Posicion(3, 4), base.getCristales().get(2).getPosicion());
 		
-		assertEquals(new Posicion(4, 5), base.getCristales().get(3).getPosicion());
-		assertEquals(new Posicion(5, 5), base.getCristales().get(4).getPosicion());
-		assertEquals(new Posicion(6, 5), base.getCristales().get(5).getPosicion());
+//		BaseSupDer base = new BaseSupDer(new Posicion(3, 5));
+//		
+//		//volcan
+//		assertEquals(new Posicion(3, 5), base.getVolcan().get(0).getPosicion());
+//		
+//		//cristales
+//		assertEquals(new Posicion(3, 2), base.getCristales().get(0).getPosicion());
+//		assertEquals(new Posicion(3, 3), base.getCristales().get(1).getPosicion());
+//		assertEquals(new Posicion(3, 4), base.getCristales().get(2).getPosicion());
+//		
+//		assertEquals(new Posicion(4, 5), base.getCristales().get(3).getPosicion());
+//		assertEquals(new Posicion(5, 5), base.getCristales().get(4).getPosicion());
+//		assertEquals(new Posicion(6, 5), base.getCristales().get(5).getPosicion());
 	}
 	
 	@Test

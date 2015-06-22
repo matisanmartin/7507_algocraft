@@ -13,6 +13,7 @@ public class Posicion implements ObjetoPosicionable {
 	public Posicion(int posX, int posY) throws FueraDeRangoException, PosicionInvalidaException{
 		
 		if( posX>Constantes.ANCHO_DEFECTO||posY>Constantes.ALTO_DEFECTO||posX<0||posY<0)
+//		if( posX>Constantes.ALTO_DEFECTO||posY>Constantes.ANCHO_DEFECTO||posX<0||posY<0)
 			throw new FueraDeRangoException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO);
 	
 		this.setPosX(posX);

@@ -33,18 +33,37 @@ public class CampoBatalla implements ObjetoVivo {
 	 * POST:setea las bases en el campo
 	 */
 	public void setUpBases() throws PosicionInvalidaException, FueraDeRangoException{
+		
+
 				
-//		this.espacioTerrestre.agregarBase(new BaseSupIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA+1, Constantes.POS_INICIAL_CAMPO_BATALLA+1)));
-		Posicion pos = new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA+1, Constantes.POS_INICIAL_CAMPO_BATALLA+1);
-//		Base base1 = new BaseSupIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA+1, Constantes.POS_INICIAL_CAMPO_BATALLA+1));
+		Posicion pos = new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.POS_INICIAL_CAMPO_BATALLA);
 		Base base1 = new BaseSupIzq(pos);
 		this.espacioTerrestre.agregarElemento(base1.getVolcan().get(0));
 		for (int i = 0; i < 6; i++) {
 			this.espacioTerrestre.agregarElemento(base1.getCristales().get(i));
 		}
-//		this.espacioTerrestre.agregarBase(new BaseInfIzq(new Posicion(Constantes.ALTO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA)));
-//		this.espacioTerrestre.agregarBase(new BaseSupDer(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.ANCHO_DEFECTO)));
-//		this.espacioTerrestre.agregarBase(new BaseInfDer(new Posicion(Constantes.ALTO_DEFECTO, Constantes.ANCHO_DEFECTO)));
+		
+		Base base2 = new  BaseSupDer(new Posicion(Constantes.ANCHO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA));
+		this.espacioTerrestre.agregarElemento(base2.getVolcan().get(0));
+		for (int i = 0; i < 6; i++) {
+			this.espacioTerrestre.agregarElemento(base2.getCristales().get(i));
+		}
+		
+		Base base3= new BaseInfIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.ALTO_DEFECTO));
+		this.espacioTerrestre.agregarElemento(base3.getVolcan().get(0));
+		for (int i = 0; i < 6; i++) {
+			this.espacioTerrestre.agregarElemento(base3.getCristales().get(i));
+		}
+		
+		
+		Base base4 = new BaseInfDer(new Posicion(Constantes.ANCHO_DEFECTO, Constantes.ALTO_DEFECTO));
+		this.espacioTerrestre.agregarElemento(base4.getVolcan().get(0));
+		for (int i = 0; i < 6; i++) {
+			this.espacioTerrestre.agregarElemento(base4.getCristales().get(i));
+		}
+		
+
+		
 	
 		
 	}

@@ -4,8 +4,9 @@ import java.awt.EventQueue;
 import java.util.Iterator;
 import java.util.List;
 
+import recursos.Volcan;
 import common.Mensajes;
-
+import common.Posicion;
 import jugador.Jugador;
 import jugador.TipoColor;
 import listener.JuegoListener;
@@ -250,14 +251,14 @@ public class Juego {
 					
 					//si salio todo bien, pasa a la siguiente ventana
 					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();
-					ventana.getFrame().setVisible(true);
+//					ventana.getFrame().setVisible(true);
 					//ventana.getGameLoop().iniciarEjecucion();
 					
 					//Se setea el mapa
 					
 					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
-					
+				
 					//Se setean los centros de comando
 					
 				} 

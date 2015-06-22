@@ -100,11 +100,12 @@ public class VentanaPrincipal implements JuegoListener {
 	private void initialize() throws IOException, FueraDeRangoException, PosicionInvalidaException {
 		//ventana principal
 		setFrame(new JFrame("Algocraft"));
+//		getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		getFrame().setForeground(new Color(0,0,0));
 		getFrame().setBounds(1, 1, 1366, 768);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
-//		frame.setVisible(true);
+		frame.setVisible(true);
 		
 		//boton iniciar juego
 		JButton btnIniciar = new JButton("Iniciar");
@@ -136,6 +137,7 @@ public class VentanaPrincipal implements JuegoListener {
 		JPanel panel = new SuperficiePanel();
 		panel.setBackground(new Color(0, 0, 0));
 		panel.setBounds(25, 60, 1000, 600);
+//		panel.setBounds(25, 60, 1000, 658);
 		getFrame().getContentPane().add(panel);
 		
 		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
