@@ -21,7 +21,7 @@ public class Costo {
 			if (costoConcatenado.charAt(i) == 'M') posicionM = i;
 			if (costoConcatenado.charAt(i) == 'G') posicionG = i;
 		}
-		if (posicionM == 0) throw new CostoInvalidoException();
+		if (posicionM == 0) throw new CostoInvalidoException(Mensajes.MSJ_ERROR_COSTO_INVALIDO);
 		stringCantidadM = costoConcatenado.substring(0, posicionM);
 		if (posicionG == 0) {
 			stringCantidadG = "0";

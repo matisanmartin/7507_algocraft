@@ -2,6 +2,7 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
+import common.Mensajes;
 import common.Posicion;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
@@ -30,7 +31,7 @@ public class Ataque implements Strategy {
 		
 		//TODO msma: Test para excepcion FueraDeRangoDeVisionException
 		if(distancia>rangoDeVisionElementoActuante)
-			throw new FueraDeRangoDeVisionException();
+			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 	
 		//Armada armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
 		//ElementoArtificial elementoAtacado=armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);

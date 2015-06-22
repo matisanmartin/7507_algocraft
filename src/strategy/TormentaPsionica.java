@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import strategy.Strategy;
+import common.Mensajes;
 import common.Posicion;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
@@ -27,12 +28,12 @@ public class TormentaPsionica implements Strategy {
 		int energiaActual=elementoActuante.getEnergia();
 		
 		if(energiaActual<ENERGIA_NECESARIA)
-			throw new EnergiaInsuficienteException();
+			throw new EnergiaInsuficienteException(Mensajes.MSJ_ERROR_ENERGIA_INSUFICIENTE);
 		
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
-			throw new FueraDeRangoDeVisionException();
+			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
 		List<ElementoArtificial> armadaEnemiga=Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
 		

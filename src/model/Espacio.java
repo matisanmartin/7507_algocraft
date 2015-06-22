@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.Danio;
+import common.Mensajes;
 import common.RangoAtaque;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
@@ -25,7 +27,7 @@ public class Espacio {
 	
 	public void agregarElemento(Elemento elementoParaAgregar) throws PosicionInvalidaException, FueraDeRangoException{
 		for (Elemento elemento : espacio) {
-			if(this.ocupanMismoEspacio(elementoParaAgregar,elemento)) throw new PosicionInvalidaException();
+			if(this.ocupanMismoEspacio(elementoParaAgregar,elemento)) throw new PosicionInvalidaException(Mensajes.MSJ_ERROR_POSICION_INVALIDA);
 		} //this.espacio.add(elementoParaAgregar);
 	}
 

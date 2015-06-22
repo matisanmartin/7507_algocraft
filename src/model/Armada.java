@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import common.Mensajes;
 import common.Posicion;
-
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -87,7 +87,7 @@ public class Armada {
 //				return actual;
 		}
 
-		throw new ElementoNoEncontradoException();
+		throw new ElementoNoEncontradoException(Mensajes.MSJ_ERROR_ELEMENTO_NO_ENCONTRADO);
 		
 		
 		

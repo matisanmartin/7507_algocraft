@@ -2,6 +2,10 @@ package exceptions;
 
 public class PoblacionFaltanteException extends Exception {
 	
+	public PoblacionFaltanteException(String msjErrorPoblacionFaltante) {
+		super(msjErrorPoblacionFaltante);
+	}
+
 	/**
 	 * 
 	 */

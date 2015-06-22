@@ -16,7 +16,7 @@ public class Danio {
 			if (danioConcatenado.charAt(i) == 'A') posicionA = i;
 			if (danioConcatenado.charAt(i) == 'T') posicionT = i;
 		}
-		if (posicionA == 0 || posicionT == 0) throw new DanioInvalidoException();
+		if (posicionA == 0 || posicionT == 0) throw new DanioInvalidoException(Mensajes.MSJ_ERROR_DANIO_INVALIDO);
 		stringDanioA = danioConcatenado.substring(0, posicionA);
 		stringDanioT = danioConcatenado.substring(posicionA+1, posicionT);
 		this.danioA = Integer.parseInt(stringDanioA);

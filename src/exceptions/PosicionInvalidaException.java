@@ -2,6 +2,10 @@ package exceptions;
 
 public class PosicionInvalidaException extends Exception {
 
+	public PosicionInvalidaException(String msjErrorPosicionInvalida) {
+		super(msjErrorPosicionInvalida);
+	}
+
 	/**
 	 * 
 	 */

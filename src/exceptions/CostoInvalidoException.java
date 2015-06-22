@@ -2,6 +2,10 @@ package exceptions;
 
 public class CostoInvalidoException extends Exception {
 
+	public CostoInvalidoException(String msjErrorCostoInvalido) {
+		super(msjErrorCostoInvalido);
+	}
+
 	/**
 	 * 
 	 */

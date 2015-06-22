@@ -1,5 +1,6 @@
 package strategy;
 
+import common.Mensajes;
 import common.Posicion;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
@@ -29,13 +30,13 @@ public class Radiacion implements Strategy {
 		int energiaActual=elementoActuante.getEnergia();
 		
 		if(energiaActual<ENERGIA_NECESARIA)
-			throw new EnergiaInsuficienteException();
+			throw new EnergiaInsuficienteException(Mensajes.MSJ_ERROR_ENERGIA_INSUFICIENTE);
 		
 		//TODO msma: Test para rango de vision
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 		//Long distanciaNum = Long.parseLong(distancia);
 		if(distancia>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION)
-			throw new FueraDeRangoDeVisionException();
+			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
 		Armada armadaEnemiga = Juego.getInstancia()
 			       							 .getJugadorEnemigo()

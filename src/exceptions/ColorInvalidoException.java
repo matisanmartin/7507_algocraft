@@ -2,6 +2,10 @@ package exceptions;
 
 public class ColorInvalidoException extends Exception {
 
+	public ColorInvalidoException(String msjErrorColorInvalido) {
+		super(msjErrorColorInvalido);
+	}
+
 	/**
 	 * 
 	 */

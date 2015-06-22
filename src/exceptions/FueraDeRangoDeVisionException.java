@@ -2,6 +2,10 @@ package exceptions;
 
 public class FueraDeRangoDeVisionException extends Exception {
 
+	public FueraDeRangoDeVisionException(String msjErrorFueraDeRangoDeVision) {
+		super(msjErrorFueraDeRangoDeVision);
+	}
+
 	/**
 	 * 
 	 */

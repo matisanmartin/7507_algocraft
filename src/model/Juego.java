@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.util.Iterator;
 import java.util.List;
 
+import common.Mensajes;
+
 import jugador.Jugador;
 import jugador.TipoColor;
 import listener.JuegoListener;
@@ -86,7 +88,7 @@ public class Juego {
 
 	public void setJugadorEnemigo(Jugador jugadorEnemigo) throws NombreJugadorRepetidoException {
 		if(jugadorEnemigo.getNombre().equals(Juego.getInstancia().getJugadorActual().getNombre()))
-			throw new NombreJugadorRepetidoException();
+			throw new NombreJugadorRepetidoException(Mensajes.MSJ_ERROR_NOMBRE_REPETIDO);
 		Juego.jugadorEnemigo = jugadorEnemigo;
 	}
 
@@ -152,11 +154,11 @@ public class Juego {
 		int suministro = elem.getSuministro();
 		
 		if (poblacionActual + suministro > poblacionDisponible) {
-			throw new PoblacionFaltanteException();
+			throw new PoblacionFaltanteException(Mensajes.MSJ_ERROR_POBLACION_FALTANTE);
 		}
 		
 		if(cantidadDeCristal<costoMineral||cantidadDeGas<costoGas)
-				throw new RecursosInsuficientesException();
+				throw new RecursosInsuficientesException(Mensajes.MSJ_ERROR_RECURSOS_INSUFICIENTES);
 		else{
 			getInstancia().getJugadorActual().agregarElemento(elem);
 			getInstancia().getJugadorActual().disminuirRecursos(elem.disminuirMineral(),elem.disminuirGas());
@@ -195,7 +197,7 @@ public class Juego {
 				return;		
 		}
 
-		throw new PartidaPerdidaException();
+		throw new PartidaPerdidaException(Mensajes.MSJ_PARTIDA_PERDIDA);
 		
 	}
 
@@ -211,7 +213,7 @@ public class Juego {
 			if(!it.next().estaMuerta())
 				return;		
 		}
-		throw new PartidaGanadaException();
+		throw new PartidaGanadaException(Mensajes.MSJ_PARTIDA_GANADA);
 		
 	}
 
@@ -232,9 +234,9 @@ public class Juego {
 	public JuegoListener getListener() {
 		return listener;
 	}
-	public void setListener(JuegoListener listener) {
-		getInstancia().listener=listener;
-	}
+//	public void setListener(JuegoListener listener) {
+//		getInstancia().listener=listener;
+//	}
 	
 			
 	public static void main(String[] args) {
@@ -243,10 +245,21 @@ public class Juego {
 			public void run() {
 				try 
 				{
+					
+					//Ventana para ingresar nombres, color y raza
+					
+					//si salio todo bien, pasa a la siguiente ventana
 					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();
 					ventana.getFrame().setVisible(true);
-					ventana.getGameLoop().iniciarEjecucion();
+					//ventana.getGameLoop().iniciarEjecucion();
+					
+					//Se setea el mapa
+					
+					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
+					
+					//Se setean los centros de comando
+					
 				} 
 				catch (Exception e) 
 				{

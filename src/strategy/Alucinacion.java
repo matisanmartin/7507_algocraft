@@ -1,7 +1,12 @@
 package strategy;
 
+import model.ElementoArtificial;
+import model.Juego;
+
 import common.Danio;
+import common.Mensajes;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -19,8 +24,6 @@ import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import factory.UnidadFactory;
 import factory.unidades.Unidad;
-import model.ElementoArtificial;
-import model.Juego;
 
 public class Alucinacion implements Strategy {
 
@@ -38,13 +41,13 @@ public class Alucinacion implements Strategy {
 		int energiaActual=elementoActuante.getEnergia();
 		
 		if(energiaActual<ENERGIA_NECESARIA)
-			throw new EnergiaInsuficienteException();
+			throw new EnergiaInsuficienteException(Mensajes.MSJ_ERROR_ENERGIA_INSUFICIENTE);
 		
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 		//Long distanciaNum = Long.parseLong(distancia);
 		
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
-			throw new FueraDeRangoDeVisionException();
+			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
 		int posX=elementoActuante.getPosicion().getX();
 		int posY=elementoActuante.getPosicion().getY();

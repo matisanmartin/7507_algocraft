@@ -2,6 +2,10 @@ package exceptions;
 
 public class NombreCortoException extends Exception {
 
+	public NombreCortoException(String msjErrorNombreCorto) {
+		super(msjErrorNombreCorto);
+	}
+
 	/**
 	 * 
 	 */

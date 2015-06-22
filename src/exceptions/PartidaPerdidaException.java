@@ -2,6 +2,10 @@ package exceptions;
 
 public class PartidaPerdidaException extends Exception {
 
+	public PartidaPerdidaException(String msjPartidaPerdida) {
+		super(msjPartidaPerdida);
+	}
+
 	/**
 	 * 
 	 */

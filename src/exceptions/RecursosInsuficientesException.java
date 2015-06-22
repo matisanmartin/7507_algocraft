@@ -2,6 +2,10 @@ package exceptions;
 
 public class RecursosInsuficientesException extends Exception {
 
+	public RecursosInsuficientesException(String msjErrorRecursosInsuficientes) {
+		super(msjErrorRecursosInsuficientes);
+	}
+
 	/**
 	 * 
 	 */

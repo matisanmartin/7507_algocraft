@@ -1,7 +1,13 @@
 package jugador;
 
+import model.Armada;
+import model.ElementoArtificial;
+import model.Espacio;
 import razas.Raza;
+
+import common.Mensajes;
 import common.Posicion;
+
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -9,9 +15,6 @@ import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
-import model.Armada;
-import model.ElementoArtificial;
-import model.Espacio;
 
 public class Jugador {
 	
@@ -40,10 +43,10 @@ public class Jugador {
 	throws NombreCortoException, ColorInvalidoException {
 		
 		if(nombre.length()<MIN_CARACT_NOMBRE)
-			throw new NombreCortoException();
+			throw new NombreCortoException(Mensajes.MSJ_ERROR_NOMBRE_CORTO);
 		
 		if(color== TipoColor.ERROR)
-			throw new ColorInvalidoException();
+			throw new ColorInvalidoException(Mensajes.MSJ_ERROR_COLOR_INVALIDO);
 		
 		this.nombre=nombre;
 		this.color=color;

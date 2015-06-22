@@ -2,6 +2,10 @@ package exceptions;
 
 public class DanioInvalidoException extends Exception {
 
+	public DanioInvalidoException(String msjErrorDanioInvalido) {
+		super(msjErrorDanioInvalido);
+	}
+
 	/**
 	 * 
 	 */
