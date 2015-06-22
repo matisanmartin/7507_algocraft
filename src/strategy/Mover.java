@@ -1,7 +1,9 @@
 package strategy;
 
+import model.ElementoArtificial;
+
 import common.Posicion;
-import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -13,9 +15,6 @@ import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
-import model.CampoBatalla;
-import model.ElementoArtificial;
-import model.Juego;
 
 public class Mover implements Strategy {
 
@@ -43,6 +42,48 @@ public class Mover implements Strategy {
 //		
 //		Juego.getInstancia().agregarUnidadAJugadorActual(copia);
 //		Juego.getInstancia().getListener().seMovioUnidad(copia);
+		
+//		int posicionInicialX=elementoActuante.getPosicion().getX();
+//		int posicionInicialY=elementoActuante.getPosicion().getY();
+//		
+//		int posicionFinalX = posicionDestino.getX();
+//		int posicionFinalY = posicionDestino.getY();
+//		
+//		//Si esta en la misma columna
+//		if(posicionInicialY==posicionFinalY)
+//		{
+//			for(int i=posicionInicialX;i<posicionFinalX;i++)
+//			{
+//				elementoActuante.setPosicion(new Posicion(i+1,posicionFinalY));
+//			}
+//		}
+//		
+//		//Si esta en la misma fila
+//		if(posicionInicialX==posicionFinalX)
+//		{
+//			for(int i = posicionInicialY; i<posicionFinalY;i++)
+//			{
+//				elementoActuante.setPosicion(new Posicion(posicionFinalX,i+1));
+//			}
+//		}
+//		
+//		//Si es un movimiento compuesto
+//		for(int i=posicionInicialX;i<posicionFinalX;i++)
+//		{
+//			for(int j=posicionInicialY;j<posicionFinalY;j++)
+//			{
+//				Posicion nuevaPos= new Posicion(i+1,j+1);
+//				elementoActuante.posicionar(nuevaPos);
+//				
+//				
+//				
+//				
+//				if(j==posicionFinalY-1)//Llegue a la columna
+//				{
+//					elementoActuante.setPosicion(posicion);
+//				}
+//			}
+//		}
 		
 		elementoActuante.setPosicion(posicionDestino);
 		

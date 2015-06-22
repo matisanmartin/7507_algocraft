@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import recursos.Cristal;
@@ -26,7 +27,14 @@ public abstract class Base extends Elemento{
 		this.volcan = new ArrayList<Volcan>();
 		this.cristal = new ArrayList<Cristal>();
 		for (int i = 0; i < CANTIDAD_DE_VOLCANES;i++) {
-			this.volcan.add(new Volcan(VOLCAN_ALTO, VOLCAN_ANCHO, new Posicion(this.posicion.getX(), this.posicion.getY())));
+			Volcan nuevoVolcan = new Volcan(VOLCAN_ALTO, VOLCAN_ANCHO, new Posicion(this.posicion.getX(), this.posicion.getY()));
+			this.volcan.add(nuevoVolcan);
+			try {
+				Juego.getInstancia().getListener().seCreoVolcan(nuevoVolcan);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}

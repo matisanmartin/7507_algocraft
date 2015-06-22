@@ -2,9 +2,11 @@ package listener;
 
 import java.io.IOException;
 
+import recursos.Cristal;
+import model.Elemento;
+import model.ElementoArtificial;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import model.ElementoArtificial;
 
 public interface JuegoListener {
 	
@@ -41,6 +43,10 @@ public interface JuegoListener {
 	public void seCreoPuertoEstelarProtoss(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	public void seCreoArchivosTemplarios(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	
+	//Metodos de creacion de cristal y volcan
+	public void seCreoVolcan(Elemento elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
+	
+	
 	//Metodos relacionados con acciones de unidades
 	public void seMovioUnidad(ElementoArtificial elemento);
 	public void seRealizoAtaque(ElementoArtificial elemento);
@@ -57,6 +63,8 @@ public interface JuegoListener {
 	public void terminojuego();
 
 	public void seCreoCopiaFicticia(ElementoArtificial elemento);
+
+	public void seCreoCristal(Cristal cristal) throws IOException, FueraDeRangoException, PosicionInvalidaException;
 
 	
 	

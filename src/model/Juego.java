@@ -1,10 +1,13 @@
 package model;
 
+import java.awt.EventQueue;
 import java.util.Iterator;
 import java.util.List;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import listener.JuegoListener;
+import vista.VentanaPrincipal;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoException;
@@ -14,8 +17,6 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
-import listener.JuegoListener;
-import vista.VentanaPrincipal;
 
 public class Juego {
 	
@@ -29,11 +30,9 @@ public class Juego {
 		try
 		{
 			jugadorActual = new Jugador();
-			jugadorEnemigo = new Jugador();
-			//campoDeBatalla=CampoBatalla.getInstancia();
+			jugadorEnemigo = new Jugador();	
+			listener = new VentanaPrincipal();
 			
-			//TODO temporal porque pincha
-//			listener= new VentanaPrincipal();
 		}
 		catch(Exception e)
 		{
@@ -233,12 +232,34 @@ public class Juego {
 	public JuegoListener getListener() {
 		return listener;
 	}
-	
-	public static void main(String[] args) {
-		
-		VentanaPrincipal listener = (VentanaPrincipal) Juego.getInstancia().getListener();
-		listener.getGameLoop().iniciarEjecucion();
-		
+	public void setListener(JuegoListener listener) {
+		getInstancia().listener=listener;
 	}
+	
+			
+	public static void main(String[] args) {
 
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try 
+				{
+					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();
+					ventana.getFrame().setVisible(true);
+					ventana.getGameLoop().iniciarEjecucion();
+					CampoBatalla.getInstancia().setUpBases();
+				} 
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+				}
+				
+			}
+		});
+	}
+		
 }
+		
+		
+		
+
+

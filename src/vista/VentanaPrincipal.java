@@ -1,7 +1,6 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -13,16 +12,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import jugador.Jugador;
-import jugador.TipoColor;
 import listener.JuegoListener;
 import model.CampoBatalla;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 import model.UnidadModelo;
-import razas.Protoss;
-import razas.Terran;
-import recursos.Volcan;
+import recursos.Cristal;
 import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
@@ -32,6 +28,7 @@ import vista.edificios.VistaArchivosTemplarios;
 import vista.edificios.VistaAsimilador;
 import vista.edificios.VistaBarraca;
 import vista.edificios.VistaCentroMineral;
+import vista.edificios.VistaCristal;
 import vista.edificios.VistaDepositoDeSuministros;
 import vista.edificios.VistaFabrica;
 import vista.edificios.VistaGas;
@@ -50,21 +47,12 @@ import vista.unidades.VistaNaveTransporteProtoss;
 import vista.unidades.VistaNaveTransporteTerran;
 import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
+
 import command.Accion;
-import common.Posicion;
+
 import controller.ControladorMouse;
-import exceptions.ColorInvalidoException;
-import exceptions.CostoInvalidoException;
-import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;
-import exceptions.NombreCortoException;
-import exceptions.NombreJugadorRepetidoException;
 import exceptions.PosicionInvalidaException;
-import exceptions.UnidadInvalidaException;
-import exceptions.UnidadLlenaException;
-import factory.UnidadFactory;
-import factory.unidades.TipoUnidad;
-import factory.unidades.Unidad;
 
 
 public class VentanaPrincipal implements JuegoListener {
@@ -75,19 +63,19 @@ public class VentanaPrincipal implements JuegoListener {
 	private int tamanioCasillaY;
 	private CampoBatalla campoBatalla;
 	private Juego juego;
-	public static void main(String[] args){
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal windows = new VentanaPrincipal();
-					windows.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-			}
-		});
-	}
+//	public static void main(String[] args){
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					VentanaPrincipal windows = new VentanaPrincipal();
+//					windows.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//				
+//			}
+//		});
+//	}
 	
 	/**
 	 * Create the application.
@@ -111,11 +99,11 @@ public class VentanaPrincipal implements JuegoListener {
 	 */
 	private void initialize() throws IOException, FueraDeRangoException, PosicionInvalidaException {
 		//ventana principal
-		frame = new JFrame("Algocraft");
-		frame.setForeground(new Color(0,0,0));
-		frame.setBounds(1, 1, 1366, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setFrame(new JFrame("Algocraft"));
+		getFrame().setForeground(new Color(0,0,0));
+		getFrame().setBounds(1, 1, 1366, 768);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().getContentPane().setLayout(null);
 //		frame.setVisible(true);
 		
 		//boton iniciar juego
@@ -129,7 +117,7 @@ public class VentanaPrincipal implements JuegoListener {
 			}
 		});
 		btnIniciar.setBounds(25, 25, 100, 25);
-		frame.getContentPane().add(btnIniciar);
+		getFrame().getContentPane().add(btnIniciar);
 		
 		//boto finalizar juego
 		JButton btnFinalizar = new JButton("Finalizar");
@@ -142,64 +130,20 @@ public class VentanaPrincipal implements JuegoListener {
 			}
 		});
 		btnFinalizar.setBounds(135, 25, 100, 25);
-		frame.getContentPane().add(btnFinalizar);
-		
-//		JButton botonAccion = new JButton("pruebaa");
-//		botonAccion.setBounds(300, 25, 100, 25);
-//		frame.getContentPane().add(botonAccion);
-//		botonAccion.setFocusable(true);
-	
-		
+		getFrame().getContentPane().add(btnFinalizar);
+				
 		//superficie donde se dibujarn los elementos
 		JPanel panel = new SuperficiePanel();
 		panel.setBackground(new Color(0, 0, 0));
 		panel.setBounds(25, 60, 1000, 600);
-		frame.getContentPane().add(panel);
+		getFrame().getContentPane().add(panel);
 		
 		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
 	
-
-		frame.setFocusable(true);
+		getFrame().setFocusable(true);
 		btnIniciar.setFocusable(false);
 		btnFinalizar.setFocusable(false);
-		
-		Unidad unidad = null;
-		UnidadFactory factory = new UnidadFactory();
-		Volcan volcan = null;
-		try {
-			unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(100, 100));
-			volcan = new Volcan(65, 65, new Posicion(1, 1));
-		} catch (UnidadLlenaException | UnidadInvalidaException
-				| CostoInvalidoException | DanioInvalidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Jugador jugadorActual;
-		Jugador jugadorEnemigo;
-		try {
-			jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
-			jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
-
-			Juego.getInstancia().setJugadorActual(jugadorActual);
-			Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
-			Juego.getInstancia().obtenerArmadaJugadorActual().agregarElemento(unidad);
-		} catch (NombreCortoException | ColorInvalidoException | NombreJugadorRepetidoException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-
-		Imagen vistaVolcan = new VistaGas(volcan);	
-		
-		this.gameLoop.agregar(unidad);
-		Imagen imagenmarine = new VistaMarine(unidad);
-		this.gameLoop.agregar(imagenmarine);
-		
-		this.gameLoop.agregar(volcan);
-		this.gameLoop.agregar(vistaVolcan);
-		
+			
 		panel.addMouseListener(new ControladorMouse(this));
 		
 		
@@ -217,15 +161,12 @@ public class VentanaPrincipal implements JuegoListener {
 			Accion accionActual = opciones.get(keyActual);
 			botonAccion.addActionListener(new CreadorBotonDinamico(accionActual));
 			botonAccion.setBounds(posX, posY, 100, 25);
-			frame.getContentPane().add(botonAccion);
+			getFrame().getContentPane().add(botonAccion);
 			botonAccion.setFocusable(true);
 			posY += 25;
 			
 		}
-		
-//	private void 	
-		
-		
+	
 	}
 	public Juego getJuego(){
 		return this.juego;
@@ -523,6 +464,33 @@ public class VentanaPrincipal implements JuegoListener {
 	@Override
 	public void seCreoCopiaFicticia(ElementoArtificial elemento) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCreoVolcan(Elemento elemento) throws FueraDeRangoException,
+			PosicionInvalidaException, IOException {
+		//final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaGas(elemento);
+		this.getGameLoop().agregar(imagen);	
+		
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	@Override
+	public void seCreoCristal(Cristal cristal) throws IOException, FueraDeRangoException, PosicionInvalidaException {
+		//final UnidadModelo modelo = new UnidadModelo();
+		this.getGameLoop().agregar(cristal);
+		Imagen imagen = new VistaCristal(cristal);
+		this.getGameLoop().agregar(imagen);	
 		
 	}
 
