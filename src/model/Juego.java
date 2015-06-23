@@ -259,12 +259,15 @@ public class Juego {
 					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
 					CentroComandoTerran centro = new CentroComandoTerran(70, 70, new Posicion(80, 80));
+					
 					Juego.getInstancia().getListener().seCreoCentroDeComandoTerran(centro);
 					Juego.getInstancia().agregarUnidadAJugadorActual(centro);
+//					centro.morir();
+//					Juego.getInstancia().obtenerArmadaJugadorActual().eliminarElementoMuertoEnPosicion( new Posicion(80, 80));
 
 					
 					//si salio todo bien, pasa a la siguiente ventana
-					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();
+//					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();
 //					ventana.getFrame().setVisible(true);
 					//ventana.getGameLoop().iniciarEjecucion();
 					

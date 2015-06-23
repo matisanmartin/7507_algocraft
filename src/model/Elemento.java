@@ -6,6 +6,7 @@ import titiritero.modelo.ObjetoPosicionable;
 import titiritero.modelo.ObjetoVivo;
 import common.Posicion;
 import common.Vitalidad;
+import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
@@ -109,8 +110,9 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
 		getVitalidad().setEscudo(escudo);
 	}
 
-	public void morir() {
+	public void morir() throws ElementoNoEncontradoException {
 		setVitalidad(new Vitalidad(0,0));
+		Juego.getInstancia().getListener().seMurioUnaUnidad(this);
 		
 	}
 	

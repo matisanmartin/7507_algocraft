@@ -2,10 +2,12 @@ package command;
 
 import java.io.IOException;
 
+import model.ElementoArtificial;
 import strategy.ContextoStrategy;
 import strategy.CrearAcceso;
+
 import common.Posicion;
-import controller.Controlador;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -23,7 +25,6 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
 
 public class CrearAccesoAccion implements Accion {
 	ElementoArtificial elemento;
@@ -36,7 +37,7 @@ public class CrearAccesoAccion implements Accion {
 	public void execute(Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		elemento.realizarAccion(new ContextoStrategy(new CrearAcceso()), posicionDestino);
-		Controlador.setUltimaReferencia(elemento);
+//		Controlador.setUltimaReferencia(elemento);
 		
 	}
 

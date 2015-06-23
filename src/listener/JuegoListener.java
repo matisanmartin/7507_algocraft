@@ -5,6 +5,7 @@ import java.io.IOException;
 import recursos.Cristal;
 import model.Elemento;
 import model.ElementoArtificial;
+import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
@@ -57,7 +58,7 @@ public interface JuegoListener {
 	public void seRealizoAlucinacion(ElementoArtificial elemento);
 	
 	//Metodos relacionados con la vida de una unidad
-	public void seMurioUnaUnidad();
+	public void seMurioUnaUnidad(Elemento elemento) throws ElementoNoEncontradoException;
 	
 	//Metodos relacionados con el juego
 	public void comenzoJuego();
@@ -66,6 +67,8 @@ public interface JuegoListener {
 	public void seCreoCopiaFicticia(ElementoArtificial elemento);
 
 	public void seCreoCristal(Cristal cristal) throws IOException, FueraDeRangoException, PosicionInvalidaException;
+
+	void seMurioUnaUnidad();
 
 	
 	

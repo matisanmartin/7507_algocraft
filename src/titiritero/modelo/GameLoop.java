@@ -5,6 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import titiritero.dibujables.Imagen;
+import common.Mensajes;
+import common.Posicion;
+import exceptions.ElementoNoEncontradoException;
+
 public class GameLoop implements Runnable{
 
 	private static final int FRECUENCIA_DEFAULT = 500;
@@ -107,5 +112,15 @@ public class GameLoop implements Runnable{
 
 	public synchronized void removerObservador(ObservadorDeGameLoop unObservador) {
 		this.observadores.remove(unObservador);		
+	}
+	
+	public ObjetoDibujable getObjetoDibujable(Posicion pos) throws ElementoNoEncontradoException{
+		for (ObjetoDibujable objetoDibujable : objetosDibujables) {
+			ObjetoPosicionable im = ((Imagen) objetoDibujable).getPosicionable();
+			if ( (im.getX() == pos.getX()) && (im.getY() == pos.getY()) ){
+				return objetoDibujable;
+			}
+		}
+		throw new ElementoNoEncontradoException(Mensajes.MSJ_ERROR_ELEMENTO_NO_ENCONTRADO);
 	}
 }

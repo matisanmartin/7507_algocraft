@@ -49,10 +49,9 @@ import vista.unidades.VistaNaveTransporteProtoss;
 import vista.unidades.VistaNaveTransporteTerran;
 import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
-
 import command.Accion;
-
 import controller.ControladorMouse;
+import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
@@ -466,11 +465,6 @@ public class VentanaPrincipal implements JuegoListener {
 		
 	}
 
-	@Override
-	public void seMurioUnaUnidad() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void comenzoJuego() {
@@ -523,6 +517,19 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaCentroComandoTerran(elemento);
 		this.getGameLoop().agregar(imagen);
+		
+	}
+
+	@Override
+	public void seMurioUnaUnidad(Elemento elemento) throws ElementoNoEncontradoException {
+		// TODO Auto-generated method stub
+		this.gameLoop.remover(elemento);
+		this.gameLoop.remover(this.gameLoop.getObjetoDibujable(elemento.getPosicion()));
+	}
+
+	@Override
+	public void seMurioUnaUnidad() {
+		// TODO Auto-generated method stub
 		
 	}
 	
