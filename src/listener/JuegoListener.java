@@ -34,6 +34,7 @@ public interface JuegoListener {
 	public void seCreoRefineria(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	public void seCreoFabrica(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	public void seCreoPuertoEstelarTerran(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
+	public void seCreoCentroDeComandoTerran(ElementoArtificial elemento ) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	
 	//Metodos de creacion de edificios protoss
 	public void seCreoNexoMineral(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;

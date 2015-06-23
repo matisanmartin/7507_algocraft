@@ -9,6 +9,8 @@ import factory.construcciones.Acceso;
 import factory.construcciones.ArchivoTemplario;
 import factory.construcciones.Asimilador;
 import factory.construcciones.Barraca;
+import factory.construcciones.CentroComandoProtoss;
+import factory.construcciones.CentroComandoTerran;
 import factory.construcciones.CentroMineral;
 import factory.construcciones.DepositoSuministros;
 import factory.construcciones.Edificio;
@@ -32,8 +34,8 @@ public class EdificioFactory extends AbstractFactory {
 	public static final int CENTRO_MINERAL_ANCHO = 2;
 	private static final int REFINERIA_ALTO = 2;
 	private static final int REFINERIA_ANCHO = 2;
-	private static final int BARRACA_ALTO = 2;
-	private static final int BARRACA_ANCHO = 2;
+	private static final int BARRACA_ALTO = 70;
+	private static final int BARRACA_ANCHO = 70;
 	private static final int FABRICA_ALTO = 2;
 	private static final int FABRICA_ANCHO = 2;
 	private static final int PUERTO_ESTELAR_TERRAN_ALTO = 2;
@@ -52,6 +54,10 @@ public class EdificioFactory extends AbstractFactory {
 	private static final int DEPOSITO_ANCHO = 2;
 	private static final int PILON_ALTO = 0;
 	private static final int PILON_ANCHO = 0;
+	private static final int TERRAN_CENTRO_COMANDO_ALTO = 60;
+	private static final int TERRAN_CENTRO_COMANDO_ANCHO = 60;
+	private static final int PROTOSS_CENTRO_COMANDO_ALTO = 60;
+	private static final int PROTOSS_CENTRO_COMANDO_ANCHO = 60;
 	
 	
 	@Override
@@ -115,6 +121,14 @@ public class EdificioFactory extends AbstractFactory {
 			
 		case PROTOSS_PILON:
 			edificioCreado = new Pilon(PILON_ALTO, PILON_ANCHO, posicion);
+			break;
+			
+		case TERRAN_CENTRO_COMANDO:
+			edificioCreado = new CentroComandoTerran(TERRAN_CENTRO_COMANDO_ALTO, TERRAN_CENTRO_COMANDO_ANCHO, posicion);
+			break;
+			
+		case PROTOSS_CENTRO_COMANDO:
+			edificioCreado = new CentroComandoProtoss(PROTOSS_CENTRO_COMANDO_ALTO, PROTOSS_CENTRO_COMANDO_ANCHO, posicion);
 			break;
 
 			

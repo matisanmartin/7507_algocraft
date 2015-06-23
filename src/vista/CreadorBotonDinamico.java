@@ -36,7 +36,7 @@ public class CreadorBotonDinamico implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			accion.execute(new Posicion(400, 400));
+			accion.execute(new Posicion(500, 200));
 		} catch (FactoryInvalidaException | UnidadInvalidaException
 				| FueraDeRangoException | ElementoInvalidoException
 				| PosicionInvalidaException | ElementoNoEncontradoException

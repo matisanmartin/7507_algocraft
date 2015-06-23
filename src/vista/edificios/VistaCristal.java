@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaCristal extends Imagen {
 	public VistaCristal(ObjetoPosicionable modelo) throws IOException {
-		super(VistaCristal.class.getResource("/vista/imagenes/cristal65-65.png"), modelo);
+		super(VistaCristal.class.getResource("/vista/imagenes/cristal40-40.png"), modelo);
 	}
 
 }

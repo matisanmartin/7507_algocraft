@@ -6,6 +6,7 @@ import common.Posicion;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 
+//TODO jl : DEFINIR COSTO, VIDA, ETC
 public class CentroComandoProtoss extends Edificio {
 
 	public CentroComandoProtoss(int alto, int ancho, Posicion posicion)

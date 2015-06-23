@@ -13,10 +13,10 @@ public abstract class Base extends Elemento{
 	
 	protected static final int CANTIDAD_DE_VOLCANES = 1;
 	private static final int CANTIDAD_DE_CRISTALES = 6;
-	protected static final int VOLCAN_ALTO = 65;
-	protected static final int VOLCAN_ANCHO = 65;
-	private static final int CRISTAL_ALTO = 65;
-	private static final int CRISTAL_ANCHO = 65;
+	protected static final int VOLCAN_ALTO = 40;
+	protected static final int VOLCAN_ANCHO = 40;
+	private static final int CRISTAL_ALTO = 40;
+	private static final int CRISTAL_ANCHO = 40;
 	Posicion posicion;
 	ArrayList<Volcan> volcan;
 	ArrayList<Cristal> cristal;

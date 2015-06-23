@@ -27,6 +27,7 @@ import vista.edificios.VistaAcceso;
 import vista.edificios.VistaArchivosTemplarios;
 import vista.edificios.VistaAsimilador;
 import vista.edificios.VistaBarraca;
+import vista.edificios.VistaCentroComandoTerran;
 import vista.edificios.VistaCentroMineral;
 import vista.edificios.VistaCristal;
 import vista.edificios.VistaDepositoDeSuministros;
@@ -47,9 +48,7 @@ import vista.unidades.VistaNaveTransporteProtoss;
 import vista.unidades.VistaNaveTransporteTerran;
 import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
-
 import command.Accion;
-
 import controller.ControladorMouse;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -153,8 +152,8 @@ public class VentanaPrincipal implements JuegoListener {
 	
 	public void agregarPanelDeOpciones(Map<String, Accion> opciones){
 		Set<String> keys = opciones.keySet();
-		int posX = 1100;
-		int posY = 25;
+		int posX = 1035;
+		int posY = 60;
 		
 		Iterator<String> it = keys.iterator();
 		while (it.hasNext()){
@@ -162,7 +161,7 @@ public class VentanaPrincipal implements JuegoListener {
 			JButton botonAccion = new JButton(keyActual);
 			Accion accionActual = opciones.get(keyActual);
 			botonAccion.addActionListener(new CreadorBotonDinamico(accionActual));
-			botonAccion.setBounds(posX, posY, 100, 25);
+			botonAccion.setBounds(posX, posY, 250, 25);
 			getFrame().getContentPane().add(botonAccion);
 			botonAccion.setFocusable(true);
 			posY += 25;
@@ -310,9 +309,8 @@ public class VentanaPrincipal implements JuegoListener {
 
 	@Override
 	public void seCreoBarraca(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaBarraca(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaBarraca(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
@@ -495,6 +493,18 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(imagen);	
 		
 	}
+
+	@Override
+	public void seCreoCentroDeComandoTerran(ElementoArtificial elemento)
+			throws FueraDeRangoException, PosicionInvalidaException,
+			IOException {
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaCentroComandoTerran(elemento);
+		this.getGameLoop().agregar(imagen);
+		
+	}
+	
+	
 
 }
 

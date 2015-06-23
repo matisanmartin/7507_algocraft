@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaCentroComandoTerran extends Imagen {
 	public VistaCentroComandoTerran(ObjetoPosicionable modelo) throws IOException {
-		super(VistaCentroComandoTerran.class.getResource("/vista/imagenes/centroComandoTerran130-130.png"), modelo);
+		super(VistaCentroComandoTerran.class.getResource("/vista/imagenes/centroComandoTerran70-70.png"), modelo);
 	}
 
 }

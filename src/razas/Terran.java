@@ -19,7 +19,7 @@ public class Terran extends Raza {
 		//TODO REVISAR POSICIONE
 		Posicion posicionCdc = new Posicion(10,10);
 		
-		return factory.getEdificio(TipoEdificio.TERRAN_CENTRO_DE_COMANDO, posicionCdc);
+		return factory.getEdificio(TipoEdificio.TERRAN_CENTRO_COMANDO, posicionCdc);
 	}
 	
 

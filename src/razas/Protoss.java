@@ -18,7 +18,7 @@ public class Protoss extends Raza {
 		
 		//TODO DEFINIR POSICION
 		Posicion posicionCdc = new Posicion(1,1);
-		return factory.getEdificio(TipoEdificio.PROTOSS_CENTRO_DE_COMANDO,posicionCdc);
+		return factory.getEdificio(TipoEdificio.PROTOSS_CENTRO_COMANDO,posicionCdc);
 	}
 
 

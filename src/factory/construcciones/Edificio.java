@@ -21,6 +21,7 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.EspacioTerrestre;
 import model.Juego;
@@ -31,7 +32,7 @@ public class Edificio extends ElementoArtificial {
 
 	public Edificio(int alto, int ancho, Posicion posicion)
 			throws FueraDeRangoException, PosicionInvalidaException {
-		super(alto, ancho, posicion, new EspacioTerrestre());
+		super(alto, ancho, posicion, CampoBatalla.getInstancia().getEspacioTerrestre());
 		// TODO Auto-generated constructor stub
 	}
 	

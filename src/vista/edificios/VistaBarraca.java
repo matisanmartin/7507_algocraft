@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaBarraca extends Imagen {
 	public VistaBarraca(ObjetoPosicionable modelo) throws IOException {
-		super(VistaBarraca.class.getResource("/vista/imagenes/barraca125-125.png"), modelo);
+		super(VistaBarraca.class.getResource("/vista/imagenes/barraca70-70.png"), modelo);
 	}
 
 }

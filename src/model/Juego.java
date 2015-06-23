@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.util.Iterator;
 import java.util.List;
 
+import razas.Protoss;
+import razas.Terran;
 import recursos.Volcan;
 import common.Mensajes;
 import common.Posicion;
@@ -20,6 +22,8 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
+import factory.UnidadFactory;
+import factory.construcciones.CentroComandoTerran;
 
 public class Juego {
 	
@@ -248,16 +252,31 @@ public class Juego {
 				{
 					
 					//Ventana para ingresar nombres, color y raza
+//					jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
+//					Juego juegooo =Juego.getInstancia();
+//					Juego.getInstancia().setJugadorActual(jugadorActual);
+	
+					//Se setean las bases
+					CampoBatalla.getInstancia().setUpBases();
+					CentroComandoTerran centro = new CentroComandoTerran(70, 70, new Posicion(80, 80));
+					Juego.getInstancia().getListener().seCreoCentroDeComandoTerran(centro);
+					Juego.getInstancia().agregarUnidadAJugadorActual(centro);
+
 					
 					//si salio todo bien, pasa a la siguiente ventana
 					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();
 //					ventana.getFrame().setVisible(true);
 					//ventana.getGameLoop().iniciarEjecucion();
 					
+
+					
 					//Se setea el mapa
 					
-					//Se setean las bases
-					CampoBatalla.getInstancia().setUpBases();
+
+					
+//					Unidad unidad = null;
+//					UnidadFactory factory = new UnidadFactory();
+//					unidad = factory.
 				
 					//Se setean los centros de comando
 					

@@ -127,6 +127,12 @@ public class EdificioFactoryTest {
 		assertEquals(true, edificio.getVitalidad().equals(new Vitalidad(300,300)));
 	}
 	
+	@Test
+	public void crearCentroDeComandoTerran() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
+		edificio = factory.getEdificio(TipoEdificio.TERRAN_CENTRO_COMANDO, new Posicion(100, 100));
+		assertEquals(new Posicion(100, 100), edificio.getPosicion());
+	}
+	
 	
 	
 }

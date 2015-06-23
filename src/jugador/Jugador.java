@@ -38,6 +38,15 @@ public class Jugador {
 		return excesoPoblacion;
 	}
 	public Jugador() {
+		
+		//TODO jl: agregado para probar
+		armada = new Armada();
+		
+		this.cantidadDeCristal = 200;
+		this.cantidadDeGas = 0;
+		this.poblacionActual = 0;
+		this.poblacionDisponible = 100;
+		this.excesoPoblacion = 0;
 	}
 	public Jugador(String nombre,TipoColor color,Raza raza) 
 	throws NombreCortoException, ColorInvalidoException {

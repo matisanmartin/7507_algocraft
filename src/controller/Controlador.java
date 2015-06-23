@@ -274,5 +274,13 @@ public class Controlador implements JuegoListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void seCreoCentroDeComandoTerran(ElementoArtificial elemento)
+			throws FueraDeRangoException, PosicionInvalidaException,
+			IOException {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

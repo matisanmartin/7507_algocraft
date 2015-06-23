@@ -14,14 +14,21 @@ public class SuperficiePanel extends JPanel implements SuperficieDeDibujo {
 
 	// es llamado internamente por el metodo repaint() de la clase Frame
 	public void update(Graphics g) {
-		paint(g);
+//		paint(g);
+		paintComponent(g);
 	}
 
 	public void setImagen(Image imagen) {
 		this.imagen = imagen;
 	}
 	
-	public void paint(Graphics g) {
+//	public void paint(Graphics g) {
+//		System.out.println("repintando");
+//		g.drawImage(this.imagen, 0, 0, null);
+//		this.limpiar();
+//	}
+	
+	public void paintComponent(Graphics g) {
 		System.out.println("repintando");
 		g.drawImage(this.imagen, 0, 0, null);
 		this.limpiar();
