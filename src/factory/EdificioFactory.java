@@ -36,8 +36,8 @@ public class EdificioFactory extends AbstractFactory {
 	private static final int REFINERIA_ANCHO = 2;
 	private static final int BARRACA_ALTO = 70;
 	private static final int BARRACA_ANCHO = 70;
-	private static final int FABRICA_ALTO = 2;
-	private static final int FABRICA_ANCHO = 2;
+	private static final int FABRICA_ALTO = 112;
+	private static final int FABRICA_ANCHO = 112;
 	private static final int PUERTO_ESTELAR_TERRAN_ALTO = 2;
 	private static final int PUERTO_ESTELAR_TERRAN_ANCHO = 2;
 	private static final int NEXO_MINERAL_ALTO = 2;

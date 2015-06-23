@@ -7,6 +7,7 @@ import java.util.Map;
 
 import command.Accion;
 import common.Posicion;
+import controller.ControladorMouse;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -36,7 +37,8 @@ public class CreadorBotonDinamico implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			accion.execute(new Posicion(500, 200));
+			this.
+			accion.execute(ControladorMouse.getPosicionDestino());
 		} catch (FactoryInvalidaException | UnidadInvalidaException
 				| FueraDeRangoException | ElementoInvalidoException
 				| PosicionInvalidaException | ElementoNoEncontradoException

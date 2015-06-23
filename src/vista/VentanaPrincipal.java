@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -64,7 +65,8 @@ public class VentanaPrincipal implements JuegoListener {
 	private int tamanioCasillaY;
 	private CampoBatalla campoBatalla;
 	private Juego juego;
-//	public static void main(String[] args){
+	private ArrayList<JButton> botonesAccion;
+//	public static void main(St ring[] args){
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
@@ -101,6 +103,7 @@ public class VentanaPrincipal implements JuegoListener {
 	private void initialize() throws IOException, FueraDeRangoException, PosicionInvalidaException {
 		//ventana principal
 		setFrame(new JFrame("Algocraft"));
+		this.botonesAccion = new ArrayList<JButton>();
 //		getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		getFrame().setForeground(new Color(0,0,0));
 		getFrame().setBounds(1, 1, 1366, 768);
@@ -120,7 +123,7 @@ public class VentanaPrincipal implements JuegoListener {
 		});
 		btnIniciar.setBounds(25, 25, 100, 25);
 		getFrame().getContentPane().add(btnIniciar);
-		
+	
 		//boto finalizar juego
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
@@ -133,6 +136,17 @@ public class VentanaPrincipal implements JuegoListener {
 		});
 		btnFinalizar.setBounds(135, 25, 100, 25);
 		getFrame().getContentPane().add(btnFinalizar);
+		
+		
+		//////////
+		//
+		
+	
+		
+		
+		
+		
+		////
 				
 		//superficie donde se dibujarn los elementos
 		JPanel panel = new SuperficiePanel();
@@ -150,7 +164,28 @@ public class VentanaPrincipal implements JuegoListener {
 		panel.addMouseListener(new ControladorMouse(this));
 		
 		
+		
 	}
+	
+//	public void agregarPanelDeOpciones(Map<String, Accion> opciones){
+//		Set<String> keys = opciones.keySet();
+//		int posX = 1035;
+//		int posY = 60;
+//		
+//		Iterator<String> it = keys.iterator();
+//		while (it.hasNext()){
+//			String keyActual = it.next();
+//			JButton botonAccion = new JButton(keyActual);
+//			Accion accionActual = opciones.get(keyActual);
+//			botonAccion.addActionListener(new CreadorBotonDinamico(accionActual));
+//			botonAccion.setBounds(posX, posY, 250, 25);
+//			getFrame().getContentPane().add(botonAccion);
+//			botonAccion.setFocusable(true);
+//			posY += 25;
+//			
+//		}
+//	
+//	}
 	
 	public void agregarPanelDeOpciones(Map<String, Accion> opciones){
 		Set<String> keys = opciones.keySet();
@@ -166,10 +201,18 @@ public class VentanaPrincipal implements JuegoListener {
 			botonAccion.setBounds(posX, posY, 250, 25);
 			getFrame().getContentPane().add(botonAccion);
 			botonAccion.setFocusable(true);
+			this.botonesAccion.add(botonAccion);
 			posY += 25;
 			
 		}
 	
+	}
+	
+	public void limpiarPanelDeOpciones(){
+		for (JButton jButton : botonesAccion) {
+			frame.getContentPane().remove(jButton);
+		}
+		
 	}
 	public Juego getJuego(){
 		return this.juego;

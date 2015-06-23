@@ -40,12 +40,13 @@ public class Jugador {
 	public Jugador() {
 		
 		//TODO jl: agregado para probar
+		//FIXME	GOD MODE!!!!!!!
 		armada = new Armada();
 		
-		this.cantidadDeCristal = 200;
-		this.cantidadDeGas = 0;
+		this.cantidadDeCristal = 1000000;
+		this.cantidadDeGas = 1000000;
 		this.poblacionActual = 0;
-		this.poblacionDisponible = 100;
+		this.poblacionDisponible = 100000;
 		this.excesoPoblacion = 0;
 	}
 	public Jugador(String nombre,TipoColor color,Raza raza) 
