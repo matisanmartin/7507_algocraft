@@ -48,7 +48,9 @@ import vista.unidades.VistaNaveTransporteProtoss;
 import vista.unidades.VistaNaveTransporteTerran;
 import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
+
 import command.Accion;
+
 import controller.ControladorMouse;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -211,98 +213,87 @@ public class VentanaPrincipal implements JuegoListener {
 
 	@Override
 	public void seCreoMarine(ElementoArtificial elemento) throws IOException, FueraDeRangoException, PosicionInvalidaException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaMarine(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaMarine(elemento);
 		this.getGameLoop().agregar(imagen);	
 	}
 
 	@Override
 	public void seCreoGolliat(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaGolliat(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaGolliat(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoEspectro(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaEspectro(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaEspectro(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoNaveCiencia(ElementoArtificial elemento) throws IOException, FueraDeRangoException, PosicionInvalidaException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaNaveCiencia(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaNaveCiencia(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoNaveTransporteTerran(ElementoArtificial elemento) throws IOException, FueraDeRangoException, PosicionInvalidaException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaNaveTransporteTerran(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaNaveTransporteTerran(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoZealot(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaZealot(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaZealot(elemento);
 		this.getGameLoop().agregar(imagen);
 		
 	}
 
 	@Override
 	public void seCreoDragon(ElementoArtificial elemento)  throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaDragon(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaDragon(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoScout(ElementoArtificial elemento)  throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaScout(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaScout(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoAltoTemplario(ElementoArtificial elemento)  throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaAltoTemplario(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaAltoTemplario(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoNaveTransporteProtoss(ElementoArtificial elemento)  throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaNaveTransporteProtoss(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaNaveTransporteProtoss(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoCentroMineral(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException  {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaCentroMineral(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaCentroMineral(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
@@ -326,81 +317,72 @@ public class VentanaPrincipal implements JuegoListener {
 
 	@Override
 	public void seCreoRefineria(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaRefineria(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaRefineria(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoFabrica(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaFabrica(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaFabrica(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoPuertoEstelarTerran(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaPuertoEstelarTerran(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaPuertoEstelarTerran(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoNexoMineral(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaNexoMineral(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaNexoMineral(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoPilon(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaPilon(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaPilon(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoAsimilador(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaAsimilador(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaAsimilador(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoAcceso(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaAcceso(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaAcceso(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoPuertoEstelarProtoss(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaPuertoEstelarProtoss(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaPuertoEstelarProtoss(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
 
 	@Override
 	public void seCreoArchivosTemplarios(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaArchivosTemplarios(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaArchivosTemplarios(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
@@ -487,7 +469,6 @@ public class VentanaPrincipal implements JuegoListener {
 
 	@Override
 	public void seCreoCristal(Cristal cristal) throws IOException, FueraDeRangoException, PosicionInvalidaException {
-		//final UnidadModelo modelo = new UnidadModelo();
 		this.getGameLoop().agregar(cristal);
 		Imagen imagen = new VistaCristal(cristal);
 		this.getGameLoop().agregar(imagen);	
@@ -495,9 +476,7 @@ public class VentanaPrincipal implements JuegoListener {
 	}
 
 	@Override
-	public void seCreoCentroDeComandoTerran(ElementoArtificial elemento)
-			throws FueraDeRangoException, PosicionInvalidaException,
-			IOException {
+	public void seCreoCentroDeComandoTerran(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaCentroComandoTerran(elemento);
 		this.getGameLoop().agregar(imagen);
