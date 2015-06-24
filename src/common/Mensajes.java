@@ -19,6 +19,8 @@ public class Mensajes {
 	//Mensajes de interacción con el usuario
 	public static final String MSJ_PARTIDA_PERDIDA = "Ha perdido la partida.";
 	public static final String MSJ_PARTIDA_GANADA = "Ha ganado la partida";
+	public static final String MSJ_CAMBIO_DE_TURNO = "Se ha cumplido el tiempo de su turno";
+	public static final String NOMBRE_POPUP_TURNO = "Cambio de turno";
 	
 	
 

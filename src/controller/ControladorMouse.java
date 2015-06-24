@@ -4,13 +4,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import jugador.Jugador;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 import vista.VentanaPrincipal;
+
 import command.Accion;
 import common.Posicion;
+
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -51,6 +55,7 @@ public class ControladorMouse implements MouseListener {
 
 		} catch (ElementoNoEncontradoException | FueraDeRangoException | PosicionInvalidaException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(this.ventana.getFrame(), e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
 			System.out.println(e.getMessage());
 			
 		}

@@ -3,16 +3,21 @@ package model;
 import java.awt.EventQueue;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Timer;
 
-import razas.Protoss;
-import razas.Terran;
-import recursos.Volcan;
-import common.Mensajes;
-import common.Posicion;
+import javax.swing.JLabel;
+
 import jugador.Jugador;
 import jugador.TipoColor;
 import listener.JuegoListener;
+import razas.Protoss;
+import razas.Terran;
+import turno.TimerCambioDeTurno;
 import vista.VentanaPrincipal;
+
+import common.Mensajes;
+import common.Posicion;
+
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoException;
@@ -22,7 +27,6 @@ import exceptions.PartidaPerdidaException;
 import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
-import factory.UnidadFactory;
 import factory.construcciones.CentroComandoTerran;
 
 public class Juego {
@@ -252,9 +256,12 @@ public class Juego {
 				{
 					
 					//Ventana para ingresar nombres, color y raza
-//					jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
-//					Juego juegooo =Juego.getInstancia();
-//					Juego.getInstancia().setJugadorActual(jugadorActual);
+					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
+					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
+					
+					Juego.getInstancia().setJugadorActual(jugadorActual);
+					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+					
 	
 					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
@@ -265,6 +272,14 @@ public class Juego {
 //					centro.morir();
 //					Juego.getInstancia().obtenerArmadaJugadorActual().eliminarElementoMuertoEnPosicion( new Posicion(80, 80));
 
+					Timer tiempoDeTurno = new Timer();
+					
+					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
+					
+					//El tiempo que se pasa es en milisegundos
+					tiempoDeTurno.schedule(cambioDeTurno,120000, 120000);
+					
+					
 					
 					//si salio todo bien, pasa a la siguiente ventana
 //					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();

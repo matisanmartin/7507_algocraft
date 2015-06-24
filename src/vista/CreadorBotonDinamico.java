@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import command.Accion;
 import common.Posicion;
 import controller.ControladorMouse;
@@ -37,8 +39,8 @@ public class CreadorBotonDinamico implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			this.
-			accion.execute(ControladorMouse.getPosicionDestino());
+			this.accion.execute(ControladorMouse.getPosicionDestino());
+			VentanaPrincipal.agregarInformacionDeJugador();
 		} catch (FactoryInvalidaException | UnidadInvalidaException
 				| FueraDeRangoException | ElementoInvalidoException
 				| PosicionInvalidaException | ElementoNoEncontradoException
@@ -49,7 +51,8 @@ public class CreadorBotonDinamico implements ActionListener {
 				| UnidadLlenaException | RecursosFaltantesException
 				| PoblacionFaltanteException | DanioInvalidoException
 				| IOException e1) {
-			// TODO Auto-generated catch block
+			
+			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
 			e1.printStackTrace();
 		}
 

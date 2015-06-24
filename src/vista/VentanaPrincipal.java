@@ -11,10 +11,10 @@ import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import listener.JuegoListener;
-import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
@@ -58,27 +58,14 @@ import exceptions.PosicionInvalidaException;
 
 public class VentanaPrincipal implements JuegoListener {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private GameLoop gameLoop;
-	private int tamanioCasillaX;
-	private int tamanioCasillaY;
-	private CampoBatalla campoBatalla;
 	private Juego juego;
 	private ArrayList<JButton> botonesAccion;
-//	public static void main(St ring[] args){
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					VentanaPrincipal windows = new VentanaPrincipal();
-//					windows.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//				
-//			}
-//		});
-//	}
-	
+	private static JLabel labelNombre;
+	private static JLabel labelGas;
+	private static JLabel labelCristal;
+
 	/**
 	 * Create the application.
 	 * @throws PosicionInvalidaException 
@@ -103,7 +90,10 @@ public class VentanaPrincipal implements JuegoListener {
 		//ventana principal
 		setFrame(new JFrame("Algocraft"));
 		this.botonesAccion = new ArrayList<JButton>();
-//		getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		labelGas=new JLabel("Gas");
+		labelCristal=new JLabel("Cristal");
+		labelNombre= new JLabel("Nombre");
+		getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		getFrame().setForeground(new Color(0,0,0));
 		getFrame().setBounds(1, 1, 1366, 768);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,7 +107,7 @@ public class VentanaPrincipal implements JuegoListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gameLoop.iniciarEjecucion();
-				
+				agregarInformacionDeJugador();
 			}
 		});
 		btnIniciar.setBounds(25, 25, 100, 25);
@@ -166,26 +156,6 @@ public class VentanaPrincipal implements JuegoListener {
 		
 	}
 	
-//	public void agregarPanelDeOpciones(Map<String, Accion> opciones){
-//		Set<String> keys = opciones.keySet();
-//		int posX = 1035;
-//		int posY = 60;
-//		
-//		Iterator<String> it = keys.iterator();
-//		while (it.hasNext()){
-//			String keyActual = it.next();
-//			JButton botonAccion = new JButton(keyActual);
-//			Accion accionActual = opciones.get(keyActual);
-//			botonAccion.addActionListener(new CreadorBotonDinamico(accionActual));
-//			botonAccion.setBounds(posX, posY, 250, 25);
-//			getFrame().getContentPane().add(botonAccion);
-//			botonAccion.setFocusable(true);
-//			posY += 25;
-//			
-//		}
-//	
-//	}
-	
 	public void agregarPanelDeOpciones(Map<String, Accion> opciones){
 		Set<String> keys = opciones.keySet();
 		int posX = 1035;
@@ -199,12 +169,40 @@ public class VentanaPrincipal implements JuegoListener {
 			botonAccion.addActionListener(new CreadorBotonDinamico(accionActual));
 			botonAccion.setBounds(posX, posY, 250, 25);
 			getFrame().getContentPane().add(botonAccion);
+			botonAccion.repaint();
 			botonAccion.setFocusable(true);
 			this.botonesAccion.add(botonAccion);
 			posY += 25;
-			
 		}
+	}
 	
+	public static void agregarInformacionDeJugador() {
+		
+		//Información del nombre
+		labelNombre.setText("");
+		//labelNombre = new JLabel("Nombre");
+		labelNombre.setBounds(300, 25, 100, 25);
+		labelNombre.setText("Nombre: " + Juego.getInstancia().getJugadorActual().getNombre());
+		frame.getContentPane().add(labelNombre);
+		labelNombre.repaint();
+		
+		//Información de cristal
+		labelCristal.setText("");
+		//labelCristal = new JLabel("Cristal");
+		labelCristal.setBounds(425, 25, 100, 25);
+		labelCristal.setText("Cristales: " + String.valueOf(Juego.getInstancia().getJugadorActual().getCantidadDeCristal()));
+		frame.getContentPane().add(labelCristal);
+		labelCristal.repaint();
+		
+		//Información de gas
+		labelGas.setText("");
+		//labelGas = new JLabel("Gas");
+		labelGas.setBounds(550, 25, 100, 25);
+		labelGas.setText("Gas: " + String.valueOf(Juego.getInstancia().getJugadorActual().getCantidadDeGas()));
+		frame.getContentPane().add(labelGas);
+		labelGas.repaint();
+		
+		
 	}
 	
 	public void limpiarPanelDeOpciones(){
@@ -224,30 +222,6 @@ public class VentanaPrincipal implements JuegoListener {
 	public void setGameLoop(GameLoop gameLoop) {
 		this.gameLoop = gameLoop;
 	}
-		
-//	private void dibujarCuadriculaDeTablero(JPanel panel) throws PosicionInvalidaException, FueraDeRangoException{
-//		this.campoBatalla = CampoBatalla.getInstancia();
-//		this.getGameLoop().agregar(campoBatalla);
-//		
-//		//lineas en x
-//		this.tamanioCasillaX = panel.getHeight()/this.campoBatalla.getAncho();
-//		Posicion.setTamanioDePosicionX(tamanioCasillaX);
-//		for (int i = Constantes.POS_INICIAL_CAMPO_BATALLA; i < Constantes.ANCHO_DEFECTO; i++) {
-//			Posicion posicion = new Posicion(i*tamanioCasillaX, 1);
-//			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
-//			this.getGameLoop().agregar(linea);
-//		}
-//		
-//		//lineas en Y
-//		this.tamanioCasillaY = panel.getWidth()/this.campoBatalla.getAlto();
-//		Posicion.setTamanioDePosicionY(tamanioCasillaY);
-//		for (int i = Constantes.POS_INICIAL_CAMPO_BATALLA; i < Constantes.ALTO_DEFECTO; i++) {
-//			Posicion posicion = new Posicion(1, i*tamanioCasillaY);
-//			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
-//			this.getGameLoop().agregar(linea);
-//		}
-//	}
-
 	@Override
 	public String pruebaListener() {
 		return "pruebaListener()";
@@ -431,7 +405,9 @@ public class VentanaPrincipal implements JuegoListener {
 
 	@Override
 	public void seMovioUnidad(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+		//this.getGameLoop().agregar(elemento);
+		//Imagen imagen = new VistaArchivosTemplarios(elemento);
+		//this.getGameLoop().agregar(imagen);	
 		
 	}
 
