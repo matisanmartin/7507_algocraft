@@ -20,6 +20,8 @@ import model.ElementoArtificial;
 import model.Juego;
 import model.UnidadModelo;
 import recursos.Cristal;
+import sonido.Reproductor;
+import sonido.TipoSonido;
 import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
@@ -107,6 +109,7 @@ public class VentanaPrincipal implements JuegoListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gameLoop.iniciarEjecucion();
+				Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
 				agregarInformacionDeJugador();
 			}
 		});
