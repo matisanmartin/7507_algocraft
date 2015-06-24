@@ -115,6 +115,9 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_ZEALOT_DAÑO = "0A8T";
 	public static final int 	UNIDAD_ZEALOT_SUMINISTRO = 2;
 	public static final RangoAtaque	UNIDAD_ZEALOT_RANGO_ATAQUE = new RangoAtaque(0,1);
+	public static final int UNIDAD_ZEALOT_ALTO = 30;
+	public static final int UNIDAD_ZEALOT_ANCHO = 30;
+	
 
 	
 	//Atributos Dragon
@@ -125,6 +128,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_DRAGON_DAÑO = "20A20T";
 	public static final int 	UNIDAD_DRAGON_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_DRAGON_RANGO_ATAQUE = new RangoAtaque(0,4);
+	public static final int UNIDAD_DRAGON_ALTO = 40;
+	public static final int UNIDAD_DRAGON_ANCHO = 40;
 
 	
 	//Atributos Scout
@@ -135,6 +140,9 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_SCOUT_DAÑO = "14A8T";
 	public static final int 	UNIDAD_SCOUT_SUMINISTRO = 3;
 	public static final RangoAtaque	UNIDAD_SCOUT_RANGO_ATAQUE = new RangoAtaque(4,0);
+	public static final int UNIDAD_SCOUT_ALTO = 40;
+	public static final int UNIDAD_SCOUT_ANCHO = 40;
+	
 
 	
 	//Atributos AltoTemplario
@@ -145,6 +153,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_DAÑO = "0A0T";
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_SUMINISTRO = 2;
 	public static final RangoAtaque	UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE = new RangoAtaque(0,0);
+	public static final int UNIDAD_ALTO_TEMPLARIO_ALTO = 30;
+	public static final int UNIDAD_ALTO_TEMPLARIO_ANCHO = 30;
 
 	
 	//Atributos NaveTransporteProtoss
@@ -155,6 +165,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE = new RangoAtaque(0,0);
+	public static final int UNIDAD_NTRANSPORTE_PROTOSS_ALTO = 40;
+	public static final int UNIDAD_NTRANSPORTE_PROTOSS_ANCHO = 40;
 
 
 	
@@ -250,8 +262,8 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_ZEALOT_SUMINISTRO,
 												UNIDAD_ZEALOT_RANGO_ATAQUE,
 												new Vitalidad(100,60),
-												UNIDAD_ALTO,
-												UNIDAD_ANCHO,
+												UNIDAD_ZEALOT_ALTO,
+												UNIDAD_ZEALOT_ANCHO,
 												posicion,
 												espacioTerrestre);
 			break;
@@ -265,8 +277,8 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_DRAGON_SUMINISTRO,
 												UNIDAD_DRAGON_RANGO_ATAQUE,
 												new Vitalidad(100,80),
-												UNIDAD_ALTO,
-												UNIDAD_ANCHO,
+												UNIDAD_DRAGON_ALTO,
+												UNIDAD_DRAGON_ANCHO,
 												posicion,
 												espacioTerrestre);
 			break;
@@ -280,10 +292,10 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_SCOUT_SUMINISTRO,
 												UNIDAD_SCOUT_RANGO_ATAQUE,
 												new Vitalidad(150,100),
-												UNIDAD_ALTO,
-												UNIDAD_ANCHO,
+												UNIDAD_SCOUT_ALTO,
+												UNIDAD_SCOUT_ANCHO,
 												posicion,
-												espacioTerrestre);
+												espacioAereo);
 			break;
 			
 		case PROTOSS_ALTO_TEMPLARIO:
@@ -295,8 +307,8 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
 													UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
 													new Vitalidad(40,40),
-													UNIDAD_ALTO,
-													UNIDAD_ANCHO,
+													UNIDAD_ALTO_TEMPLARIO_ALTO,
+													UNIDAD_ALTO_TEMPLARIO_ANCHO,
 													posicion,
 													espacioTerrestre);
 			break;
@@ -310,8 +322,8 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO,
 												UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE,
 												new Vitalidad(80,60),
-												UNIDAD_ALTO,
-												UNIDAD_ANCHO,
+												UNIDAD_NTRANSPORTE_PROTOSS_ALTO,
+												UNIDAD_NTRANSPORTE_PROTOSS_ANCHO,
 												posicion,
 												espacioAereo);
 			break;

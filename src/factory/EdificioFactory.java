@@ -46,10 +46,10 @@ public class EdificioFactory extends AbstractFactory {
 	private static final int ASIMILADOR_ANCHO = 2;
 	private static final int ACCESO_ALTO = 70;
 	private static final int ACCESO_ANCHO = 70;
-	private static final int PUERTO_ESTELAR_PROTOSS_ALTO = 2;
-	private static final int PUERTO_ESTELAR_PROTOSS_ANCHO = 2;
-	private static final int ARCHIVO_TEMPLARIO_ALTO = 2;
-	private static final int ARCHIVO_TEMPLARIO_ANCHO = 2;
+	private static final int PUERTO_ESTELAR_PROTOSS_ALTO = 70;
+	private static final int PUERTO_ESTELAR_PROTOSS_ANCHO = 70;
+	private static final int ARCHIVO_TEMPLARIO_ALTO = 70;
+	private static final int ARCHIVO_TEMPLARIO_ANCHO = 70;
 	private static final int DEPOSITO_ALTO = 50;
 	private static final int DEPOSITO_ANCHO = 50;
 	private static final int PILON_ALTO = 50;

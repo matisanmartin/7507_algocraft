@@ -22,8 +22,10 @@ public class Acceso extends Edificio {
 	}
 	
 	public void definirAccionesDisponibles() {
+		agregarAccionDisponible("Crear Puerto Estelar", new CrearPuertoEstelarProtossAccion(this));
 		agregarAccionDisponible("Crear Zealot", new CrearZealotAccion(this));
 		agregarAccionDisponible("Crear Dragon", new CrearDragonAccion(this));
+		
 	
 	}
 

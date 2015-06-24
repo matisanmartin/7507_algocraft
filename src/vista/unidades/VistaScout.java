@@ -8,7 +8,7 @@ import titiritero.modelo.ObjetoPosicionable;
 public class VistaScout extends Imagen {
 	
 	public VistaScout(ObjetoPosicionable modelo) throws IOException {
-		super(VistaScout.class.getResource("/vista/imagenes/scout38-38.png"), modelo);
+		super(VistaScout.class.getResource("/vista/imagenes/scout40-40.png"), modelo);
 	}
 
 }

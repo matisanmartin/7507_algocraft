@@ -22,7 +22,7 @@ public class PuertoEstelarProtoss extends PuertoEstelar {
 	
 	public void definirAccionesDisponibles() {
 		agregarAccionDisponible("Crear Scout", new CrearScoutAccion(this));
-		agregarAccionDisponible("Crear Nave Transporte Protoss", new CrearNaveTransporteProtossAccion(this));
+		agregarAccionDisponible("Crear Nave Transporte", new CrearNaveTransporteProtossAccion(this));
 		agregarAccionDisponible("Crear ArchivosTemplarios", new CrearArchivosTemplariosAccion(this));
 	}
 
