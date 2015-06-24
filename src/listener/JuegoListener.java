@@ -8,6 +8,7 @@ import model.ElementoArtificial;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import factory.construcciones.CentroComandoProtoss;
 
 public interface JuegoListener {
 	
@@ -44,6 +45,7 @@ public interface JuegoListener {
 	public void seCreoAcceso(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	public void seCreoPuertoEstelarProtoss(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	public void seCreoArchivosTemplarios(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
+	public void seCreoCentroDeComandoProtoss(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
 	
 	//Metodos de creacion de cristal y volcan
 	public void seCreoVolcan(Elemento elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException;
@@ -69,6 +71,8 @@ public interface JuegoListener {
 	public void seCreoCristal(Cristal cristal) throws IOException, FueraDeRangoException, PosicionInvalidaException;
 
 	void seMurioUnaUnidad();
+
+	
 
 	
 	

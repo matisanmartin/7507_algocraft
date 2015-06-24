@@ -68,6 +68,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_GOLLIAT_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_GOLLIAT_RANGO_ATAQUE = new RangoAtaque(5,6);
 	public static final Vitalidad 	UNIDAD_GOLLIAT_VIDA = new Vitalidad(125,0);
+	public static final int	UNIDAD_GOLLIAT_ALTO = 30;
+	public static final int	UNIDAD_GOLLIAT_ANCHO = 30;
 	
 	//Atributos Espectro
 	public static final int 	UNIDAD_ESPECTRO_TRANSPORTE = 0;
@@ -78,6 +80,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_ESPECTRO_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_ESPECTRO_RANGO_ATAQUE = new RangoAtaque(5,0);
 	public static final Vitalidad	UNIDAD_ESPECTRO_VIDA = new Vitalidad(120,0);
+	public static final int UNIDAD_ESPECTRO_ALTO = 40;
+	public static final int UNIDAD_ESPECTRO_ANCHO = 40;
 	
 	//Atributos NaveCiencia
 	public static final int 	UNIDAD_NAVE_CIENCIA_TRANSPORTE = 0;
@@ -87,6 +91,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_NAVE_CIENCIA_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_CIENCIA_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE = new RangoAtaque(0,0);
+	public static final int	UNIDAD_NAVE_CIENCIA_ALTO = 40;
+	public static final int	UNIDAD_NAVE_CIENCIA_ANCHO = 40;
 	
 	
 	//Atributos NaveTransporteTerran
@@ -97,6 +103,8 @@ public class UnidadFactory extends AbstractFactory{
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO = 2;
 	public static final RangoAtaque	UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE = new RangoAtaque(0,0);
+	public static final int UNIDAD_TERRAN_NTRANSPORTE_ALTO = 40;
+	public static final int UNIDAD_TERRAN_NTRANSPORTE_ANCHO = 40;
 
 	
 	//Atributos Zealot
@@ -183,8 +191,8 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_GOLLIAT_SUMINISTRO,
 										UNIDAD_GOLLIAT_RANGO_ATAQUE,
 										new Vitalidad(125,0),
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
+										UNIDAD_GOLLIAT_ALTO,
+										UNIDAD_GOLLIAT_ANCHO,
 										posicion,
 										espacioTerrestre);
 			break;
@@ -198,8 +206,8 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ESPECTRO_SUMINISTRO,
 										UNIDAD_ESPECTRO_RANGO_ATAQUE,
 										new Vitalidad(120,0),
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
+										UNIDAD_ESPECTRO_ALTO,
+										UNIDAD_ESPECTRO_ANCHO,
 										posicion,
 										espacioAereo);
 			break;
@@ -213,8 +221,8 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_NAVE_CIENCIA_SUMINISTRO,
 													UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
 													new Vitalidad(200,0),
-													UNIDAD_ALTO,
-													UNIDAD_ANCHO,
+													UNIDAD_NAVE_CIENCIA_ALTO,
+													UNIDAD_NAVE_CIENCIA_ANCHO,
 													posicion,
 													espacioAereo);
 			break;
@@ -228,8 +236,8 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO,
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE,
 										new Vitalidad(150,0),
-										UNIDAD_ALTO,
-										UNIDAD_ANCHO,
+										UNIDAD_TERRAN_NTRANSPORTE_ALTO,
+										UNIDAD_TERRAN_NTRANSPORTE_ANCHO,
 										posicion,
 										espacioAereo);
 			break;

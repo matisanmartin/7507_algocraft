@@ -8,7 +8,7 @@ import titiritero.modelo.ObjetoPosicionable;
 public class VistaGolliat extends Imagen {
 	
 	public VistaGolliat(ObjetoPosicionable modelo) throws IOException {
-		super(VistaGolliat.class.getResource("/vista/imagenes/golliat70-70.png"), modelo);
+		super(VistaGolliat.class.getResource("/vista/imagenes/golliat30-30.png"), modelo);
 	}
 
 }

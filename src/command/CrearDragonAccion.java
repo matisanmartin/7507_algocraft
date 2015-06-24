@@ -2,9 +2,12 @@ package command;
 
 import java.io.IOException;
 
+import model.ElementoArtificial;
 import strategy.ContextoStrategy;
 import strategy.CrearDragon;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -25,16 +28,17 @@ import exceptions.UnidadLlenaException;
 import factory.unidades.Unidad;
 
 public class CrearDragonAccion implements Accion {
-	Unidad unidad;
+//	Unidad unidad;
+	ElementoArtificial elemento;
 	
-	public CrearDragonAccion(Unidad unidad) {
-		this.unidad=unidad;
+	public CrearDragonAccion(ElementoArtificial elem) {
+		this.elemento = elem;
 	}
 	
 	@Override
 	public void execute(Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
-		unidad.realizarAccion(new ContextoStrategy(new CrearDragon()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new CrearDragon()), posicionDestino);
 		
 	}
 

@@ -64,10 +64,16 @@ public class Jugador {
 		
 		armada = new Armada();
 		
-		this.cantidadDeCristal = 200;
-		this.cantidadDeGas = 0;
+//		this.cantidadDeCristal = 200;
+//		this.cantidadDeGas = 0;
+//		this.poblacionActual = 0;
+//		this.poblacionDisponible = 100;
+//		this.excesoPoblacion = 0;
+		//FIXME	god mode on!
+		this.cantidadDeCristal = 100000;
+		this.cantidadDeGas = 1000000;
 		this.poblacionActual = 0;
-		this.poblacionDisponible = 100;
+		this.poblacionDisponible = 10000;
 		this.excesoPoblacion = 0;
 	}
 	

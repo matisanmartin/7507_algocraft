@@ -1,5 +1,6 @@
 package factory.construcciones;
 
+import command.CrearDragonAccion;
 import command.CrearPuertoEstelarProtossAccion;
 import command.CrearZealotAccion;
 import common.Costo;
@@ -22,7 +23,8 @@ public class Acceso extends Edificio {
 	
 	public void definirAccionesDisponibles() {
 		agregarAccionDisponible("Crear Zealot", new CrearZealotAccion(this));
-		agregarAccionDisponible("Crear PuertoEstelarProtoss", new CrearPuertoEstelarProtossAccion(this));
+		agregarAccionDisponible("Crear Dragon", new CrearDragonAccion(this));
+	
 	}
 
 }

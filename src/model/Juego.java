@@ -1,11 +1,15 @@
 package model;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 
-import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import jugador.Jugador;
 import jugador.TipoColor;
@@ -14,19 +18,20 @@ import razas.Protoss;
 import razas.Terran;
 import turno.TimerCambioDeTurno;
 import vista.VentanaPrincipal;
-
 import common.Mensajes;
 import common.Posicion;
-
+import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoException;
+import exceptions.NombreCortoException;
 import exceptions.NombreJugadorRepetidoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
+import factory.construcciones.CentroComandoProtoss;
 import factory.construcciones.CentroComandoTerran;
 
 public class Juego {
@@ -254,7 +259,6 @@ public class Juego {
 			public void run() {
 				try 
 				{
-					
 					//Ventana para ingresar nombres, color y raza
 					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
 					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
@@ -262,13 +266,16 @@ public class Juego {
 					Juego.getInstancia().setJugadorActual(jugadorActual);
 					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 					
-	
-					//Se setean las bases
+//					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
 					CentroComandoTerran centro = new CentroComandoTerran(70, 70, new Posicion(80, 80));
-					
 					Juego.getInstancia().getListener().seCreoCentroDeComandoTerran(centro);
 					Juego.getInstancia().agregarUnidadAJugadorActual(centro);
+					
+					CentroComandoProtoss centroProtoss = new CentroComandoProtoss(70, 70, new Posicion(860, 460));
+					Juego.getInstancia().getListener().seCreoCentroDeComandoProtoss(centroProtoss);
+					Juego.getInstancia().agregarUnidadAJugadorActual(centroProtoss);
+					
 //					centro.morir();
 //					Juego.getInstancia().obtenerArmadaJugadorActual().eliminarElementoMuertoEnPosicion( new Posicion(80, 80));
 
@@ -277,7 +284,44 @@ public class Juego {
 					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
 					
 					//El tiempo que se pasa es en milisegundos
-					tiempoDeTurno.schedule(cambioDeTurno,120000, 120000);
+					tiempoDeTurno.schedule(cambioDeTurno,100000, 100000);
+			
+										
+							
+					}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+					
+			}
+		});
+	}				
+					
+}					
+					
+//					//Ventana para ingresar nombres, color y raza
+//					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
+//					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
+//					
+//					Juego.getInstancia().setJugadorActual(jugadorActual);
+//					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+//					
+//	
+//					//Se setean las bases
+//					CampoBatalla.getInstancia().setUpBases();
+//					CentroComandoTerran centro = new CentroComandoTerran(70, 70, new Posicion(80, 80));
+//					
+//					Juego.getInstancia().getListener().seCreoCentroDeComandoTerran(centro);
+//					Juego.getInstancia().agregarUnidadAJugadorActual(centro);
+////					centro.morir();
+////					Juego.getInstancia().obtenerArmadaJugadorActual().eliminarElementoMuertoEnPosicion( new Posicion(80, 80));
+//
+//					Timer tiempoDeTurno = new Timer();
+//					
+//					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
+//					
+//					//El tiempo que se pasa es en milisegundos
+//					tiempoDeTurno.schedule(cambioDeTurno,5000, 5000);
 					
 					
 					
@@ -298,18 +342,7 @@ public class Juego {
 				
 					//Se setean los centros de comando
 					
-				} 
-				catch (Exception e) 
-				{
-					e.printStackTrace();
-				}
-				
-			}
-		});
-	}
-		
-}
-		
+
 		
 		
 

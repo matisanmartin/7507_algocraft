@@ -23,7 +23,7 @@ public class CentroComandoTerran extends Edificio {
 			e.printStackTrace();
 		}
 		this.setTiempoDeConstruccion(0);
-		this.setVitalidad(new Vitalidad(1250,0));
+		this.setVitalidad(new Vitalidad(100000,0));
 		this.definirAccionesDisponibles();
 	}
 

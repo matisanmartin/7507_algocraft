@@ -30,6 +30,7 @@ import vista.edificios.VistaAcceso;
 import vista.edificios.VistaArchivosTemplarios;
 import vista.edificios.VistaAsimilador;
 import vista.edificios.VistaBarraca;
+import vista.edificios.VistaCentroComandoProtoss;
 import vista.edificios.VistaCentroComandoTerran;
 import vista.edificios.VistaCentroMineral;
 import vista.edificios.VistaCristal;
@@ -109,7 +110,7 @@ public class VentanaPrincipal implements JuegoListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gameLoop.iniciarEjecucion();
-				Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
+//				Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
 				agregarInformacionDeJugador();
 			}
 		});
@@ -327,9 +328,8 @@ public class VentanaPrincipal implements JuegoListener {
 
 	@Override
 	public void seCreoDepositoDeSuministro(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {
-		final UnidadModelo modelo = new UnidadModelo();
-		this.getGameLoop().agregar(modelo);
-		Imagen imagen = new VistaDepositoDeSuministros(modelo);
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaDepositoDeSuministros(elemento);
 		this.getGameLoop().agregar(imagen);	
 		
 	}
@@ -510,6 +510,15 @@ public class VentanaPrincipal implements JuegoListener {
 	public void seMurioUnaUnidad() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void seCreoCentroDeComandoProtoss(ElementoArtificial elemento)
+			throws FueraDeRangoException, PosicionInvalidaException,
+			IOException {
+		this.getGameLoop().agregar(elemento);
+		Imagen imagen = new VistaCentroComandoProtoss(elemento);
+		this.getGameLoop().agregar(imagen);
 	}
 	
 	

@@ -36,28 +36,28 @@ public class EdificioFactory extends AbstractFactory {
 	private static final int REFINERIA_ANCHO = 2;
 	private static final int BARRACA_ALTO = 70;
 	private static final int BARRACA_ANCHO = 70;
-	private static final int FABRICA_ALTO = 112;
-	private static final int FABRICA_ANCHO = 112;
-	private static final int PUERTO_ESTELAR_TERRAN_ALTO = 2;
-	private static final int PUERTO_ESTELAR_TERRAN_ANCHO = 2;
+	private static final int FABRICA_ALTO = 70;
+	private static final int FABRICA_ANCHO = 70;
+	private static final int PUERTO_ESTELAR_TERRAN_ALTO = 70;
+	private static final int PUERTO_ESTELAR_TERRAN_ANCHO = 70;
 	private static final int NEXO_MINERAL_ALTO = 2;
 	private static final int NEXO_MINERAL_ANCHO = 2;
 	private static final int ASIMILADOR_ALTO = 2;
 	private static final int ASIMILADOR_ANCHO = 2;
-	private static final int ACCESO_ALTO = 2;
-	private static final int ACCESO_ANCHO = 2;
+	private static final int ACCESO_ALTO = 70;
+	private static final int ACCESO_ANCHO = 70;
 	private static final int PUERTO_ESTELAR_PROTOSS_ALTO = 2;
 	private static final int PUERTO_ESTELAR_PROTOSS_ANCHO = 2;
 	private static final int ARCHIVO_TEMPLARIO_ALTO = 2;
 	private static final int ARCHIVO_TEMPLARIO_ANCHO = 2;
-	private static final int DEPOSITO_ALTO = 2;
-	private static final int DEPOSITO_ANCHO = 2;
-	private static final int PILON_ALTO = 0;
-	private static final int PILON_ANCHO = 0;
-	private static final int TERRAN_CENTRO_COMANDO_ALTO = 60;
-	private static final int TERRAN_CENTRO_COMANDO_ANCHO = 60;
-	private static final int PROTOSS_CENTRO_COMANDO_ALTO = 60;
-	private static final int PROTOSS_CENTRO_COMANDO_ANCHO = 60;
+	private static final int DEPOSITO_ALTO = 50;
+	private static final int DEPOSITO_ANCHO = 50;
+	private static final int PILON_ALTO = 50;
+	private static final int PILON_ANCHO = 50;
+	private static final int TERRAN_CENTRO_COMANDO_ALTO = 70;
+	private static final int TERRAN_CENTRO_COMANDO_ANCHO = 70;
+	private static final int PROTOSS_CENTRO_COMANDO_ALTO = 70;
+	private static final int PROTOSS_CENTRO_COMANDO_ANCHO = 70;
 	
 	
 	@Override

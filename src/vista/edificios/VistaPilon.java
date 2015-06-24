@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaPilon extends Imagen {
 	public VistaPilon(ObjetoPosicionable modelo) throws IOException {
-		super(VistaPilon.class.getResource("/vista/imagenes/pilon64-64.png"), modelo);
+		super(VistaPilon.class.getResource("/vista/imagenes/pilon50-50.png"), modelo);
 	}
 
 }

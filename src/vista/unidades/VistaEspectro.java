@@ -9,7 +9,7 @@ public class VistaEspectro extends Imagen {
 	
 	//TODO falta buscar imagen pequeña
 	public VistaEspectro(ObjetoPosicionable modelo) throws IOException {
-		super(VistaEspectro.class.getResource("/vista/imagenes/espectro.png"), modelo);
+		super(VistaEspectro.class.getResource("/vista/imagenes/espectro40-40.png"), modelo);
 	}
 
 }
