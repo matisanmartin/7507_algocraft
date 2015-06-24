@@ -1,6 +1,8 @@
 package strategy;
 
+import model.Armada;
 import model.ElementoArtificial;
+import model.Juego;
 
 import common.Posicion;
 
@@ -27,7 +29,9 @@ public class Mover implements Strategy {
 			EnergiaInsuficienteException, CostoInvalidoException,
 			RecursosInsuficientesException, CloneNotSupportedException, PoblacionFaltanteException {
 		
-		
+		elementoActuante.setPosicion(posicionDestino);
+//		elementoActuante.moverPosicion(posicionDestino);
+		Armada armada = Juego.getInstancia().getJugadorActual().obtenerArmada();
 //		ElementoArtificial copia = (ElementoArtificial) elementoActuante.clone();
 //		copia.setPosicion(posicionDestino);
 //		
@@ -85,7 +89,7 @@ public class Mover implements Strategy {
 //			}
 //		}
 		
-		elementoActuante.setPosicion(posicionDestino);
+	
 		
 	}
 

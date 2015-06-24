@@ -20,6 +20,7 @@ public class Parte{
 		return posicion.equals(pos);
 	}
 	
+	
 
 
 }

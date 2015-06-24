@@ -73,8 +73,56 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
 		return posicion;
 	}
 
-	public void setPosicion(Posicion posicion) {
-		this.posicion = posicion;
+//	public void setPosicion(Posicion posicion) {
+//		this.posicion = posicion;
+//	}
+	
+	public void setPosicion(Posicion posicionDestino) {
+		int deltaX = Math.abs(this.posicion.getX() - posicionDestino.getX());
+		int deltaY = Math.abs(this.posicion.getY() - posicionDestino.getY());
+		
+		//se mueve hacia abajo y hacia la derecha 
+		if ( (posicionDestino.getX() >= this.posicion.getX() && (posicionDestino.getY() >= this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX + deltaX);
+				parte.getPosicion().setPosY(parteY + deltaY); 
+			}
+		}
+		//se mueve hacia abajo y hacia la izquierda
+		if ( (posicionDestino.getX() <= this.posicion.getX() && (posicionDestino.getY() >= this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX - deltaX);
+				parte.getPosicion().setPosY(parteY + deltaY); 
+			}
+		}
+		
+		//se mueve hacia arriba y hacia la derecha
+		if ( (posicionDestino.getX() >= this.posicion.getX() && (posicionDestino.getY() <= this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX + deltaX);
+				parte.getPosicion().setPosY(parteY - deltaY); 
+			}
+		}
+		
+		//se mueve hacia arriba y hacia la izquierda
+		if ( (posicionDestino.getX() <= this.posicion.getX() && (posicionDestino.getY() <= this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX - deltaX);
+				parte.getPosicion().setPosY(parteY - deltaY); 
+			}
+		}
+		
+		
+		
+		this.posicion = posicionDestino;
 	}
 
 	public abstract void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException, PosicionInvalidaException;

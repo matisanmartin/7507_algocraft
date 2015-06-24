@@ -284,7 +284,7 @@ public class Juego {
 					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
 					
 					//El tiempo que se pasa es en milisegundos
-					tiempoDeTurno.schedule(cambioDeTurno,100000, 100000);
+					tiempoDeTurno.schedule(cambioDeTurno,5000000, 5000000);
 			
 										
 							
