@@ -146,10 +146,7 @@ public class AtacarTest {
 		{
 			assertEquals("60",Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 		}
-		
-		
-		
-		
+	
 	}
 
 }

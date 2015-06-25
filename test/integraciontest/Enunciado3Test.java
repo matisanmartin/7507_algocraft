@@ -5,17 +5,18 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
+import model.CampoBatalla;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -65,8 +66,8 @@ public class Enunciado3Test {
 		contexto=new ContextoStrategy(new Ataque());
 		factory=new UnidadFactory();
 		
-		posUnidadAerea = new Posicion(2,2);
-		posUnidadTerrestre = new Posicion(30,3); 
+		posUnidadAerea = new Posicion(20,2);
+		posUnidadTerrestre = new Posicion(40,80); 
 		
 		unidadTerrestre = factory.getUnidad(TipoUnidad.TERRAN_MARINE,posUnidadTerrestre);
 		jugadorActual.agregarElemento(unidadTerrestre);
@@ -77,6 +78,12 @@ public class Enunciado3Test {
 		
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+	}
+	
+	@After
+	public void destroy() {
+		Juego.destruirInstancia();
+		CampoBatalla.DestruirInstancia();
 	}
 
 	@Test

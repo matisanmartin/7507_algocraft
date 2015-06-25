@@ -22,6 +22,6 @@ public class PosicionTest {
 	public void dosPosicionNoSonIgualesSiNoTienenLaMismaCoordenada() throws FueraDeRangoException, PosicionInvalidaException{
 		Posicion pos1 = new Posicion(1, 1);
 		Posicion pos2 = new Posicion(1,2);
-		assertNotEquals(pos1, pos2);
+		assertEquals(false,pos1.equals(pos2));
 	}
 }

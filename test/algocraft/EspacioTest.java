@@ -1,10 +1,10 @@
 package algocraft;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import model.CampoBatalla;
 import model.Espacio;
+import model.Juego;
 
 import org.junit.After;
 import org.junit.Before;
@@ -33,6 +33,7 @@ public class EspacioTest {
 	@After
 	public void tearDown(){
 		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
 	
 	@Test
@@ -59,7 +60,7 @@ public class EspacioTest {
 	public void alQuererPosicionUnElementoEnUnaPosicionOcupadaDeberiaSerUnaPosicionInvalida() throws UnidadInvalidaException, FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException, UnidadLlenaException, DanioInvalidoException{
 		Unidad marine1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10, 10));
 		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
-		Unidad marine2  = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(9, 8));
+		Unidad marine2  = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10, 8));
 		CampoBatalla.getInstancia().posicionarElemento(marine2, CampoBatalla.getInstancia().getEspacioTerrestre());
 		
 	}
@@ -99,7 +100,7 @@ public class EspacioTest {
 		UnidadFactory factory = new UnidadFactory();
 		unidad1 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(10, 10));
 		unidad2 = factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, new Posicion(4, 4));
-		assertNotEquals(unidad1.getEspacio(), unidad2.getEspacio());
+		assertEquals(false,unidad1.getEspacio().equals(unidad2.getEspacio()));
 		
 		
 	}

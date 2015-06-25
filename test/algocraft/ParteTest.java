@@ -28,6 +28,6 @@ public class ParteTest {
 	public void noDeberiaTenerUnaPosicionDistintaALaCreada() throws FueraDeRangoException, PosicionInvalidaException{
 		
 		Parte parte = new Parte(new Posicion(2, 3));
-		assertNotEquals(new Posicion(1, 1), parte.getPosicion());
+		assertEquals(false, new Posicion(1, 1).equals(parte.getPosicion()));
 	}
 }

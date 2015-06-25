@@ -47,7 +47,7 @@ public class Radiacion implements Strategy {
 		
 		Elemento elementoAtacado = armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
 		
-		Juego.getInstancia().getListener().seRealizoRadiacion(elementoAtacado);
+		//Juego.getInstancia().getListener().seRealizoRadiacion(elementoAtacado);
 		elementoAtacado.morir();
 		
 		Posicion posicionElementoDerecha 	= new Posicion(posicionDestino.getX()+1+factor,posicionDestino.getY());

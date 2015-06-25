@@ -64,7 +64,7 @@ public class Alucinacion implements Strategy {
 		((Unidad) copiaFicticia1).setDanio(danioNulo);//TODO casteo temporal
 	
 		Posicion posicionFicticia2 = new Posicion(posX-1-factor,posY);
-		ElementoArtificial copiaFicticia2 = (ElementoArtificial)copiaFicticia1.clone();
+		Elemento copiaFicticia2 = (Elemento)elementoCopiado.clone();
 		copiaFicticia2.setPosicion(posicionFicticia2);
 		copiaFicticia2.getVitalidad().setVida(0);	
 		((Unidad) copiaFicticia2).setDanio(danioNulo);//TODO casteo temporal

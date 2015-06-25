@@ -64,16 +64,17 @@ public class AlucinacionTest {
 		
 		jugadorActual = new Jugador("jugador1","terran","rojo");
 		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
-		posicionUnidadAtacante = new Posicion(2,2);
+		jugadorActual.setPoblacionDisponible(2000);
+		posicionUnidadAtacante = new Posicion(200,20);
 		unidadAtacante=factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, posicionUnidadAtacante);
 		jugadorActual.agregarElemento(unidadAtacante);
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 
-		posicionUnidadAmigaEnRango = new Posicion(2,5);//El rango de vision del alto templario es 7
+		posicionUnidadAmigaEnRango = new Posicion(150,200);//El rango de vision del alto templario es 7
 		unidadAmigaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaEnRango);
 		jugadorActual.agregarElemento(unidadAmigaEnRango);
 		
-		posicionUnidadAmigaFueraDeRango = new Posicion(15,20);//El rango de vision del alto templario es 7
+		posicionUnidadAmigaFueraDeRango = new Posicion(800,200);//El rango de vision del alto templario es 7
 		unidadAmigaFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaFueraDeRango);
 		jugadorActual.agregarElemento(unidadAmigaFueraDeRango);
 		
@@ -84,6 +85,7 @@ public class AlucinacionTest {
 	@After
 	public void destroy(){
 		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
 
 	/**
@@ -116,12 +118,12 @@ public class AlucinacionTest {
 			Juego.getInstancia()
 			   .getJugadorActual()
 			   .obtenerArmada()
-			   .obtenerElementoEnPosicion(new Posicion(3,2));
+			   .obtenerElementoEnPosicion(new Posicion(231,20));
 
 			Juego.getInstancia()
 			   .getJugadorActual()
 			   .obtenerArmada()
-			   .obtenerElementoEnPosicion(new Posicion(1,2));
+			   .obtenerElementoEnPosicion(new Posicion(169,20));
 
 		}
 		

@@ -206,10 +206,10 @@ public class Enunciado4Test {
 	public void testMarineAtacaEspectroFueraDeRango() 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, DanioInvalidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, IOException {
 		
-		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
+		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(50, 50));
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidadAtacante);
 		
-		posicionFueraDeRango = new Posicion(160,120);
+		posicionFueraDeRango = new Posicion(800,120);
 		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_ESPECTRO, posicionFueraDeRango);	
 
 		Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
@@ -271,10 +271,10 @@ public class Enunciado4Test {
 	public void testMarineAtacaNaveTransporteTerranFueraDeRango() 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, DanioInvalidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, IOException {
 		
-		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
+		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10, 10));
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidadAtacante);
 		
-		posicionFueraDeRango = new Posicion(80,80);
+		posicionFueraDeRango = new Posicion(800,80);
 		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posicionFueraDeRango);	
 
 		Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);

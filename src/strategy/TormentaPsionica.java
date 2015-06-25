@@ -48,9 +48,8 @@ public class TormentaPsionica implements Strategy {
 			Posicion posicionTemporal = elementoTemporalAtacado.getPosicion();
 			
 			int distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
-			distanciaTemp=distanciaTemp*factor;
 			
-			if(distanciaTemp<RANGO_ATAQUE_TORMENTA_PSIONICA*factor){
+			if(distanciaTemp<=RANGO_ATAQUE_TORMENTA_PSIONICA*factor){
 				Juego.getInstancia().getListener().seRealizoTormentaPsionica(elementoTemporalAtacado);
 				elementoTemporalAtacado.restarVitalidad(DAÑO_TORMENTA_PSIONICA);
 				it.set(elementoTemporalAtacado);

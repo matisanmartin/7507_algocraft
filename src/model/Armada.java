@@ -75,10 +75,15 @@ public class Armada {
 		while(it.hasNext())
 		{
 			Elemento actual = it.next();
-			ArrayList<Parte> partesActuales = actual.getPartes();
-			for (Parte unaParte : partesActuales) {
-				if (unaParte.posicionEsParte(pos)){
-					return actual;
+			if(pos.equals(actual.getPosicion()))
+				return actual;
+			else
+			{
+				ArrayList<Parte> partesActuales = actual.getPartes();
+				for (Parte unaParte : partesActuales) {
+					if (unaParte.posicionEsParte(pos)){
+						return actual;
+					}
 				}
 			}
 			

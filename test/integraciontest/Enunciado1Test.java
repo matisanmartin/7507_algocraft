@@ -58,7 +58,7 @@ public class Enunciado1Test {
 	public void setUp() throws Exception {
 		
 		factoryUnidad=GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
-		posicionNaveCiencia=new Posicion(200,2);
+		posicionNaveCiencia=new Posicion(20,2);
 		naveCiencia=factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA,posicionNaveCiencia);
 //		naveCiencia.setRangoAtaque("5");//TODO borar despues y arregalr
 
@@ -104,7 +104,7 @@ public class Enunciado1Test {
 		assertEquals(110,Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
 		
 		//A continuación se situa una unidad protoss
-		Posicion posicionZealot=new Posicion(4,4);
+		Posicion posicionZealot=new Posicion(20,50);
 		ElementoArtificial zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
 		Juego.getInstancia().getJugadorEnemigo().agregarElemento(zealot);
 		

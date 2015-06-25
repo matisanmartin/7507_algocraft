@@ -77,13 +77,13 @@ public class Enunciado2Test {
 		
 		Juego.getInstancia().getJugadorActual().agregarElemento(altoTemplario);
 		
-		posicionMarine = new Posicion(4,4);
+		posicionMarine = new Posicion(50,2);
 		marine = factoryUnidad.getUnidad(TipoUnidad.TERRAN_MARINE,posicionMarine);
 		
-		posicionGolliat = new Posicion(4,6);
+		posicionGolliat = new Posicion(2,50);
 		golliat = factoryUnidad.getUnidad(TipoUnidad.TERRAN_GOLLIAT,posicionGolliat);
 		
-		posicionNaveCiencia = new Posicion(5,5);
+		posicionNaveCiencia = new Posicion(50,50);
 		naveCiencia = factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA,posicionNaveCiencia); 
 		
 		Juego.getInstancia().getJugadorEnemigo().agregarElemento(marine);
@@ -95,6 +95,7 @@ public class Enunciado2Test {
 	@After
 	public void destroy(){
 		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
 	@Test
 	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
@@ -118,8 +119,8 @@ public class Enunciado2Test {
 		ContextoStrategy contexto = new ContextoStrategy(new TormentaPsionica());
 		
 		Elemento altoTemplarioObt = Juego.getInstancia().getJugadorActual()
-																			.obtenerArmada()
-																			.obtenerElementoEnPosicion(posicionAltoTemplario);
+														.obtenerArmada()
+														.obtenerElementoEnPosicion(posicionAltoTemplario);
 		
 		altoTemplarioObt.realizarAccion(contexto, posicionMarine);
 		
@@ -153,7 +154,7 @@ public class Enunciado2Test {
 		Juego.getInstancia().cambiarTurno();//actual
 		
 		//situo una unidad propia
-		Posicion posicionZealot= new Posicion(5,5);
+		Posicion posicionZealot= new Posicion(40,40);
 		Unidad zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
 		zealot.setVision(4);//TODO msma: modificar leugo cuando se agregue Vision
 		
@@ -169,9 +170,9 @@ public class Enunciado2Test {
 		
 		
 		Elemento zealotFicticio1 = Juego.getInstancia()
-															.getJugadorActual()
-															.obtenerArmada()
-															.obtenerElementoEnPosicion(new Posicion(3,2));
+										.getJugadorActual()
+										.obtenerArmada()
+										.obtenerElementoEnPosicion(new Posicion(3,2));
 		
 		
 		//verifico que solo tiene escudo y no vida
@@ -179,9 +180,9 @@ public class Enunciado2Test {
 		assertEquals(60,zealotFicticio1.getEscudo());
 		
 		Elemento zealotFicticio2 = Juego.getInstancia()
-															.getJugadorActual()
-															.obtenerArmada()
-															.obtenerElementoEnPosicion(new Posicion(1,2));
+										.getJugadorActual()
+										.obtenerArmada()
+										.obtenerElementoEnPosicion(new Posicion(1,2));
 		
 		//verifico que solo tiene escudo y no vida
 		assertEquals(0,zealotFicticio2.getVida());
