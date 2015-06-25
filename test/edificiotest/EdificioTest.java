@@ -184,7 +184,7 @@ public class EdificioTest {
 	public void testPuertoEstelarProtossCreaNaveTransporteProtoss() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		edificio = new PuertoEstelarProtoss(2,2,new Posicion(10,10));
 		mapaPrueba = edificio.getAccionesDisponibles();
-		assertEquals(true, mapaPrueba.containsKey("Crear Nave Transporte Protoss"));
+		assertEquals(true, mapaPrueba.containsKey("Crear Nave Transporte"));
 	}
 	
 	@Test
