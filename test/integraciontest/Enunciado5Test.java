@@ -56,7 +56,8 @@ public class Enunciado5Test {
 	@Before
 	public void setUp() throws Exception {
 		factory = new UnidadFactory();
-		jugadorActual = new Jugador("pepito",TipoColor.COLOR_AMARILLO,new Terran());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		//jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		

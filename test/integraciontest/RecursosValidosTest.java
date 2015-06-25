@@ -64,8 +64,8 @@ public class RecursosValidosTest {
 		factoryUnidad = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		factoryConstruccion = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		
-		jugadorTerran = new Jugador("Jugador1",TipoColor.COLOR_ROJO,new Terran());
-		jugadorProtoss = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Protoss());
+		jugadorTerran = new Jugador("jugador1","terran","rojo");
+		jugadorProtoss = new Jugador("jugador2","protoss","azul");
 	
 	}
 	

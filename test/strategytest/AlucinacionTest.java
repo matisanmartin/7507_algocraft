@@ -62,13 +62,13 @@ public class AlucinacionTest {
 		factory = new UnidadFactory();
 		contexto=new ContextoStrategy(new Alucinacion());
 		
-		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		posicionUnidadAtacante = new Posicion(2,2);
 		unidadAtacante=factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, posicionUnidadAtacante);
 		jugadorActual.agregarElemento(unidadAtacante);
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 
-		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
 		posicionUnidadAmigaEnRango = new Posicion(2,5);//El rango de vision del alto templario es 7
 		unidadAmigaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaEnRango);
 		jugadorActual.agregarElemento(unidadAmigaEnRango);

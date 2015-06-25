@@ -75,7 +75,8 @@ public class CrearUnidadesTest {
 		
 		posicionOrigen=new Posicion(10,10);
 		posicionDestino = new Posicion(15,15);
-		jugadorActualTerran = new Jugador("jugadorTerran",TipoColor.COLOR_ROJO,new Terran());
+		jugadorActualTerran = new Jugador("jugador1","terran","rojo");
+		jugadorActualProtoss = new Jugador("jugador2","protoss","azul");
 		jugadorActualTerran.agregarCantidadDeCristal(2000);
 		jugadorActualTerran.agregarCantidadDeGas(2000);
 

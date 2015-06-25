@@ -46,8 +46,8 @@ public class Juego {
 	private Juego(){
 		try
 		{
-			jugadorActual = new Jugador();
-			jugadorEnemigo = new Jugador();	
+//			jugadorActual = new Jugador();
+//			jugadorEnemigo = new Jugador();	
 			listener = new VentanaPrincipal();
 			
 		}
@@ -123,11 +123,11 @@ public class Juego {
 		return getInstancia().getJugadorEnemigo().getNombre();
 	}
 
-	public TipoColor obtenerColorJugadorActual() {
+	public String obtenerColorJugadorActual() {
 		return getInstancia().getJugadorActual().getColor();
 	}
 
-	public TipoColor obtenerColorJugadorEnemigo() {
+	public String obtenerColorJugadorEnemigo() {
 		return Juego.getInstancia().getJugadorEnemigo().getColor();
 	}
 	
@@ -266,18 +266,50 @@ public class Juego {
 //	}
 	
 			
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+//
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try 
+//				{
+//					//Ventana para ingresar nombres, color y raza
+//					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
+//					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
+//					
+//					Juego.getInstancia().setJugadorActual(jugadorActual);
+//					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+//					
+////					//Se setean las bases
+//					CampoBatalla.getInstancia().setUpBases();
+//
+//					//Se setean los centros de comando
+//					CampoBatalla.getInstancia().setUpCentros();
+//
+//					//Se setea el comienzo de los turnos
+//					Timer tiempoDeTurno = new Timer();
+//					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
+//					tiempoDeTurno.schedule(cambioDeTurno,10000, 10000);
+//						
+//					}
+//				catch (Exception e){
+//					e.printStackTrace();
+//				}
+//					
+//			}
+//		});
+//	}
 
+	public void initialize() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try 
 				{
 					//Ventana para ingresar nombres, color y raza
-					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
-					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
+//					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
+//					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
 					
-					Juego.getInstancia().setJugadorActual(jugadorActual);
-					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+//					Juego.getInstancia().setJugadorActual(jugadorActual);
+//					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 					
 //					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
@@ -297,6 +329,7 @@ public class Juego {
 					
 			}
 		});
+		
 	}				
 					
 }					

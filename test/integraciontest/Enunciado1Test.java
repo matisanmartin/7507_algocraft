@@ -62,9 +62,8 @@ public class Enunciado1Test {
 		naveCiencia=factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA,posicionNaveCiencia);
 //		naveCiencia.setRangoAtaque("5");//TODO borar despues y arregalr
 
-		jugadorActual = new Jugador("Jugador1",TipoColor.COLOR_ROJO,new Terran());
-
-		jugadorEnemigo = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Protoss());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 		

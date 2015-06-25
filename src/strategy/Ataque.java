@@ -52,7 +52,6 @@ public class Ataque implements Strategy {
 				Espacio espacioTemporal = ((ElementoArtificial) elementoAtacado).obtenerEspacio();
 				
 				int danioAtaqueNum=espacioTemporal.getDanio(((Unidad) elementoAtacado).getDanio());
-				danioAtaqueNum=1000;
 				int rangoAtaqueAtacante = espacioUnidad.getRangoDeAtaque(((Unidad) elementoActuante).getRangoAtaque());
 				
 				if(distancia<=rangoAtaqueAtacante*factor)

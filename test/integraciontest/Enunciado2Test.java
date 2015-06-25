@@ -69,8 +69,8 @@ public class Enunciado2Test {
 		altoTemplario=factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO,posicionAltoTemplario);
 		
 
-		jugadorActual = new Jugador("Jugador1",TipoColor.COLOR_ROJO,new Protoss());
-		jugadorEnemigo = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Terran());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);

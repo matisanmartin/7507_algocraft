@@ -59,8 +59,8 @@ public class Enunciado3Test {
 	@Before
 	public void setUp() throws Exception {
 		
-		jugadorActual = new Jugador("Jugador1",TipoColor.COLOR_ROJO,new Terran());
-		jugadorEnemigo = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Protoss());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		
 		contexto=new ContextoStrategy(new Ataque());
 		factory=new UnidadFactory();

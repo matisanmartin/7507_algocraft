@@ -56,8 +56,9 @@ public class JuegoControllerTest {
 		unidadNoMuerta = unidadFactory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(2,300));
 		unidadNoMuerta.setVitalidad(new Vitalidad(10,0));
 		
-		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
-		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
+
 		
 		jugadorActual.setGas(1000);
 		jugadorActual.setMinerales(1000);

@@ -58,14 +58,14 @@ public class RadiacionTest {
 		factory = new UnidadFactory();
 		contexto=new ContextoStrategy(new Radiacion());
 		
-		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		posicionUnidadAtacante = new Posicion(2,2);
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, posicionUnidadAtacante);
 		unidadAtacante.setEnergia(100);
 		jugadorActual.agregarElemento(unidadAtacante);
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 
-		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
 		posicionUnidadAtacadaEnRango = new Posicion(2,4);//El rango de vision de nave ciencia es 8
 		unidadAtacadaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAtacadaEnRango);
 		jugadorEnemigo.agregarElemento(unidadAtacadaEnRango);

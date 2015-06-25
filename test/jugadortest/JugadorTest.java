@@ -25,26 +25,27 @@ public class JugadorTest {
 	 
 	 @Test(expected = NombreCortoException.class)
 	 public void testNombreCorto() throws NombreCortoException, ColorInvalidoException {
-		 jugadorPrueba = new Jugador("",TipoColor.COLOR_AMARILLO,razaPrueba);
+			jugadorPrueba = new Jugador("","terran","rojo");
+			
 	}
 	 
 	 @Test(expected = ColorInvalidoException.class)
 	 public void testColorInvalido() throws NombreCortoException, ColorInvalidoException {
-		 jugadorPrueba = new Jugador("12345",TipoColor.ERROR,razaPrueba);
+		 jugadorPrueba = new Jugador("12345","terran","rojo");
 		 assertEquals("12345",jugadorPrueba.getNombre());
 	 }
 	 
 	 @Test
 	 public void testConstructorOk() throws NombreCortoException, ColorInvalidoException {
-		 jugadorPrueba = new Jugador("12345",TipoColor.COLOR_AZUL,razaPrueba);
+		 jugadorPrueba = new Jugador("12345","terran","azul");
 		 assertEquals("12345",jugadorPrueba.getNombre());
-		 assertEquals(TipoColor.COLOR_AZUL,jugadorPrueba.getColor());
+		 assertEquals("azul",jugadorPrueba.getColor());
 		 //assertEquals(Raza.class,jugadorPrueba.getRaza().getClass());
 	 }
 
 	 @Test
 	 public void alCrerseDeberiaTener200DeCristal0DeGas() throws NombreCortoException, ColorInvalidoException{
-		 jugadorPrueba = new Jugador("12345",TipoColor.COLOR_AZUL,razaPrueba);
+		 jugadorPrueba = new Jugador("12345","terran","rojo");
 		 assertEquals(200,jugadorPrueba.getCantidadDeCristal());
 		 assertEquals(0,jugadorPrueba.getCantidadDeGas());
 		 

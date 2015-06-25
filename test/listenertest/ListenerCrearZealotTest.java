@@ -46,8 +46,8 @@ public class ListenerCrearZealotTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		Jugador jugadorActual = new Jugador("pepeItaka", TipoColor.COLOR_AMARILLO, new Protoss());
-		Jugador jugadorEnemigo = new Jugador("asd123",TipoColor.COLOR_ROJO,new Terran());
+		jugadorActual = new Jugador("jugador1","protoss","rojo");
+		jugadorEnemigo = new Jugador("jugador2","terran","azul");
 		jugadorActual.setMinerales(10000);
 		jugadorActual.setGas(10000);
 		

@@ -5,12 +5,14 @@ import java.util.List;
 
 import model.Armada;
 import model.Elemento;
-import model.ElementoArtificial;
 import model.Espacio;
-import model.Juego;
+import razas.Protoss;
 import razas.Raza;
+import razas.Terran;
+
 import common.Mensajes;
 import common.Posicion;
+
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -25,7 +27,7 @@ public class Jugador {
 	public static final int MAX_CANTIDAD_POBLACION = 200;
 	
 	String nombre;
-	TipoColor color;
+	String color;
 	Raza raza;
 	Armada armada;
 //uncomentario
@@ -52,14 +54,14 @@ public class Jugador {
 		this.poblacionDisponible = 100000;
 		this.excesoPoblacion = 0;
 	}
-	public Jugador(String nombre,TipoColor color,Raza raza) 
+	public Jugador(String nombre,String color,Raza raza) 
 	throws NombreCortoException, ColorInvalidoException {
 		
 		if(nombre.length()<MIN_CARACT_NOMBRE)
 			throw new NombreCortoException(Mensajes.MSJ_ERROR_NOMBRE_CORTO);
 		
-		if(color== TipoColor.ERROR)
-			throw new ColorInvalidoException(Mensajes.MSJ_ERROR_COLOR_INVALIDO);
+//		if(color== TipoColor.ERROR)
+//			throw new ColorInvalidoException(Mensajes.MSJ_ERROR_COLOR_INVALIDO);
 		
 		this.nombre=nombre;
 		this.color=color;
@@ -80,6 +82,25 @@ public class Jugador {
 		this.excesoPoblacion = 0;
 	}
 	
+	public Jugador(String nombre, String raza, String color) {
+
+		if(raza.equalsIgnoreCase("Terran"))
+			this.raza = new Terran();
+		else
+			this.raza = new Protoss();
+		
+		this.nombre=nombre;
+		this.color=color;
+		this.poblacionActual = 0;
+		this.excesoPoblacion = 0;
+		
+		this.cantidadDeCristal=200;
+		
+		armada= new Armada();
+	
+	
+	
+	}
 	public void agregarElemento(Elemento elem) throws ElementoInvalidoException, RecursosInsuficientesException, PosicionInvalidaException, FueraDeRangoException {
 		
 		if(elem==null)
@@ -113,7 +134,7 @@ public class Jugador {
 		return this.raza;
 	}
 
-	public TipoColor getColor() {
+	public String getColor() {
 		return this.color;
 	}
 

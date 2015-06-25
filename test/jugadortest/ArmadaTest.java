@@ -141,8 +141,8 @@ public class ArmadaTest {
 	public void siMuevoUnaUnidadTambienSeCambiaEnElCampoDeBatalla() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException, UnidadLlenaException, NombreCortoException, ColorInvalidoException, NombreJugadorRepetidoException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, ElementoNoEncontradoException, FactoryInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, RecursosFaltantesException, IOException{
 		Jugador jugadorActual;
 		Jugador jugadorEnemigo;
-		jugadorActual = new Jugador("jugador1",TipoColor.COLOR_ROJO,new Terran());
-		jugadorEnemigo = new Jugador("jugador2",TipoColor.COLOR_AZUL,new Protoss());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);

@@ -36,10 +36,10 @@ public class Enunciado9Test {
 		protoss=factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT,posicionProtoss);
 		protoss.setEscudo(10);//Se le setea en 10 para ir recuperandose
 
-		jugadorActual = new Jugador("Jugador1",TipoColor.COLOR_ROJO,new Protoss());
+		jugadorActual = new Jugador("jugador1","terran","rojo");
+		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 
-		jugadorEnemigo = new Jugador("Jugador2",TipoColor.COLOR_AZUL,new Protoss());
-		
+	
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 		
