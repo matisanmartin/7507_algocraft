@@ -82,8 +82,10 @@ public class Jugador {
 		this.excesoPoblacion = 0;
 	}
 	
-	public Jugador(String nombre, String raza, String color) {
+	public Jugador(String nombre, String raza, String color) throws NombreCortoException {
 
+		if(nombre.length()<4)
+			throw new NombreCortoException("Nombre corto.");
 		if(raza.equalsIgnoreCase("Terran"))
 			this.raza = new Terran();
 		else
