@@ -22,12 +22,12 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class CrearRefineriaAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearRefineriaAccion(ElementoArtificial elem) {
+	public CrearRefineriaAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

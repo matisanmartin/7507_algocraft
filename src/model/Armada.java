@@ -13,15 +13,15 @@ import exceptions.PosicionInvalidaException;
 
 public class Armada {
 	
-	List<ElementoArtificial> elementos;
+	List<Elemento> elementos;
 	int dimensionArmada;
 	
 	public Armada() {
-		elementos = new ArrayList<ElementoArtificial>();
+		elementos = new ArrayList<Elemento>();
 		dimensionArmada=0;
 	}
 	
-	public Armada(List<ElementoArtificial> elem){
+	public Armada(List<Elemento> elem){
 		elementos=elem;
 		dimensionArmada=elem.size();
 	}
@@ -30,11 +30,11 @@ public class Armada {
 		return elementos.size();
 	}
 	
-	public List<ElementoArtificial> getArmada() {
+	public List<Elemento> getArmada() {
 		return elementos;
 	}
 	
-	public void agregarElemento(ElementoArtificial elem) throws PosicionInvalidaException, FueraDeRangoException {
+	public void agregarElemento(Elemento elem) throws PosicionInvalidaException, FueraDeRangoException {
 		
 		CampoBatalla.getInstancia().posicionarElemento(elem, elem.obtenerEspacio());
 		
@@ -49,14 +49,14 @@ public class Armada {
 	//se asume que existen como mucho 2 elementos en una misma posicion
 	//uno en aire y otro en tierra
 		
-		Iterator<ElementoArtificial> it = elementos.iterator();
+		Iterator<Elemento> it = elementos.iterator();
 		int indice = 0;
 		int i=0;
 		
 	
 		while(it.hasNext())
 		{	
-			ElementoArtificial actual = it.next();
+			Elemento actual = it.next();
 			
 			if(actual.getPosicion().equals(pos)&&actual.estaMuerta())
 				indice=i;
@@ -68,13 +68,13 @@ public class Armada {
 		dimensionArmada=elementos.size();
 	}
 	
-	public ElementoArtificial obtenerElementoEnPosicion(Posicion pos) throws ElementoNoEncontradoException {
+	public Elemento obtenerElementoEnPosicion(Posicion pos) throws ElementoNoEncontradoException {
 		
-		Iterator<ElementoArtificial> it = elementos.iterator();
+		Iterator<Elemento> it = elementos.iterator();
 		
 		while(it.hasNext())
 		{
-			ElementoArtificial actual = it.next();
+			Elemento actual = it.next();
 			ArrayList<Parte> partesActuales = actual.getPartes();
 			for (Parte unaParte : partesActuales) {
 				if (unaParte.posicionEsParte(pos)){
@@ -104,12 +104,12 @@ public class Armada {
 //		throw new ElementoNoEncontradoException();
 	}
 
-	public void modificarElementoEnPosicion(Posicion posicionDestino, ElementoArtificial elementoAtacado) {
+	public void modificarElementoEnPosicion(Posicion posicionDestino, Elemento elementoAtacado) {
 
-		ListIterator<ElementoArtificial> it = elementos.listIterator();
+		ListIterator<Elemento> it = elementos.listIterator();
 		while(it.hasNext())
 		{
-			ElementoArtificial elementoTemporal = it.next();
+			Elemento elementoTemporal = it.next();
 			Posicion posicionActual=elementoTemporal.getPosicion();
 			
 			if(posicionActual.equals(posicionDestino)){
@@ -122,11 +122,11 @@ public class Armada {
 
 	public void actualizarUnidades() {
 		
-		ListIterator<ElementoArtificial> it = elementos.listIterator();
+		ListIterator<Elemento> it = elementos.listIterator();
 		
 		while(it.hasNext())
 		{
-			ElementoArtificial elementoTemporal = it.next();
+			Elemento elementoTemporal = it.next();
 			elementoTemporal.agregarEnergiaPorPasoDeTurno();
 			elementoTemporal.agregarEscudoPorPasoDeTurno();
 			it.set(elementoTemporal);

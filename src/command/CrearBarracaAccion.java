@@ -22,12 +22,12 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class CrearBarracaAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearBarracaAccion(ElementoArtificial elem) {
+	public CrearBarracaAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

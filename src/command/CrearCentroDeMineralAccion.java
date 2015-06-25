@@ -22,12 +22,12 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class CrearCentroDeMineralAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearCentroDeMineralAccion(ElementoArtificial elem) {
+	public CrearCentroDeMineralAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

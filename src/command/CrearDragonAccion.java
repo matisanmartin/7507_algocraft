@@ -2,7 +2,7 @@ package command;
 
 import java.io.IOException;
 
-import model.ElementoArtificial;
+import model.Elemento;
 import strategy.ContextoStrategy;
 import strategy.CrearDragon;
 
@@ -29,9 +29,9 @@ import factory.unidades.Unidad;
 
 public class CrearDragonAccion implements Accion {
 //	Unidad unidad;
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearDragonAccion(ElementoArtificial elem) {
+	public CrearDragonAccion(Elemento elem) {
 		this.elemento = elem;
 	}
 	

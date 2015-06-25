@@ -56,8 +56,8 @@ public interface JuegoListener {
 	public void seMovioUnidad(ElementoArtificial elemento);
 	public void seRealizoAtaque(ElementoArtificial elemento);
 	public void seRealizoEmp(ElementoArtificial elemento);
-	public void seRealizoRadiacion(ElementoArtificial elemento);
-	public void seRealizoTormentaPsionica(ElementoArtificial elemento);
+	public void seRealizoRadiacion(Elemento elementoAtacado);
+	public void seRealizoTormentaPsionica(Elemento elementoTemporalAtacado);
 	public void seRealizoAlucinacion(ElementoArtificial elemento);
 	
 	//Metodos relacionados con la vida de una unidad
@@ -67,7 +67,7 @@ public interface JuegoListener {
 	public void comenzoJuego();
 	public void terminojuego();
 
-	public void seCreoCopiaFicticia(ElementoArtificial elemento);
+	public void seCreoCopiaFicticia(Elemento copiaFicticia1);
 
 	public void seCreoCristal(Cristal cristal) throws IOException, FueraDeRangoException, PosicionInvalidaException;
 

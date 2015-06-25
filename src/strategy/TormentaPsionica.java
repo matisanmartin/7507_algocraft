@@ -13,6 +13,7 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import factory.UnidadFactory;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
@@ -23,7 +24,7 @@ public class TormentaPsionica implements Strategy {
 	private static final int ENERGIA_NECESARIA=75;
 
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException, EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void realizarAccion(Elemento elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException, EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
 		int energiaActual=elementoActuante.getEnergia();
 		
@@ -36,13 +37,13 @@ public class TormentaPsionica implements Strategy {
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
-		List<ElementoArtificial> armadaEnemiga=Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
+		List<Elemento> armadaEnemiga=Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
 		
-		ListIterator<ElementoArtificial> it = armadaEnemiga.listIterator();
+		ListIterator<Elemento> it = armadaEnemiga.listIterator();
 		
 		while(it.hasNext())
 		{
-			ElementoArtificial elementoTemporalAtacado = it.next();
+			Elemento elementoTemporalAtacado = it.next();
 	
 			Posicion posicionTemporal = elementoTemporalAtacado.getPosicion();
 			

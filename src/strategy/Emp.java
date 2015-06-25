@@ -3,8 +3,16 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
+import model.CampoBatalla;
+import model.Elemento;
+import model.ElementoArtificial;
+import model.Espacio;
+import model.EspacioTerrestre;
+import model.Juego;
+
 import common.Mensajes;
 import common.Posicion;
+
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoDeVisionException;
@@ -13,12 +21,6 @@ import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import factory.UnidadFactory;
-import model.CampoBatalla;
-import model.Elemento;
-import model.ElementoArtificial;
-import model.Espacio;
-import model.EspacioTerrestre;
-import model.Juego;
 
 public class Emp implements Strategy {
 	
@@ -26,7 +28,7 @@ public class Emp implements Strategy {
 	private static final int ENERGIA_NECESARIA=100;
 
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) throws EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, PosicionInvalidaException, FueraDeRangoException {
+	public void realizarAccion(Elemento elementoActuante, Posicion posicionDestino) throws EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, PosicionInvalidaException, FueraDeRangoException {
 		
 		int energiaActual=elementoActuante.getEnergia();
 		

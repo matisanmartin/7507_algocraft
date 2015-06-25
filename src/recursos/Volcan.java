@@ -1,15 +1,24 @@
 package recursos;
 
+import java.util.Hashtable;
+import java.util.Map;
+
+import razas.Raza;
+import command.Accion;
 import common.Posicion;
+import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
+import model.CampoBatalla;
+import model.Espacio;
 import model.EspacioTerrestre;
+import model.Juego;
 
 public class Volcan extends Recurso {
 
-	public Volcan(int alto, int ancho, Posicion posicion)
-			throws FueraDeRangoException, PosicionInvalidaException {
-		super(alto, ancho, posicion, new EspacioTerrestre());
+	public Volcan(int alto, int ancho, Posicion posicion) throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException {	
+		super(alto, ancho, posicion);
+		this.definirAccionesDisponibles();
 	}
 
 	@Override
@@ -18,4 +27,13 @@ public class Volcan extends Recurso {
 
 	}
 
+	@Override
+	public void definirAccionesDisponibles() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException{
+		
+		Raza razaJugador = Juego.getInstancia().getJugadorActual().getRaza();
+		
+		Map<String, Accion> acciones = new Hashtable<String, Accion>();
+		acciones.put("Crear Recolector de Gas", razaJugador.obtenerAccionRecolectorDeGas(this));		
+		setAccionesDisponibles(acciones);
+	}
 }

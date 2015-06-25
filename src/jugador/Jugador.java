@@ -1,13 +1,16 @@
 package jugador;
 
+import java.util.Iterator;
+import java.util.List;
+
 import model.Armada;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Espacio;
+import model.Juego;
 import razas.Raza;
-
 import common.Mensajes;
 import common.Posicion;
-
 import exceptions.ColorInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -77,7 +80,7 @@ public class Jugador {
 		this.excesoPoblacion = 0;
 	}
 	
-	public void agregarElemento(ElementoArtificial elem) throws ElementoInvalidoException, RecursosInsuficientesException, PosicionInvalidaException, FueraDeRangoException {
+	public void agregarElemento(Elemento elem) throws ElementoInvalidoException, RecursosInsuficientesException, PosicionInvalidaException, FueraDeRangoException {
 		
 		if(elem==null)
 			throw new ElementoInvalidoException();
@@ -208,6 +211,21 @@ public class Jugador {
 	public void setGas(int cantG) {
 		this.cantidadDeGas = cantG;
 		
+	}
+	
+	public void actualizarRecursos() {
+		
+		List<Elemento> armada = obtenerArmada().getArmada();
+		
+		Iterator<Elemento> it = armada.iterator();
+		
+		while(it.hasNext()){
+			Elemento elementoTemporal = it.next();
+			int aumentoDeCristal = elementoTemporal.obtenerAumentoDeCristalPorTurno();
+			int aumentoDeGas = elementoTemporal.obtenerAumentoDeGasPorTurno();
+			agregarCantidadDeCristal(aumentoDeCristal);
+			agregarCantidadDeGas(aumentoDeGas);
+		}
 	}
 
 }

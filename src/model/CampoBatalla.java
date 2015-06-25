@@ -38,25 +38,25 @@ public class CampoBatalla implements ObjetoVivo {
 	/*
 	 * POST:setea las bases en el campo
 	 */
-	public void setUpBases() throws PosicionInvalidaException, FueraDeRangoException{
+	public void setUpBases() throws PosicionInvalidaException, FueraDeRangoException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, CostoInvalidoException{
 		
 
 				
 		Posicion pos = new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.POS_INICIAL_CAMPO_BATALLA);
 		Base base1 = new BaseSupIzq(pos);
 		this.espacioTerrestre.agregarElemento(base1.getVolcan().get(0));
+		Juego.getInstancia().agregarUnidadAJugadorActual(base1.getVolcan().get(0));
 		for (int i = 0; i < 6; i++) {
 			this.espacioTerrestre.agregarElemento(base1.getCristales().get(i));
+			Juego.getInstancia().agregarUnidadAJugadorActual(base1.getCristales().get(i));
 		}
 		
 		Base base2 = new  BaseSupDer(new Posicion(Constantes.ANCHO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA));
-		this.espacioTerrestre.agregarElemento(base2.getVolcan().get(0));
 		for (int i = 0; i < 6; i++) {
 			this.espacioTerrestre.agregarElemento(base2.getCristales().get(i));
 		}
 		
 		Base base3= new BaseInfIzq(new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.ALTO_DEFECTO));
-		this.espacioTerrestre.agregarElemento(base3.getVolcan().get(0));
 		for (int i = 0; i < 6; i++) {
 			this.espacioTerrestre.agregarElemento(base3.getCristales().get(i));
 		}
@@ -64,8 +64,10 @@ public class CampoBatalla implements ObjetoVivo {
 		
 		Base base4 = new BaseInfDer(new Posicion(Constantes.ANCHO_DEFECTO, Constantes.ALTO_DEFECTO));
 		this.espacioTerrestre.agregarElemento(base4.getVolcan().get(0));
+		Juego.getInstancia().agregarUnidadAJugadorEnemigo(base4.getVolcan().get(0));
 		for (int i = 0; i < 6; i++) {
 			this.espacioTerrestre.agregarElemento(base4.getCristales().get(i));
+			Juego.getInstancia().agregarUnidadAJugadorEnemigo(base4.getCristales().get(i));
 		}
 		
 

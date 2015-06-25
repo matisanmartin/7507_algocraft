@@ -2,6 +2,8 @@ package strategy;
 
 import java.io.IOException;
 
+import model.Elemento;
+
 import common.Posicion;
 
 import exceptions.CostoInvalidoException;
@@ -21,11 +23,10 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
 
 public interface Strategy {
 	
-	void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
+	void realizarAccion(Elemento elementoActuante, Posicion posicionDestino) 
 	throws 	FactoryInvalidaException, 
 			UnidadInvalidaException, 
 			FueraDeRangoException, 

@@ -1,7 +1,7 @@
 package strategy;
 
 import model.Armada;
-import model.ElementoArtificial;
+import model.Elemento;
 import model.Juego;
 
 import common.Posicion;
@@ -21,7 +21,7 @@ import exceptions.UnidadInvalidaException;
 public class Mover implements Strategy {
 
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante,
+	public void realizarAccion(Elemento elementoActuante,
 			Posicion posicionDestino) throws FactoryInvalidaException,
 			UnidadInvalidaException, FueraDeRangoException,
 			ElementoInvalidoException, PosicionInvalidaException,

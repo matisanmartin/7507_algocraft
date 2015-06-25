@@ -22,12 +22,12 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class CrearNaveCienciaAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearNaveCienciaAccion(ElementoArtificial elem) {
+	public CrearNaveCienciaAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

@@ -29,14 +29,14 @@ import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
 
 
-public abstract class ElementoArtificial extends Elemento implements Cloneable {
+public abstract class ElementoArtificial extends Elemento  {
 	
-	private Map<String, Accion> accionesDisponibles;
+//	private Map<String, Accion> accionesDisponibles;
 
 	public ElementoArtificial(int alto, int ancho, Posicion posicion, Espacio espacio)
 			throws FueraDeRangoException, PosicionInvalidaException {
 		super(alto, ancho, posicion,espacio);
-		accionesDisponibles=new Hashtable<String,Accion>();
+		
 	}
 
 	public ElementoArtificial() {
@@ -64,40 +64,6 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 		setPosicion(new Posicion(nuevaPosicion.getX(),nuevaPosicion.getY()));
 	}
 
-	
-
-	
-	public abstract void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino)
-	throws 	FactoryInvalidaException, 
-			UnidadInvalidaException, 
-			FueraDeRangoException, 
-			ElementoInvalidoException,
-			PosicionInvalidaException, 
-			ElementoNoEncontradoException, 
-			FueraDeRangoDeVisionException, 
-			EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException;
-
-	public Map<String,Accion> getAccionesDisponibles() {
-		return accionesDisponibles;
-	}
-
-	public void setAccionesDisponibles(Map<String,Accion> acciones) {
-		this.accionesDisponibles = acciones;
-	}
-	
-	public void definirAccionesDisponibles() {
-		accionesDisponibles.put("Atacar",new AtaqueAccion(this));
-		accionesDisponibles.put("Mover", new MoverAccion(this));
-	}
-	
-	public void EliminarAccionDisponible(String keyAccion){
-		accionesDisponibles.remove(keyAccion);
-	}
-	
-	public void agregarAccionDisponible(String keyAccion, Accion accion) {
-		accionesDisponibles.put(keyAccion, accion);
-	}
-
 	public void agregarEnergiaPorPasoDeTurno() {
 		setEnergia(getEnergia()+0);
 	}
@@ -120,13 +86,9 @@ public abstract class ElementoArtificial extends Elemento implements Cloneable {
 		
 	}
 
-	@Override
-	public Object clone() throws CloneNotSupportedException{
-		ElementoArtificial clone = (ElementoArtificial)super.clone();
-		return clone;
-	}
 
-	public abstract void agregarUnidad(ElementoArtificial elementoActuante) throws UnidadLlenaException;
+
+	public abstract void agregarUnidad(Elemento unidadASubir) throws UnidadLlenaException;
 
 	public abstract int getCantidadDeUnidadesTransportadas();
 	

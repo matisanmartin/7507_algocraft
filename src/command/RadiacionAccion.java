@@ -22,14 +22,14 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 
 public class RadiacionAccion implements Accion {
 
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public RadiacionAccion(ElementoArtificial unidad) {
+	public RadiacionAccion(Elemento unidad) {
 		this.elemento=unidad;
 	}
 	

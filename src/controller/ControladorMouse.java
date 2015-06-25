@@ -45,7 +45,7 @@ public class ControladorMouse implements MouseListener {
 				Armada armada = Juego.getInstancia().getJugadorActual().obtenerArmada();
 				///
 				Elemento elemento = juego.getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(pos);
-				Map<String, Accion> acciones = ((ElementoArtificial)elemento).getAccionesDisponibles();
+				Map<String, Accion> acciones = elemento.getAccionesDisponibles();
 				this.ventana.agregarPanelDeOpciones(acciones);
 
 				

@@ -2,7 +2,6 @@ package factory.construcciones;
 
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -13,6 +12,11 @@ public class Asimilador extends EdificioGas {
 			throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		super(alto, ancho, posicion);
 		this.setVitalidad(new Vitalidad(450,450));
+	}
+	
+	@Override
+	public int obtenerAumentoDeGasPorTurno() {
+		return 10;
 	}
 
 }

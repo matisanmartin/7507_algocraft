@@ -5,6 +5,7 @@ import java.io.IOException;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
 import strategy.Mover;
+import model.Elemento;
 import model.ElementoArtificial;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
@@ -27,9 +28,9 @@ import exceptions.UnidadLlenaException;
 
 public class MoverAccion implements Accion {
 	
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public MoverAccion(ElementoArtificial elemento) {
+	public MoverAccion(Elemento elemento) {
 		this.elemento=elemento;
 	}
 

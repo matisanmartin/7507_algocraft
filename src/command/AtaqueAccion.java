@@ -22,13 +22,14 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
+import model.Elemento;
 import model.ElementoArtificial;
 
 public class AtaqueAccion implements Accion {
 	
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public AtaqueAccion(ElementoArtificial elemento) {
+	public AtaqueAccion(Elemento elemento) {
 		this.elemento=elemento;
 	}
 

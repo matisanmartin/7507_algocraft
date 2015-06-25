@@ -22,13 +22,13 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class EmpAccion implements Accion {
 
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public EmpAccion(ElementoArtificial elem) {
+	public EmpAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

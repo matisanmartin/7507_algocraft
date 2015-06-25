@@ -2,7 +2,7 @@ package command;
 
 import java.io.IOException;
 
-import model.ElementoArtificial;
+import model.Elemento;
 import strategy.ContextoStrategy;
 import strategy.CrearAcceso;
 
@@ -27,9 +27,9 @@ import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
 
 public class CrearAccesoAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearAccesoAccion(ElementoArtificial elem) {
+	public CrearAccesoAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

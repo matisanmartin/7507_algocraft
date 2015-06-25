@@ -22,12 +22,12 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class CrearNaveTransporteProtossAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearNaveTransporteProtossAccion(ElementoArtificial elem) {
+	public CrearNaveTransporteProtossAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

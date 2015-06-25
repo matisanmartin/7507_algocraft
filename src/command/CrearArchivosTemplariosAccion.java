@@ -22,12 +22,12 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class CrearArchivosTemplariosAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearArchivosTemplariosAccion(ElementoArtificial elem) {
+	public CrearArchivosTemplariosAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

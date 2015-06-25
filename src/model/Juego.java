@@ -21,6 +21,7 @@ import vista.VentanaPrincipal;
 import common.Mensajes;
 import common.Posicion;
 import exceptions.ColorInvalidoException;
+import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoException;
@@ -130,12 +131,21 @@ public class Juego {
 		return Juego.getInstancia().getJugadorEnemigo().getColor();
 	}
 	
-	private void intercambiarJugadores() throws NombreJugadorRepetidoException {
-		Jugador jugadorTemp = getInstancia().getJugadorActual();
-		getInstancia().setJugadorActual(jugadorEnemigo);
-		getInstancia().setJugadorEnemigo(jugadorTemp);
+	private void intercambiarJugadores() throws NombreJugadorRepetidoException  {
 		
-		getInstancia().actualizar();
+			
+		Jugador jugadorActualAntesDeCambio = getInstancia().getJugadorActual();
+		Jugador jugadorEnemAntesDeCambio = getInstancia().getJugadorEnemigo();
+		
+		getInstancia().setJugadorActual(jugadorEnemAntesDeCambio);
+		getInstancia().setJugadorEnemigo(jugadorActualAntesDeCambio);
+		
+		Jugador actualDespueDe = getInstancia().getJugadorActual();
+		Jugador enemDespuesDe = getInstancia().getJugadorEnemigo();
+		
+		
+		
+		
 	}
 
 	private void actualizar() {
@@ -146,18 +156,21 @@ public class Juego {
 	}
 	
 	public void cambiarTurno() throws NombreJugadorRepetidoException {
+		getInstancia().getJugadorActual().actualizarRecursos();
+		//getInstancia().getJugadorEnemigo().actualizarRecursos();
+		getInstancia().actualizar();
 		getInstancia().intercambiarJugadores();
 	}
 
 
-	public void agregarUnidadAJugadorEnemigo(ElementoArtificial elem) 
+	public void agregarUnidadAJugadorEnemigo(Elemento elem) 
 	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException {
 		getInstancia().getJugadorEnemigo().agregarElemento(elem);
 	
 	}
 	
-	public void agregarUnidadAJugadorActual(ElementoArtificial elem) 
-	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, PoblacionFaltanteException {
+	public void agregarUnidadAJugadorActual(Elemento elem) 
+	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, PoblacionFaltanteException, CostoInvalidoException {
 		
 		int cantidadDeCristal=getInstancia().getJugadorActual().getCantidadDeCristal();
 		int cantidadDeGas= getInstancia().getJugadorActual().getCantidadDeGas();
@@ -202,9 +215,9 @@ public class Juego {
 
 		Armada armadaActual = Juego.getInstancia().obtenerArmadaJugadorActual();
 		
-		List<ElementoArtificial> unidadesActual = armadaActual.getArmada();
+		List<Elemento> unidadesActual = armadaActual.getArmada();
 		
-		Iterator<ElementoArtificial> it = unidadesActual.iterator();
+		Iterator<Elemento> it = unidadesActual.iterator();
 		
 		while(it.hasNext()) {
 			if(!it.next().estaMuerta())
@@ -219,9 +232,9 @@ public class Juego {
 	private void verificarPartidaGanada() throws PartidaGanadaException {
 		Armada armadaEnemiga = Juego.getInstancia().obtenerArmadaJugadorEnemigo();
 		
-		List<ElementoArtificial> unidadesEnemigas = armadaEnemiga.getArmada();
+		List<Elemento> unidadesEnemigas = armadaEnemiga.getArmada();
 		
-		Iterator<ElementoArtificial> it = unidadesEnemigas.iterator();
+		Iterator<Elemento> it = unidadesEnemigas.iterator();
 		
 		while(it.hasNext()) {
 			if(!it.next().estaMuerta())
@@ -232,12 +245,12 @@ public class Juego {
 	}
 
 
-	public void eliminarElementoDeJugadorEnemigo(ElementoArtificial elem) throws PosicionInvalidaException, FueraDeRangoException {
-		getInstancia().getJugadorEnemigo().disminuirPoblacionActual(elem.getSuministro());
+	public void eliminarElementoDeJugadorEnemigo(Elemento marine) throws PosicionInvalidaException, FueraDeRangoException {
+		getInstancia().getJugadorEnemigo().disminuirPoblacionActual(marine.getSuministro());
 		
 		//elem.disminuirPoblacion();
-		getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(elem.getPosicion());
-		CampoBatalla.getInstancia().eliminarElementoEnPosicion(elem.getPosicion(), elem.getEspacio());
+		getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(marine.getPosicion());
+		CampoBatalla.getInstancia().eliminarElementoEnPosicion(marine.getPosicion(), marine.getEspacio());
 		
 	}
 	
@@ -275,7 +288,7 @@ public class Juego {
 					//Se setea el comienzo de los turnos
 					Timer tiempoDeTurno = new Timer();
 					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
-					tiempoDeTurno.schedule(cambioDeTurno,150000, 150000);
+					tiempoDeTurno.schedule(cambioDeTurno,10000, 10000);
 						
 					}
 				catch (Exception e){

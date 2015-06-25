@@ -2,10 +2,16 @@ package razas;
 
 import java.io.IOException;
 
+import model.Elemento;
+import model.ElementoArtificial;
 import titiritero.dibujables.Imagen;
 import vista.edificios.VistaCentroComandoTerran;
-import model.ElementoArtificial;
+
+import command.Accion;
+import command.CrearCentroDeMineralAccion;
+import command.CrearRefineriaAccion;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -25,6 +31,21 @@ public class Terran extends Raza {
 	@Override
 	public Imagen obtenerCentroDeComandos(ElementoArtificial elem) throws IOException {
 		return new VistaCentroComandoTerran(elem);
+	}
+	
+	@Override
+	public Accion obtenerAccionRecolectorDeMinerales(Elemento elem)throws FueraDeRangoException, CostoInvalidoException,PosicionInvalidaException {
+		return new CrearCentroDeMineralAccion(elem);
+	}
+
+	@Override
+	public Accion obtenerAccionRecolectorDeGas(Elemento elem) throws FueraDeRangoException,CostoInvalidoException, PosicionInvalidaException {
+		return new CrearRefineriaAccion(elem);
+	}
+	
+	public String toString()
+	{
+		return "Terran";
 	}
 	
 

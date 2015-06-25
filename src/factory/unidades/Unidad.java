@@ -34,6 +34,7 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Espacio;
 import model.Juego;
@@ -120,6 +121,7 @@ public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosi
 		contexto.ejecutarStrategy(this, posicionDestino);
 	}
 	
+	@Override
 	public void definirAccionesDisponibles(){
 		Map<String, Accion> acciones = new Hashtable<String, Accion>();
 		acciones.put("Atacar", new AtaqueAccion(this));
@@ -128,7 +130,7 @@ public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosi
 	}
 	
 	@Override
-	public void agregarUnidad(ElementoArtificial elemento) throws UnidadLlenaException {
+	public void agregarUnidad(Elemento elemento) throws UnidadLlenaException {
 		
 		if(transporte==0 || capacidadLlena()){
 			throw new UnidadLlenaException();
@@ -171,5 +173,6 @@ public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosi
 		// TODO Auto-generated method stub
 		return this.getPosicion().getY();
 	}
+
 	
 }

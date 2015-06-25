@@ -1,6 +1,11 @@
 package strategy;
 
+import model.Elemento;
+import model.ElementoArtificial;
+import model.Juego;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -15,8 +20,6 @@ import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
-import model.Juego;
 
 public class SubirUnidad implements Strategy {
 
@@ -27,7 +30,7 @@ public class SubirUnidad implements Strategy {
 	 * @throws UnidadLlenaException 
 	 */
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante,
+	public void realizarAccion(Elemento elementoActuante,
 			Posicion posicionDestino) throws FactoryInvalidaException,
 			UnidadInvalidaException, FueraDeRangoException,
 			ElementoInvalidoException, PosicionInvalidaException,
@@ -37,7 +40,7 @@ public class SubirUnidad implements Strategy {
 			FinDePartidaException, PartidaGanadaException,
 			PartidaPerdidaException, UnidadLlenaException {
 		
-		ElementoArtificial unidadASubir = Juego.getInstancia()
+		Elemento unidadASubir = Juego.getInstancia()
 															.obtenerArmadaJugadorActual()
 															.obtenerElementoEnPosicion(posicionDestino);
 		

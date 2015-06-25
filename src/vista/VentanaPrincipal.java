@@ -69,6 +69,7 @@ public class VentanaPrincipal implements JuegoListener {
 	private static JLabel labelNombre;
 	private static JLabel labelGas;
 	private static JLabel labelCristal;
+	private static JLabel labelRaza;
 
 	/**
 	 * Create the application.
@@ -97,6 +98,7 @@ public class VentanaPrincipal implements JuegoListener {
 		labelGas=new JLabel("Gas");
 		labelCristal=new JLabel("Cristal");
 		labelNombre= new JLabel("Nombre");
+		labelRaza = new JLabel("Raza");
 		getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		getFrame().setForeground(new Color(0,0,0));
 		getFrame().setBounds(1, 1, 1366, 768);
@@ -191,10 +193,17 @@ public class VentanaPrincipal implements JuegoListener {
 		frame.getContentPane().add(labelNombre);
 		labelNombre.repaint();
 		
+		//Informacion de la raza
+		labelRaza.setText("");
+		labelRaza.setBounds(450,25,100,25);
+		labelRaza.setText("Raza: " + Juego.getInstancia().getJugadorActual().getRaza().toString());
+		frame.getContentPane().add(labelRaza);
+		labelRaza.repaint();
+		
 		//Información de cristal
 		labelCristal.setText("");
 		//labelCristal = new JLabel("Cristal");
-		labelCristal.setBounds(425, 25, 100, 25);
+		labelCristal.setBounds(600, 25, 100, 25);
 		labelCristal.setText("Cristales: " + String.valueOf(Juego.getInstancia().getJugadorActual().getCantidadDeCristal()));
 		frame.getContentPane().add(labelCristal);
 		labelCristal.repaint();
@@ -202,7 +211,7 @@ public class VentanaPrincipal implements JuegoListener {
 		//Información de gas
 		labelGas.setText("");
 		//labelGas = new JLabel("Gas");
-		labelGas.setBounds(550, 25, 100, 25);
+		labelGas.setBounds(750, 25, 100, 25);
 		labelGas.setText("Gas: " + String.valueOf(Juego.getInstancia().getJugadorActual().getCantidadDeGas()));
 		frame.getContentPane().add(labelGas);
 		labelGas.repaint();
@@ -429,13 +438,13 @@ public class VentanaPrincipal implements JuegoListener {
 	}
 
 	@Override
-	public void seRealizoRadiacion(ElementoArtificial elemento) {
+	public void seRealizoRadiacion(Elemento elemento) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void seRealizoTormentaPsionica(ElementoArtificial elemento) {
+	public void seRealizoTormentaPsionica(Elemento elemento) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -462,7 +471,7 @@ public class VentanaPrincipal implements JuegoListener {
 
 
 	@Override
-	public void seCreoCopiaFicticia(ElementoArtificial elemento) {
+	public void seCreoCopiaFicticia(Elemento elemento) {
 		// TODO Auto-generated method stub
 		
 	}

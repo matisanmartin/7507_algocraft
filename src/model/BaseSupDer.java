@@ -4,13 +4,29 @@ import java.io.IOException;
 
 import recursos.Cristal;
 import recursos.Volcan;
+import strategy.ContextoStrategy;
 import common.Posicion;
+import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
+import exceptions.ElementoInvalidoException;
+import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
+import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosFaltantesException;
+import exceptions.RecursosInsuficientesException;
+import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 
 public class BaseSupDer extends Base {
 
-	public BaseSupDer(Posicion pos) throws FueraDeRangoException, PosicionInvalidaException {
+	public BaseSupDer(Posicion pos) throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException {
 		super(pos);		
 		int ancho = this.getAnchoCristal();
 		int alto = this.getAltoCristal();
@@ -88,6 +104,23 @@ public class BaseSupDer extends Base {
 
 	@Override
 	public void posicionar(Posicion nuevaPosicion) throws FueraDeRangoException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void realizarAccion(ContextoStrategy contexto,
+			Posicion posicionDestino) throws FactoryInvalidaException,
+			UnidadInvalidaException, FueraDeRangoException,
+			ElementoInvalidoException, PosicionInvalidaException,
+			ElementoNoEncontradoException, FueraDeRangoDeVisionException,
+			EnergiaInsuficienteException, CostoInvalidoException,
+			RecursosInsuficientesException, CloneNotSupportedException,
+			FinDePartidaException, PartidaGanadaException,
+			PartidaPerdidaException, UnidadLlenaException,
+			RecursosFaltantesException, PoblacionFaltanteException,
+			DanioInvalidoException, IOException {
 		// TODO Auto-generated method stub
 		
 	}

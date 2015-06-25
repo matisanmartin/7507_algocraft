@@ -1,5 +1,6 @@
 package strategy;
 
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
@@ -30,7 +31,7 @@ public class Alucinacion implements Strategy {
 	private static final int ENERGIA_NECESARIA=100;
 	
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
+	public void realizarAccion(Elemento elementoActuante, Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, DanioInvalidoException, PoblacionFaltanteException {
 		
 		//msma: En principio estas validaciones se realizan aca, pero deberian hacerse antes
@@ -55,8 +56,8 @@ public class Alucinacion implements Strategy {
 		//TODO msma: podria mejorarse y que la posicion ficticia sea aleatoria en un rango acotado cerca de la unidad
 		//TODO msma: Si se cambian estas posiciones, van a fallar luego los tests, ojo, repararlos!!
 		Posicion posicionFicticia1 = new Posicion(posX+1+factor,posY);
-		ElementoArtificial elementoCopiado = Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
-		ElementoArtificial copiaFicticia1 = (ElementoArtificial) elementoCopiado.clone();
+		Elemento elementoCopiado = Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
+		Elemento copiaFicticia1 = (Elemento) elementoCopiado.clone();
 		copiaFicticia1.setPosicion(posicionFicticia1);
 		copiaFicticia1.getVitalidad().setVida(0);
 		Danio danioNulo = new Danio("0A0T");

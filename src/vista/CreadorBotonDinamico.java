@@ -38,23 +38,24 @@ public class CreadorBotonDinamico implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
-			this.accion.execute(ControladorMouse.getPosicionDestino());
+			try {
+				this.accion.execute(ControladorMouse.getPosicionDestino());
+			} catch (FactoryInvalidaException | UnidadInvalidaException
+					| FueraDeRangoException | ElementoInvalidoException
+					| PosicionInvalidaException | ElementoNoEncontradoException
+					| FueraDeRangoDeVisionException
+					| EnergiaInsuficienteException | CostoInvalidoException
+					| RecursosInsuficientesException
+					| CloneNotSupportedException | FinDePartidaException
+					| PartidaGanadaException | PartidaPerdidaException
+					| UnidadLlenaException | RecursosFaltantesException
+					| PoblacionFaltanteException | DanioInvalidoException
+					| IOException e1) {
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Error",JOptionPane.INFORMATION_MESSAGE);
+				e1.printStackTrace();
+			}
 			VentanaPrincipal.agregarInformacionDeJugador();
-		} catch (FactoryInvalidaException | UnidadInvalidaException
-				| FueraDeRangoException | ElementoInvalidoException
-				| PosicionInvalidaException | ElementoNoEncontradoException
-				| FueraDeRangoDeVisionException | EnergiaInsuficienteException
-				| CostoInvalidoException | RecursosInsuficientesException
-				| CloneNotSupportedException | FinDePartidaException
-				| PartidaGanadaException | PartidaPerdidaException
-				| UnidadLlenaException | RecursosFaltantesException
-				| PoblacionFaltanteException | DanioInvalidoException
-				| IOException e1) {
-			
-			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
-			e1.printStackTrace();
-		}
+
 
 	}
 

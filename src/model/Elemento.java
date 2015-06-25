@@ -1,23 +1,44 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 
+import strategy.ContextoStrategy;
 import titiritero.modelo.ObjetoPosicionable;
 import titiritero.modelo.ObjetoVivo;
+import command.Accion;
+import command.AtaqueAccion;
+import command.MoverAccion;
+import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
+import exceptions.CostoInvalidoException;
+import exceptions.DanioInvalidoException;
+import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
+import exceptions.EnergiaInsuficienteException;
+import exceptions.FactoryInvalidaException;
+import exceptions.FinDePartidaException;
+import exceptions.FueraDeRangoDeVisionException;
 import exceptions.FueraDeRangoException;
+import exceptions.PartidaGanadaException;
+import exceptions.PartidaPerdidaException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosFaltantesException;
+import exceptions.RecursosInsuficientesException;
+import exceptions.UnidadInvalidaException;
+import exceptions.UnidadLlenaException;
 
-public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
+public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneable{
 
 	private Posicion posicion;
 	private ArrayList<Parte> partes;
 	private Espacio espacio;
-
-
-
+	private Map<String, Accion> accionesDisponibles;
+	
 	//para probar dimension de elemento
 	private int alto;
 	private	int ancho;
@@ -51,6 +72,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
 		this.posicion = posicion;
 		this.espacio = espacio;
 		crearPartes();
+		accionesDisponibles=new Hashtable<String,Accion>();
 	}
 
 	public Elemento() {
@@ -180,7 +202,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
 	}
 	
 	public void vivir(){
-		System.out.println("Clase elemento viviendo");
+		//System.out.println("Clase elemento viviendo");
 	}
 
 	public boolean posicionEsParte(Posicion posicionDestino) {
@@ -190,6 +212,92 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
 				return true;
 		}
 		return false;
+	}
+	
+	public abstract void realizarAccion(ContextoStrategy contexto, Posicion posicionDestino)
+			throws 	FactoryInvalidaException, 
+					UnidadInvalidaException, 
+					FueraDeRangoException, 
+					ElementoInvalidoException,
+					PosicionInvalidaException, 
+					ElementoNoEncontradoException, 
+					FueraDeRangoDeVisionException, 
+					EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException;
+	
+	public Map<String,Accion> getAccionesDisponibles() {
+		return accionesDisponibles;
+	}
+
+	public void setAccionesDisponibles(Map<String,Accion> acciones) {
+		this.accionesDisponibles = acciones;
+	}
+	
+	public void definirAccionesDisponibles() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
+		
+	}
+	
+	public void EliminarAccionDisponible(String keyAccion){
+		accionesDisponibles.remove(keyAccion);
+	}
+	
+	public void agregarAccionDisponible(String keyAccion, Accion accion) {
+		accionesDisponibles.put(keyAccion, accion);
+	}
+
+	public void agregarEnergiaPorPasoDeTurno() {
+		
+	}
+
+	public void agregarEscudoPorPasoDeTurno() {
+		
+	}
+
+	public Costo getCosto() throws CostoInvalidoException {
+		return new Costo("0M0G");
+	}
+
+	public int getSuministro() {
+		return 0;
+	}
+
+	public int disminuirMineral() {
+		return 0;
+	}
+
+	public int disminuirGas() {
+		return 0;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+		ElementoArtificial clone = (ElementoArtificial)super.clone();
+		return clone;
+	}
+
+	public int getEnergia() {
+		return 0;
+	}
+
+	public void setEnergia(int i) {
+		
+	}
+
+	public void agregarUnidad(Elemento unidadASubir) throws UnidadLlenaException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void restarEnergiaPorAccion(int energiaNecesaria) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int obtenerAumentoDeCristalPorTurno() {
+		return 0;
+	}
+
+	public int obtenerAumentoDeGasPorTurno() {
+		return 0;
 	}
 
 }

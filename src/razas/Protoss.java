@@ -2,10 +2,16 @@ package razas;
 
 import java.io.IOException;
 
+import model.Elemento;
+import model.ElementoArtificial;
 import titiritero.dibujables.Imagen;
 import vista.edificios.VistaCentroComandoProtoss;
-import model.ElementoArtificial;
+
+import command.Accion;
+import command.CrearAsimiladorAccion;
+import command.CrearNexoMineralAccion;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
@@ -26,6 +32,22 @@ public class Protoss extends Raza {
 	public Imagen obtenerCentroDeComandos(ElementoArtificial elemento) throws IOException {
 		return new VistaCentroComandoProtoss(elemento);
 	}
+
+	@Override
+	public Accion obtenerAccionRecolectorDeMinerales(Elemento elem)throws FueraDeRangoException, CostoInvalidoException,PosicionInvalidaException {
+		return new CrearNexoMineralAccion(elem);
+	}
+
+	@Override
+	public Accion obtenerAccionRecolectorDeGas(Elemento elem) throws FueraDeRangoException,CostoInvalidoException, PosicionInvalidaException {
+		return new CrearAsimiladorAccion(elem);
+	}
+
+
+	public String toString() {
+		return "Protoss";
+	}
+
 
 
 }

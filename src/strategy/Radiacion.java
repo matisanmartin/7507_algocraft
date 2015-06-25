@@ -1,7 +1,13 @@
 package strategy;
 
+import model.Armada;
+import model.Elemento;
+import model.ElementoArtificial;
+import model.Juego;
+
 import common.Mensajes;
 import common.Posicion;
+
 import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FinDePartidaException;
@@ -11,9 +17,6 @@ import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import exceptions.PosicionInvalidaException;
 import factory.UnidadFactory;
-import model.Armada;
-import model.ElementoArtificial;
-import model.Juego;
 
 /**
  * Magia de la NaveCiencia Terran
@@ -24,7 +27,7 @@ public class Radiacion implements Strategy {
 	private static final int ENERGIA_NECESARIA=75;
 
 	@Override
-	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
+	public void realizarAccion(Elemento elementoActuante, Posicion posicionDestino) 
 	throws ElementoNoEncontradoException, FueraDeRangoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, PosicionInvalidaException {
 				
 		int energiaActual=elementoActuante.getEnergia();
@@ -42,7 +45,7 @@ public class Radiacion implements Strategy {
 			       							 .getJugadorEnemigo()
 			       							 .obtenerArmada();
 		
-		ElementoArtificial elementoAtacado = armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
+		Elemento elementoAtacado = armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
 		
 		Juego.getInstancia().getListener().seRealizoRadiacion(elementoAtacado);
 		elementoAtacado.morir();
@@ -55,7 +58,7 @@ public class Radiacion implements Strategy {
  
 		try
 		{
-			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDelante);
+			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDelante);
 			//TODO msma: Para este y todos, de encotnrarlos, deberia drenarle la vida hasta que el otro se muera, luego no.
 			// Por ahora se le saca vida para probar la funcionalidad
 			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
@@ -69,7 +72,7 @@ public class Radiacion implements Strategy {
 		
 		try
 		{
-			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDetras);
+			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDetras);
 			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 			elementoCandidato.morir();
 			Juego.getInstancia()
@@ -81,7 +84,7 @@ public class Radiacion implements Strategy {
 		
 		try
 		{
-			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDerecha);
+			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDerecha);
 			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 			elementoCandidato.morir();
 			Juego.getInstancia()
@@ -93,7 +96,7 @@ public class Radiacion implements Strategy {
 		
 		try
 		{
-			ElementoArtificial elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoIzquierda);
+			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoIzquierda);
 			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 			elementoCandidato.morir();
 			Juego.getInstancia()

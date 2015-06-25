@@ -22,12 +22,12 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.ElementoArtificial;
+import model.Elemento;
 
 public class CrearPuertoEstelarProtossAccion implements Accion {
-	ElementoArtificial elemento;
+	Elemento elemento;
 	
-	public CrearPuertoEstelarProtossAccion(ElementoArtificial elem) {
+	public CrearPuertoEstelarProtossAccion(Elemento elem) {
 		this.elemento=elem;
 	}
 	

@@ -22,6 +22,7 @@ import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
 import model.CampoBatalla;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.EspacioTerrestre;
 import model.Juego;
@@ -58,13 +59,6 @@ public class Edificio extends ElementoArtificial {
 	}
 
 	@Override
-	public void agregarUnidad(ElementoArtificial elementoActuante)
-			throws UnidadLlenaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int getCantidadDeUnidadesTransportadas() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -87,8 +81,10 @@ public class Edificio extends ElementoArtificial {
 		
 	}
 
-
-
-
-
+	@Override
+	public void agregarUnidad(Elemento unidadASubir)
+			throws UnidadLlenaException {
+		// TODO Auto-generated method stub
+		
+	}
 }
