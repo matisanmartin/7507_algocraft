@@ -42,11 +42,6 @@ public class JugadorTest {
 			
 	}
 	 
-	 @Test(expected = ColorInvalidoException.class)
-	 public void testColorInvalido() throws NombreCortoException, ColorInvalidoException {
-		 jugadorPrueba = new Jugador("12345","terran","rojo");
-		 assertEquals("12345",jugadorPrueba.getNombre());
-	 }
 	 
 	 @Test
 	 public void testConstructorOk() throws NombreCortoException, ColorInvalidoException {
