@@ -23,6 +23,7 @@ public class CampoBatalla implements ObjetoVivo {
 	private List<Elemento> elementos;
 	private EspacioTerrestre espacioTerrestre;
 	private EspacioAereo espacioAereo;
+	private ArrayList<Elemento> elementosABorrar;
 	private static CampoBatalla INSTANCIA = null;
 
 	private CampoBatalla() throws PosicionInvalidaException {
@@ -32,6 +33,7 @@ public class CampoBatalla implements ObjetoVivo {
 		this.elementos = new ArrayList<Elemento>();
 		this.espacioTerrestre = new EspacioTerrestre();
 		this.espacioAereo = new EspacioAereo();
+		this.elementosABorrar = new ArrayList<Elemento>();
 	}
 	
 	/*
@@ -180,8 +182,12 @@ public class CampoBatalla implements ObjetoVivo {
 		while(it.hasNext()) {	
 			Elemento actual = it.next();
 			
-			if(actual.getPosicion().equals(pos))
+			if(actual.getPosicion().equals(pos)){
+				this.elementosABorrar.add(actual);
 				it.remove();
+			}
+				
+				
 		}
 	}
 
@@ -224,6 +230,11 @@ public class CampoBatalla implements ObjetoVivo {
 		Juego.getInstancia().agregarUnidadAJugadorActual(centroComandoJugadorActual);	
 		Juego.getInstancia().agregarUnidadAJugadorEnemigo(centroComandoJugadorEnemigo);
 		
+	}
+
+	public ArrayList<Elemento> getElementosABorrar() {
+		// TODO Auto-generated method stub
+		return this.elementosABorrar;
 	}
 
 

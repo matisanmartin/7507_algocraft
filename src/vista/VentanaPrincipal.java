@@ -54,6 +54,7 @@ import vista.unidades.VistaNaveTransporteTerran;
 import vista.unidades.VistaScout;
 import vista.unidades.VistaZealot;
 import command.Accion;
+import controller.ControladorCampoBatalla;
 import controller.ControladorMouse;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
@@ -70,6 +71,7 @@ public class VentanaPrincipal implements JuegoListener {
 	private static JLabel labelGas;
 	private static JLabel labelCristal;
 	private static JLabel labelRaza;
+	private ControladorCampoBatalla controladorCampoBatalla;
 
 	/**
 	 * Create the application.
@@ -79,6 +81,7 @@ public class VentanaPrincipal implements JuegoListener {
 	public VentanaPrincipal() throws FueraDeRangoException, PosicionInvalidaException {
 		try {
 			initialize();
+			this.gameLoop.agregarObservador(controladorCampoBatalla);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,6 +108,9 @@ public class VentanaPrincipal implements JuegoListener {
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
 		frame.setVisible(true);
+		
+		controladorCampoBatalla = new ControladorCampoBatalla(this);
+
 		
 		//boton iniciar juego
 		JButton btnIniciar = new JButton("Iniciar");
@@ -500,6 +506,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(cristal);
 		Imagen imagen = new VistaCristal(cristal);
 		this.getGameLoop().agregar(imagen);	
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(cristal, imagen);
 		
 	}
 
