@@ -8,7 +8,7 @@ import jugador.Jugador;
 import jugador.TipoColor;
 import model.Armada;
 import model.CampoBatalla;
-import model.ElementoArtificial;
+import model.Elemento;
 import model.Juego;
 
 import org.junit.After;
@@ -122,7 +122,7 @@ public class CrearUnidadesTest {
 		Juego.getInstancia().agregarUnidadAJugadorActual(edificio);
 		contexto = new ContextoStrategy(new CrearZealot());
 		armada = Juego.getInstancia().getJugadorActual().obtenerArmada();
-		ElementoArtificial accesoObtenido = armada.obtenerElementoEnPosicion(posicionOrigen);
+		Elemento accesoObtenido = armada.obtenerElementoEnPosicion(posicionOrigen);
 		accesoObtenido.realizarAccion(contexto, posicionDestino);
 		Unidad unidad = (Unidad) Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		assertEquals(2,unidad.getTransporte());

@@ -7,6 +7,7 @@ import java.io.IOException;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.CampoBatalla;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
@@ -109,7 +110,7 @@ public class Enunciado1Test {
 		
 		
 		
-		ElementoArtificial naveCienciaObt=Juego.getInstancia()
+		Elemento naveCienciaObt=Juego.getInstancia()
 				                                          .getJugadorActual()
 				                                          .obtenerArmada()
 				                                          .obtenerElementoEnPosicion(posicionNaveCiencia);
@@ -166,7 +167,7 @@ public class Enunciado1Test {
 		
 		ContextoStrategy contexto = new ContextoStrategy(new Emp());
 		
-		ElementoArtificial naveCienciaObt=Juego.getInstancia()
+		Elemento naveCienciaObt=Juego.getInstancia()
                 .getJugadorActual()
                 .obtenerArmada()
                 .obtenerElementoEnPosicion(posicionNaveCiencia);
@@ -223,7 +224,7 @@ public class Enunciado1Test {
 		
 		ContextoStrategy contexto = new ContextoStrategy(new Emp());
 		
-		ElementoArtificial naveCienciaObt=Juego.getInstancia()
+		Elemento naveCienciaObt=Juego.getInstancia()
                 .getJugadorActual()
                 .obtenerArmada()
                 .obtenerElementoEnPosicion(posicionNaveCiencia);
@@ -235,11 +236,11 @@ public class Enunciado1Test {
 		
 		//Se verifica que el alto templario y la unidad protoss no hayan sufrido modificaciones
 		//Escudo Zealot = 60, vida Zealot = 100, Energia AltoTemplario = 50 (ya que es magica, le sacaria energia)
-		ElementoArtificial zealotRes=Juego.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionZealot);
+		Elemento zealotRes=Juego.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionZealot);
 		assertEquals(60,zealotRes.getEscudo());
 		assertEquals(100,zealotRes.getVida());
 		
-		ElementoArtificial altoTemplarioRes=Juego.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionAltoTemplario);
+		Elemento altoTemplarioRes=Juego.getInstancia().getJugadorEnemigo().obtenerArmada().obtenerElementoEnPosicion(posicionAltoTemplario);
 		assertEquals(50,altoTemplarioRes.getEnergia());
 		
 	}

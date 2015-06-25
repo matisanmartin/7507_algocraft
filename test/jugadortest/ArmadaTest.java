@@ -109,7 +109,7 @@ public class ArmadaTest {
 		armada.eliminarElementoMuertoEnPosicion(new Posicion(2,3));
 		assertEquals(1,armada.getDimensionArmada());
 		
-		ElementoArtificial ElementoUnico = armada.obtenerElementoEnPosicion(pos);
+		Elemento ElementoUnico = armada.obtenerElementoEnPosicion(pos);
 		assertEquals(true,pos.equals(ElementoUnico.getPosicion()));	
 	}
 	
@@ -119,7 +119,7 @@ public class ArmadaTest {
 		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
 		armada.agregarElemento(unidad1);
 		armada.agregarElemento(unidad2);
-		ElementoArtificial unidadObtenida = armada.obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
+		Elemento unidadObtenida = armada.obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
 		assertEquals(new Posicion(2, 3), unidadObtenida.getPosicion());
 		assertEquals(new Posicion(3,3), unidadObtenida.getPartes().get(2).getPosicion());
 		
@@ -131,7 +131,7 @@ public class ArmadaTest {
 		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
 		armada.agregarElemento(unidad1);
 		armada.agregarElemento(unidad2);
-		ElementoArtificial unidadObtenida = armada.obtenerElementoEnPosicion(new Posicion(100, 100));
+		Elemento unidadObtenida = armada.obtenerElementoEnPosicion(new Posicion(100, 100));
 		assertEquals(new Posicion(2, 3), unidadObtenida.getPosicion());
 		assertEquals(new Posicion(3,3), unidadObtenida.getPartes().get(2).getPosicion());
 		
@@ -152,7 +152,7 @@ public class ArmadaTest {
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidad1);
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidad2);
 		
-		ElementoArtificial unidadObtenida = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
+		Elemento unidadObtenida = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
 		ContextoStrategy contextoStrategy = new ContextoStrategy(new Mover());
 		unidadObtenida.realizarAccion(contextoStrategy, new Posicion(400, 400));
 //		ElementoArtificial unidadDeArmada = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(new Posicion(400,400));

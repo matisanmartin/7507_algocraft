@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
@@ -22,8 +23,10 @@ import strategy.CrearZealot;
 import strategy.Emp;
 import strategy.Mover;
 import strategy.Radiacion;
+
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -89,7 +92,7 @@ public class Enunciado8Test {
 		
 		
 		//Selecciono la barraca para crear un marine
-		ElementoArtificial barracaObt = Juego.getInstancia()
+		Elemento barracaObt = Juego.getInstancia()
 														.obtenerArmadaJugadorActual()
 														.obtenerElementoEnPosicion(posicionBarraca);
 		
@@ -107,7 +110,7 @@ public class Enunciado8Test {
 		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
 		
 		//Selecciono el acceso para obtener un zealot
-		ElementoArtificial accesoObt = Juego.getInstancia()
+		Elemento accesoObt = Juego.getInstancia()
 													  .obtenerArmadaJugadorActual()
 													  .obtenerElementoEnPosicion(posicionAcceso);
 		
@@ -120,7 +123,7 @@ public class Enunciado8Test {
 		
 		//acerco al zealot al marine
 		Posicion proximaPosicionZealot = new Posicion(4,3);
-		ElementoArtificial zealotObt = Juego.getInstancia()
+		Elemento zealotObt = Juego.getInstancia()
 														.obtenerArmadaJugadorActual()
 														.obtenerElementoEnPosicion(posicionNuevoZealot);
 
@@ -128,7 +131,7 @@ public class Enunciado8Test {
 		zealotObt.realizarAccion(contexto, proximaPosicionZealot);
 		
 		//ataco al marine
-		ElementoArtificial zealotObtDeNuevo = Juego.getInstancia()
+		Elemento zealotObtDeNuevo = Juego.getInstancia()
 																.obtenerArmadaJugadorActual()
 																.obtenerElementoEnPosicion(proximaPosicionZealot);
 		contexto = new ContextoStrategy(new Ataque());
@@ -151,7 +154,7 @@ public class Enunciado8Test {
 			
 		//jugador actual crea una nave ciencia seleccionando el puerto estelar
 		Posicion posNaveCiencia = new Posicion(5,5);
-		ElementoArtificial puertoEstelarObt = Juego.getInstancia()
+		Elemento puertoEstelarObt = Juego.getInstancia()
 																.obtenerArmadaJugadorActual()
 																.obtenerElementoEnPosicion(posPuertoEstelar);
 		
@@ -161,7 +164,7 @@ public class Enunciado8Test {
 		
 		
 		//nave ciencia ataca zealot con misil emp
-		ElementoArtificial naveCienciaObt = Juego.getInstancia()
+		Elemento naveCienciaObt = Juego.getInstancia()
 															.obtenerArmadaJugadorActual()
 															.obtenerElementoEnPosicion(posNaveCiencia);
 		
@@ -182,7 +185,7 @@ public class Enunciado8Test {
 		assertEquals(0,zealotObtDeNuevo.getEscudo());
 		
 		//nave ciencia vuelve a atacar zealot con radiacion  y zealot deberia morir, por lo tanto, partida ganada
-		ElementoArtificial naveCienciaObtDeNuevo = Juego.getInstancia()
+		Elemento naveCienciaObtDeNuevo = Juego.getInstancia()
 																	.obtenerArmadaJugadorActual()
 																	.obtenerElementoEnPosicion(posNaveCiencia);
 		
@@ -214,7 +217,7 @@ public class Enunciado8Test {
 		
 		
 		//Selecciono la barraca para crear un marine
-		ElementoArtificial barracaObt = Juego.getInstancia()
+		Elemento barracaObt = Juego.getInstancia()
 														.obtenerArmadaJugadorActual()
 														.obtenerElementoEnPosicion(posicionBarraca);
 		
@@ -232,7 +235,7 @@ public class Enunciado8Test {
 		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
 		
 		//Selecciono el acceso para obtener un zealot
-		ElementoArtificial accesoObt = Juego.getInstancia()
+		Elemento accesoObt = Juego.getInstancia()
 													  .obtenerArmadaJugadorActual()
 													  .obtenerElementoEnPosicion(posicionAcceso);
 		
@@ -244,7 +247,7 @@ public class Enunciado8Test {
 
 		//cambia el turno
 		Juego.getInstancia().cambiarTurno();
-		ElementoArtificial marine = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posicionNuevoMarine);
+		Elemento marine = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posicionNuevoMarine);
 		
 		//suicido al marine
 		marine.setVitalidad(new Vitalidad(0,0));

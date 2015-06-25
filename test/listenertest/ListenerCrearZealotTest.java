@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import jugador.Jugador;
 import jugador.TipoColor;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
@@ -14,7 +15,9 @@ import razas.Protoss;
 import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.CrearZealot;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -64,7 +67,7 @@ public class ListenerCrearZealotTest {
 		
 		Juego.getInstancia().agregarUnidadAJugadorActual(elem);
 		
-		 ElementoArtificial elemObtenido = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posEdificio);
+		 Elemento elemObtenido = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posEdificio);
 		 
 		 Posicion posicionDestino = new Posicion(12,12);
 		 elemObtenido.realizarAccion(contexto, posicionDestino);

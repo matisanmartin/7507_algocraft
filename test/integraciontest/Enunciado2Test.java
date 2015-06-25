@@ -7,6 +7,7 @@ import java.io.IOException;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.CampoBatalla;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
@@ -21,9 +22,7 @@ import strategy.Ataque;
 import strategy.ContextoStrategy;
 import strategy.Emp;
 import strategy.TormentaPsionica;
-
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -118,7 +117,7 @@ public class Enunciado2Test {
 
 		ContextoStrategy contexto = new ContextoStrategy(new TormentaPsionica());
 		
-		ElementoArtificial altoTemplarioObt = Juego.getInstancia().getJugadorActual()
+		Elemento altoTemplarioObt = Juego.getInstancia().getJugadorActual()
 																			.obtenerArmada()
 																			.obtenerElementoEnPosicion(posicionAltoTemplario);
 		
@@ -160,7 +159,7 @@ public class Enunciado2Test {
 		
 		Juego.getInstancia().getJugadorActual().agregarElemento(zealot);
 		
-		ElementoArtificial altoTemplarioObt = Juego.getInstancia().getJugadorActual()
+		Elemento altoTemplarioObt = Juego.getInstancia().getJugadorActual()
 				.obtenerArmada()
 				.obtenerElementoEnPosicion(posicionAltoTemplario);
 		
@@ -169,7 +168,7 @@ public class Enunciado2Test {
 		altoTemplarioObt.realizarAccion(contexto, posicionZealot);
 		
 		
-		ElementoArtificial zealotFicticio1 = Juego.getInstancia()
+		Elemento zealotFicticio1 = Juego.getInstancia()
 															.getJugadorActual()
 															.obtenerArmada()
 															.obtenerElementoEnPosicion(new Posicion(3,2));
@@ -179,7 +178,7 @@ public class Enunciado2Test {
 		assertEquals(0,zealotFicticio1.getVida());
 		assertEquals(60,zealotFicticio1.getEscudo());
 		
-		ElementoArtificial zealotFicticio2 = Juego.getInstancia()
+		Elemento zealotFicticio2 = Juego.getInstancia()
 															.getJugadorActual()
 															.obtenerArmada()
 															.obtenerElementoEnPosicion(new Posicion(1,2));
@@ -193,7 +192,7 @@ public class Enunciado2Test {
 		zealotFicticio1.realizarAccion(contextoZealot, posicionMarine);
 		zealotFicticio2.realizarAccion(contextoZealot, posicionMarine);
 		
-		ElementoArtificial marineObt = Juego.getInstancia()
+		Elemento marineObt = Juego.getInstancia()
 														.getJugadorEnemigo()
 														.obtenerArmada()
 														.obtenerElementoEnPosicion(posicionMarine);

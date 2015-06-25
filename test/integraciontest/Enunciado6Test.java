@@ -7,6 +7,7 @@ import java.io.IOException;
 import jugador.Jugador;
 import jugador.TipoColor;
 import model.CampoBatalla;
+import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
@@ -102,7 +103,7 @@ public class Enunciado6Test {
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
-		ElementoArtificial marine = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posMarine);
+		Elemento marine = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posMarine);
 		assertEquals(marine.getSuministro(), poblacionActual);
 		
 		Juego.getInstancia().cambiarTurno();
@@ -126,7 +127,7 @@ public class Enunciado6Test {
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
-		ElementoArtificial golliat = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posGolliat);
+		Elemento golliat = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posGolliat);
 		assertEquals(golliat.getSuministro(), poblacionActual);
 		
 		Juego.getInstancia().cambiarTurno();
@@ -151,7 +152,7 @@ public class Enunciado6Test {
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
-		ElementoArtificial espectro = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posEspectro);
+		Elemento espectro = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posEspectro);
 		assertEquals(espectro.getSuministro(), poblacionActual);
 		
 		Juego.getInstancia().cambiarTurno();
@@ -174,7 +175,7 @@ public class Enunciado6Test {
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
-		ElementoArtificial naveTransporte = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posNaveTransporte);
+		Elemento naveTransporte = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posNaveTransporte);
 		assertEquals(naveTransporte.getSuministro(), poblacionActual);
 		
 		Juego.getInstancia().cambiarTurno();
@@ -198,7 +199,7 @@ public class Enunciado6Test {
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
 		//Verifico que la poblacion actual aumento
-		ElementoArtificial naveCiencia = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posNaveCiencia);
+		Elemento naveCiencia = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posNaveCiencia);
 		assertEquals(naveCiencia.getSuministro(), poblacionActual);
 		
 		Juego.getInstancia().cambiarTurno();

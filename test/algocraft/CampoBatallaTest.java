@@ -15,11 +15,13 @@ import org.junit.runners.JUnit4;
 
 import common.Constantes;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
+import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
 import factory.UnidadFactory;
@@ -76,7 +78,7 @@ public class CampoBatallaTest {
 	
 	
 	@Test
-	public void alCrearseDebeTenerCuatroBases() throws PosicionInvalidaException, FueraDeRangoException{
+	public void alCrearseDebeTenerCuatroBases() throws PosicionInvalidaException, FueraDeRangoException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, CostoInvalidoException{
 		CampoBatalla campo = CampoBatalla.getInstancia();
 		campo.setUpBases();
 		//cantidad de bases
