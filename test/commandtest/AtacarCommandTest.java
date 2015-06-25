@@ -51,7 +51,7 @@ public class AtacarCommandTest {
 		
 		acciones = unidadPrueba.getAccionesDisponibles();
 		
-		assertEquals(1,acciones.size());
+		assertEquals(2,acciones.size());
 		assertEquals(true,acciones.containsKey("Atacar"));
 		
 		//Accion atacar = acciones.get("Atacar");
