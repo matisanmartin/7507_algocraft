@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaRefineria extends Imagen {
 	public VistaRefineria(ObjetoPosicionable modelo) throws IOException {
-		super(VistaRefineria.class.getResource("/vista/imagenes/refineria125-125.png"), modelo);
+		super(VistaRefineria.class.getResource("/vista/imagenes/refineria.png"), modelo);
 	}
 
 }

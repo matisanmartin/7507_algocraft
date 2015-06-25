@@ -30,20 +30,20 @@ public class EdificioFactory extends AbstractFactory {
 	public static final int ANCHO=2;
 	
 	//Centro mineral
-	public static final int CENTRO_MINERAL_ALTO = 2;
-	public static final int CENTRO_MINERAL_ANCHO = 2;
-	private static final int REFINERIA_ALTO = 2;
-	private static final int REFINERIA_ANCHO = 2;
+	public static final int CENTRO_MINERAL_ALTO = 40;
+	public static final int CENTRO_MINERAL_ANCHO = 40;
+	private static final int REFINERIA_ALTO = 40;
+	private static final int REFINERIA_ANCHO = 40;
 	private static final int BARRACA_ALTO = 70;
 	private static final int BARRACA_ANCHO = 70;
 	private static final int FABRICA_ALTO = 70;
 	private static final int FABRICA_ANCHO = 70;
 	private static final int PUERTO_ESTELAR_TERRAN_ALTO = 70;
 	private static final int PUERTO_ESTELAR_TERRAN_ANCHO = 70;
-	private static final int NEXO_MINERAL_ALTO = 2;
-	private static final int NEXO_MINERAL_ANCHO = 2;
-	private static final int ASIMILADOR_ALTO = 2;
-	private static final int ASIMILADOR_ANCHO = 2;
+	private static final int NEXO_MINERAL_ALTO = 40;
+	private static final int NEXO_MINERAL_ANCHO = 40;
+	private static final int ASIMILADOR_ALTO = 40;
+	private static final int ASIMILADOR_ANCHO = 40;
 	private static final int ACCESO_ALTO = 70;
 	private static final int ACCESO_ANCHO = 70;
 	private static final int PUERTO_ESTELAR_PROTOSS_ALTO = 70;

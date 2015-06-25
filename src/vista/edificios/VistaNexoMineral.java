@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaNexoMineral extends Imagen {
 	public VistaNexoMineral(ObjetoPosicionable modelo) throws IOException {
-		super(VistaNexoMineral.class.getResource("/vista/imagenes/nexoMineral96-96.png"), modelo);
+		super(VistaNexoMineral.class.getResource("/vista/imagenes/nexoMineral.png"), modelo);
 	}
 
 }

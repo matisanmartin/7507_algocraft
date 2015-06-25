@@ -103,6 +103,33 @@ public class Armada {
 //
 //		throw new ElementoNoEncontradoException();
 	}
+	
+	public void removerElementoEnPosicion(Posicion pos) {
+		
+			Iterator<Elemento> it = elementos.iterator();
+			int indice = 0;
+			
+			while(it.hasNext()){
+				Elemento actual = it.next();
+				
+				if(actual.getPosicion().equals(pos)){
+					break;
+				}
+				indice++;
+				
+			}
+			elementos.remove(indice);
+			try {
+				CampoBatalla.getInstancia().eliminarElementoEnPosicion(pos, CampoBatalla.getInstancia().getEspacioTerrestre());
+			} catch (PosicionInvalidaException | FueraDeRangoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+
+
+		
+}
 
 	public void modificarElementoEnPosicion(Posicion posicionDestino, Elemento elementoAtacado) {
 

@@ -40,7 +40,7 @@ public class ControladorMouse implements MouseListener {
 				System.out.println("click izquierdo!");
 				this.ventana.limpiarPanelDeOpciones();
 				Posicion pos = new Posicion(event.getX(), event.getY());				
-				Jugador jugador = juego.getJugadorActual();
+				Jugador jugador = juego.getJugadorActual(); 
 				//para probar
 				Armada armada = Juego.getInstancia().getJugadorActual().obtenerArmada();
 				///

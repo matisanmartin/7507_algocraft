@@ -2,14 +2,13 @@ package model;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 import titiritero.modelo.ObjetoVivo;
-
 import common.Constantes;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -44,10 +43,12 @@ public class CampoBatalla implements ObjetoVivo {
 				
 		Posicion pos = new Posicion(Constantes.POS_INICIAL_CAMPO_BATALLA, Constantes.POS_INICIAL_CAMPO_BATALLA);
 		Base base1 = new BaseSupIzq(pos);
-		this.espacioTerrestre.agregarElemento(base1.getVolcan().get(0));
+		//TODO jl:aparentemente ya lo agrega el agregarunidad 
+//		this.espacioTerrestre.agregarElemento(base1.getVolcan().get(0));
+		
 		Juego.getInstancia().agregarUnidadAJugadorActual(base1.getVolcan().get(0));
 		for (int i = 0; i < 6; i++) {
-			this.espacioTerrestre.agregarElemento(base1.getCristales().get(i));
+//			this.espacioTerrestre.agregarElemento(base1.getCristales().get(i));
 			Juego.getInstancia().agregarUnidadAJugadorActual(base1.getCristales().get(i));
 		}
 		
@@ -63,10 +64,10 @@ public class CampoBatalla implements ObjetoVivo {
 		
 		
 		Base base4 = new BaseInfDer(new Posicion(Constantes.ANCHO_DEFECTO, Constantes.ALTO_DEFECTO));
-		this.espacioTerrestre.agregarElemento(base4.getVolcan().get(0));
+//		this.espacioTerrestre.agregarElemento(base4.getVolcan().get(0));
 		Juego.getInstancia().agregarUnidadAJugadorEnemigo(base4.getVolcan().get(0));
 		for (int i = 0; i < 6; i++) {
-			this.espacioTerrestre.agregarElemento(base4.getCristales().get(i));
+//			this.espacioTerrestre.agregarElemento(base4.getCristales().get(i));
 			Juego.getInstancia().agregarUnidadAJugadorEnemigo(base4.getCristales().get(i));
 		}
 		
@@ -89,6 +90,22 @@ public class CampoBatalla implements ObjetoVivo {
 	public static void DestruirInstancia(){
 		INSTANCIA = null;
 	}
+	
+//	public void removerElementoEnPosicion(Posicion pos, Espacio espacio){
+//		Iterator<Elemento> it = espacio.getEspacio().iterator();
+//		int indice = 0;
+//		
+//		while(it.hasNext()){
+//			Elemento actual = it.next();
+//			
+//			if(actual.getPosicion().equals(pos)){
+//				break;
+//			}
+//			indice++;
+//			
+//		}
+//		espacio.getEspacio().remove(indice);
+//	}
 	
 	private synchronized static void crearInstancia() throws PosicionInvalidaException, FueraDeRangoException {
 		

@@ -328,6 +328,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(imagen);	
 		
 	}
+	
 
 	@Override
 	public void seCreoBarraca(ElementoArtificial elemento)throws FueraDeRangoException, PosicionInvalidaException, IOException {

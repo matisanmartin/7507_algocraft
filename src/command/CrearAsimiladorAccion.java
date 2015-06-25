@@ -34,7 +34,7 @@ public class CrearAsimiladorAccion implements Accion {
 	@Override
 	public void execute(Posicion posicionDestino) 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
-		elemento.realizarAccion(new ContextoStrategy(new CrearAsimilador()), posicionDestino);
+		elemento.realizarAccion(new ContextoStrategy(new CrearAsimilador()), elemento.getPosicion());
 		
 	}
 

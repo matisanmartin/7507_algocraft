@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaCentroMineral extends Imagen {
 	public VistaCentroMineral(ObjetoPosicionable modelo) throws IOException {
-		super(VistaCentroMineral.class.getResource("/vista/imagenes/centroMineral95-95.png"), modelo);
+		super(VistaCentroMineral.class.getResource("/vista/imagenes/centroMineral.png"), modelo);
 	}
 
 }

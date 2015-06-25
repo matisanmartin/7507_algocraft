@@ -7,7 +7,6 @@ import java.util.List;
 
 import model.BaseInfDer;
 import model.BaseInfIzq;
-import model.BaseSupDer;
 import model.BaseSupIzq;
 import model.CampoBatalla;
 import model.Elemento;

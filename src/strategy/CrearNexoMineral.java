@@ -29,8 +29,8 @@ public class CrearNexoMineral implements Strategy {
 	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, CostoInvalidoException, RecursosInsuficientesException, RecursosFaltantesException, PoblacionFaltanteException, FactoryInvalidaException, IOException {
 		
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
-		
 		ElementoArtificial nexoMineral = factory.getEdificio(TipoEdificio.PROTOSS_NEXO_MINERAL, posicionDestino);
+		Juego.getInstancia().getJugadorActual().obtenerArmada().removerElementoEnPosicion(posicionDestino);
 		Juego.getInstancia().agregarUnidadAJugadorActual(nexoMineral);
 		Juego.getInstancia().getListener().seCreoNexoMineral(nexoMineral);
 		

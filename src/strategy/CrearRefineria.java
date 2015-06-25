@@ -29,10 +29,11 @@ public class CrearRefineria implements Strategy {
 	throws UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, CostoInvalidoException, RecursosInsuficientesException, RecursosFaltantesException, PoblacionFaltanteException, FactoryInvalidaException, IOException {
 		
 		AbstractFactory factory = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
-		
 		ElementoArtificial refineria = factory.getEdificio(TipoEdificio.TERRAN_REFINERIA, posicionDestino);
+		Juego.getInstancia().getJugadorActual().obtenerArmada().removerElementoEnPosicion(posicionDestino);
 		Juego.getInstancia().agregarUnidadAJugadorActual(refineria);
 		Juego.getInstancia().getListener().seCreoRefineria(refineria);
+	
 		
 	}
 
