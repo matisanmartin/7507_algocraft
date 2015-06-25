@@ -86,7 +86,9 @@ public class Enunciado6Test {
 	@After
 	public void destroy(){
 		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
+	
 	/* A continuacion se prueba que la construccion de unidades sume poblacion
 	 * y que la destruccion de las mismas reste */
 	@Test
@@ -98,7 +100,7 @@ public class Enunciado6Test {
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
 		Juego.getInstancia().getJugadorActual().agregarElemento(barraca);
-		Posicion posMarine = new Posicion(1,2);
+		Posicion posMarine = new Posicion(100,2);
 		barraca.realizarAccion(contexto, posMarine);
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
@@ -122,7 +124,7 @@ public class Enunciado6Test {
 		Posicion posFabrica = new Posicion(1,1);
 		ElementoArtificial fabrica = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_FABRICA, posFabrica);
 		Juego.getInstancia().getJugadorActual().agregarElemento(fabrica);
-		Posicion posGolliat = new Posicion(1,2);
+		Posicion posGolliat = new Posicion(100,2);
 		fabrica.realizarAccion(contexto, posGolliat);
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
@@ -147,7 +149,7 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Juego.getInstancia().getJugadorActual().agregarElemento(puertoEstelar);
-		Posicion posEspectro = new Posicion(1,2);
+		Posicion posEspectro = new Posicion(100,2);
 		puertoEstelar.realizarAccion(contexto, posEspectro);
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
@@ -170,7 +172,7 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Juego.getInstancia().getJugadorActual().agregarElemento(puertoEstelar);
-		Posicion posNaveTransporte = new Posicion(1,2);
+		Posicion posNaveTransporte = new Posicion(100,2);
 		puertoEstelar.realizarAccion(contexto, posNaveTransporte);
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
@@ -194,7 +196,7 @@ public class Enunciado6Test {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Juego.getInstancia().getJugadorActual().agregarElemento(puertoEstelar);
-		Posicion posNaveCiencia = new Posicion(1,2);
+		Posicion posNaveCiencia = new Posicion(100,2);
 		puertoEstelar.realizarAccion(contexto, posNaveCiencia);
 		int poblacionActual = Juego.getInstancia().getJugadorActual().getPoblacionActual();
 		
@@ -218,7 +220,7 @@ public class Enunciado6Test {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearMarine());
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
-		Posicion posMarine = new Posicion(1,2);
+		Posicion posMarine = new Posicion(100,2);
 		barraca.realizarAccion(contexto, posMarine);
 		int poblacionActual = jugadorTerran.getPoblacionActual();
 		
@@ -257,7 +259,7 @@ public class Enunciado6Test {
 		
 		//Creo un Dragon
 		contexto = new ContextoStrategy(new CrearDragon());
-		Posicion posDragon = new Posicion(3,4);
+		Posicion posDragon = new Posicion(300,4);
 		acceso.realizarAccion(contexto, posDragon);
 		poblacionActual = jugadorProtoss.getPoblacionActual();
 		

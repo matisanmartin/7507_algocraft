@@ -50,6 +50,7 @@ public class ListenerCrearZealotTest {
 		jugadorEnemigo = new Jugador("jugador2","terran","azul");
 		jugadorActual.setMinerales(10000);
 		jugadorActual.setGas(10000);
+		jugadorActual.setPoblacionDisponible(2000);
 		
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
@@ -62,14 +63,14 @@ public class ListenerCrearZealotTest {
 		
 		EdificioFactory edificioFactory = new EdificioFactory();
 		
-		Posicion posEdificio = new Posicion(10,10);
+		Posicion posEdificio = new Posicion(189,10);
 		ElementoArtificial elem=edificioFactory.getEdificio(TipoEdificio.PROTOSS_ACCESO, posEdificio);
 		
 		Juego.getInstancia().agregarUnidadAJugadorActual(elem);
 		
 		 Elemento elemObtenido = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(posEdificio);
 		 
-		 Posicion posicionDestino = new Posicion(12,12);
+		 Posicion posicionDestino = new Posicion(120,120);
 		 elemObtenido.realizarAccion(contexto, posicionDestino);
 		
 	}

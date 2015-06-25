@@ -5,17 +5,16 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.CrearAltoTemplario;
 import strategy.CrearDepositoSuministro;
@@ -29,7 +28,9 @@ import strategy.CrearNaveTransporteTerran;
 import strategy.CrearPilon;
 import strategy.CrearScout;
 import strategy.CrearZealot;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -72,6 +73,12 @@ public class Enunciado7Test {
 	
 	}
 	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
+	}
+	
 	@Test
 	public void testAumentoDePoblacionDisponibleDepositoSuministroOk() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
@@ -83,14 +90,14 @@ public class Enunciado7Test {
 		
 		//Creo un deposito de suministros
 		ContextoStrategy contexto = new ContextoStrategy(new CrearDepositoSuministro());
-		Posicion posDepositoSuministro = new Posicion(1,1);
+		Posicion posDepositoSuministro = new Posicion(100,1);
 		centro.realizarAccion(contexto, posDepositoSuministro);
 		int poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//Debe aumentar en 5 la poblacion disponible
 		assertEquals(poblacionDisponible,5);
 		
 		//Creo otro deposito de suministros
-		posDepositoSuministro = new Posicion(2,2);
+		posDepositoSuministro = new Posicion(10,200);
 		centro.realizarAccion(contexto, posDepositoSuministro);
 		poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//Debe aumentar en 5 la poblacion disponible
@@ -108,7 +115,7 @@ public class Enunciado7Test {
 		
 		//Creo un deposito de suministros
 		ContextoStrategy contexto = new ContextoStrategy(new CrearDepositoSuministro());
-		Posicion posDepositoSuministro = new Posicion(1,1);
+		Posicion posDepositoSuministro = new Posicion(100,1);
 		centro.realizarAccion(contexto, posDepositoSuministro);
 		int poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible
@@ -118,7 +125,7 @@ public class Enunciado7Test {
 		assertEquals(exceso,5);
 		
 		//Creo otro deposito de suministros
-		posDepositoSuministro = new Posicion(2,2);
+		posDepositoSuministro = new Posicion(100,200);
 		centro.realizarAccion(contexto, posDepositoSuministro);
 		poblacionDisponible = jugadorTerran.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible
@@ -146,7 +153,7 @@ public class Enunciado7Test {
 		assertEquals(poblacionDisponible,5);
 		
 		//Creo otro deposito de suministros
-		posPilon = new Posicion(2,2);
+		posPilon = new Posicion(100,2);
 		centro.realizarAccion(contexto, posPilon);
 		poblacionDisponible = jugadorProtoss.getPoblacionDisponible();
 		//Debe aumentar en 5 la poblacion disponible
@@ -164,7 +171,7 @@ public class Enunciado7Test {
 		
 		//Creo un deposito de suministros
 		ContextoStrategy contexto = new ContextoStrategy(new CrearPilon());
-		Posicion posPilon = new Posicion(1,1);
+		Posicion posPilon = new Posicion(100,1);
 		centro.realizarAccion(contexto, posPilon);
 		int poblacionDisponible = jugadorProtoss.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible
@@ -174,7 +181,7 @@ public class Enunciado7Test {
 		assertEquals(exceso,5);
 		
 		//Creo otro deposito de suministros
-		posPilon = new Posicion(2,2);
+		posPilon = new Posicion(2,200);
 		centro.realizarAccion(contexto, posPilon);
 		poblacionDisponible = jugadorProtoss.getPoblacionDisponible();
 		//No debe aumentar la poblacion disponible

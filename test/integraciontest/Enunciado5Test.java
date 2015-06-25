@@ -61,9 +61,11 @@ public class Enunciado5Test {
 		
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		
+		
 		//Se los setea para que no haya problemas de recursos que estorben con el fin de la prueba
 		Juego.getInstancia().getJugadorActual().setGas(100000);
 		Juego.getInstancia().getJugadorActual().setMinerales(100000);
+		Juego.getInstancia().getJugadorActual().setPoblacionDisponible(20000);
 	}
 
 	
@@ -77,16 +79,16 @@ public class Enunciado5Test {
 	throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 
 		//Creo una nave de transporte
-			posNaveTransporte = new Posicion(2,3);
+			posNaveTransporte = new Posicion(29,35);
 			naveTransporte=factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posNaveTransporte);
 			Juego.getInstancia().agregarUnidadAJugadorActual(naveTransporte);
 	
 			//Creo 8 unidades
-			Posicion posMarine1= new Posicion(2,2);
+			Posicion posMarine1= new Posicion(200,2);
 			ElementoArtificial unidadMarine1= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine1);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine1);
 			
-			Posicion posMarine2= new Posicion(3,3);
+			Posicion posMarine2= new Posicion(3,300);
 			ElementoArtificial unidadMarine2= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine2);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine2);
 			
@@ -97,27 +99,27 @@ public class Enunciado5Test {
 			Posicion posMarine7;
 			Posicion posMarine8;
 
-			posMarine3 = new Posicion(4,4);
+			posMarine3 = new Posicion(400,4);
 			ElementoArtificial unidadMarine3= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine3);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine3);
 			
-			posMarine4 = new Posicion(5,5);
+			posMarine4 = new Posicion(5,500);
 			ElementoArtificial unidadMarine4= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine4);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine4);
 			
-			posMarine5 = new Posicion(6,6);
+			posMarine5 = new Posicion(600,6);
 			ElementoArtificial unidadMarine5= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine5);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine5);
 			
-			posMarine6 = new Posicion(7,7);
+			posMarine6 = new Posicion(70,500);
 			ElementoArtificial unidadMarine6= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine6);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine6);
 			
-			posMarine7 = new Posicion(8,8);
+			posMarine7 = new Posicion(800,8);
 			ElementoArtificial unidadMarine7= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine7);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine7);
 			
-			posMarine8 = new Posicion(9,9);
+			posMarine8 = new Posicion(900,200);
 			ElementoArtificial unidadMarine8= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine8);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine8);
 			
@@ -136,7 +138,7 @@ public class Enunciado5Test {
 			assertEquals(8, naveTransporte.getCantidadDeUnidadesTransportadas());
 			
 			//creo una mas
-			Posicion posMarine9= new Posicion(9,9);
+			Posicion posMarine9= new Posicion(350,500);
 			ElementoArtificial unidadMarine9= factory.getUnidad(TipoUnidad.TERRAN_MARINE, posMarine9);
 			Juego.getInstancia().agregarUnidadAJugadorActual(unidadMarine9);
 			

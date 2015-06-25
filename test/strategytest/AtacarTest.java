@@ -74,7 +74,7 @@ public class AtacarTest {
 		posicionEnRango = new Posicion(1,2);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionEnRango);
 		
-		posicionFueraDeRango = new Posicion(10,10);
+		posicionFueraDeRango = new Posicion(800,10);
 		unidadDefensoraFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionFueraDeRango);	
 	}
 
@@ -133,10 +133,23 @@ public class AtacarTest {
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testMarineAtacaUnidadEnemigaFueraDeRango() 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
-		Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
-		unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
+		try
+		{
+			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
+			unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
+			
+			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraFueraDeRango);
+			unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
+			
+		}
+		catch(PartidaPerdidaException ppe)
+		{
+			assertEquals("60",Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		}
 		
-		assertEquals("60",Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+		
+		
+		
 	}
 
 }

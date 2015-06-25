@@ -171,27 +171,6 @@ public class UnidadFactoryTest {
 		assertEquals(UnidadFactory.UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION, unidad.getTiempoConstruccion());
 	}
 	
-	//arreglar este test
-//	@Test(expected = UnidadInvalidaException.class)
-//	public void testUnidadInvalidaException() throws UnidadInvalidaException {	
-//		unidad = factory.getUnidad(TipoUnidad.ERROR);
-//	}
-	
-	@Test
-	public void testUnMarineDe2x2DeberiaTener4Partes() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException, UnidadLlenaException, DanioInvalidoException{
-		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
-		assertEquals(4,unidad.getPartes().size());
-	}
-	
-	@Test
-	public void testUnMarineDe2x2ConPosX1Y1DeberiaTenerSusPartesEnPosicionesCorrectas() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException, UnidadLlenaException, DanioInvalidoException{
-		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
-		assertEquals((new Parte(new Posicion(1, 1)).getPosicion()), unidad.getPartes().get(0).getPosicion() );
-		assertEquals((new Parte(new Posicion(1, 2)).getPosicion()), unidad.getPartes().get(1).getPosicion() );
-		assertEquals((new Parte(new Posicion(2, 1 )).getPosicion()), unidad.getPartes().get(2).getPosicion() );
-		assertEquals((new Parte(new Posicion(2, 2)).getPosicion()), unidad.getPartes().get(3).getPosicion() );
-	}
-	
 	@Test
 	public void testUnaUnidadTieneAccionAtacar() 
 	throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException, UnidadLlenaException, DanioInvalidoException {

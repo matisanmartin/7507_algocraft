@@ -74,11 +74,13 @@ public class CrearUnidadesTest {
 	public void setUp() throws NombreCortoException, ColorInvalidoException, FueraDeRangoException, PosicionInvalidaException {
 		
 		posicionOrigen=new Posicion(10,10);
-		posicionDestino = new Posicion(15,15);
+		posicionDestino = new Posicion(150,15);
 		jugadorActualTerran = new Jugador("jugador1","terran","rojo");
 		jugadorActualProtoss = new Jugador("jugador2","protoss","azul");
 		jugadorActualTerran.agregarCantidadDeCristal(2000);
 		jugadorActualTerran.agregarCantidadDeGas(2000);
+		jugadorActualTerran.setPoblacionDisponible(200000);
+		jugadorActualProtoss.setGas(20000);
 
 		Juego.getInstancia().setJugadorActual(jugadorActualTerran);
 
@@ -87,6 +89,7 @@ public class CrearUnidadesTest {
 	@After
 	public void destroy(){
 		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
 	
 	/*

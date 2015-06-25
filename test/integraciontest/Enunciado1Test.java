@@ -58,7 +58,7 @@ public class Enunciado1Test {
 	public void setUp() throws Exception {
 		
 		factoryUnidad=GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
-		posicionNaveCiencia=new Posicion(2,2);
+		posicionNaveCiencia=new Posicion(200,2);
 		naveCiencia=factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA,posicionNaveCiencia);
 //		naveCiencia.setRangoAtaque("5");//TODO borar despues y arregalr
 
@@ -73,6 +73,7 @@ public class Enunciado1Test {
 	@After
 	public void destroy(){
 		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
 	@Test
 	public void testNumero1aEnunciado() 
@@ -159,7 +160,7 @@ public class Enunciado1Test {
 		ElementoArtificial altoTemplario = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, posicionAltoTemplario);
 		Juego.getInstancia().getJugadorEnemigo().agregarElemento(altoTemplario);
 		
-		Posicion posicionOtraNaveCiencia = new Posicion(4,4);
+		Posicion posicionOtraNaveCiencia = new Posicion(45,60);
 		ElementoArtificial otraNaveCiencia = factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, posicionOtraNaveCiencia);
 		Juego.getInstancia().getJugadorActual().agregarElemento(otraNaveCiencia);
 		

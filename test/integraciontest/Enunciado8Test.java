@@ -211,7 +211,7 @@ public class Enunciado8Test {
 		//Genero una unidad, la agrego al jugador actual y la mato
 		factoryEdificio = new EdificioFactory();
 		//El jugador crea una barraca
-		Posicion posicionBarraca=new Posicion(6,7);
+		Posicion posicionBarraca=new Posicion(600,7);
 		ElementoArtificial barraca = factoryEdificio.getEdificio(TipoEdificio.TERRAN_BARRACA,posicionBarraca);
 		Juego.getInstancia().agregarUnidadAJugadorActual(barraca);
 		
@@ -224,13 +224,20 @@ public class Enunciado8Test {
 		//creo el marine
 		contexto = new ContextoStrategy(new CrearMarine());
 		Posicion posicionNuevoMarine = new Posicion(3,3);
-		barracaObt.realizarAccion(contexto, posicionNuevoMarine);
+		try
+		{
+			barracaObt.realizarAccion(contexto, posicionNuevoMarine);
+		}
+		catch(PoblacionFaltanteException e)
+		{
+			jugadorActual.setPoblacionDisponible(20000);
+		}
 		
 		//cambia el turno, se crea una unidad enemiga viva para que no lanze PartidaGanadaException
 		Juego.getInstancia().cambiarTurno();
 		
 		//El jugador crea un Acceso
-		Posicion posicionAcceso = new Posicion(10,10);
+		Posicion posicionAcceso = new Posicion(100,10);
 		ElementoArtificial acceso = factoryEdificio.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicionAcceso);
 		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
 		

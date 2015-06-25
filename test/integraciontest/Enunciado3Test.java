@@ -66,7 +66,7 @@ public class Enunciado3Test {
 		factory=new UnidadFactory();
 		
 		posUnidadAerea = new Posicion(2,2);
-		posUnidadTerrestre = new Posicion(3,3); 
+		posUnidadTerrestre = new Posicion(30,3); 
 		
 		unidadTerrestre = factory.getUnidad(TipoUnidad.TERRAN_MARINE,posUnidadTerrestre);
 		jugadorActual.agregarElemento(unidadTerrestre);

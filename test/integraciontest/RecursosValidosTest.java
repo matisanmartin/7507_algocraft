@@ -5,17 +5,16 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
+import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.CrearAltoTemplario;
 import strategy.CrearDragon;
@@ -27,7 +26,9 @@ import strategy.CrearNaveTransporteProtoss;
 import strategy.CrearNaveTransporteTerran;
 import strategy.CrearScout;
 import strategy.CrearZealot;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -69,6 +70,12 @@ public class RecursosValidosTest {
 	
 	}
 	
+	@After
+	public void destroy() {
+		Juego.destruirInstancia();
+		CampoBatalla.DestruirInstancia();
+	}
+	
 	@Test
 	public void testRecursosSuficientesMarine() throws FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		Juego.getInstancia().setJugadorActual(jugadorTerran);
@@ -80,7 +87,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearMarine());
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
-		Posicion posMarine = new Posicion(1,2);
+		Posicion posMarine = new Posicion(100,30);
 		barraca.realizarAccion(contexto, posMarine);
 		int minerales = jugadorTerran.getCantidadDeCristal();
 		int gas = jugadorTerran.getCantidadDeGas();
@@ -100,7 +107,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearMarine());
 		Posicion posBarraca = new Posicion(1,1);
 		ElementoArtificial barraca = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_BARRACA, posBarraca);
-		Posicion posMarine = new Posicion(1,2);
+		Posicion posMarine = new Posicion(100,30);
 		barraca.realizarAccion(contexto, posMarine);
 	}
 	
@@ -115,7 +122,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearGolliat());
 		Posicion posFabrica = new Posicion(1,1);
 		ElementoArtificial fabrica = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_FABRICA, posFabrica);
-		Posicion posGolliat = new Posicion(1,2);
+		Posicion posGolliat = new Posicion(100,30);
 		fabrica.realizarAccion(contexto, posGolliat);
 		int minerales = jugadorTerran.getCantidadDeCristal();
 		int gas = jugadorTerran.getCantidadDeGas();
@@ -135,7 +142,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearGolliat());
 		Posicion posFabrica = new Posicion(1,1);
 		ElementoArtificial fabrica = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_FABRICA, posFabrica);
-		Posicion posGolliat = new Posicion(1,2);
+		Posicion posGolliat = new Posicion(100,30);
 		fabrica.realizarAccion(contexto, posGolliat);
 	}
 	
@@ -150,7 +157,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearEspectro());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posEspectro = new Posicion(1,2);
+		Posicion posEspectro = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posEspectro);
 		int minerales = jugadorTerran.getCantidadDeCristal();
 		int gas = jugadorTerran.getCantidadDeGas();
@@ -171,7 +178,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearEspectro());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posEspectro = new Posicion(1,2);
+		Posicion posEspectro = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posEspectro);
 	}
 	@Test
@@ -185,7 +192,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearNaveCiencia());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posNaveCiencia = new Posicion(1,2);
+		Posicion posNaveCiencia = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posNaveCiencia);
 		int minerales = jugadorTerran.getCantidadDeCristal();
 		int gas = jugadorTerran.getCantidadDeGas();
@@ -206,7 +213,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearNaveCiencia());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posNaveCiencia = new Posicion(1,2);
+		Posicion posNaveCiencia = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posNaveCiencia);
 	}
 	@Test
@@ -220,7 +227,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearNaveTransporteTerran());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posNaveDeTransporte = new Posicion(1,2);
+		Posicion posNaveDeTransporte = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
 		int minerales = jugadorTerran.getCantidadDeCristal();
 		int gas = jugadorTerran.getCantidadDeGas();
@@ -240,7 +247,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearNaveTransporteTerran());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posNaveDeTransporte = new Posicion(1,2);
+		Posicion posNaveDeTransporte = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
 	}
 	
@@ -256,7 +263,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearZealot());
 		Posicion posAcceso = new Posicion(1,1);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
-		Posicion posZealot = new Posicion(1,2);
+		Posicion posZealot = new Posicion(100,30);
 		acceso.realizarAccion(contexto, posZealot);
 		int minerales = jugadorProtoss.getCantidadDeCristal();
 		int gas = jugadorProtoss.getCantidadDeGas();
@@ -278,7 +285,7 @@ public class RecursosValidosTest {
 		Posicion posAcceso = new Posicion(1,1);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
 		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
-		Posicion posZealot = new Posicion(1,2);
+		Posicion posZealot = new Posicion(100,30);
 		acceso.realizarAccion(contexto, posZealot);
 	}
 	
@@ -294,7 +301,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearDragon());
 		Posicion posAcceso = new Posicion(1,1);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
-		Posicion posDragon = new Posicion(1,2);
+		Posicion posDragon = new Posicion(100,30);
 		acceso.realizarAccion(contexto, posDragon);
 		int minerales = jugadorProtoss.getCantidadDeCristal();
 		int gas = jugadorProtoss.getCantidadDeGas();
@@ -315,7 +322,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearDragon());
 		Posicion posAcceso = new Posicion(1,1);
 		ElementoArtificial acceso = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ACCESO, posAcceso);
-		Posicion posDragon = new Posicion(1,2);
+		Posicion posDragon = new Posicion(100,30);
 		acceso.realizarAccion(contexto, posDragon);
 	}
 	@Test 
@@ -329,7 +336,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearNaveTransporteProtoss());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posNaveDeTransporte = new Posicion(1,2);
+		Posicion posNaveDeTransporte = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
 		int minerales = jugadorProtoss.getCantidadDeCristal();
 		int gas = jugadorProtoss.getCantidadDeGas();
@@ -351,7 +358,7 @@ public class RecursosValidosTest {
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
 		Juego.getInstancia().agregarUnidadAJugadorActual(puertoEstelar);;
-		Posicion posNaveDeTransporte = new Posicion(1,2);
+		Posicion posNaveDeTransporte = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posNaveDeTransporte);
 	}
 	
@@ -366,7 +373,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearScout());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posScout = new Posicion(1,2);
+		Posicion posScout = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posScout);
 		int minerales = jugadorProtoss.getCantidadDeCristal();
 		int gas = jugadorProtoss.getCantidadDeGas();
@@ -387,7 +394,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearScout());
 		Posicion posPuertoEstelar = new Posicion(1,1);
 		ElementoArtificial puertoEstelar = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_PUERTO_ESTELAR, posPuertoEstelar);
-		Posicion posScout = new Posicion(1,2);
+		Posicion posScout = new Posicion(100,30);
 		puertoEstelar.realizarAccion(contexto, posScout);
 	}
 	
@@ -402,7 +409,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearAltoTemplario());
 		Posicion posArchivosTemplarios = new Posicion(1,1);
 		ElementoArtificial archivosTemplarios = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posArchivosTemplarios);
-		Posicion posAltoTemplario = new Posicion(1,2);
+		Posicion posAltoTemplario = new Posicion(100,30);
 		archivosTemplarios.realizarAccion(contexto, posAltoTemplario);
 		int minerales = jugadorProtoss.getCantidadDeCristal();
 		int gas = jugadorProtoss.getCantidadDeGas();
@@ -424,7 +431,7 @@ public class RecursosValidosTest {
 		ContextoStrategy contexto = new ContextoStrategy(new CrearAltoTemplario());
 		Posicion posArchivosTemplarios = new Posicion(1,1);
 		ElementoArtificial archivosTemplarios = factoryConstruccion.getEdificio(TipoEdificio.PROTOSS_ARCHIVO_TEMPLARIO, posArchivosTemplarios);
-		Posicion posAltoTemplario = new Posicion(1,2);
+		Posicion posAltoTemplario = new Posicion(100,30);
 		archivosTemplarios.realizarAccion(contexto, posAltoTemplario);
 	}
 
