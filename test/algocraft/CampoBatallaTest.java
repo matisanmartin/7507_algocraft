@@ -111,8 +111,8 @@ public class CampoBatallaTest {
 		Unidad unidad1,unidad2,unidad3 = null;
 		UnidadFactory factory = new UnidadFactory();
 		unidad1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10, 10));
-		unidad2 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(35, 35));
-		unidad3 = factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(50, 50));
+		unidad2 = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(35, 350));
+		unidad3 = factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT, new Posicion(500, 50));
 		Parte partedeZealot = unidad3.getPartes().get(1);
 		assertEquals(new Posicion(50, 51), partedeZealot.getPosicion() );
 		assertEquals(0,CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());

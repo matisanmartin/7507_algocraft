@@ -8,15 +8,15 @@ import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import razas.Protoss;
-import razas.Terran;
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
@@ -58,6 +58,10 @@ public class JuegoControllerTest {
 		
 		jugadorActual = new Jugador("jugador1","terran","rojo");
 		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
+		
+		jugadorActual.setPoblacionDisponible(20000);
+		jugadorEnemigo.setPoblacionDisponible(200000);
+
 
 		
 		jugadorActual.setGas(1000);
@@ -72,6 +76,12 @@ public class JuegoControllerTest {
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidadActual);
 		Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadMuerta);
 		
+	}
+	
+	@After
+	public void destroy(){
+		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
 
 	//@Test
