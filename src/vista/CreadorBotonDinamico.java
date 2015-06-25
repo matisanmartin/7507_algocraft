@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
+import sonido.Reproductor;
+import sonido.TipoSonido;
 import command.Accion;
 import common.Posicion;
 import controller.ControladorMouse;
@@ -51,7 +53,8 @@ public class CreadorBotonDinamico implements ActionListener {
 					| UnidadLlenaException | RecursosFaltantesException
 					| PoblacionFaltanteException | DanioInvalidoException
 					| IOException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage(), "Error",JOptionPane.INFORMATION_MESSAGE);
+
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Error",JOptionPane.INFORMATION_MESSAGE);	
 				e1.printStackTrace();
 			}
 			VentanaPrincipal.agregarInformacionDeJugador();

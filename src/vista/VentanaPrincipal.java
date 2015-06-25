@@ -71,6 +71,7 @@ public class VentanaPrincipal implements JuegoListener {
 	private static JLabel labelGas;
 	private static JLabel labelCristal;
 	private static JLabel labelRaza;
+	private static JLabel labelPoblacion;
 	private ControladorCampoBatalla controladorCampoBatalla;
 
 	/**
@@ -102,6 +103,7 @@ public class VentanaPrincipal implements JuegoListener {
 		labelCristal=new JLabel("Cristal");
 		labelNombre= new JLabel("Nombre");
 		labelRaza = new JLabel("Raza");
+		labelPoblacion = new JLabel("Poblacion");
 		getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		getFrame().setForeground(new Color(0,0,0));
 		getFrame().setBounds(1, 1, 1366, 768);
@@ -221,6 +223,14 @@ public class VentanaPrincipal implements JuegoListener {
 		labelGas.setText("Gas: " + String.valueOf(Juego.getInstancia().getJugadorActual().getCantidadDeGas()));
 		frame.getContentPane().add(labelGas);
 		labelGas.repaint();
+		
+		//Información de poblacion actual
+		labelPoblacion.setText("");
+		//labelGas = new JLabel("Gas");
+		labelPoblacion.setBounds(900, 25, 100, 25);
+		labelPoblacion.setText("Poblacion: " + String.valueOf(Juego.getInstancia().getJugadorActual().getPoblacionActual()+"/"+ String.valueOf(Juego.getInstancia().getJugadorActual().getPoblacionDisponible())));
+		frame.getContentPane().add(labelPoblacion);
+		labelPoblacion.repaint();
 		
 		
 	}

@@ -78,7 +78,7 @@ public class Jugador {
 		this.cantidadDeCristal = 100000;
 		this.cantidadDeGas = 1000000;
 		this.poblacionActual = 0;
-		this.poblacionDisponible = 10000;
+		this.poblacionDisponible = 180;
 		this.excesoPoblacion = 0;
 	}
 	

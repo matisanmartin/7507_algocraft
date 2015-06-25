@@ -53,6 +53,6 @@ public class Reproductor {
 		obtenerSonido(nombreSonido).loop();
 	}
 	public void playSonido(TipoSonido nombreSonido) {
-		obtenerSonido(nombreSonido).loop();
+		obtenerSonido(nombreSonido).play();
 	}
 }

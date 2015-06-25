@@ -16,6 +16,8 @@ import jugador.TipoColor;
 import listener.JuegoListener;
 import razas.Protoss;
 import razas.Terran;
+import sonido.Reproductor;
+import sonido.TipoSonido;
 import turno.TimerCambioDeTurno;
 import vista.VentanaPrincipal;
 import common.Mensajes;
@@ -311,7 +313,9 @@ public class Juego {
 //					Juego.getInstancia().setJugadorActual(jugadorActual);
 //					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
 					
-//					//Se setean las bases
+//					//Se reproduce la musica
+					Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
+					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
 
 					//Se setean los centros de comando
@@ -321,7 +325,7 @@ public class Juego {
 					Timer tiempoDeTurno = new Timer();
 					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
 //					tiempoDeTurno.schedule(cambioDeTurno,10000, 10000);
-					tiempoDeTurno.schedule(cambioDeTurno,25000, 25000);
+					tiempoDeTurno.schedule(cambioDeTurno,120000, 120000);
 						
 					}
 				catch (Exception e){

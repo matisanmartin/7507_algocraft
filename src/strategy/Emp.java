@@ -63,7 +63,6 @@ public class Emp implements Strategy {
 			Posicion posTemporal = elementoAtacado.getPosicion();
 			
 			int distanciaTemp = posTemporal.getDistancia(posicionDestino);
-			distanciaTemp=distanciaTemp*factor;
 			
 			//Valido que este en el radio y que no sea el elemento que actua
 			//En principio, no podria atacar a una unidad que este en otro espacio y misma posicion
