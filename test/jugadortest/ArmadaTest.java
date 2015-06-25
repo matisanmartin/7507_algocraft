@@ -66,17 +66,17 @@ public class ArmadaTest {
 		armada=new Armada();
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		
-		unidadMuerta = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
+		unidadMuerta = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 100));
 		unidadMuerta.posicionar(pos);
 		unidadMuerta.setVitalidad(new Vitalidad(0,0));
 		
-		unidadMuertaNueva = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(1, 1));
+		unidadMuertaNueva = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(200, 1));
 		unidadMuertaNueva.setVitalidad(new Vitalidad(0,0));
 		unidadMuertaNueva.posicionar(new Posicion(2,3));
 	}
 	
 	@After
-	public void detroy(){
+	public void destroy(){
 		Juego.destruirInstancia();
 		CampoBatalla.DestruirInstancia();
 	}
@@ -113,17 +113,6 @@ public class ArmadaTest {
 		assertEquals(true,pos.equals(ElementoUnico.getPosicion()));	
 	}
 	
-	@Test 
-	public void deberiaRetornarElementoQueContieneLaParte() throws PosicionInvalidaException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, DanioInvalidoException, UnidadLlenaException, ElementoNoEncontradoException{
-		Unidad unidad1 = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(50, 50));
-		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
-		armada.agregarElemento(unidad1);
-		armada.agregarElemento(unidad2);
-		Elemento unidadObtenida = armada.obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
-		assertEquals(new Posicion(2, 3), unidadObtenida.getPosicion());
-		assertEquals(new Posicion(3,3), unidadObtenida.getPartes().get(2).getPosicion());
-		
-	}
 	
 	@Test (expected = ElementoNoEncontradoException.class)
 	public void noDeberiaRetornarElementoQueContieneLaParte() throws PosicionInvalidaException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, DanioInvalidoException, UnidadLlenaException, ElementoNoEncontradoException{
@@ -146,6 +135,8 @@ public class ArmadaTest {
 		
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+		
+		jugadorActual.setPoblacionDisponible(20000);
 		
 		Unidad unidad1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(50, 50));
 		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
