@@ -99,12 +99,60 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 //		this.posicion = posicion;
 //	}
 	
+//	public void setPosicion(Posicion posicionDestino) {
+//		int deltaX = Math.abs(this.posicion.getX() - posicionDestino.getX());
+//		int deltaY = Math.abs(this.posicion.getY() - posicionDestino.getY());
+//		
+//		//se mueve hacia abajo y hacia la derecha 
+//		if ( (posicionDestino.getX() >= this.posicion.getX() && (posicionDestino.getY() >= this.posicion.getY()) ) ){
+//			for (Parte parte : partes) {
+//				int parteX = parte.getPosicion().getX();
+//				int parteY = parte.getPosicion().getY();
+//				parte.getPosicion().setPosX(parteX + deltaX);
+//				parte.getPosicion().setPosY(parteY + deltaY); 
+//			}
+//		}
+//		//se mueve hacia abajo y hacia la izquierda
+//		if ( (posicionDestino.getX() <= this.posicion.getX() && (posicionDestino.getY() >= this.posicion.getY()) ) ){
+//			for (Parte parte : partes) {
+//				int parteX = parte.getPosicion().getX();
+//				int parteY = parte.getPosicion().getY();
+//				parte.getPosicion().setPosX(parteX - deltaX);
+//				parte.getPosicion().setPosY(parteY + deltaY); 
+//			}
+//		}
+//		
+//		//se mueve hacia arriba y hacia la derecha
+//		if ( (posicionDestino.getX() >= this.posicion.getX() && (posicionDestino.getY() <= this.posicion.getY()) ) ){
+//			for (Parte parte : partes) {
+//				int parteX = parte.getPosicion().getX();
+//				int parteY = parte.getPosicion().getY();
+//				parte.getPosicion().setPosX(parteX + deltaX);
+//				parte.getPosicion().setPosY(parteY - deltaY); 
+//			}
+//		}
+//		
+//		//se mueve hacia arriba y hacia la izquierda
+//		if ( (posicionDestino.getX() <= this.posicion.getX() && (posicionDestino.getY() <= this.posicion.getY()) ) ){
+//			for (Parte parte : partes) {
+//				int parteX = parte.getPosicion().getX();
+//				int parteY = parte.getPosicion().getY();
+//				parte.getPosicion().setPosX(parteX - deltaX);
+//				parte.getPosicion().setPosY(parteY - deltaY); 
+//			}
+//		}
+//		
+//		
+//		
+//		this.posicion = posicionDestino;
+//	}
+	
 	public void setPosicion(Posicion posicionDestino) {
 		int deltaX = Math.abs(this.posicion.getX() - posicionDestino.getX());
 		int deltaY = Math.abs(this.posicion.getY() - posicionDestino.getY());
 		
 		//se mueve hacia abajo y hacia la derecha 
-		if ( (posicionDestino.getX() >= this.posicion.getX() && (posicionDestino.getY() >= this.posicion.getY()) ) ){
+		if ( (posicionDestino.getX() > this.posicion.getX() && (posicionDestino.getY() > this.posicion.getY()) ) ){
 			for (Parte parte : partes) {
 				int parteX = parte.getPosicion().getX();
 				int parteY = parte.getPosicion().getY();
@@ -113,7 +161,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 			}
 		}
 		//se mueve hacia abajo y hacia la izquierda
-		if ( (posicionDestino.getX() <= this.posicion.getX() && (posicionDestino.getY() >= this.posicion.getY()) ) ){
+		if ( (posicionDestino.getX() < this.posicion.getX() && (posicionDestino.getY() > this.posicion.getY()) ) ){
 			for (Parte parte : partes) {
 				int parteX = parte.getPosicion().getX();
 				int parteY = parte.getPosicion().getY();
@@ -123,7 +171,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 		}
 		
 		//se mueve hacia arriba y hacia la derecha
-		if ( (posicionDestino.getX() >= this.posicion.getX() && (posicionDestino.getY() <= this.posicion.getY()) ) ){
+		if ( (posicionDestino.getX() > this.posicion.getX() && (posicionDestino.getY() < this.posicion.getY()) ) ){
 			for (Parte parte : partes) {
 				int parteX = parte.getPosicion().getX();
 				int parteY = parte.getPosicion().getY();
@@ -133,7 +181,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 		}
 		
 		//se mueve hacia arriba y hacia la izquierda
-		if ( (posicionDestino.getX() <= this.posicion.getX() && (posicionDestino.getY() <= this.posicion.getY()) ) ){
+		if ( (posicionDestino.getX() < this.posicion.getX() && (posicionDestino.getY() < this.posicion.getY()) ) ){
 			for (Parte parte : partes) {
 				int parteX = parte.getPosicion().getX();
 				int parteY = parte.getPosicion().getY();
@@ -142,7 +190,45 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 			}
 		}
 		
+		//arriba
+		if ( (posicionDestino.getX() == this.posicion.getX() && (posicionDestino.getY() < this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX);
+				parte.getPosicion().setPosY(parteY - deltaY); 
+			}
+		}
 		
+		//abajo
+		if ( (posicionDestino.getX() == this.posicion.getX() && (posicionDestino.getY() > this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX);
+				parte.getPosicion().setPosY(parteY + deltaY); 
+			}
+		}
+		
+		//derecha
+		if ( (posicionDestino.getX() > this.posicion.getX() && (posicionDestino.getY() == this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX + deltaX);
+				parte.getPosicion().setPosY(parteY); 
+			}
+		}
+		
+		//izquierda
+		if ( (posicionDestino.getX() < this.posicion.getX() && (posicionDestino.getY() == this.posicion.getY()) ) ){
+			for (Parte parte : partes) {
+				int parteX = parte.getPosicion().getX();
+				int parteY = parte.getPosicion().getY();
+				parte.getPosicion().setPosX(parteX - deltaX);
+				parte.getPosicion().setPosY(parteY); 
+			}
+		}
 		
 		this.posicion = posicionDestino;
 	}

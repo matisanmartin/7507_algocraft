@@ -288,7 +288,7 @@ public class Juego {
 					//Se setea el comienzo de los turnos
 					Timer tiempoDeTurno = new Timer();
 					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
-					tiempoDeTurno.schedule(cambioDeTurno,10000, 10000);
+					tiempoDeTurno.schedule(cambioDeTurno,5000000, 500000);
 						
 					}
 				catch (Exception e){

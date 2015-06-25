@@ -60,8 +60,57 @@ public abstract class ElementoArtificial extends Elemento  {
 	}
 	
 	
-	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException, PosicionInvalidaException {	
-		setPosicion(new Posicion(nuevaPosicion.getX(),nuevaPosicion.getY()));
+//	public void mover(Posicion nuevaPosicion) throws FueraDeRangoException, PosicionInvalidaException {	
+//		setPosicion(new Posicion(nuevaPosicion.getX(),nuevaPosicion.getY()));
+//	}
+	
+	public void mover(Posicion posicionDestino) throws FueraDeRangoException, PosicionInvalidaException {
+		int posPartidaX = this.getPosicion().getX();
+		int posPartidaY = this.getPosicion().getY();
+		int [] proximo = null;
+		boolean sigue = true;
+		while (sigue) {
+			proximo = this.getProximoPunto(posPartidaX, posPartidaY, posicionDestino.getX(), posicionDestino.getY());
+			posPartidaX = proximo[0];
+			posPartidaY = proximo[1];
+			this.setPosicion(new Posicion(posPartidaX, posPartidaY));
+			if ((proximo[0] == posicionDestino.getX()) && (proximo[1] == posicionDestino.getY())){
+				sigue = false;
+			}
+
+
+		}
+		
+		
+	}
+	
+	public int[] getProximoPunto(int x,int y,int x2, int y2) {
+	    int w = x2 - x;
+	    int h = y2 - y;
+	    int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0;
+	    if (w<0) dx1 = -1; else if (w>0) dx1 = 1;
+	    if (h<0) dy1 = -1; else if (h>0) dy1 = 1;
+	    if (w<0) dx2 = -1; else if (w>0) dx2 = 1;
+	    int longest = Math.abs(w);
+	    int shortest = Math.abs(h);
+	    if (!(longest>shortest)) {
+	        longest = Math.abs(h);
+	        shortest = Math.abs(w);
+	        if (h<0) dy2 = -1; else if (h>0) dy2 = 1;
+	        dx2 = 0;            
+	    }
+	    int numerator = longest >> 1;
+	    numerator += shortest;
+	    if (!(numerator<longest)) {
+	        numerator -= longest;
+	        x += dx1;
+	        y += dy1;
+	    } else {
+	        x += dx2;
+	        y += dy2;
+	    }
+	    int[] res = {x, y};
+	    return res;
 	}
 
 	public void agregarEnergiaPorPasoDeTurno() {
