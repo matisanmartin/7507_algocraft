@@ -31,8 +31,9 @@ public class TormentaPsionica implements Strategy {
 			throw new EnergiaInsuficienteException(Mensajes.MSJ_ERROR_ENERGIA_INSUFICIENTE);
 		
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
+		int factor=elementoActuante.getAncho();
 
-		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
+		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
 		List<ElementoArtificial> armadaEnemiga=Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada();
@@ -46,8 +47,9 @@ public class TormentaPsionica implements Strategy {
 			Posicion posicionTemporal = elementoTemporalAtacado.getPosicion();
 			
 			int distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
+			distanciaTemp=distanciaTemp*factor;
 			
-			if(distanciaTemp<RANGO_ATAQUE_TORMENTA_PSIONICA){
+			if(distanciaTemp<RANGO_ATAQUE_TORMENTA_PSIONICA*factor){
 				Juego.getInstancia().getListener().seRealizoTormentaPsionica(elementoTemporalAtacado);
 				elementoTemporalAtacado.restarVitalidad(DAÑO_TORMENTA_PSIONICA);
 				it.set(elementoTemporalAtacado);

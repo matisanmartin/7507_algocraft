@@ -32,10 +32,10 @@ public class Radiacion implements Strategy {
 		if(energiaActual<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException(Mensajes.MSJ_ERROR_ENERGIA_INSUFICIENTE);
 		
-		//TODO msma: Test para rango de vision
+		int factor = elementoActuante.getAncho();
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		//Long distanciaNum = Long.parseLong(distancia);
-		if(distancia>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION)
+		
+		if(distancia>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
 		Armada armadaEnemiga = Juego.getInstancia()
@@ -47,10 +47,10 @@ public class Radiacion implements Strategy {
 		Juego.getInstancia().getListener().seRealizoRadiacion(elementoAtacado);
 		elementoAtacado.morir();
 		
-		Posicion posicionElementoDerecha 	= new Posicion(posicionDestino.getX()+1,posicionDestino.getY());
-		Posicion posicionElementoIzquierda 	= new Posicion(posicionDestino.getX()-1,posicionDestino.getY());
-		Posicion posicionElementoDetras		= new Posicion(posicionDestino.getX(),posicionDestino.getY()+1);
-		Posicion posicionElementoDelante	= new Posicion(posicionDestino.getX(),posicionDestino.getY()-1);
+		Posicion posicionElementoDerecha 	= new Posicion(posicionDestino.getX()+1+factor,posicionDestino.getY());
+		Posicion posicionElementoIzquierda 	= new Posicion(posicionDestino.getX()-1-factor,posicionDestino.getY());
+		Posicion posicionElementoDetras		= new Posicion(posicionDestino.getX(),posicionDestino.getY()+1+factor);
+		Posicion posicionElementoDelante	= new Posicion(posicionDestino.getX(),posicionDestino.getY()-1-factor);
 		
  
 		try

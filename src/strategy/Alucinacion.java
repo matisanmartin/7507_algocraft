@@ -43,10 +43,10 @@ public class Alucinacion implements Strategy {
 		if(energiaActual<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException(Mensajes.MSJ_ERROR_ENERGIA_INSUFICIENTE);
 		
+		int factor = elementoActuante.getAncho();
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		//Long distanciaNum = Long.parseLong(distancia);
 		
-		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION)
+		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
 		int posX=elementoActuante.getPosicion().getX();
@@ -54,7 +54,7 @@ public class Alucinacion implements Strategy {
 		
 		//TODO msma: podria mejorarse y que la posicion ficticia sea aleatoria en un rango acotado cerca de la unidad
 		//TODO msma: Si se cambian estas posiciones, van a fallar luego los tests, ojo, repararlos!!
-		Posicion posicionFicticia1 = new Posicion(posX+1,posY);
+		Posicion posicionFicticia1 = new Posicion(posX+1+factor,posY);
 		ElementoArtificial elementoCopiado = Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
 		ElementoArtificial copiaFicticia1 = (ElementoArtificial) elementoCopiado.clone();
 		copiaFicticia1.setPosicion(posicionFicticia1);
@@ -62,7 +62,7 @@ public class Alucinacion implements Strategy {
 		Danio danioNulo = new Danio("0A0T");
 		((Unidad) copiaFicticia1).setDanio(danioNulo);//TODO casteo temporal
 	
-		Posicion posicionFicticia2 = new Posicion(posX-1,posY);
+		Posicion posicionFicticia2 = new Posicion(posX-1-factor,posY);
 		ElementoArtificial copiaFicticia2 = (ElementoArtificial)copiaFicticia1.clone();
 		copiaFicticia2.setPosicion(posicionFicticia2);
 		copiaFicticia2.getVitalidad().setVida(0);	

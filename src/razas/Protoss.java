@@ -1,5 +1,9 @@
 package razas;
 
+import java.io.IOException;
+
+import titiritero.dibujables.Imagen;
+import vista.edificios.VistaCentroComandoProtoss;
 import model.ElementoArtificial;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
@@ -13,12 +17,14 @@ import factory.construcciones.TipoEdificio;
 public class Protoss extends Raza {
 
 	@Override
-	public ElementoArtificial obtenerCentroDeComandos() throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
+	public ElementoArtificial obtenerCentroDeComandos(Posicion pos) throws FueraDeRangoException, CostoInvalidoException, PosicionInvalidaException {
 		AbstractFactory factory = new EdificioFactory();
-		
-		//TODO DEFINIR POSICION
-		Posicion posicionCdc = new Posicion(1,1);
-		return factory.getEdificio(TipoEdificio.PROTOSS_CENTRO_COMANDO,posicionCdc);
+		return factory.getEdificio(TipoEdificio.PROTOSS_CENTRO_COMANDO,pos);
+	}
+
+	@Override
+	public Imagen obtenerCentroDeComandos(ElementoArtificial elemento) throws IOException {
+		return new VistaCentroComandoProtoss(elemento);
 	}
 
 

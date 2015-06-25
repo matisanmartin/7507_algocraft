@@ -33,11 +33,11 @@ public class Emp implements Strategy {
 		if(energiaActual<ENERGIA_NECESARIA)
 			throw new EnergiaInsuficienteException(Mensajes.MSJ_ERROR_ENERGIA_INSUFICIENTE);
 		
+		int factor = elementoActuante.getAncho();
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
-		//Long distanciaNum = Long.parseLong(distancia);
 		
 		//TODO msma: Test para rango de vision
-		if(distancia>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION)
+		if(distancia>UnidadFactory.UNIDAD_NAVE_CIENCIA_VISION*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
 		Espacio espacioElementoActuante = elementoActuante.obtenerEspacio();
@@ -57,18 +57,19 @@ public class Emp implements Strategy {
 		
 		while(it.hasNext()){
 			
-			Elemento elemTemporalAtacado = it.next();
-			Posicion posTemporal = elemTemporalAtacado.getPosicion();
+			Elemento elementoAtacado = it.next();
+			Posicion posTemporal = elementoAtacado.getPosicion();
 			
 			int distanciaTemp = posTemporal.getDistancia(posicionDestino);
-			//Long distanciaNumTemp = Long.parseLong(distanciaTemp);
+			distanciaTemp=distanciaTemp*factor;
 			
 			//Valido que este en el radio y que no sea el elemento que actua
 			//En principio, no podria atacar a una unidad que este en otro espacio y misma posicion
-			if(distanciaTemp<RADIO_ACCION_MISIL_EMP&&!posTemporal.equals(elementoActuante.getPosicion())){
-				Juego.getInstancia().getListener().seRealizoEmp((ElementoArtificial)elemTemporalAtacado);
-				elemTemporalAtacado.recibirEmp();
-				it.set(elemTemporalAtacado);
+			if(distanciaTemp<RADIO_ACCION_MISIL_EMP*factor&&!(elementoAtacado.posicionEsParte(posicionDestino)))
+			{
+				Juego.getInstancia().getListener().seRealizoEmp((ElementoArtificial)elementoAtacado);
+				elementoAtacado.recibirEmp();
+				it.set(elementoAtacado);
 	
 			}
 		}

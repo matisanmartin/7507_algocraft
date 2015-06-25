@@ -2,6 +2,7 @@ package listener;
 
 import java.io.IOException;
 
+import razas.Raza;
 import recursos.Cristal;
 import model.Elemento;
 import model.ElementoArtificial;
@@ -71,6 +72,9 @@ public interface JuegoListener {
 	public void seCreoCristal(Cristal cristal) throws IOException, FueraDeRangoException, PosicionInvalidaException;
 
 	void seMurioUnaUnidad();
+
+	public void seCreoCentroDeComandos(
+			ElementoArtificial centroComandoJugadorActual, Raza raza) throws IOException;
 
 	
 

@@ -19,6 +19,7 @@ import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 import model.UnidadModelo;
+import razas.Raza;
 import recursos.Cristal;
 import sonido.Reproductor;
 import sonido.TipoSonido;
@@ -211,7 +212,8 @@ public class VentanaPrincipal implements JuegoListener {
 	
 	public void limpiarPanelDeOpciones(){
 		for (JButton jButton : botonesAccion) {
-			frame.getContentPane().remove(jButton);
+			jButton.setVisible(false);
+			//frame.getContentPane().remove(jButton);
 		}
 		
 	}
@@ -520,6 +522,14 @@ public class VentanaPrincipal implements JuegoListener {
 		Imagen imagen = new VistaCentroComandoProtoss(elemento);
 		this.getGameLoop().agregar(imagen);
 	}
+
+	@Override
+	public void seCreoCentroDeComandos(ElementoArtificial centroComandoJugadorActual, Raza raza) throws IOException {
+		Imagen vista = raza.obtenerCentroDeComandos(centroComandoJugadorActual);
+		this.getGameLoop().agregar(vista);
+	}
+
+
 	
 	
 

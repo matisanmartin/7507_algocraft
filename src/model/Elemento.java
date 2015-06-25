@@ -183,4 +183,13 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable{
 		System.out.println("Clase elemento viviendo");
 	}
 
+	public boolean posicionEsParte(Posicion posicionDestino) {
+		
+		for (Parte parteActual : partes) {
+			if(parteActual.posicionEsParte(posicionDestino))
+				return true;
+		}
+		return false;
+	}
+
 }

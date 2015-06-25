@@ -1,15 +1,21 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
 import titiritero.modelo.ObjetoVivo;
+
 import common.Constantes;
 import common.Posicion;
-import algocraft.CampoBatallaTest;
+
+import exceptions.CostoInvalidoException;
+import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
+import exceptions.RecursosInsuficientesException;
 
 public class CampoBatalla implements ObjetoVivo {
 	
@@ -185,6 +191,19 @@ public class CampoBatalla implements ObjetoVivo {
 	@Override
 	public void vivir() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	public void setUpCentros() throws FueraDeRangoException, PosicionInvalidaException, IOException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, CostoInvalidoException {
+		
+		ElementoArtificial centroComandoJugadorActual = Juego.getInstancia().getJugadorActual().getRaza().obtenerCentroDeComandos(new Posicion(80,80));
+		ElementoArtificial centroComandoJugadorEnemigo = Juego.getInstancia().getJugadorEnemigo().getRaza().obtenerCentroDeComandos(new Posicion(860,460));
+		
+		Juego.getInstancia().getListener().seCreoCentroDeComandos(centroComandoJugadorActual,Juego.getInstancia().getJugadorActual().getRaza());
+		Juego.getInstancia().getListener().seCreoCentroDeComandos(centroComandoJugadorEnemigo,Juego.getInstancia().getJugadorEnemigo().getRaza());
+		
+		Juego.getInstancia().agregarUnidadAJugadorActual(centroComandoJugadorActual);	
+		Juego.getInstancia().agregarUnidadAJugadorEnemigo(centroComandoJugadorEnemigo);
 		
 	}
 

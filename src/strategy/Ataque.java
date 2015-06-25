@@ -1,4 +1,5 @@
 package strategy;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -18,6 +19,7 @@ import model.Elemento;
 import model.ElementoArtificial;
 import model.Espacio;
 import model.Juego;
+import model.Parte;
 
 public class Ataque implements Strategy {
 
@@ -25,16 +27,14 @@ public class Ataque implements Strategy {
 	public void realizarAccion(ElementoArtificial elementoActuante, Posicion posicionDestino) 
 	throws FactoryInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, PosicionInvalidaException, FueraDeRangoException {
 				
+		int factor = elementoActuante.getAncho();
 		int distancia = posicionDestino.getDistancia(elementoActuante.getPosicion());
 		
 		int rangoDeVisionElementoActuante=((Unidad)elementoActuante).getVision();
 		
-		//TODO msma: Test para excepcion FueraDeRangoDeVisionException
-		if(distancia>rangoDeVisionElementoActuante)
+		if(distancia>rangoDeVisionElementoActuante*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 	
-		//Armada armadaEnemiga=JuegoController.getInstancia().obtenerArmadaJugadorEnemigo();
-		//ElementoArtificial elementoAtacado=armadaEnemiga.obtenerElementoEnPosicion(posicionDestino);
 		List<Elemento> elementosAtacados=CampoBatalla.getInstancia().obtenerElementosEnEspacio(elementoActuante.obtenerEspacio());
 		
 		
@@ -43,19 +43,22 @@ public class Ataque implements Strategy {
 		
 		while(it.hasNext()) {
 			
-			Elemento elementoTemporal = it.next();
-			
-			if(elementoTemporal.getPosicion().equals(posicionDestino)) {
-				Espacio espacioTemporal = ((ElementoArtificial) elementoTemporal).obtenerEspacio();
+			//Obtengo la unidad atacada
+			Elemento elementoAtacado = it.next();
+
+			//Me fijo que la posición de destino sea parte de la unidad atacada
+			if(elementoAtacado.posicionEsParte(posicionDestino)) 
+			{
+				Espacio espacioTemporal = ((ElementoArtificial) elementoAtacado).obtenerEspacio();
 				
-				int danioAtaqueNum=espacioTemporal.getDanio(((Unidad) elementoTemporal).getDanio());
+				int danioAtaqueNum=espacioTemporal.getDanio(((Unidad) elementoAtacado).getDanio());
 				int rangoAtaqueAtacante = espacioUnidad.getRangoDeAtaque(((Unidad) elementoActuante).getRangoAtaque());
-				//TODO msma: Test para distancia menor y test para distancia mayor
-				if(distancia<=rangoAtaqueAtacante){
-					elementoTemporal.restarVitalidad(danioAtaqueNum);
-					it.set(elementoTemporal);
-					Juego.getInstancia().getListener().seRealizoAtaque((ElementoArtificial)elementoTemporal);
-					//break;
+				
+				if(distancia<=rangoAtaqueAtacante*factor)
+				{
+					elementoAtacado.restarVitalidad(danioAtaqueNum);
+					it.set(elementoAtacado);
+					Juego.getInstancia().getListener().seRealizoAtaque((ElementoArtificial)elementoAtacado);
 				}
 			}
 		}

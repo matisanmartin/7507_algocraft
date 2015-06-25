@@ -268,26 +268,15 @@ public class Juego {
 					
 //					//Se setean las bases
 					CampoBatalla.getInstancia().setUpBases();
-					CentroComandoTerran centro = new CentroComandoTerran(70, 70, new Posicion(80, 80));
-					Juego.getInstancia().getListener().seCreoCentroDeComandoTerran(centro);
-					Juego.getInstancia().agregarUnidadAJugadorActual(centro);
-					
-					CentroComandoProtoss centroProtoss = new CentroComandoProtoss(70, 70, new Posicion(860, 460));
-					Juego.getInstancia().getListener().seCreoCentroDeComandoProtoss(centroProtoss);
-					Juego.getInstancia().agregarUnidadAJugadorActual(centroProtoss);
-					
-//					centro.morir();
-//					Juego.getInstancia().obtenerArmadaJugadorActual().eliminarElementoMuertoEnPosicion( new Posicion(80, 80));
 
+					//Se setean los centros de comando
+					CampoBatalla.getInstancia().setUpCentros();
+
+					//Se setea el comienzo de los turnos
 					Timer tiempoDeTurno = new Timer();
-					
 					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
-					
-					//El tiempo que se pasa es en milisegundos
-					tiempoDeTurno.schedule(cambioDeTurno,5000000, 5000000);
-			
-										
-							
+					tiempoDeTurno.schedule(cambioDeTurno,150000, 150000);
+						
 					}
 				catch (Exception e){
 					e.printStackTrace();
