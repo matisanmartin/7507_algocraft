@@ -93,10 +93,13 @@ public class Jugador {
 		
 		this.nombre=nombre;
 		this.color=color;
-		this.poblacionActual = 0;
+//		this.poblacionActual = 0;
 		this.excesoPoblacion = 0;
 		
-		this.cantidadDeCristal=200;
+		//this.cantidadDeCristal=200;
+		this.cantidadDeCristal = 1000000;
+		this.cantidadDeGas = 100000;
+		this.poblacionDisponible = 1000000;
 		
 		armada= new Armada();
 	

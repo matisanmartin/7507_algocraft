@@ -268,6 +268,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 
 	public void morir() throws ElementoNoEncontradoException {
 		setVitalidad(new Vitalidad(0,0));
+		Juego.getInstancia().getJugadorEnemigo().obtenerArmada().removerElementoEnPosicion(this.getPosicion());
 		Juego.getInstancia().getListener().seMurioUnaUnidad(this);
 		
 	}

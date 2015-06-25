@@ -253,6 +253,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaMarine(elemento);
 		this.getGameLoop().agregar(imagen);	
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -260,6 +261,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaGolliat(elemento);
 		this.getGameLoop().agregar(imagen);	
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 		
 	}
 
@@ -267,7 +269,9 @@ public class VentanaPrincipal implements JuegoListener {
 	public void seCreoEspectro(ElementoArtificial elemento) throws FueraDeRangoException, PosicionInvalidaException, IOException {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaEspectro(elemento);
-		this.getGameLoop().agregar(imagen);	
+		this.getGameLoop().agregar(imagen);
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
+		
 		
 	}
 
@@ -276,6 +280,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaNaveCiencia(elemento);
 		this.getGameLoop().agregar(imagen);	
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 		
 	}
 
@@ -284,7 +289,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaNaveTransporteTerran(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -292,14 +297,16 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaZealot(elemento);
 		this.getGameLoop().agregar(imagen);
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
+	
 	}
 
 	@Override
 	public void seCreoDragon(ElementoArtificial elemento)  throws FueraDeRangoException, PosicionInvalidaException, IOException {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaDragon(elemento);
-		this.getGameLoop().agregar(imagen);	
+		this.getGameLoop().agregar(imagen);
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 		
 	}
 
@@ -308,7 +315,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaScout(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -316,7 +323,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaAltoTemplario(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -324,7 +331,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaNaveTransporteProtoss(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -332,7 +339,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaCentroMineral(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 	
 
@@ -341,7 +348,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaBarraca(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -349,7 +356,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaDepositoDeSuministros(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -357,7 +364,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaRefineria(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -365,7 +372,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaFabrica(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -373,7 +380,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaPuertoEstelarTerran(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -381,7 +388,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaNexoMineral(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -389,7 +396,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaPilon(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -397,7 +404,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaAsimilador(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -405,7 +412,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaAcceso(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -413,7 +420,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaPuertoEstelarProtoss(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
@@ -421,7 +428,7 @@ public class VentanaPrincipal implements JuegoListener {
 		this.getGameLoop().agregar(elemento);
 		Imagen imagen = new VistaArchivosTemplarios(elemento);
 		this.getGameLoop().agregar(imagen);	
-		
+		this.controladorCampoBatalla.agregarAMapaDeVistaDeElementos(elemento, imagen);
 	}
 
 	@Override
