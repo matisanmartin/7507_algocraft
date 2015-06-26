@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
@@ -17,8 +16,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.CrearAltoTemplario;
 import strategy.CrearDragon;
@@ -29,7 +26,10 @@ import strategy.CrearNaveTransporteProtoss;
 import strategy.CrearNaveTransporteTerran;
 import strategy.CrearScout;
 import strategy.CrearZealot;
+import vista.VentanaMock;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -65,6 +65,8 @@ public class Enunciado6Test {
 	
 	@Before
 	public void setUp() throws Exception {
+		
+		Juego.crearInstancia(new VentanaMock());
 		factoryUnidad = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		factoryConstruccion = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		

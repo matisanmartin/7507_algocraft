@@ -15,9 +15,8 @@ import razas.Protoss;
 import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.CrearZealot;
-
+import vista.VentanaMock;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -46,6 +45,7 @@ public class ListenerCrearZealotTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		Juego.crearInstancia(new VentanaMock());
 		jugadorActual = new Jugador("jugador1","protoss","rojo");
 		jugadorEnemigo = new Jugador("jugador2","terran","azul");
 		jugadorActual.setMinerales(10000);

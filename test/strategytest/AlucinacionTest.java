@@ -3,7 +3,6 @@ package strategytest;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.CampoBatalla;
 import model.Juego;
 
@@ -13,10 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.Alucinacion;
 import strategy.ContextoStrategy;
+import vista.VentanaMock;
 
 import common.Posicion;
 
@@ -59,6 +57,7 @@ public class AlucinacionTest {
 	@Before
 	public void setUp() throws Exception {
 		
+		Juego.crearInstancia(new VentanaMock());
 		factory = new UnidadFactory();
 		contexto=new ContextoStrategy(new Alucinacion());
 		

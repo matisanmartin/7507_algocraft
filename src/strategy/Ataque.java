@@ -53,7 +53,7 @@ public class Ataque implements Strategy {
 				
 				int danioAtaqueNum=espacioTemporal.getDanio(((Unidad) elementoAtacado).getDanio());
 				int rangoAtaqueAtacante = espacioUnidad.getRangoDeAtaque(((Unidad) elementoActuante).getRangoAtaque());
-				
+
 				if(distancia<=rangoAtaqueAtacante*factor)
 				{
 					elementoAtacado.restarVitalidad(danioAtaqueNum);

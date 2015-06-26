@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import strategy.ContextoStrategy;
 import strategy.Radiacion;
+import vista.VentanaMock;
 
 import common.Posicion;
 
@@ -55,7 +56,7 @@ public class RadiacionTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		Juego.destruirInstancia();
+		Juego.crearInstancia(new VentanaMock());
 		
 		factory = new UnidadFactory();
 		contexto=new ContextoStrategy(new Radiacion());

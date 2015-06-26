@@ -1,41 +1,28 @@
 package model;
 
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import jugador.Jugador;
-import jugador.TipoColor;
 import listener.JuegoListener;
-import razas.Protoss;
-import razas.Terran;
 import sonido.Reproductor;
 import sonido.TipoSonido;
 import turno.TimerCambioDeTurno;
-import vista.VentanaPrincipal;
+
 import common.Mensajes;
-import common.Posicion;
-import exceptions.ColorInvalidoException;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FinDePartidaException;
 import exceptions.FueraDeRangoException;
-import exceptions.NombreCortoException;
 import exceptions.NombreJugadorRepetidoException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
-import factory.construcciones.CentroComandoProtoss;
-import factory.construcciones.CentroComandoTerran;
 
 public class Juego {
 	
@@ -45,13 +32,10 @@ public class Juego {
 	private static Juego INSTANCIA = null;
 	private static JuegoListener listener;
 	
-	private Juego(){
+	private Juego(JuegoListener listener){
 		try
 		{
-//			jugadorActual = new Jugador();
-//			jugadorEnemigo = new Jugador();	
-			listener = new VentanaPrincipal();
-			
+			this.listener = listener;			
 		}
 		catch(Exception e)
 		{
@@ -60,11 +44,15 @@ public class Juego {
 		
 		
 	}
-	
+
 	public static Juego getInstancia() {
+		return INSTANCIA;
+	}
+	
+	public static Juego crearInstancia(JuegoListener juegoListener) {
 			
 			if (INSTANCIA == null) {
-				crearInstancia();
+			       INSTANCIA = new Juego(juegoListener);
 			}
 			return INSTANCIA;
 		}
@@ -73,30 +61,23 @@ public class Juego {
 		public static void destruirInstancia(){
 			INSTANCIA = null;
 		}
-		
-		private synchronized static void crearInstancia() {
 			
-			if (INSTANCIA == null) { 
-		       INSTANCIA = new Juego();
-		    }
-		}
-	
 
 	private Juego(Jugador jugadorActual, Jugador jugadorEnemigo,CampoBatalla campoDeBatalla) throws NombreJugadorRepetidoException{
-		Juego.getInstancia().setJugadorActual(jugadorActual);
-		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
-//		JuegoController.getInstancia().setCampoDeBatalla(campoDeBatalla);
+		setJugadorActual(jugadorActual);
+		setJugadorEnemigo(jugadorEnemigo);
+//		JuegoController.setCampoDeBatalla(campoDeBatalla);
 	}
 	
 	
 	
 	
 	public Armada obtenerArmadaJugadorEnemigo() {
-		return Juego.getInstancia().getJugadorEnemigo().obtenerArmada();
+		return getJugadorEnemigo().obtenerArmada();
 	}
 	
 	public Armada obtenerArmadaJugadorActual() {
-		return getInstancia().getJugadorActual().obtenerArmada();
+		return getJugadorActual().obtenerArmada();
 	}
 
 	public Jugador getJugadorEnemigo() {
@@ -104,7 +85,7 @@ public class Juego {
 	}
 
 	public void setJugadorEnemigo(Jugador jugadorEnemigo) throws NombreJugadorRepetidoException {
-		if(jugadorEnemigo.getNombre().equals(Juego.getInstancia().getJugadorActual().getNombre()))
+		if(jugadorEnemigo.getNombre().equals(getJugadorActual().getNombre()))
 			throw new NombreJugadorRepetidoException(Mensajes.MSJ_ERROR_NOMBRE_REPETIDO);
 		Juego.jugadorEnemigo = jugadorEnemigo;
 	}
@@ -118,32 +99,32 @@ public class Juego {
 	}
 	
 	public String obtenerNombreJugadorActual() {
-		return getInstancia().getJugadorActual().getNombre();
+		return getJugadorActual().getNombre();
 	}
 	
 	public String obtenerNombreJugadorEnemigo() {
-		return getInstancia().getJugadorEnemigo().getNombre();
+		return getJugadorEnemigo().getNombre();
 	}
 
 	public String obtenerColorJugadorActual() {
-		return getInstancia().getJugadorActual().getColor();
+		return getJugadorActual().getColor();
 	}
 
 	public String obtenerColorJugadorEnemigo() {
-		return Juego.getInstancia().getJugadorEnemigo().getColor();
+		return getJugadorEnemigo().getColor();
 	}
 	
 	private void intercambiarJugadores() throws NombreJugadorRepetidoException  {
 		
 			
-		Jugador jugadorActualAntesDeCambio = getInstancia().getJugadorActual();
-		Jugador jugadorEnemAntesDeCambio = getInstancia().getJugadorEnemigo();
+		Jugador jugadorActualAntesDeCambio = getJugadorActual();
+		Jugador jugadorEnemAntesDeCambio = getJugadorEnemigo();
 		
-		getInstancia().setJugadorActual(jugadorEnemAntesDeCambio);
-		getInstancia().setJugadorEnemigo(jugadorActualAntesDeCambio);
+		setJugadorActual(jugadorEnemAntesDeCambio);
+		setJugadorEnemigo(jugadorActualAntesDeCambio);
 		
-		Jugador actualDespueDe = getInstancia().getJugadorActual();
-		Jugador enemDespuesDe = getInstancia().getJugadorEnemigo();
+		Jugador actualDespueDe = getJugadorActual();
+		Jugador enemDespuesDe = getJugadorEnemigo();
 		
 		
 		
@@ -152,34 +133,34 @@ public class Juego {
 
 	private void actualizar() {
 		
-		getInstancia().getJugadorActual().actualizarUnidades();
-		getInstancia().getJugadorEnemigo().actualizarUnidades();
+		getJugadorActual().actualizarUnidades();
+		getJugadorEnemigo().actualizarUnidades();
 		
 	}
 	
 	public void cambiarTurno() throws NombreJugadorRepetidoException {
-		getInstancia().getJugadorActual().actualizarRecursos();
-		//getInstancia().getJugadorEnemigo().actualizarRecursos();
-		getInstancia().actualizar();
-		getInstancia().intercambiarJugadores();
+		getJugadorActual().actualizarRecursos();
+		//getJugadorEnemigo().actualizarRecursos();
+		actualizar();
+		intercambiarJugadores();
 	}
 
 
 	public void agregarUnidadAJugadorEnemigo(Elemento elem) 
 	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException {
-		getInstancia().getJugadorEnemigo().agregarElemento(elem);
+		getJugadorEnemigo().agregarElemento(elem);
 	
 	}
 	
 	public void agregarUnidadAJugadorActual(Elemento elem) 
 	throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, PoblacionFaltanteException, CostoInvalidoException {
 		
-		int cantidadDeCristal=getInstancia().getJugadorActual().getCantidadDeCristal();
-		int cantidadDeGas= getInstancia().getJugadorActual().getCantidadDeGas();
+		int cantidadDeCristal=getJugadorActual().getCantidadDeCristal();
+		int cantidadDeGas= getJugadorActual().getCantidadDeGas();
 		int costoMineral = elem.getCosto().getCostoMineral();
 		int costoGas = elem.getCosto().getCostoGas();
-		int poblacionActual = getInstancia().getJugadorActual().getPoblacionActual();
-		int poblacionDisponible = getInstancia().getJugadorActual().getPoblacionDisponible();
+		int poblacionActual = getJugadorActual().getPoblacionActual();
+		int poblacionDisponible = getJugadorActual().getPoblacionDisponible();
 		int suministro = elem.getSuministro();
 		
 		if (poblacionActual + suministro > poblacionDisponible) {
@@ -189,9 +170,9 @@ public class Juego {
 		if(cantidadDeCristal<costoMineral||cantidadDeGas<costoGas)
 				throw new RecursosInsuficientesException(Mensajes.MSJ_ERROR_RECURSOS_INSUFICIENTES);
 		else{
-			getInstancia().getJugadorActual().agregarElemento(elem);
-			getInstancia().getJugadorActual().disminuirRecursos(elem.disminuirMineral(),elem.disminuirGas());
-			getInstancia().getJugadorActual().aumentarPoblacionActual(elem.getSuministro());
+			getJugadorActual().agregarElemento(elem);
+			getJugadorActual().disminuirRecursos(elem.disminuirMineral(),elem.disminuirGas());
+			getJugadorActual().aumentarPoblacionActual(elem.getSuministro());
 		}
 			
 	}
@@ -205,8 +186,8 @@ public class Juego {
 	public void verificarFinDePartida() 
 	throws FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
-		getInstancia().verificarPartidaGanada();
-		getInstancia().verificarPartidaPerdida();
+		verificarPartidaGanada();
+		verificarPartidaPerdida();
 		//TODO msma: a futuro agregar un tiempo limite que tire FinDePartidaException y muestre un ganador
 		
 
@@ -215,7 +196,7 @@ public class Juego {
 
 	private void verificarPartidaPerdida() throws PartidaPerdidaException{
 
-		Armada armadaActual = Juego.getInstancia().obtenerArmadaJugadorActual();
+		Armada armadaActual = obtenerArmadaJugadorActual();
 		
 		List<Elemento> unidadesActual = armadaActual.getArmada();
 		
@@ -232,7 +213,7 @@ public class Juego {
 
 
 	private void verificarPartidaGanada() throws PartidaGanadaException {
-		Armada armadaEnemiga = Juego.getInstancia().obtenerArmadaJugadorEnemigo();
+		Armada armadaEnemiga = obtenerArmadaJugadorEnemigo();
 		
 		List<Elemento> unidadesEnemigas = armadaEnemiga.getArmada();
 		
@@ -248,10 +229,10 @@ public class Juego {
 
 
 	public void eliminarElementoDeJugadorEnemigo(Elemento marine) throws PosicionInvalidaException, FueraDeRangoException {
-		getInstancia().getJugadorEnemigo().disminuirPoblacionActual(marine.getSuministro());
+		getJugadorEnemigo().disminuirPoblacionActual(marine.getSuministro());
 		
 		//elem.disminuirPoblacion();
-		getInstancia().getJugadorEnemigo().eliminarElementoMuertoEnPosicion(marine.getPosicion());
+		getJugadorEnemigo().eliminarElementoMuertoEnPosicion(marine.getPosicion());
 		CampoBatalla.getInstancia().eliminarElementoEnPosicion(marine.getPosicion(), marine.getEspacio());
 		
 	}
@@ -264,7 +245,7 @@ public class Juego {
 		return listener;
 	}
 //	public void setListener(JuegoListener listener) {
-//		getInstancia().listener=listener;
+//		listener=listener;
 //	}
 	
 			 
@@ -278,14 +259,14 @@ public class Juego {
 //					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
 //					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
 //					
-//					Juego.getInstancia().setJugadorActual(jugadorActual);
-//					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+//					Juego.setJugadorActual(jugadorActual);
+//					Juego.setJugadorEnemigo(jugadorEnemigo);
 //					
 ////					//Se setean las bases
-//					CampoBatalla.getInstancia().setUpBases();
+//					CampoBatalla.setUpBases();
 //
 //					//Se setean los centros de comando
-//					CampoBatalla.getInstancia().setUpCentros();
+//					CampoBatalla.setUpCentros();
 //
 //					//Se setea el comienzo de los turnos
 //					Timer tiempoDeTurno = new Timer();
@@ -301,89 +282,18 @@ public class Juego {
 //		});
 //	}
 
-	public void initialize() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try 
-				{
-					//Ventana para ingresar nombres, color y raza
-//					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
-//					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
-					
-//					Juego.getInstancia().setJugadorActual(jugadorActual);
-//					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
-					
-//					//Se reproduce la musica
-					Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
-					//Se setean las bases
-					CampoBatalla.getInstancia().setUpBases();
-
-					//Se setean los centros de comando
-					CampoBatalla.getInstancia().setUpCentros();
-
-					//Se setea el comienzo de los turnos
-					Timer tiempoDeTurno = new Timer();
-					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
-//					tiempoDeTurno.schedule(cambioDeTurno,10000, 10000);
-					tiempoDeTurno.schedule(cambioDeTurno,120000, 120000);
-						
-					}
-				catch (Exception e){
-					e.printStackTrace();
-				}
-					
-			}
-		});
-		
+//	public void initialize() {
+//		
+//				try 
+//				{
+//					
+//						
+//				}
+//				catch (Exception e)
+//				{
+//					e.printStackTrace();
+//				}
+//					
+//			}		
 	}				
 					
-}					
-					
-//					//Ventana para ingresar nombres, color y raza
-//					Jugador jugadorActual= new Jugador("pepe",TipoColor.COLOR_AMARILLO,new Terran());
-//					Jugador jugadorEnemigo = new Jugador("itaka",TipoColor.COLOR_ROJO,new Protoss());
-//					
-//					Juego.getInstancia().setJugadorActual(jugadorActual);
-//					Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
-//					
-//	
-//					//Se setean las bases
-//					CampoBatalla.getInstancia().setUpBases();
-//					CentroComandoTerran centro = new CentroComandoTerran(70, 70, new Posicion(80, 80));
-//					
-//					Juego.getInstancia().getListener().seCreoCentroDeComandoTerran(centro);
-//					Juego.getInstancia().agregarUnidadAJugadorActual(centro);
-////					centro.morir();
-////					Juego.getInstancia().obtenerArmadaJugadorActual().eliminarElementoMuertoEnPosicion( new Posicion(80, 80));
-//
-//					Timer tiempoDeTurno = new Timer();
-//					
-//					TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
-//					
-//					//El tiempo que se pasa es en milisegundos
-//					tiempoDeTurno.schedule(cambioDeTurno,5000, 5000);
-					
-					
-					
-					//si salio todo bien, pasa a la siguiente ventana
-//					VentanaPrincipal ventana = (VentanaPrincipal) Juego.getInstancia().getListener();
-//					ventana.getFrame().setVisible(true);
-					//ventana.getGameLoop().iniciarEjecucion();
-					
-
-					
-					//Se setea el mapa
-					
-
-					
-//					Unidad unidad = null;
-//					UnidadFactory factory = new UnidadFactory();
-//					unidad = factory.
-				
-					//Se setean los centros de comando
-					
-
-		
-		
-
-

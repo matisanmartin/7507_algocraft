@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.Armada;
 import model.CampoBatalla;
 import model.Elemento;
@@ -15,7 +14,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.CrearAltoTemplario;
 import strategy.CrearEspectro;
@@ -26,6 +24,7 @@ import strategy.CrearNaveTransporteProtoss;
 import strategy.CrearNaveTransporteTerran;
 import strategy.CrearScout;
 import strategy.CrearZealot;
+import vista.VentanaMock;
 
 import common.Costo;
 import common.Danio;
@@ -73,6 +72,7 @@ public class CrearUnidadesTest {
 	@Before
 	public void setUp() throws NombreCortoException, ColorInvalidoException, FueraDeRangoException, PosicionInvalidaException {
 		
+		Juego.crearInstancia(new VentanaMock());
 		posicionOrigen=new Posicion(10,10);
 		posicionDestino = new Posicion(150,15);
 		jugadorActualTerran = new Jugador("jugador1","terran","rojo");

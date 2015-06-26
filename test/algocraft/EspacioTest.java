@@ -10,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import vista.VentanaMock;
+
 import common.Posicion;
 
 import exceptions.CostoInvalidoException;
@@ -26,8 +28,9 @@ public class EspacioTest {
 	
 	UnidadFactory factory;
 	@Before
-	public void setUp(){
+	public void setUp() throws FueraDeRangoException, PosicionInvalidaException{
 		factory = new UnidadFactory();
+		Juego.crearInstancia(new VentanaMock());
 	}
 	
 	@After

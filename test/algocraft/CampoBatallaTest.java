@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import model.Base;
 import model.CampoBatalla;
 import model.Elemento;
+import model.Juego;
 import model.Parte;
 
 import org.junit.After;
@@ -13,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import vista.VentanaMock;
 import common.Constantes;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
@@ -36,7 +38,7 @@ public class CampoBatallaTest {
 	
 	@Before
 	public void setUp() {
-		
+		Juego.crearInstancia(new VentanaMock());
 		factory = new UnidadFactory();
 	}
 	

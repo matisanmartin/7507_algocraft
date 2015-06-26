@@ -23,10 +23,9 @@ import strategy.CrearZealot;
 import strategy.Emp;
 import strategy.Mover;
 import strategy.Radiacion;
-
+import vista.VentanaMock;
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -65,6 +64,7 @@ public class Enunciado8Test {
 	@Before
 	public void setUp() throws Exception {
 		
+		Juego.crearInstancia(new VentanaMock());
 		jugadorActual = new Jugador("jugador1","terran","rojo");
 		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		

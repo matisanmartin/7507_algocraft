@@ -2,7 +2,6 @@ package integraciontest;
 
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
@@ -11,8 +10,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import razas.Protoss;
+import vista.VentanaMock;
+
 import common.Posicion;
+
 import exceptions.ElementoNoEncontradoException;
 import exceptions.NombreJugadorRepetidoException;
 import factory.AbstractFactory;
@@ -30,7 +31,7 @@ public class Enunciado9Test {
 	
 	@Before
 	public void setUp() throws Exception {
-		
+		Juego.crearInstancia(new VentanaMock());
 		factoryUnidad=GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		posicionProtoss=new Posicion(2,2);
 		protoss=factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT,posicionProtoss);

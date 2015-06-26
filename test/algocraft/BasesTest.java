@@ -1,6 +1,7 @@
 package algocraft;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -9,14 +10,19 @@ import model.BaseInfIzq;
 import model.BaseSupIzq;
 import model.CampoBatalla;
 import model.Elemento;
+import model.Juego;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import recursos.Cristal;
 import recursos.Volcan;
+import vista.VentanaMock;
+
 import common.Constantes;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -26,6 +32,10 @@ import exceptions.RecursosInsuficientesException;
 
 public class BasesTest {
 	
+	@Before
+	public void setUp() throws FueraDeRangoException, PosicionInvalidaException{
+		Juego.crearInstancia(new VentanaMock());
+	}
 	@After
 	public void destroy(){
 		CampoBatalla.DestruirInstancia();

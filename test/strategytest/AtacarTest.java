@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.CampoBatalla;
 import model.Juego;
 
@@ -15,11 +14,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
+import vista.VentanaMock;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -59,6 +59,8 @@ public class AtacarTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		
+		Juego.crearInstancia(new VentanaMock());
 		
 		jugadorActual = new Jugador("jugador1","terran","rojo");
 		jugadorEnemigo = new Jugador("jugador2","protoss","azul");

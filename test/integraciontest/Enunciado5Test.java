@@ -17,6 +17,8 @@ import org.junit.Test;
 import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.SubirUnidad;
+import vista.VentanaMock;
+import vista.VentanaPrincipal;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
@@ -55,6 +57,8 @@ public class Enunciado5Test {
 
 	@Before
 	public void setUp() throws Exception {
+		
+		Juego.crearInstancia(new VentanaMock());
 		factory = new UnidadFactory();
 		jugadorActual = new Jugador("jugador1","terran","rojo");
 		//jugadorEnemigo = new Jugador("jugador2","protoss","azul");

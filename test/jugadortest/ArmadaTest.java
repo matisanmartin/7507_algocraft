@@ -5,11 +5,9 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.Armada;
 import model.CampoBatalla;
 import model.Elemento;
-import model.ElementoArtificial;
 import model.Juego;
 
 import org.junit.After;
@@ -18,10 +16,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.Mover;
+import vista.VentanaMock;
 
 import common.Posicion;
 import common.Vitalidad;
@@ -62,6 +59,8 @@ public class ArmadaTest {
 
 	@Before
 	public void setUp() throws Exception {
+		
+		Juego.crearInstancia(new VentanaMock());
 		pos=new Posicion(1,2);
 		armada=new Armada();
 		factory = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);

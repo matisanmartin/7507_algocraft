@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
@@ -15,14 +14,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.Alucinacion;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
 import strategy.Emp;
 import strategy.TormentaPsionica;
+import vista.VentanaMock;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -63,6 +63,8 @@ public class Enunciado2Test {
 	
 	@Before
 	public void setUp() throws Exception {
+		
+		Juego.crearInstancia(new VentanaMock());
 		
 		factoryUnidad=GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		posicionAltoTemplario=new Posicion(2,2);

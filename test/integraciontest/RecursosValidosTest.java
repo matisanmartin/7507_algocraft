@@ -26,6 +26,7 @@ import strategy.CrearNaveTransporteProtoss;
 import strategy.CrearNaveTransporteTerran;
 import strategy.CrearScout;
 import strategy.CrearZealot;
+import vista.VentanaMock;
 
 import common.Posicion;
 
@@ -62,6 +63,7 @@ public class RecursosValidosTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		Juego.crearInstancia(new VentanaMock());
 		factoryUnidad = GeneradorDeFactory.getFactory(TipoFactory.UNIDAD_FACTORY);
 		factoryConstruccion = GeneradorDeFactory.getFactory(TipoFactory.CONSTRUCCION_FACTORY);
 		

@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import strategy.Ataque;
 import strategy.ContextoStrategy;
+import vista.VentanaMock;
 
 import common.Posicion;
 
@@ -59,6 +60,8 @@ public class Enunciado3Test {
 	
 	@Before
 	public void setUp() throws Exception {
+		
+		Juego.crearInstancia(new VentanaMock());
 		
 		jugadorActual = new Jugador("jugador1","terran","rojo");
 		jugadorEnemigo = new Jugador("jugador2","protoss","azul");

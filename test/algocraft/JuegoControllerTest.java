@@ -14,6 +14,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import vista.VentanaMock;
+
 import common.Posicion;
 import common.Vitalidad;
 
@@ -46,6 +48,7 @@ public class JuegoControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		
+		Juego.crearInstancia(new VentanaMock());
 		UnidadFactory unidadFactory = new UnidadFactory();
 		
 		unidadActual = unidadFactory.getUnidad(TipoUnidad.PROTOSS_DRAGON, new Posicion(500,5));
