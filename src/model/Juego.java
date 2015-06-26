@@ -1,15 +1,10 @@
 package model;
 
-import java.awt.EventQueue;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Timer;
 
 import jugador.Jugador;
 import listener.JuegoListener;
-import sonido.Reproductor;
-import sonido.TipoSonido;
-import turno.TimerCambioDeTurno;
 
 import common.Mensajes;
 
