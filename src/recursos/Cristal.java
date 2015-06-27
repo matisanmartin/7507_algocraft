@@ -55,5 +55,15 @@ public class Cristal extends Recurso {
 		acciones.put("Crear Recolector de Cristal", razaJugador.obtenerAccionRecolectorDeMinerales(this));		
 		setAccionesDisponibles(acciones);
 	}
+	
+	public String toString() {
+		StringBuffer cristal = new StringBuffer();
+		
+		
+		cristal.append("<html>Recurso Seleccionada: Cristal <br>");
+		cristal.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br><html>");
+		
+		return cristal.toString();	
+	}
 
 }

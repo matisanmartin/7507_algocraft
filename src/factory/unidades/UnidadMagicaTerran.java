@@ -50,5 +50,6 @@ public class UnidadMagicaTerran extends UnidadMagica {
 		else
 			this.setEnergia(this.getEnergia()+ENERGIA_CAMBIO_DE_TURNO);
 	}
+	
 
 }

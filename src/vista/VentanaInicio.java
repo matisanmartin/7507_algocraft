@@ -111,9 +111,6 @@ public class VentanaInicio {
 						Juego.getInstancia().setJugadorActual(jugador1);
 						Juego.getInstancia().setJugadorEnemigo(jugador2);
 						
-						//Se reproduce la musica
-						Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
-						
 						//Se setean las bases
 						CampoBatalla.getInstancia().setUpBases();
 
@@ -121,9 +118,9 @@ public class VentanaInicio {
 						CampoBatalla.getInstancia().setUpCentros();
 
 						//Se setea el comienzo de los turnos
-						Timer tiempoDeTurno = new Timer();
-						TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
-						tiempoDeTurno.schedule(cambioDeTurno,12000, 12000);
+//						Timer tiempoDeTurno = new Timer();
+//						TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
+//						tiempoDeTurno.schedule(cambioDeTurno,10000, 10000);
 						
 
 					}

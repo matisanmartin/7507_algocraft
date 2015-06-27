@@ -54,7 +54,7 @@ public interface JuegoListener {
 	
 	//Metodos relacionados con acciones de unidades
 	public void seMovioUnidad(ElementoArtificial elemento);
-	public void seRealizoAtaque(ElementoArtificial elemento);
+	public void seRealizoAtaque(Elemento elementoActuante);
 	public void seRealizoEmp(ElementoArtificial elemento);
 	public void seRealizoRadiacion(Elemento elementoAtacado);
 	public void seRealizoTormentaPsionica(Elemento elementoTemporalAtacado);

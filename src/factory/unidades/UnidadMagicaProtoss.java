@@ -60,5 +60,18 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 		setEscudo(getEscudo()+ESCUDO_CAMBIO_DE_TURNO);
 		
 	}
+	
+	public String toString() {
+		StringBuffer strUnidadProtoss = new StringBuffer();
+		
+		
+		strUnidadProtoss.append("<html>Unidad Seleccionada: <br>");
+		strUnidadProtoss.append("Vida: "+getVida()+"<br>");
+		strUnidadProtoss.append("Escudo "+getEscudo()+"<br>");
+		strUnidadProtoss.append("Energia: "+getEnergia()+"<br>");
+		strUnidadProtoss.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
+		
+		return strUnidadProtoss.toString();	
+	}
 
 }

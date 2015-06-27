@@ -173,6 +173,16 @@ public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosi
 		// TODO Auto-generated method stub
 		return this.getPosicion().getY();
 	}
+	
+	public String toString() {
+		
+		StringBuffer strUnidad = new StringBuffer();
+		strUnidad.append("<html>Unidad Seleccionada: <br>");
+		strUnidad.append("Vida: "+getVida()+"<br>");
+		strUnidad.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
+		
+		return strUnidad.toString();	
+	}
 
 	
 }

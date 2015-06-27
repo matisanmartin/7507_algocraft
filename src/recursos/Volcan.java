@@ -36,4 +36,14 @@ public class Volcan extends Recurso {
 		acciones.put("Crear Recolector de Gas", razaJugador.obtenerAccionRecolectorDeGas(this));		
 		setAccionesDisponibles(acciones);
 	}
+	
+	public String toString() {
+		StringBuffer volcan = new StringBuffer();
+		
+		
+		volcan.append("<html>Recurso Seleccionado: Volcan <br>");
+		volcan.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br><html>");
+		
+		return volcan.toString();	
+	}
 }

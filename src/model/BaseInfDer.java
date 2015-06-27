@@ -121,4 +121,10 @@ public class BaseInfDer extends Base {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

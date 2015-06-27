@@ -87,4 +87,14 @@ public class Edificio extends ElementoArtificial {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String toString() {
+		
+		StringBuffer strUnidad = new StringBuffer();
+		strUnidad.append("<html>Edificio Seleccionado:<br>");
+		strUnidad.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
+		
+		return strUnidad.toString();	
+	}
 }

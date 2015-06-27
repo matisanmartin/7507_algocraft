@@ -1,15 +1,15 @@
 package factory.unidades;
 
+import model.Espacio;
+
 import common.Costo;
 import common.Danio;
 import common.Posicion;
 import common.RangoAtaque;
 import common.Vitalidad;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import model.Espacio;
-import model.EspacioAereo;
-import model.EspacioTerrestre;
 
 public class UnidadProtoss extends Unidad {
 	
@@ -29,6 +29,18 @@ public class UnidadProtoss extends Unidad {
 		
 		setEscudo(getEscudo()+RECUPERACION_ESCUDO);
 		
+	}
+	
+	public String toString() {
+		StringBuffer strUnidadProtoss = new StringBuffer();
+		
+		strUnidadProtoss.append("<html>Unidad Seleccionada: <br>");
+		strUnidadProtoss.append("Vida: "+getVida()+"<br>");
+		strUnidadProtoss.append("Escudo: "+getEscudo()+"<br>");
+		strUnidadProtoss.append("Energia: "+getEnergia()+"<br>");
+		strUnidadProtoss.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
+		
+		return strUnidadProtoss.toString();	
 	}
 
 }

@@ -60,9 +60,14 @@ public class Ataque implements Strategy {
 					it.set(elementoAtacado);
 					Juego.getInstancia().getListener().seRealizoAtaque((ElementoArtificial)elementoAtacado);
 				}
+				else
+				{
+					throw new FueraDeRangoException("La unidad está fuera del rango de ataque.");
+				}
 			}
 		}
 		
+		Juego.getInstancia().getListener().seRealizoAtaque(elementoActuante);
 		Juego.getInstancia().verificarFinDePartida();
 	
 	}			

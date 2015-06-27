@@ -385,5 +385,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 	public int obtenerAumentoDeGasPorTurno() {
 		return 0;
 	}
+	
+	public abstract String toString();
 
 }

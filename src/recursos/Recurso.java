@@ -5,10 +5,8 @@ import java.io.IOException;
 import model.Elemento;
 import model.EspacioTerrestre;
 import strategy.ContextoStrategy;
-
 import common.Posicion;
 import common.Vitalidad;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -50,6 +48,13 @@ public class Recurso extends Elemento {
 	public boolean estaMuerta(){
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return null;
+	}
+	
+	
 
 	
 

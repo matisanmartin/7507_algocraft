@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import listener.JuegoListener;
@@ -27,6 +30,7 @@ import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
 import titiritero.modelo.SuperficieDeDibujo;
+import turno.TimerCambioDeTurno;
 import vista.edificios.VistaAcceso;
 import vista.edificios.VistaArchivosTemplarios;
 import vista.edificios.VistaAsimilador;
@@ -73,6 +77,7 @@ public class VentanaPrincipal implements JuegoListener {
 	private static JLabel labelRaza;
 	private static JLabel labelPoblacion;
 	private ControladorCampoBatalla controladorCampoBatalla;
+	private JLabel labelInfoUnidad;
 
 	/**
 	 * Create the application.
@@ -103,6 +108,7 @@ public class VentanaPrincipal implements JuegoListener {
 		labelCristal=new JLabel("Cristal");
 		labelNombre= new JLabel("Nombre");
 		labelRaza = new JLabel("Raza");
+		labelInfoUnidad = new JLabel("InfoUnidad");
 		labelPoblacion = new JLabel("Poblacion");
 		getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		getFrame().setForeground(new Color(0,0,0));
@@ -123,12 +129,14 @@ public class VentanaPrincipal implements JuegoListener {
 				gameLoop.iniciarEjecucion();
 //				Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
 				agregarInformacionDeJugador();
+				agregarBotonCambioDeTurno();
+				
 			}
 		});
 		btnIniciar.setBounds(25, 25, 100, 25);
 		getFrame().getContentPane().add(btnIniciar);
 	
-		//boto finalizar juego
+		//boton finalizar juego
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
 			
@@ -141,17 +149,9 @@ public class VentanaPrincipal implements JuegoListener {
 		btnFinalizar.setBounds(135, 25, 100, 25);
 		getFrame().getContentPane().add(btnFinalizar);
 		
-		
-		//////////
-		//
-		
-	
-		
-		
-		
-		
-		////
-				
+		//boton cambio de turno
+
+
 		//superficie donde se dibujarn los elementos
 		JPanel panel = new SuperficiePanel();
 		panel.setBackground(new Color(0, 0, 0));
@@ -166,11 +166,48 @@ public class VentanaPrincipal implements JuegoListener {
 		btnFinalizar.setFocusable(false);
 			
 		panel.addMouseListener(new ControladorMouse(this));
+		//Se reproduce la musica
+		Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
 		
-		
+//		Timer tiempoDeTurno = new Timer();
+//		TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
+//		tiempoDeTurno.schedule(cambioDeTurno,10000, 10000);
 		
 	}
 	
+	protected void agregarBotonCambioDeTurno() {
+		
+		JButton btnCambioDeTurno = new JButton("Pasar turno");
+		btnCambioDeTurno.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Timer tiempoDeTurno = new Timer();
+				TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
+				
+				cambioDeTurno.run();
+			
+				tiempoDeTurno.schedule(cambioDeTurno,12000, 120000);
+				
+			}
+		});
+		btnCambioDeTurno.setBounds(1125, 500, 125, 25);
+		getFrame().getContentPane().add(btnCambioDeTurno);
+		btnCambioDeTurno.repaint();
+		
+	}
+	
+	public void agregarInformacionDeUnidad(Elemento elemento) {
+		labelInfoUnidad.setText("");
+		
+		labelInfoUnidad.setBounds(1125, 300, 200, 300);
+		labelInfoUnidad.setText(elemento.toString());
+		frame.getContentPane().add(labelInfoUnidad);
+		labelInfoUnidad.repaint();
+		
+	}
+
 	public void agregarPanelDeOpciones(Map<String, Accion> opciones){
 		Set<String> keys = opciones.keySet();
 		int posX = 1035;
@@ -211,7 +248,7 @@ public class VentanaPrincipal implements JuegoListener {
 		//Información de cristal
 		labelCristal.setText("");
 		//labelCristal = new JLabel("Cristal");
-		labelCristal.setBounds(600, 25, 100, 25);
+		labelCristal.setBounds(600, 25, 125, 25);
 		labelCristal.setText("Cristales: " + String.valueOf(Juego.getInstancia().getJugadorActual().getCantidadDeCristal()));
 		frame.getContentPane().add(labelCristal);
 		labelCristal.repaint();
@@ -227,20 +264,17 @@ public class VentanaPrincipal implements JuegoListener {
 		//Información de poblacion actual
 		labelPoblacion.setText("");
 		//labelGas = new JLabel("Gas");
-		labelPoblacion.setBounds(900, 25, 100, 25);
+		labelPoblacion.setBounds(850, 25, 150, 25);
 		labelPoblacion.setText("Poblacion: " + String.valueOf(Juego.getInstancia().getJugadorActual().getPoblacionActual()+"/"+ String.valueOf(Juego.getInstancia().getJugadorActual().getPoblacionDisponible())));
 		frame.getContentPane().add(labelPoblacion);
 		labelPoblacion.repaint();
-		
 		
 	}
 	
 	public void limpiarPanelDeOpciones(){
 		for (JButton jButton : botonesAccion) {
 			jButton.setVisible(false);
-			//frame.getContentPane().remove(jButton);
-		}
-		
+		}		
 	}
 	public Juego getJuego(){
 		return this.juego;
@@ -450,32 +484,34 @@ public class VentanaPrincipal implements JuegoListener {
 	}
 
 	@Override
-	public void seRealizoAtaque(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+	public void seRealizoAtaque(Elemento elemento) {
+		
+		JOptionPane.showMessageDialog(getFrame(), "Ataque sobre unidad enemiga realizado exitosamente", "Ataque Exitoso",JOptionPane.INFORMATION_MESSAGE);
+		
 		
 	}
 
 	@Override
 	public void seRealizoEmp(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getFrame(), "Emp sobre unidad enemiga realizado exitosamente", "Ataque Exitoso",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
 	@Override
 	public void seRealizoRadiacion(Elemento elemento) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getFrame(), "Radiacion sobre unidad enemiga realizada exitosamente", "Ataque Exitoso",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
 	@Override
 	public void seRealizoTormentaPsionica(Elemento elemento) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getFrame(), "Tormenta Psiónica sobre unidad enemiga realizada exitosamente", "Ataque Exitoso",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
 	@Override
 	public void seRealizoAlucinacion(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getFrame(), "Alucinación realizada exitosamente", "Ataque Exitoso",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 
@@ -562,10 +598,5 @@ public class VentanaPrincipal implements JuegoListener {
 		Imagen vista = raza.obtenerCentroDeComandos(centroComandoJugadorActual);
 		this.getGameLoop().agregar(vista);
 	}
-
-
-	
-	
-
 }
 
