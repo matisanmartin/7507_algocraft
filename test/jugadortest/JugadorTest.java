@@ -2,7 +2,6 @@ package jugadortest;
 
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
-import jugador.TipoColor;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +9,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import razas.Raza;
+
 import common.Posicion;
+
 import exceptions.ColorInvalidoException;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;

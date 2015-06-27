@@ -27,8 +27,11 @@ public class UnidadProtoss extends Unidad {
 
 	public void agregarEscudoPorPasoDeTurno() {
 		
-		setEscudo(getEscudo()+RECUPERACION_ESCUDO);
-		
+		if(getEscudo()+RECUPERACION_ESCUDO>200)
+			setEscudo(200);
+		else
+			setEscudo(getEscudo()+RECUPERACION_ESCUDO);
+
 	}
 	
 	public String toString() {
@@ -37,7 +40,6 @@ public class UnidadProtoss extends Unidad {
 		strUnidadProtoss.append("<html>Unidad Seleccionada: <br>");
 		strUnidadProtoss.append("Vida: "+getVida()+"<br>");
 		strUnidadProtoss.append("Escudo: "+getEscudo()+"<br>");
-		strUnidadProtoss.append("Energia: "+getEnergia()+"<br>");
 		strUnidadProtoss.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
 		
 		return strUnidadProtoss.toString();	

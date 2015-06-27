@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import model.Base;
 import model.CampoBatalla;
-import model.Elemento;
 import model.Juego;
 import model.Parte;
 
@@ -15,8 +14,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import vista.VentanaMock;
+
 import common.Constantes;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -74,7 +75,6 @@ public class CampoBatallaTest {
 		assertEquals(0,CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());
 		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
 		assertEquals(1,CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());
-		Unidad marine2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10,10));
 		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
 	}
 	

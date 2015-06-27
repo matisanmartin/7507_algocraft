@@ -8,12 +8,12 @@ import java.util.Map;
 import strategy.ContextoStrategy;
 import titiritero.modelo.ObjetoPosicionable;
 import titiritero.modelo.ObjetoVivo;
+
 import command.Accion;
-import command.AtaqueAccion;
-import command.MoverAccion;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;

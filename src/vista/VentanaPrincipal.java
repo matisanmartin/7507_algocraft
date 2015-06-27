@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +20,6 @@ import listener.JuegoListener;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
-import model.UnidadModelo;
 import razas.Raza;
 import recursos.Cristal;
 import sonido.Reproductor;
@@ -127,7 +125,7 @@ public class VentanaPrincipal implements JuegoListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gameLoop.iniciarEjecucion();
-//				Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
+				Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
 				agregarInformacionDeJugador();
 				agregarBotonCambioDeTurno();
 				
@@ -167,7 +165,7 @@ public class VentanaPrincipal implements JuegoListener {
 			
 		panel.addMouseListener(new ControladorMouse(this));
 		//Se reproduce la musica
-		Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
+//		Reproductor.getInstancia().loopSonido(TipoSonido.MUSICA);
 		
 //		Timer tiempoDeTurno = new Timer();
 //		TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
@@ -188,7 +186,7 @@ public class VentanaPrincipal implements JuegoListener {
 				
 				cambioDeTurno.run();
 			
-				tiempoDeTurno.schedule(cambioDeTurno,12000, 120000);
+				//tiempoDeTurno.schedule(cambioDeTurno,12000, 120000);
 				
 			}
 		});
@@ -492,7 +490,7 @@ public class VentanaPrincipal implements JuegoListener {
 	}
 
 	@Override
-	public void seRealizoEmp(ElementoArtificial elemento) {
+	public void seRealizoEmp() {
 		JOptionPane.showMessageDialog(getFrame(), "Emp sobre unidad enemiga realizado exitosamente", "Ataque Exitoso",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
@@ -550,6 +548,7 @@ public class VentanaPrincipal implements JuegoListener {
 		return frame;
 	}
 
+	@SuppressWarnings("static-access")
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}

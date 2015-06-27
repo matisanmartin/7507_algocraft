@@ -2,12 +2,12 @@ package command;
 
 import java.io.IOException;
 
-import strategy.Ataque;
+import model.Elemento;
 import strategy.ContextoStrategy;
 import strategy.Mover;
-import model.Elemento;
-import model.ElementoArtificial;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;

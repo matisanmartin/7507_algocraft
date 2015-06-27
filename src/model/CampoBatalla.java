@@ -2,13 +2,14 @@ package model;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 import titiritero.modelo.ObjetoVivo;
+
 import common.Constantes;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -146,14 +147,6 @@ public class CampoBatalla implements ObjetoVivo {
 		this.elementos = elementos;
 	}
 	
-	private void esZonaAerea(int posicionX, int posicionY) {
-		
-	}
-	
-	private void esZonaTerrestre(int posicionX, int posicionY) {
-		
-	}
-
 	public Espacio getEspacioTerrestre() {
 		return this.espacioTerrestre;
 	}

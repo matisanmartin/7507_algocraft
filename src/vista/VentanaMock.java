@@ -223,14 +223,6 @@ public class VentanaMock implements JuegoListener {
 
 	}
 
-
-
-	@Override
-	public void seRealizoEmp(ElementoArtificial elemento) {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public void seRealizoRadiacion(Elemento elementoAtacado) {
 		// TODO Auto-generated method stub
@@ -297,6 +289,12 @@ public class VentanaMock implements JuegoListener {
 
 	@Override
 	public void seRealizoAtaque(Elemento elementoActuante) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seRealizoEmp() {
 		// TODO Auto-generated method stub
 		
 	}

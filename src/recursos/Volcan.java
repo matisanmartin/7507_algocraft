@@ -3,16 +3,15 @@ package recursos;
 import java.util.Hashtable;
 import java.util.Map;
 
+import model.Juego;
 import razas.Raza;
+
 import command.Accion;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import model.CampoBatalla;
-import model.Espacio;
-import model.EspacioTerrestre;
-import model.Juego;
 
 public class Volcan extends Recurso {
 

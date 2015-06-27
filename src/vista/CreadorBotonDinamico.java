@@ -3,14 +3,11 @@ package vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import sonido.Reproductor;
-import sonido.TipoSonido;
 import command.Accion;
-import common.Posicion;
+
 import controller.ControladorMouse;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;

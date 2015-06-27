@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import exceptions.FueraDeRangoException;
-import exceptions.PosicionInvalidaException;
 import model.CampoBatalla;
 import model.Elemento;
-import titiritero.modelo.GameLoop;
 import titiritero.modelo.ObjetoDibujable;
 import titiritero.modelo.ObservadorDeGameLoop;
 import vista.VentanaPrincipal;
+import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class ControladorCampoBatalla implements ObservadorDeGameLoop {
 	

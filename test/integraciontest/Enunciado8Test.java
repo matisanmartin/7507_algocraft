@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
@@ -13,8 +12,6 @@ import model.Juego;
 import org.junit.Before;
 import org.junit.Test;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.Ataque;
 import strategy.ContextoStrategy;
 import strategy.CrearMarine;
@@ -24,8 +21,10 @@ import strategy.Emp;
 import strategy.Mover;
 import strategy.Radiacion;
 import vista.VentanaMock;
+
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;

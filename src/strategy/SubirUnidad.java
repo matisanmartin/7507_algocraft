@@ -1,7 +1,6 @@
 package strategy;
 
 import model.Elemento;
-import model.ElementoArtificial;
 import model.Juego;
 
 import common.Posicion;

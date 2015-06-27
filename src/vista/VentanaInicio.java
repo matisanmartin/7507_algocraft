@@ -3,7 +3,6 @@ package vista;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,10 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
-import sonido.Reproductor;
-import sonido.TipoSonido;
-import turno.TimerCambioDeTurno;
 import jugador.Jugador;
 import model.CampoBatalla;
 import model.Juego;
@@ -167,9 +164,11 @@ public class VentanaInicio {
 			botonAccion.setBounds(125,150,100,25);
 			frame.getContentPane().add(botonAccion);
 			botonAccion.setFocusable(false);
-			//frame.pack();
+			SwingUtilities.getRootPane(botonAccion).setDefaultButton(botonAccion);
 			frame.getContentPane().setLayout(null);
 			frame.setVisible(true);
+			
+			
 		} 
 		catch(Exception e)
 		{
@@ -184,6 +183,7 @@ public class VentanaInicio {
 			{
 				try
 				{
+					@SuppressWarnings("unused")
 					VentanaInicio ventana = new VentanaInicio();
 				}
 				catch(Exception e)

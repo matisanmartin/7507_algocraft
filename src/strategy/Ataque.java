@@ -59,6 +59,8 @@ public class Ataque implements Strategy {
 					elementoAtacado.restarVitalidad(danioAtaqueNum);
 					it.set(elementoAtacado);
 					Juego.getInstancia().getListener().seRealizoAtaque((ElementoArtificial)elementoAtacado);
+					Juego.getInstancia().verificarFinDePartida();
+					return;
 				}
 				else
 				{
@@ -67,8 +69,6 @@ public class Ataque implements Strategy {
 			}
 		}
 		
-		Juego.getInstancia().getListener().seRealizoAtaque(elementoActuante);
-		Juego.getInstancia().verificarFinDePartida();
-	
+		throw new PosicionInvalidaException("La posición está vacía. No hay unidades enemigas para atacar");
 	}			
 }

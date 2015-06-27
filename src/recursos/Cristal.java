@@ -1,37 +1,17 @@
 package recursos;
 
-import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
-import razas.Raza;
-import strategy.ContextoStrategy;
-import strategy.CrearNexoMineral;
-import command.Accion;
-import command.AtaqueAccion;
-import command.MoverAccion;
-import common.Posicion;
-import exceptions.CostoInvalidoException;
-import exceptions.DanioInvalidoException;
-import exceptions.ElementoInvalidoException;
-import exceptions.ElementoNoEncontradoException;
-import exceptions.EnergiaInsuficienteException;
-import exceptions.FactoryInvalidaException;
-import exceptions.FinDePartidaException;
-import exceptions.FueraDeRangoDeVisionException;
-import exceptions.FueraDeRangoException;
-import exceptions.PartidaGanadaException;
-import exceptions.PartidaPerdidaException;
-import exceptions.PoblacionFaltanteException;
-import exceptions.PosicionInvalidaException;
-import exceptions.RecursosFaltantesException;
-import exceptions.RecursosInsuficientesException;
-import exceptions.UnidadInvalidaException;
-import exceptions.UnidadLlenaException;
-import model.CampoBatalla;
-import model.Elemento;
-import model.EspacioTerrestre;
 import model.Juego;
+import razas.Raza;
+
+import command.Accion;
+import common.Posicion;
+
+import exceptions.CostoInvalidoException;
+import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
 
 public class Cristal extends Recurso {
 

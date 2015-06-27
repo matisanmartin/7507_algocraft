@@ -7,8 +7,6 @@ import exceptions.PosicionInvalidaException;
 public class Posicion implements ObjetoPosicionable {
 	private int posX;
 	private int posY;
-	private static int tamanioDePosicionX = 0;
-	private static int tamanioDePosicionY = 0;
 	
 	public Posicion(int posX, int posY) throws FueraDeRangoException, PosicionInvalidaException{
 		
@@ -50,16 +48,4 @@ public class Posicion implements ObjetoPosicionable {
 		
 		return distancia;
 	}
-	
-	public static void setTamanioDePosicionX(int tamanio) {
-		tamanioDePosicionX = tamanio;
-	}
-	
-	public static void setTamanioDePosicionY(int tamanio) {
-		tamanioDePosicionY = tamanio;
-	}
-
-
-
-	
 }

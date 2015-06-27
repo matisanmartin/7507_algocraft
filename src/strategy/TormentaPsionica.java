@@ -3,9 +3,12 @@ package strategy;
 import java.util.List;
 import java.util.ListIterator;
 
-import strategy.Strategy;
+import model.Elemento;
+import model.Juego;
+
 import common.Mensajes;
 import common.Posicion;
+
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FinDePartidaException;
@@ -13,9 +16,6 @@ import exceptions.FueraDeRangoDeVisionException;
 import exceptions.PartidaGanadaException;
 import exceptions.PartidaPerdidaException;
 import factory.UnidadFactory;
-import model.Elemento;
-import model.ElementoArtificial;
-import model.Juego;
 
 public class TormentaPsionica implements Strategy {
 	

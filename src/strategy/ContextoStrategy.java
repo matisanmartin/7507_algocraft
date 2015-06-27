@@ -2,7 +2,10 @@ package strategy;
 
 import java.io.IOException;
 
+import model.Elemento;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -20,8 +23,6 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.Elemento;
-import model.ElementoArtificial;
 
 public class ContextoStrategy {
 	

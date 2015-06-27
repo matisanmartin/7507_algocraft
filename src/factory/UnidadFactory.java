@@ -2,8 +2,6 @@ package factory;
 
 import model.CampoBatalla;
 import model.Espacio;
-import model.EspacioAereo;
-import model.EspacioTerrestre;
 
 import common.Costo;
 import common.Danio;

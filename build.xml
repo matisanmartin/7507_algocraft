@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="tp-final-algo3" basedir="." default="integracion-continua">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="tp-final-algo3" basedir="." default="help">
 	<property name="build" location="build" />
 	<property name="libs" location="libs" />
 	<property name="classes.dir" location="build" />
@@ -26,7 +26,7 @@
 		<fileset dir="${libs}">
 			<include name="*.jar" />
 		</fileset>
-		<pathelement location="${build}" />
+		<pathelement location="${build}/classes" />
 		<pathelement location="${instrumented.dir}" />
 		<pathelement location="${build}/tests" />
 	</path>
@@ -46,18 +46,18 @@
 	
 	<target name="setup">
 		<delete dir="${build}" />
-		<mkdir dir="${build}" />
 		<mkdir dir="${build}/classes" />
 		<mkdir dir="${build}/tests" />
 	</target>
 
 	<target name="compilar.aplicacion" depends="setup, resolve">
-		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.7">
+		<javac srcdir="src" destdir="${build}/classes" includeantruntime="false" debug="yes" target="1.8">
+		<classpath refid="classpath" />
 		</javac>
 	</target>
 
 	<target name="compilar.tests" depends="instrumentar.aplicacion">
-		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.7">
+		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.8">
 			<classpath refid="classpath" />
 		</javac>
 	</target>
@@ -92,7 +92,7 @@
 		<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
 		<cobertura-instrument todir="${instrumented.dir}" datafile="${build}/cobertura.ser">
 			<ignore regex="org.apache.log4j.*" />
-			<fileset dir="${classes.dir}">
+			<fileset dir="${build}/classes">
 				<include name="**/*.class" />
 				<exclude name="**/*Test.class" />
 			</fileset>
@@ -128,14 +128,10 @@
 	<target name="test" depends="ejecutar.tests, coverage-report, alternate-coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports." />
 
 	<target name="compilar.paquete" depends="test">
-		<javac srcdir="src" destdir="${build}/classes" debug="no">
+		<javac srcdir="src" destdir="${build}" debug="no">
 		</javac>
 	</target>
-
-	<target name="empaquetar" depends="compilar.paquete">
-		<jar destfile="${build}/dist/titiritero.jar" basedir="${build}/classes" />
-	</target>
-
+	
 	<target name="integracion-continua" depends="run-pmd,coverage-report,alternate-coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>
 
 	<!-- Ivy installation -->
@@ -176,6 +172,29 @@
 				<include name="**/*.java" />
 			</fileset>
 		</pmd>
+	</target>
+	
+	<target name="jar">
+		<mkdir dir="${build}/jar"/>
+		<jar destfile="${build}/jar/Juego.jar" basedir="${build}/classes">
+			<manifest>
+				<attribute name="Main-class" value="vista.VentanaInicio"/>
+			</manifest>
+			<fileset dir="${src.dir}">
+				<include name="vista/imagenes/*.png"/>
+				<include name="sonido/*.wav"/>
+			</fileset>
+		</jar>	
+	</target>
+
+	
+	<target name="run" depends="instrumentar.aplicacion,jar">
+		<java jar="${build}/jar/Juego.jar" fork="true"/>
+	</target>
+	
+	<target name="help">
+		<echo message="ant run   -  Corre el juego" />
+		<echo message= "ant test  -  Corre pruebas" />
 	</target>
 
 </project>

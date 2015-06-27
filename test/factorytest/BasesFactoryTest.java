@@ -1,13 +1,9 @@
 package factorytest;
 
-import static org.junit.Assert.*;
 import model.Base;
 
 import org.junit.Before;
-import org.junit.Test;
 
-import common.Posicion;
-import exceptions.FueraDeRangoException;
 import factory.BaseFactory;
 
 public class BasesFactoryTest {

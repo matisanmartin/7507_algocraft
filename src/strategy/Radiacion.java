@@ -2,7 +2,6 @@ package strategy;
 
 import model.Armada;
 import model.Elemento;
-import model.ElementoArtificial;
 import model.Juego;
 
 import common.Mensajes;

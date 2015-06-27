@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.Hashtable;
 import java.util.Map;
 
-import model.Parte;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +14,7 @@ import command.Accion;
 import common.Costo;
 import common.Danio;
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.FueraDeRangoException;
@@ -232,4 +231,23 @@ public class UnidadFactoryTest {
 		assertEquals(false,mapaPrueba.containsKey("Tormenta Psionica"));
 		
 	}
+	
+	@Test
+	public void testToStringUnidad() throws UnidadLlenaException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException{
+		unidad = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10,10));
+		System.out.print(unidad.toString());
+	}
+	
+	@Test
+	public void testToStringUnidadProtoss() throws UnidadLlenaException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException{
+		unidad = factory.getUnidad(TipoUnidad.PROTOSS_SCOUT, new Posicion(10,10));
+		System.out.print(unidad.toString());
+	}
+	
+	@Test
+	public void testToStringUnidadMagicaProtoss() throws UnidadLlenaException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, DanioInvalidoException, PosicionInvalidaException {
+		unidad = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(10,10));
+		System.out.print(unidad.toString());
+	}
+	
 }

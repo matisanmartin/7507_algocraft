@@ -5,10 +5,11 @@ import java.io.IOException;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
-import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FueraDeRangoException;
 import exceptions.PoblacionFaltanteException;

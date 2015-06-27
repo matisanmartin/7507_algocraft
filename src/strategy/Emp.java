@@ -66,9 +66,8 @@ public class Emp implements Strategy {
 			
 			//Valido que este en el radio y que no sea el elemento que actua
 			//En principio, no podria atacar a una unidad que este en otro espacio y misma posicion
-			if(distanciaTemp<RADIO_ACCION_MISIL_EMP*factor&&!(elementoAtacado.posicionEsParte(posicionDestino)))
+			if((distanciaTemp<RADIO_ACCION_MISIL_EMP*factor)&&(!elementoAtacado.posicionEsParte(posicionDestino)))
 			{
-				Juego.getInstancia().getListener().seRealizoEmp((ElementoArtificial)elementoAtacado);
 				elementoAtacado.recibirEmp();
 				it.set(elementoAtacado);
 	
@@ -76,6 +75,9 @@ public class Emp implements Strategy {
 		}
 
 		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
+		
+		Juego.getInstancia().getListener().seRealizoEmp();
+
 
 		Juego.getInstancia().verificarFinDePartida();
 	}

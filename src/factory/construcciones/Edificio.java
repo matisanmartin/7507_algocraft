@@ -2,8 +2,14 @@ package factory.construcciones;
 
 import java.io.IOException;
 
+import model.CampoBatalla;
+import model.Elemento;
+import model.ElementoArtificial;
+import model.Juego;
 import strategy.ContextoStrategy;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -21,11 +27,6 @@ import exceptions.RecursosFaltantesException;
 import exceptions.RecursosInsuficientesException;
 import exceptions.UnidadInvalidaException;
 import exceptions.UnidadLlenaException;
-import model.CampoBatalla;
-import model.Elemento;
-import model.ElementoArtificial;
-import model.EspacioTerrestre;
-import model.Juego;
 
 public class Edificio extends ElementoArtificial {
 

@@ -2,14 +2,13 @@ package listener;
 
 import java.io.IOException;
 
-import razas.Raza;
-import recursos.Cristal;
 import model.Elemento;
 import model.ElementoArtificial;
+import razas.Raza;
+import recursos.Cristal;
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
-import factory.construcciones.CentroComandoProtoss;
 
 public interface JuegoListener {
 	
@@ -55,7 +54,7 @@ public interface JuegoListener {
 	//Metodos relacionados con acciones de unidades
 	public void seMovioUnidad(ElementoArtificial elemento);
 	public void seRealizoAtaque(Elemento elementoActuante);
-	public void seRealizoEmp(ElementoArtificial elemento);
+	public void seRealizoEmp();
 	public void seRealizoRadiacion(Elemento elementoAtacado);
 	public void seRealizoTormentaPsionica(Elemento elementoTemporalAtacado);
 	public void seRealizoAlucinacion(ElementoArtificial elemento);

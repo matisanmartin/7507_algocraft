@@ -1,11 +1,12 @@
 package model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import recursos.Cristal;
 import recursos.Volcan;
+
 import common.Posicion;
+
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;
 

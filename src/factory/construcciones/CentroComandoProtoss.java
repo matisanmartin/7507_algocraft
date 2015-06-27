@@ -1,12 +1,11 @@
 package factory.construcciones;
 
-import strategy.CrearPilon;
 import command.CrearAccesoAccion;
-import command.CrearAsimiladorAccion;
 import command.CrearPilonAccion;
 import common.Costo;
 import common.Posicion;
 import common.Vitalidad;
+
 import exceptions.CostoInvalidoException;
 import exceptions.FueraDeRangoException;
 import exceptions.PosicionInvalidaException;

@@ -19,5 +19,4 @@ public class MetodoPruebaListenerTest {
 	public void testPruebaListener() {
 		assertEquals(null,Juego.getInstancia().pruebaListener());
 	}
-
 }

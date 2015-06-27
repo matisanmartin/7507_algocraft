@@ -3,7 +3,6 @@ package listenertest;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
@@ -11,12 +10,12 @@ import model.Juego;
 import org.junit.Before;
 import org.junit.Test;
 
-import razas.Protoss;
-import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.CrearZealot;
 import vista.VentanaMock;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;

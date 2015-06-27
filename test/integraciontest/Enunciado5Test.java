@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
-import jugador.TipoColor;
 import model.CampoBatalla;
 import model.ElementoArtificial;
 import model.Juego;
@@ -14,12 +13,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import razas.Terran;
 import strategy.ContextoStrategy;
 import strategy.SubirUnidad;
 import vista.VentanaMock;
-import vista.VentanaPrincipal;
+
 import common.Posicion;
+
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
