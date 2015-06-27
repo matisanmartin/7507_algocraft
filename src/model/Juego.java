@@ -27,6 +27,7 @@ public class Juego {
 	private static Juego INSTANCIA = null;
 	private static JuegoListener listener;
 	
+	@SuppressWarnings("static-access")
 	private Juego(JuegoListener listener){
 		try
 		{
@@ -110,20 +111,13 @@ public class Juego {
 	}
 	
 	private void intercambiarJugadores() throws NombreJugadorRepetidoException  {
-		
 			
 		Jugador jugadorActualAntesDeCambio = getJugadorActual();
 		Jugador jugadorEnemAntesDeCambio = getJugadorEnemigo();
 		
 		setJugadorActual(jugadorEnemAntesDeCambio);
 		setJugadorEnemigo(jugadorActualAntesDeCambio);
-		
-		Jugador actualDespueDe = getJugadorActual();
-		Jugador enemDespuesDe = getJugadorEnemigo();
-		
-		
-		
-		
+	
 	}
 
 	private void actualizar() {
