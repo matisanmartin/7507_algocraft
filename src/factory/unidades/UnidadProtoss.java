@@ -44,5 +44,9 @@ public class UnidadProtoss extends Unidad {
 		
 		return strUnidadProtoss.toString();	
 	}
+	
+	public void recibirEmp(){
+		setEscudo(0);
+	}
 
 }
