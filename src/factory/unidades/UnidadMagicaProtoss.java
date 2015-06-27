@@ -1,6 +1,7 @@
 package factory.unidades;
 
 import command.AlucinacionAccion;
+import command.MoverAccion;
 import command.TormentaPsionicaAccion;
 import common.Costo;
 import common.Danio;
@@ -41,9 +42,9 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 	}
 
 	public void definirAccionesDisponibles(){
-
+		agregarAccionDisponible("Mover", new MoverAccion(this));
 		agregarAccionDisponible("TormentaPsionica", new TormentaPsionicaAccion(this));
-		agregarAccionDisponible("Alucinacion",new AlucinacionAccion(this));
+		agregarAccionDisponible("Alucinacion", new AlucinacionAccion(this));
 	}
 	
 	@Override

@@ -322,7 +322,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 		
 	}
 	
-	public void EliminarAccionDisponible(String keyAccion){
+	public void eliminarAccionDisponible(String keyAccion){
 		accionesDisponibles.remove(keyAccion);
 	}
 	

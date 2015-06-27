@@ -29,9 +29,6 @@ public class UnidadMagica extends Unidad {
 		// TODO msma: Temporal, borrar luego.
 	}
 
-	public void definirAccionesDisponibles(){
-		super.definirAccionesDisponibles();
-	}
 
 	@Override
 	public int getEnergia() {
