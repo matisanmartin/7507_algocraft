@@ -9,8 +9,6 @@ import model.Juego;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import strategy.Alucinacion;
 import strategy.ContextoStrategy;
@@ -39,7 +37,6 @@ import factory.UnidadFactory;
 import factory.unidades.TipoUnidad;
 import factory.unidades.Unidad;
 
-@RunWith(JUnit4.class)
 public class AlucinacionTest {
 
 	ContextoStrategy contexto;
@@ -90,17 +87,6 @@ public class AlucinacionTest {
 	/**
 	 * La posicion de la unidad del jugador actual es (2,2), por lo tanto deberian crearse una en (3,2) y otra en (1,2)
 	 * Si tira excepcion, el test falla
-	 * @throws CostoInvalidoException 
-	 * @throws RecursosInsuficientesException 
-	 * @throws CloneNotSupportedException 
-	 * @throws PartidaPerdidaException 
-	 * @throws PartidaGanadaException 
-	 * @throws FinDePartidaException 
-	 * @throws UnidadLlenaException 
-	 * @throws PoblacionFaltanteException 
-	 * @throws RecursosFaltantesException 
-	 * @throws DanioInvalidoException 
-	 * @throws IOException 
 	 */
 	@Test
 	public void testAlucinacionCreaUnidadesGemelasYEnemigoEstaEnRango() 
@@ -131,17 +117,6 @@ public class AlucinacionTest {
 	
 	/**
 	 * Test "negativo" debería tirar excepcion si el jugador está fuera de rango de vision de la unidad que ataca
-	 * @throws CostoInvalidoException 
-	 * @throws RecursosInsuficientesException 
-	 * @throws CloneNotSupportedException 
-	 * @throws PartidaPerdidaException 
-	 * @throws PartidaGanadaException 
-	 * @throws FinDePartidaException 
-	 * @throws UnidadLlenaException 
-	 * @throws PoblacionFaltanteException 
-	 * @throws RecursosFaltantesException 
-	 * @throws DanioInvalidoException 
-	 * @throws IOException 
 	 */
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testAlucinacionCreaUnidadesEnemigoNoEstaEnRango() 
@@ -152,22 +127,10 @@ public class AlucinacionTest {
 	
 	/**
 	 * Test "negativo", tiene 50 de vida y se requiere 100 para poder  hacer el ataque
-	 * @throws CostoInvalidoException 
-	 * @throws RecursosInsuficientesException 
-	 * @throws CloneNotSupportedException 
-	 * @throws PartidaPerdidaException 
-	 * @throws PartidaGanadaException 
-	 * @throws FinDePartidaException 
-	 * @throws UnidadLlenaException 
-	 * @throws PoblacionFaltanteException 
-	 * @throws RecursosFaltantesException 
-	 * @throws DanioInvalidoException 
-	 * @throws IOException 
 	 */
 	@Test(expected = EnergiaInsuficienteException.class)
 	public void testAlucinacionUnidadConEnergiaInsuficiente() 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
-//		unidadAtacante.setVitalidad(new Vitalidad(150,0));
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
 	}
 	

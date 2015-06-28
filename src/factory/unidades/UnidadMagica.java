@@ -12,7 +12,7 @@ import model.Espacio;
 public class UnidadMagica extends Unidad {
 	
 	private static final int ENERGIA_INICIAL=50;
-	private int energia;
+	protected int energia;
 	
 	public UnidadMagica(int transporte, int vision, Costo costo,
 			int tiempoConstruccion, Danio danio, int suministro,
@@ -20,6 +20,7 @@ public class UnidadMagica extends Unidad {
 			Posicion posicion, Espacio espacio) throws FueraDeRangoException, PosicionInvalidaException {
 		super(transporte, vision, costo, tiempoConstruccion, danio, suministro,
 				unidadNaveCienciaRangoAtaque, vida, alto, ancho, posicion, espacio);
+		
 		this.setEnergia(ENERGIA_INICIAL);
 		
 	}

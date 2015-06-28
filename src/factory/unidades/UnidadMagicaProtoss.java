@@ -34,6 +34,8 @@ public class UnidadMagicaProtoss extends UnidadMagica {
 			unidadVida,unidadAlto, unidadAncho,
 			posicion, espacio);
 		
+		setEnergia(50);
+		
 		this.definirAccionesDisponibles();
 	}
 

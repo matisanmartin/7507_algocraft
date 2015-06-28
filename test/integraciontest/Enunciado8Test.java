@@ -129,42 +129,43 @@ public class Enunciado8Test {
 		
 		
 		//acerco al zealot al marine
-		Posicion proximaPosicionZealot = new Posicion(4,3);
+		Posicion proximaPosicionZealot = new Posicion(2,10);
 		Elemento zealotObt = Juego.getInstancia()
-														.obtenerArmadaJugadorActual()
-														.obtenerElementoEnPosicion(posicionNuevoZealot);
+									.obtenerArmadaJugadorActual()
+									.obtenerElementoEnPosicion(posicionNuevoZealot);
 
 		contexto = new ContextoStrategy(new Mover());
 		zealotObt.realizarAccion(contexto, proximaPosicionZealot);
 		
 		//ataco al marine
 		Elemento zealotObtDeNuevo = Juego.getInstancia()
-																.obtenerArmadaJugadorActual()
-																.obtenerElementoEnPosicion(proximaPosicionZealot);
+										.obtenerArmadaJugadorActual()
+										.obtenerElementoEnPosicion(proximaPosicionZealot);
+		
 		contexto = new ContextoStrategy(new Ataque());
 		zealotObtDeNuevo.realizarAccion(contexto, posicionNuevoMarine);
 		
 		//verifico que le quite vida
-		assertEquals(34,Juego.getInstancia()
-										.obtenerArmadaJugadorEnemigo()
-										.obtenerElementoEnPosicion(posicionNuevoMarine)
-										.getVida());
+		assertEquals(32,Juego.getInstancia()
+								.obtenerArmadaJugadorEnemigo()
+								.obtenerElementoEnPosicion(posicionNuevoMarine)
+								.getVida());
 		
 		//cambia turno
 		Juego.getInstancia().cambiarTurno();
 		
 		//jugador actual crea puerto estelar
-		Posicion posPuertoEstelar = new Posicion(4,4);
+		Posicion posPuertoEstelar = new Posicion(100,4);
 		ElementoArtificial puertoEstelar = factoryEdificio.getEdificio(TipoEdificio.TERRAN_PUERTO_ESTELAR, posPuertoEstelar);
 		Juego.getInstancia().agregarUnidadAJugadorActual(puertoEstelar);
 		
 			
 		//jugador actual crea una nave ciencia seleccionando el puerto estelar
-		Posicion posNaveCiencia = new Posicion(5,5);
+		Posicion posNaveCiencia = new Posicion(200,5);
 		Elemento puertoEstelarObt = Juego.getInstancia()
-																.obtenerArmadaJugadorActual()
-																.obtenerElementoEnPosicion(posPuertoEstelar);
-		
+										.obtenerArmadaJugadorActual()
+										.obtenerElementoEnPosicion(posPuertoEstelar);
+
 		contexto = new ContextoStrategy(new CrearNaveCiencia());
 		puertoEstelarObt.realizarAccion(contexto, posNaveCiencia);
 		
@@ -172,8 +173,8 @@ public class Enunciado8Test {
 		
 		//nave ciencia ataca zealot con misil emp
 		Elemento naveCienciaObt = Juego.getInstancia()
-															.obtenerArmadaJugadorActual()
-															.obtenerElementoEnPosicion(posNaveCiencia);
+										.obtenerArmadaJugadorActual()
+										.obtenerElementoEnPosicion(posNaveCiencia);
 		
 		contexto = new ContextoStrategy(new Emp());
 		try
@@ -183,7 +184,7 @@ public class Enunciado8Test {
 		catch(EnergiaInsuficienteException eie)
 		{
 			//No tengo energia suficiente para realizar la accion. Hay que recolectar
-			naveCienciaObt.setEnergia(100);//TODO cambiar luego
+			naveCienciaObt.setEnergia(500);//TODO cambiar luego
 			naveCienciaObt.realizarAccion(contexto, proximaPosicionZealot);
 		}
 		
@@ -196,16 +197,22 @@ public class Enunciado8Test {
 																	.obtenerArmadaJugadorActual()
 																	.obtenerElementoEnPosicion(posNaveCiencia);
 		
+		contexto = new ContextoStrategy(new Mover());
+		
+		zealotObtDeNuevo.realizarAccion(contexto, new Posicion(150,200));
+		
+		naveCienciaObtDeNuevo.realizarAccion(contexto, new Posicion(100,100));
+		
 		contexto = new ContextoStrategy(new Radiacion());
 		
 		try
 		{
-			naveCienciaObtDeNuevo.realizarAccion(contexto, proximaPosicionZealot);
+			naveCienciaObtDeNuevo.realizarAccion(contexto, new Posicion(150,200));
 		}
 		catch(EnergiaInsuficienteException eie)
 		{
 			naveCienciaObtDeNuevo.setEnergia(100);//TODO msma cambiar luego
-			naveCienciaObtDeNuevo.realizarAccion(contexto, proximaPosicionZealot);
+			naveCienciaObtDeNuevo.realizarAccion(contexto, new Posicion(150,200));
 		}
 		
 	}

@@ -100,9 +100,6 @@ public abstract class ElementoArtificial extends Elemento  {
 		return 0;
 	}
 
-	public void setEnergia(int energia) {
-		return;
-	}
 
 	public void restarEnergiaPorAccion(int energiaNecesaria) {
 		setEnergia(getEnergia()-energiaNecesaria);
