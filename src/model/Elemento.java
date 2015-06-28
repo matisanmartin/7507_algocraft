@@ -294,8 +294,13 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 	public boolean posicionEsParte(Posicion posicionDestino) {
 		
 		for (Parte parteActual : partes) {
-			if(parteActual.posicionEsParte(posicionDestino))
+			if(posicionDestino.equals(this.getPosicion()))
 				return true;
+			else
+			{
+				if(parteActual.posicionEsParte(posicionDestino))
+					return true;
+			}
 		}
 		return false;
 	}

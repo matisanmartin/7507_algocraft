@@ -2,7 +2,10 @@ package jugadortest;
 
 import static org.junit.Assert.assertEquals;
 import jugador.Jugador;
+import model.CampoBatalla;
+import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +40,12 @@ public class JugadorTest {
 	 public void setUp() {
 	 }
 	 
+	 @After
+	 public void destroy() {
+		 CampoBatalla.DestruirInstancia();
+		 Juego.destruirInstancia();
+	 }
+	 
 	 @Test(expected = NombreCortoException.class)
 	 public void testNombreCorto() throws NombreCortoException, ColorInvalidoException {
 			jugadorPrueba = new Jugador("","terran","rojo");
@@ -60,25 +69,4 @@ public class JugadorTest {
 		 
 	 }
 	 
-	 @Test
-	 public void borraUnElementoDeLaArmada() throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, UnidadLlenaException, UnidadInvalidaException, DanioInvalidoException, ElementoNoEncontradoException{
-		 Jugador jug = new Jugador();
-		 UnidadFactory factory = new UnidadFactory();
-		 assertEquals(0, jug.obtenerDimensionArmada());
-		 Unidad marine = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(50, 50));
-		 jug.agregarElemento(marine);
-		 marine = factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, new Posicion(200, 200));
-		 jug.agregarElemento(marine);
-		 assertEquals(2, jug.obtenerDimensionArmada());
-		 jug.obtenerArmada().removerElementoEnPosicion(new Posicion(50, 50));
-		 assertEquals(1, jug.obtenerDimensionArmada());
-	 }
-	 
-//	 @Test
-//	 public void siPideRecursosAUnEdificoDeRecursoRecibeMas10() throws FueraDeRangoException, NombreCortoException, ColorInvalidoException{
-//		Jugador jugador = new Jugador("pepepe", TipoColor.COLOR_AMARILLO, new Terran());
-//		ConstruccionSobreVolcan refineria = new Refineria(new Volcan(new Posicion(1, 1))); 
-//		 
-//		 
-//	 }
 }

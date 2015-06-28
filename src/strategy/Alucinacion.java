@@ -73,7 +73,7 @@ public class Alucinacion implements Strategy {
 		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
 		Juego.getInstancia().getListener().seCreoCopiaFicticia(copiaFicticia2);
 		
-		Juego.getInstancia().verificarFinDePartida();
+		//Juego.getInstancia().verificarFinDePartida();
 
 	}
 

@@ -1,4 +1,5 @@
 package strategy;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -7,10 +8,8 @@ import model.Elemento;
 import model.ElementoArtificial;
 import model.Espacio;
 import model.Juego;
-
 import common.Mensajes;
 import common.Posicion;
-
 import exceptions.ElementoNoEncontradoException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FinDePartidaException;
@@ -35,7 +34,12 @@ public class Ataque implements Strategy {
 		if(distancia>rangoDeVisionElementoActuante*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 	
-		List<Elemento> elementosAtacados=CampoBatalla.getInstancia().obtenerElementosEnEspacio(elementoActuante.obtenerEspacio());
+		List<Elemento> elementosAtacablesAereos=CampoBatalla.getInstancia().obtenerElementosAereos();
+		List<Elemento> elementosAtacablesTerrestres=CampoBatalla.getInstancia().obtenerElementosTerrestres();
+		
+		elementosAtacablesAereos.addAll(elementosAtacablesTerrestres);
+		
+		List<Elemento> elementosAtacados=new ArrayList<Elemento>(elementosAtacablesAereos);
 		
 		
 		ListIterator<Elemento> it = elementosAtacados.listIterator();
@@ -51,7 +55,7 @@ public class Ataque implements Strategy {
 			{
 				Espacio espacioTemporal = ((ElementoArtificial) elementoAtacado).obtenerEspacio();
 				
-				int danioAtaqueNum=espacioTemporal.getDanio(((Unidad) elementoAtacado).getDanio());
+				int danioAtaqueNum=espacioTemporal.getDanio(((Unidad) elementoActuante).getDanio());
 				int rangoAtaqueAtacante = espacioUnidad.getRangoDeAtaque(((Unidad) elementoActuante).getRangoAtaque());
 
 				if(distancia<=rangoAtaqueAtacante*factor)

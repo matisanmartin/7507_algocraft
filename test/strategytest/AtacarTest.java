@@ -113,7 +113,7 @@ public class AtacarTest {
 		}
 		catch(PartidaPerdidaException ppe)
 		{
-			assertEquals(52,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());
+			assertEquals(54,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());
 		}
 		
 	}

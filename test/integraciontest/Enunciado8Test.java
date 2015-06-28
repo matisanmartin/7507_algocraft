@@ -5,10 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import jugador.Jugador;
+import model.CampoBatalla;
 import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -78,6 +80,12 @@ public class Enunciado8Test {
 		
 		
 	}
+	
+	@After
+	public void destroy(){
+		Juego.destruirInstancia();
+		CampoBatalla.DestruirInstancia();
+	}
 
 	
 	@Test(expected = PartidaGanadaException.class)
@@ -92,26 +100,26 @@ public class Enunciado8Test {
 		
 		//Selecciono la barraca para crear un marine
 		Elemento barracaObt = Juego.getInstancia()
-														.obtenerArmadaJugadorActual()
-														.obtenerElementoEnPosicion(posicionBarraca);
+									.obtenerArmadaJugadorActual()
+									.obtenerElementoEnPosicion(posicionBarraca);
 		
 		//creo el marine
 		contexto = new ContextoStrategy(new CrearMarine());
-		Posicion posicionNuevoMarine = new Posicion(3,3);
+		Posicion posicionNuevoMarine = new Posicion(30,3);
 		barracaObt.realizarAccion(contexto, posicionNuevoMarine);
 		
 		//cambia el turno
 		Juego.getInstancia().cambiarTurno();
 		
 		//El jugador crea un Acceso
-		Posicion posicionAcceso = new Posicion(10,10);
+		Posicion posicionAcceso = new Posicion(200,10);
 		ElementoArtificial acceso = factoryEdificio.getEdificio(TipoEdificio.PROTOSS_ACCESO, posicionAcceso);
 		Juego.getInstancia().agregarUnidadAJugadorActual(acceso);
 		
 		//Selecciono el acceso para obtener un zealot
 		Elemento accesoObt = Juego.getInstancia()
-													  .obtenerArmadaJugadorActual()
-													  .obtenerElementoEnPosicion(posicionAcceso);
+									.obtenerArmadaJugadorActual()
+										.obtenerElementoEnPosicion(posicionAcceso);
 		
 		contexto = new ContextoStrategy(new CrearZealot());
 		Posicion posicionNuevoZealot = new Posicion(6,3);
@@ -242,11 +250,11 @@ public class Enunciado8Test {
 		
 		//Selecciono el acceso para obtener un zealot
 		Elemento accesoObt = Juego.getInstancia()
-													  .obtenerArmadaJugadorActual()
-													  .obtenerElementoEnPosicion(posicionAcceso);
+								  .obtenerArmadaJugadorActual()
+								  .obtenerElementoEnPosicion(posicionAcceso);
 		
 		contexto = new ContextoStrategy(new CrearZealot());
-		Posicion posicionNuevoZealot = new Posicion(6,3);
+		Posicion posicionNuevoZealot = new Posicion(300,3);
 		//recolecto 50 para obtener un zealot
 		Juego.getInstancia().getJugadorActual().agregarCantidadDeCristal(50);
 		accesoObt.realizarAccion(contexto, posicionNuevoZealot);

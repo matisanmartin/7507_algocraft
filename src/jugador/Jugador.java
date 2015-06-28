@@ -96,9 +96,12 @@ public class Jugador {
 //		this.poblacionActual = 0;
 		this.excesoPoblacion = 0;
 		
-		//this.cantidadDeCristal=200;
-		this.cantidadDeCristal = 1000000;
-		this.cantidadDeGas = 100000;
+		this.cantidadDeCristal=200;
+		this.cantidadDeGas=0;
+		
+		//godmode
+		//this.cantidadDeCristal = 1000000;
+		//this.cantidadDeGas = 100000;
 		this.poblacionDisponible = 1000000;
 		
 		armada= new Armada();

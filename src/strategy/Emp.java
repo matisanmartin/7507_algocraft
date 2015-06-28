@@ -48,9 +48,7 @@ public class Emp implements Strategy {
 		List<Elemento> elementosEnEspacioCampoDeBatalla=CampoBatalla.getInstancia()
 																	.obtenerElementosEnEspacio(espacioElementoActuante);
 		
-		List<Elemento> elementosEnTierraCampoDeBatalla=CampoBatalla.getInstancia()
-																   .obtenerElementosEnEspacio(new EspacioTerrestre());
-		
+		List<Elemento> elementosEnTierraCampoDeBatalla=CampoBatalla.getInstancia().obtenerElementosTerrestres();		
 		
 		//Hago un append de los elementos de tierra en los elementos de espacio para que verifique todos
 		elementosEnEspacioCampoDeBatalla.addAll(elementosEnTierraCampoDeBatalla);
@@ -77,7 +75,6 @@ public class Emp implements Strategy {
 		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
 		
 		Juego.getInstancia().getListener().seRealizoEmp();
-
 
 		Juego.getInstancia().verificarFinDePartida();
 	}

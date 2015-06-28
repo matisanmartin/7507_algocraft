@@ -17,7 +17,7 @@ public class Volcan extends Recurso {
 
 	public Volcan(int alto, int ancho, Posicion posicion) throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException {	
 		super(alto, ancho, posicion);
-		this.definirAccionesDisponibles();
+		definirAccionesDisponibles();
 	}
 
 	@Override

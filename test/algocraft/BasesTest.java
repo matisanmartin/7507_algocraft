@@ -5,8 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import model.BaseInfDer;
-import model.BaseInfIzq;
+import jugador.Jugador;
 import model.BaseSupIzq;
 import model.CampoBatalla;
 import model.Elemento;
@@ -19,13 +18,13 @@ import org.junit.Test;
 import recursos.Cristal;
 import recursos.Volcan;
 import vista.VentanaMock;
-
 import common.Constantes;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.FueraDeRangoException;
+import exceptions.NombreCortoException;
+import exceptions.NombreJugadorRepetidoException;
 import exceptions.PoblacionFaltanteException;
 import exceptions.PosicionInvalidaException;
 import exceptions.RecursosInsuficientesException;
@@ -33,12 +32,16 @@ import exceptions.RecursosInsuficientesException;
 public class BasesTest {
 	
 	@Before
-	public void setUp() throws FueraDeRangoException, PosicionInvalidaException{
+	public void setUp() throws FueraDeRangoException, PosicionInvalidaException, NombreCortoException, NombreJugadorRepetidoException{
 		Juego.crearInstancia(new VentanaMock());
+		Juego.getInstancia().setJugadorActual(new Jugador("pepe","rojo","terran"));
+		Juego.getInstancia().setJugadorEnemigo(new Jugador("pepito","azul","protoss"));
+		
 	}
 	@After
 	public void destroy(){
 		CampoBatalla.DestruirInstancia();
+		Juego.destruirInstancia();
 	}
 
 	@Test
@@ -56,48 +59,21 @@ public class BasesTest {
 		assertEquals(6,base.getCristales().size());
 	}
 
-	/*
-	 * al crear una base superior izquierda en (1,1), deberia haber un volcan en (1,1) y los cristales en 
-	 * (1,2)(1,3),(1,4) / (2,1)(3,1),(4,1)
-	 */
-	@Test
-	public void crearBaseSuperiorIzquierda() throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException{
-		BaseSupIzq base = new BaseSupIzq(new Posicion(1,1));
-		assertEquals(new Posicion(1,1),base.getVolcan().get(0).getPosicion());
-		assertEquals(new Posicion(1,2), base.getCristales().get(0).getPosicion());
-		assertEquals(new Posicion(1,3), base.getCristales().get(1).getPosicion());
-		assertEquals(new Posicion(1,4), base.getCristales().get(2).getPosicion());
-		
-		assertEquals(new Posicion(2,1), base.getCristales().get(3).getPosicion());
-		assertEquals(new Posicion(3,1), base.getCristales().get(4).getPosicion());
-		assertEquals(new Posicion(4,1), base.getCristales().get(5).getPosicion());
-		
-	}
 	
 	@Test
 	public void crearBaseSuperiorIzquierdaEn31() throws FueraDeRangoException, PosicionInvalidaException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, CostoInvalidoException{
-//		BaseSupIzq base = new BaseSupIzq(new Posicion(1,1));
-//		assertEquals(new Posicion(1,1),base.getVolcan().get(0).getPosicion());
+
 		CampoBatalla.getInstancia().setUpBases();
 		List<Elemento> base = CampoBatalla.getInstancia().getEspacioTerrestre().getEspacio();
-		assertEquals(7, base.size());
+		assertEquals(26, base.size());//se pone 26 ya que el setup crea todas las bases
 		
-		
-//		assertEquals(new Posicion(3,2), base.getCristales().get(0).getPosicion());
-//		assertEquals(new Posicion(3,3), base.getCristales().get(1).getPosicion());
-//		assertEquals(new Posicion(3,4), base.getCristales().get(2).getPosicion());
-//		
-//		assertEquals(new Posicion(4,1), base.getCristales().get(3).getPosicion());
-//		assertEquals(new Posicion(5,1), base.getCristales().get(4).getPosicion());
-//		assertEquals(new Posicion(6,1), base.getCristales().get(5).getPosicion());
-		
-		assertEquals(new Posicion(1,66), base.get(1).getPosicion());
-		assertEquals(new Posicion(66,1), base.get(2).getPosicion());
-		assertEquals(new Posicion(1,131), base.get(3).getPosicion());
+		assertEquals(new Posicion(1,41), base.get(1).getPosicion());
+		assertEquals(new Posicion(41,1), base.get(2).getPosicion());
+		assertEquals(new Posicion(1,81), base.get(3).getPosicion());
 	
-		assertEquals(new Posicion(131,1), base.get(4).getPosicion());
-		assertEquals(new Posicion(1,196), base.get(5).getPosicion());
-		assertEquals(new Posicion(196,1), base.get(6).getPosicion());
+		assertEquals(new Posicion(81,1), base.get(4).getPosicion());
+		assertEquals(new Posicion(1,121), base.get(5).getPosicion());
+		assertEquals(new Posicion(121,1), base.get(6).getPosicion());
 		
 	}
 	
@@ -107,76 +83,26 @@ public class BasesTest {
 	 * (1, max col - 3) (1,max col - 2), (1, max col -1) / (max col, 2) (max col, 3) (max col, 4)
 	 */
 	@Test
-	public void crearBaseSuperiorDerechaEnX1Y800() throws FueraDeRangoException, PosicionInvalidaException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, CostoInvalidoException{
+	public void crearBaseSuperiorDerechaEnX1Y800() throws FueraDeRangoException, PosicionInvalidaException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, CostoInvalidoException, NombreCortoException{
+		
+		
 		CampoBatalla.getInstancia().setUpBases();
 		List<Elemento> base = CampoBatalla.getInstancia().getEspacioTerrestre().getEspacio();
-		assertEquals(14, base.size());
-		assertEquals(new Posicion(1,1101), base.get(7).getPosicion());
-		assertEquals(new Posicion(1,1036), base.get(8).getPosicion());
-		assertEquals(new Posicion(66,1101), base.get(9).getPosicion());
-		assertEquals(new Posicion(1,971), base.get(10).getPosicion());
-		assertEquals(new Posicion(131,1101), base.get(11).getPosicion());
-		assertEquals(new Posicion(1,906), base.get(12).getPosicion());
-		assertEquals(new Posicion(196,1101), base.get(13).getPosicion());
-		
-		
-		
-//		BaseSupDer base = new BaseSupDer(new Posicion(3, 5));
-//		
-//		//volcan
-//		assertEquals(new Posicion(3, 5), base.getVolcan().get(0).getPosicion());
-//		
-//		//cristales
-//		assertEquals(new Posicion(3, 2), base.getCristales().get(0).getPosicion());
-//		assertEquals(new Posicion(3, 3), base.getCristales().get(1).getPosicion());
-//		assertEquals(new Posicion(3, 4), base.getCristales().get(2).getPosicion());
-//		
-//		assertEquals(new Posicion(4, 5), base.getCristales().get(3).getPosicion());
-//		assertEquals(new Posicion(5, 5), base.getCristales().get(4).getPosicion());
-//		assertEquals(new Posicion(6, 5), base.getCristales().get(5).getPosicion());
-	}
-	
-	@Test
-	public void crearBaseInfIzq() throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException{
-		BaseInfIzq base = new BaseInfIzq(new Posicion(6, 3));
-		
-		//volcan
-		assertEquals(new Posicion(6, 3), base.getVolcan().get(0).getPosicion());
-		
-		//cristales
-		assertEquals(new Posicion(3, 3), base.getCristales().get(0).getPosicion());
-		assertEquals(new Posicion(4, 3), base.getCristales().get(1).getPosicion());
-		assertEquals(new Posicion(5, 3), base.getCristales().get(2).getPosicion());
-		
-		assertEquals(new Posicion(6, 4), base.getCristales().get(3).getPosicion());
-		assertEquals(new Posicion(6, 5), base.getCristales().get(4).getPosicion());
-		assertEquals(new Posicion(6, 6), base.getCristales().get(5).getPosicion());
-	}
-	
-	@Test
-	public void crearBaseInferiorDerecha() throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException{
-		BaseInfDer base = new BaseInfDer(new Posicion(6, 7));
-		
-		//volcan 
-		assertEquals(new Posicion(6, 7), base.getVolcan().get(0).getPosicion());
-		
-		//cristales 
-		assertEquals(new Posicion(3, 7), base.getCristales().get(0).getPosicion());
-		assertEquals(new Posicion(4, 7), base.getCristales().get(1).getPosicion());
-		assertEquals(new Posicion(5, 7), base.getCristales().get(2).getPosicion());
-		
-		assertEquals(new Posicion(6, 4), base.getCristales().get(3).getPosicion());
-		assertEquals(new Posicion(6, 5), base.getCristales().get(4).getPosicion());
-		assertEquals(new Posicion(6, 6), base.getCristales().get(5).getPosicion());
-		
-		
+		assertEquals(26, base.size());
+		assertEquals(new Posicion(920,1), base.get(7).getPosicion());
+		assertEquals(new Posicion(880,1), base.get(8).getPosicion());
+		assertEquals(new Posicion(840,1), base.get(9).getPosicion());
+		assertEquals(new Posicion(960,41), base.get(10).getPosicion());
+		assertEquals(new Posicion(960,81), base.get(11).getPosicion());
+		assertEquals(new Posicion(960,121), base.get(12).getPosicion());
+		assertEquals(new Posicion(1,520), base.get(13).getPosicion());
 		
 	}
-	
+
 	@Test 
 	public void creaVolcanEnBordeInferiorIzquierdoDelCampoBatalla() throws FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException{
 		Volcan volcan = new Volcan(1, 1, new Posicion(Constantes.ALTO_DEFECTO, 0));
-		assertEquals(new Posicion(Constantes.ALTO_DEFECTO, Constantes.POS_INICIAL_CAMPO_BATALLA), volcan.getPosicion());
+		assertEquals(new Posicion(Constantes.ALTO_DEFECTO, 0), volcan.getPosicion());
 	}
 	
 	@Test

@@ -79,18 +79,7 @@ public class Enunciado2Test {
 		
 		Juego.getInstancia().getJugadorActual().agregarElemento(altoTemplario);
 		
-		posicionMarine = new Posicion(50,2);
-		marine = factoryUnidad.getUnidad(TipoUnidad.TERRAN_MARINE,posicionMarine);
-		
-		posicionGolliat = new Posicion(2,50);
-		golliat = factoryUnidad.getUnidad(TipoUnidad.TERRAN_GOLLIAT,posicionGolliat);
-		
-		posicionNaveCiencia = new Posicion(50,50);
-		naveCiencia = factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA,posicionNaveCiencia); 
-		
-		Juego.getInstancia().getJugadorEnemigo().agregarElemento(marine);
-		Juego.getInstancia().getJugadorEnemigo().agregarElemento(naveCiencia);
-		Juego.getInstancia().getJugadorEnemigo().agregarElemento(golliat);
+
 		
 	}
 	
@@ -101,6 +90,22 @@ public class Enunciado2Test {
 	}
 	@Test
 	public void testNumero2aEnunciado() throws ElementoNoEncontradoException, NombreJugadorRepetidoException, UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
+		
+		posicionMarine = new Posicion(50,2);
+		marine = factoryUnidad.getUnidad(TipoUnidad.TERRAN_MARINE,posicionMarine);
+		
+		posicionGolliat = new Posicion(2,50);
+		golliat = factoryUnidad.getUnidad(TipoUnidad.TERRAN_GOLLIAT,posicionGolliat);
+		
+		posicionNaveCiencia = new Posicion(50,50);
+		naveCiencia = factoryUnidad.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA,posicionNaveCiencia); 
+
+		Juego.getInstancia().getJugadorEnemigo().agregarElemento(marine);
+		Juego.getInstancia().getJugadorEnemigo().agregarElemento(naveCiencia);
+		Juego.getInstancia().getJugadorEnemigo().agregarElemento(golliat);
+		
+		
+		
 		
 		//El templario debe lanzar tormenta psionica que requiere energia 75
 		//Con pasar 2 turnos, deberia llegar a 80, la energía necesaria
@@ -148,6 +153,8 @@ public class Enunciado2Test {
 	
 	@Test
 	public void testNumero2bEnunciado() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException{
+	
+		altoTemplario.setPosicion(new Posicion(40,20));
 		
 		//Dejo pasar los turnos para que alcance la energia	
 		Juego.getInstancia().cambiarTurno();//enemigo
@@ -156,7 +163,7 @@ public class Enunciado2Test {
 		Juego.getInstancia().cambiarTurno();//actual
 		
 		//situo una unidad propia
-		Posicion posicionZealot= new Posicion(40,40);
+		Posicion posicionZealot= new Posicion(80,80);
 		Unidad zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
 		zealot.setVision(4);//TODO msma: modificar leugo cuando se agregue Vision
 		
@@ -164,7 +171,7 @@ public class Enunciado2Test {
 		
 		Elemento altoTemplarioObt = Juego.getInstancia().getJugadorActual()
 				.obtenerArmada()
-				.obtenerElementoEnPosicion(posicionAltoTemplario);
+				.obtenerElementoEnPosicion(new Posicion(40,20));
 		
 		ContextoStrategy contexto = new ContextoStrategy(new Alucinacion());
 		
@@ -174,7 +181,7 @@ public class Enunciado2Test {
 		Elemento zealotFicticio1 = Juego.getInstancia()
 										.getJugadorActual()
 										.obtenerArmada()
-										.obtenerElementoEnPosicion(new Posicion(3,2));
+										.obtenerElementoEnPosicion(new Posicion(71,20));
 		
 		
 		//verifico que solo tiene escudo y no vida
@@ -184,7 +191,7 @@ public class Enunciado2Test {
 		Elemento zealotFicticio2 = Juego.getInstancia()
 										.getJugadorActual()
 										.obtenerArmada()
-										.obtenerElementoEnPosicion(new Posicion(1,2));
+										.obtenerElementoEnPosicion(new Posicion(9,20));
 		
 		//verifico que solo tiene escudo y no vida
 		assertEquals(0,zealotFicticio2.getVida());
@@ -192,7 +199,14 @@ public class Enunciado2Test {
 		
 		ContextoStrategy contextoZealot = new ContextoStrategy(new Ataque());
 		
+		posicionMarine = new Posicion(71,50);
+		marine = factoryUnidad.getUnidad(TipoUnidad.TERRAN_MARINE,posicionMarine);
+		Juego.getInstancia().getJugadorEnemigo().agregarElemento(marine);
+		
 		zealotFicticio1.realizarAccion(contextoZealot, posicionMarine);
+		
+		posicionMarine = new Posicion(25,20);
+		marine.setPosicion(posicionMarine);
 		zealotFicticio2.realizarAccion(contextoZealot, posicionMarine);
 		
 		Elemento marineObt = Juego.getInstancia()

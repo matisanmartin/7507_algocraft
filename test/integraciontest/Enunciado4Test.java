@@ -189,18 +189,18 @@ public class Enunciado4Test {
 		
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		
-		posicionEnRango = new Posicion(1,2);
+		posicionEnRango = new Posicion(30,1);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.TERRAN_ESPECTRO, posicionEnRango);
 		
 		try
 		{
 			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
-			unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
+			unidadAtacante.realizarAccion(contexto,posicionEnRango);
 						
 		}
 		catch(PartidaPerdidaException pge)
 		{
-			assertEquals(120,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+			assertEquals(114,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 		}
 	}
 
@@ -224,15 +224,15 @@ public class Enunciado4Test {
 		
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		
-		posicionEnRango = new Posicion(1,2);
+		posicionEnRango = new Posicion(30,1);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.TERRAN_NAVE_CIENCIA, posicionEnRango);
 		
 		try{
 			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
-			unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());		
+			unidadAtacante.realizarAccion(contexto,posicionEnRango);		
 		}
 		catch(PartidaPerdidaException pge){
-			assertEquals(200,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
+			assertEquals(194,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());
 		}
 	}
 
@@ -257,12 +257,12 @@ public class Enunciado4Test {
 		unidadAtacante=factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(1, 1));
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidadAtacante);
 		
-		posicionEnRango = new Posicion(60,2);
+		posicionEnRango = new Posicion(30,1);
 		unidadDefensoraEnRango=factory.getUnidad(TipoUnidad.TERRAN_NAVE_TRANSPORTE, posicionEnRango);
 		
 		try{
 			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
-			unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());			
+			unidadAtacante.realizarAccion(contexto,posicionEnRango);			
 		}
 		catch(PartidaPerdidaException pge){
 			assertEquals(150,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());

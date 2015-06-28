@@ -71,7 +71,6 @@ public class ArmadaTest {
 		
 		unidadMuertaNueva = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(200, 1));
 		unidadMuertaNueva.setVitalidad(new Vitalidad(0,0));
-		unidadMuertaNueva.posicionar(new Posicion(2,3));
 	}
 	
 	@After
@@ -105,7 +104,7 @@ public class ArmadaTest {
 		armada.agregarElemento(unidadMuerta);
 		armada.agregarElemento(unidadMuertaNueva);
 		
-		armada.eliminarElementoMuertoEnPosicion(new Posicion(2,3));
+		armada.eliminarElementoMuertoEnPosicion(new Posicion(200,1));
 		assertEquals(1,armada.getDimensionArmada());
 		
 		Elemento ElementoUnico = armada.obtenerElementoEnPosicion(pos);
