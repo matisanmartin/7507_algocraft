@@ -122,7 +122,7 @@ public class Enunciado8Test {
 										.obtenerElementoEnPosicion(posicionAcceso);
 		
 		contexto = new ContextoStrategy(new CrearZealot());
-		Posicion posicionNuevoZealot = new Posicion(6,3);
+		Posicion posicionNuevoZealot = new Posicion(19,80);
 		Juego.getInstancia().getJugadorActual().setMinerales(100);
 		accesoObt.realizarAccion(contexto, posicionNuevoZealot);
 
@@ -161,7 +161,7 @@ public class Enunciado8Test {
 		
 			
 		//jugador actual crea una nave ciencia seleccionando el puerto estelar
-		Posicion posNaveCiencia = new Posicion(200,5);
+		Posicion posNaveCiencia = new Posicion(200,100);
 		Elemento puertoEstelarObt = Juego.getInstancia()
 										.obtenerArmadaJugadorActual()
 										.obtenerElementoEnPosicion(posPuertoEstelar);
