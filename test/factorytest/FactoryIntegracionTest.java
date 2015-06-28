@@ -46,7 +46,7 @@ public class FactoryIntegracionTest {
 		assertEquals(UnidadFactory.UNIDAD_MARINE_TRANSPORTE, unidadObtenida.getTransporte());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_VISION, unidadObtenida.getVision());
 		assertEquals(true, unidadObtenida.getCosto().equals(new Costo(UnidadFactory.UNIDAD_MARINE_COSTO)));
-		assertEquals(true, unidadObtenida.getDanio().equals(new Danio(UnidadFactory.UNIDAD_MARINE_DAÑO)));
+		assertEquals(true, unidadObtenida.getDanio().equals(new Danio(UnidadFactory.UNIDAD_MARINE_DANIO)));
 		assertEquals(UnidadFactory.UNIDAD_MARINE_RANGO_ATAQUE, unidadObtenida.getRangoAtaque());
 		assertEquals(UnidadFactory.UNIDAD_MARINE_SUMINISTRO, unidadObtenida.getSuministro());
 		assertEquals(40, unidadObtenida.getVida());

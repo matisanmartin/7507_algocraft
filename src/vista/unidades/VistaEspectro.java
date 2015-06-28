@@ -7,7 +7,7 @@ import titiritero.modelo.ObjetoPosicionable;
 
 public class VistaEspectro extends Imagen {
 	
-	//TODO falta buscar imagen pequeña
+	//TODO falta buscar imagen pequenia
 	public VistaEspectro(ObjetoPosicionable modelo) throws IOException {
 		super(VistaEspectro.class.getResource("/vista/imagenes/espectro40-40.png"), modelo);
 	}

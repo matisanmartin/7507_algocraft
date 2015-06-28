@@ -63,7 +63,7 @@ public class EspacioTest {
 	public void alQuererPosicionUnElementoEnUnaPosicionOcupadaDeberiaSerUnaPosicionInvalida() throws UnidadInvalidaException, FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException, UnidadLlenaException, DanioInvalidoException{
 		Unidad marine1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10, 10));
 		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
-		Unidad marine2  = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10, 8));
+		Unidad marine2  = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10, 11));
 		CampoBatalla.getInstancia().posicionarElemento(marine2, CampoBatalla.getInstancia().getEspacioTerrestre());
 		
 	}

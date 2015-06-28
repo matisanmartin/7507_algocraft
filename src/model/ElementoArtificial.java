@@ -113,7 +113,7 @@ public abstract class ElementoArtificial extends Elemento  {
 
 
 
-	public abstract void agregarUnidad(Elemento unidadASubir) throws UnidadLlenaException;
+	public abstract void agregarUnidad(Elemento unidadASubir) throws UnidadLlenaException, PosicionInvalidaException, FueraDeRangoException;
 
 	public abstract int getCantidadDeUnidadesTransportadas();
 	

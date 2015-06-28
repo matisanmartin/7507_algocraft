@@ -130,7 +130,7 @@ public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosi
 	}
 	
 	@Override
-	public void agregarUnidad(Elemento elemento) throws UnidadLlenaException {
+	public void agregarUnidad(Elemento elemento) throws UnidadLlenaException, PosicionInvalidaException, FueraDeRangoException {
 		
 		if(transporte==0 || capacidadLlena()){
 			throw new UnidadLlenaException();

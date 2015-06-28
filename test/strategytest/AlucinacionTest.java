@@ -61,20 +61,21 @@ public class AlucinacionTest {
 		jugadorActual = new Jugador("jugador1","terran","rojo");
 		jugadorEnemigo = new Jugador("jugador2","protoss","azul");
 		jugadorActual.setPoblacionDisponible(2000);
-		posicionUnidadAtacante = new Posicion(200,20);
+		posicionUnidadAtacante = new Posicion(100,200);
 		unidadAtacante=factory.getUnidad(TipoUnidad.PROTOSS_ALTO_TEMPLARIO, posicionUnidadAtacante);
 		jugadorActual.agregarElemento(unidadAtacante);
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 
-		posicionUnidadAmigaEnRango = new Posicion(150,200);//El rango de vision del alto templario es 7
+		posicionUnidadAmigaEnRango = new Posicion(100,80);//El rango de vision del alto templario es 7
 		unidadAmigaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaEnRango);
 		jugadorActual.agregarElemento(unidadAmigaEnRango);
-		
+
 		posicionUnidadAmigaFueraDeRango = new Posicion(800,200);//El rango de vision del alto templario es 7
 		unidadAmigaFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaFueraDeRango);
 		jugadorActual.agregarElemento(unidadAmigaFueraDeRango);
 		
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
+
 	
 	}
 	
@@ -121,6 +122,9 @@ public class AlucinacionTest {
 	@Test(expected = FueraDeRangoDeVisionException.class)
 	public void testAlucinacionCreaUnidadesEnemigoNoEstaEnRango() 
 	throws ElementoNoEncontradoException, FueraDeRangoException, FactoryInvalidaException, UnidadInvalidaException, ElementoInvalidoException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
+		
+		
+		
 		unidadAtacante.setEnergia(100);
 		unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaFueraDeRango);
 	}

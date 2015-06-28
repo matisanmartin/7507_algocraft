@@ -69,16 +69,6 @@ public class CampoBatallaTest {
 		assertEquals(20,CampoBatalla.getInstancia().getAlto());
 	}
 	
-	@Test (expected = PosicionInvalidaException.class)
-	public void noEsPosiblePosicionarUnaUnidadDelMismoTipoSiLaPosicionEstaOcupadaPorOtra() throws UnidadInvalidaException, FueraDeRangoException, PosicionInvalidaException, CostoInvalidoException, UnidadLlenaException, DanioInvalidoException{
-		Unidad marine1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(10,10));
-		assertEquals(0,CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());
-		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
-		assertEquals(1,CampoBatalla.getInstancia().getEspacioTerrestre().getCantidadDeElementos());
-		CampoBatalla.getInstancia().posicionarElemento(marine1, CampoBatalla.getInstancia().getEspacioTerrestre());
-	}
-	
-	
 	@Test
 	public void alCrearseDebeTener26Elementos() throws PosicionInvalidaException, FueraDeRangoException, ElementoInvalidoException, RecursosInsuficientesException, PoblacionFaltanteException, CostoInvalidoException{
 		CampoBatalla campo = CampoBatalla.getInstancia();

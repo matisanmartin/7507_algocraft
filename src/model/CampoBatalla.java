@@ -2,6 +2,7 @@ package model;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -228,6 +229,26 @@ public class CampoBatalla implements ObjetoVivo {
 	public ArrayList<Elemento> getElementosABorrar() {
 		// TODO Auto-generated method stub
 		return this.elementosABorrar;
+	}
+
+	public boolean posicionOcupada(Posicion posicionDestino) throws PosicionInvalidaException {
+		List<Elemento> listaAereos = obtenerElementosAereos();
+		List<Elemento> listaTerrestres = obtenerElementosTerrestres();
+		
+		listaTerrestres.addAll(listaAereos);
+		
+		Iterator<Elemento> it = listaTerrestres.iterator();
+		
+		while(it.hasNext()) {
+			
+			Elemento actual = it.next();
+			
+			if(actual.posicionEsParte(posicionDestino))
+				throw new PosicionInvalidaException("Esta posición está ocupada");
+		}
+		
+		return false;
+		
 	}
 
 

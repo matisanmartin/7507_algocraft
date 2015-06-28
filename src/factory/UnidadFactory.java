@@ -41,7 +41,7 @@ public class UnidadFactory extends AbstractFactory{
 //			INSTANCIA = new UnidadFactory();
 //	}
 
-	//GENERAL PARA PROBAR TAMAÑOS
+	//GENERAL PARA PROBAR TAMANIOS
 	public static final int			UNIDAD_ALTO = 2;
 	public static final int			UNIDAD_ANCHO = 2;
 	
@@ -50,7 +50,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 		UNIDAD_MARINE_VISION = 7;
 	public static final String 		UNIDAD_MARINE_COSTO = "50M";
 	public static final int 		UNIDAD_MARINE_TIEMPO_CONSTRUCCION = 3;
-	public static final String 		UNIDAD_MARINE_DAÑO = "6A6T";
+	public static final String 		UNIDAD_MARINE_DANIO = "6A6T";
 	public static final int 		UNIDAD_MARINE_SUMINISTRO = 1;
 	public static final RangoAtaque UNIDAD_MARINE_RANGO_ATAQUE = new RangoAtaque(0,4);
 	public static final int			UNIDAD_MARINE_ALTO = 30;
@@ -62,7 +62,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_GOLLIAT_VISION = 8;
 	public static final String 	UNIDAD_GOLLIAT_COSTO = "100M50G";
 	public static final int 	UNIDAD_GOLLIAT_TIEMPO_CONSTRUCCION = 6;
-	public static final String 	UNIDAD_GOLLIAT_DAÑO = "10A12T";
+	public static final String 	UNIDAD_GOLLIAT_DANIO = "10A12T";
 	public static final int 	UNIDAD_GOLLIAT_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_GOLLIAT_RANGO_ATAQUE = new RangoAtaque(5,6);
 	public static final Vitalidad 	UNIDAD_GOLLIAT_VIDA = new Vitalidad(125,0);
@@ -74,7 +74,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_ESPECTRO_VISION = 7;
 	public static final String	UNIDAD_ESPECTRO_COSTO = "150M100G";
 	public static final int 	UNIDAD_ESPECTRO_TIEMPO_CONSTRUCCION = 8;
-	public static final String 	UNIDAD_ESPECTRO_DAÑO = "20A8T";
+	public static final String 	UNIDAD_ESPECTRO_DANIO = "20A8T";
 	public static final int 	UNIDAD_ESPECTRO_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_ESPECTRO_RANGO_ATAQUE = new RangoAtaque(5,0);
 	public static final Vitalidad	UNIDAD_ESPECTRO_VIDA = new Vitalidad(120,0);
@@ -86,7 +86,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_NAVE_CIENCIA_VISION = 10;
 	public static final String 	UNIDAD_NAVE_CIENCIA_COSTO = "100M225G";
 	public static final int 	UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION = 10;
-	public static final String 	UNIDAD_NAVE_CIENCIA_DAÑO = "0A0T";
+	public static final String 	UNIDAD_NAVE_CIENCIA_DANIO = "0A0T";
 	public static final int 	UNIDAD_NAVE_CIENCIA_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE = new RangoAtaque(0,0);
 	public static final int	UNIDAD_NAVE_CIENCIA_ALTO = 40;
@@ -98,7 +98,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION = 8;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO = "100M100G";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_TIEMPO_CONSTRUCCION = 7;
-	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO = "0A0T";
+	public static final String 	UNIDAD_NAVE_TRANSPORTE_TERRAN_DANIO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO = 2;
 	public static final RangoAtaque	UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE = new RangoAtaque(0,0);
 	public static final int UNIDAD_TERRAN_NTRANSPORTE_ALTO = 40;
@@ -110,7 +110,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_ZEALOT_VISION = 7;
 	public static final String 	UNIDAD_ZEALOT_COSTO = "100M";
 	public static final int 	UNIDAD_ZEALOT_TIEMPO_CONSTRUCCION = 4;
-	public static final String 	UNIDAD_ZEALOT_DAÑO = "0A8T";
+	public static final String 	UNIDAD_ZEALOT_DANIO = "0A8T";
 	public static final int 	UNIDAD_ZEALOT_SUMINISTRO = 2;
 	public static final RangoAtaque	UNIDAD_ZEALOT_RANGO_ATAQUE = new RangoAtaque(0,1);
 	public static final int UNIDAD_ZEALOT_ALTO = 30;
@@ -123,7 +123,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_DRAGON_VISION = 8;
 	public static final String 	UNIDAD_DRAGON_COSTO = "125M50G";
 	public static final int 	UNIDAD_DRAGON_TIEMPO_CONSTRUCCION = 5;
-	public static final String 	UNIDAD_DRAGON_DAÑO = "20A20T";
+	public static final String 	UNIDAD_DRAGON_DANIO = "20A20T";
 	public static final int 	UNIDAD_DRAGON_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_DRAGON_RANGO_ATAQUE = new RangoAtaque(0,4);
 	public static final int UNIDAD_DRAGON_ALTO = 40;
@@ -135,7 +135,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_SCOUT_VISION = 7;
 	public static final String 	UNIDAD_SCOUT_COSTO = "300M150G";
 	public static final int 	UNIDAD_SCOUT_TIEMPO_CONSTRUCCION = 9;
-	public static final String 	UNIDAD_SCOUT_DAÑO = "14A8T";
+	public static final String 	UNIDAD_SCOUT_DANIO = "14A8T";
 	public static final int 	UNIDAD_SCOUT_SUMINISTRO = 3;
 	public static final RangoAtaque	UNIDAD_SCOUT_RANGO_ATAQUE = new RangoAtaque(4,0);
 	public static final int UNIDAD_SCOUT_ALTO = 40;
@@ -148,7 +148,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_VISION = 7;
 	public static final String 	UNIDAD_ALTO_TEMPLARIO_COSTO = "50M150G";
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION = 7;
-	public static final String 	UNIDAD_ALTO_TEMPLARIO_DAÑO = "0A0T";
+	public static final String 	UNIDAD_ALTO_TEMPLARIO_DANIO = "0A0T";
 	public static final int 	UNIDAD_ALTO_TEMPLARIO_SUMINISTRO = 2;
 	public static final RangoAtaque	UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE = new RangoAtaque(0,0);
 	public static final int UNIDAD_ALTO_TEMPLARIO_ALTO = 30;
@@ -160,7 +160,7 @@ public class UnidadFactory extends AbstractFactory{
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION = 8;
 	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO = "200M";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION = 8;
-	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO = "0A0T";
+	public static final String 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_DANIO = "0A0T";
 	public static final int 	UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO = 2;
 	public static final RangoAtaque UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE = new RangoAtaque(0,0);
 	public static final int UNIDAD_NTRANSPORTE_PROTOSS_ALTO = 40;
@@ -182,7 +182,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_MARINE_VISION,
 										new Costo(UNIDAD_MARINE_COSTO),
 										UNIDAD_MARINE_TIEMPO_CONSTRUCCION,
-										new Danio(UNIDAD_MARINE_DAÑO),
+										new Danio(UNIDAD_MARINE_DANIO),
 										UNIDAD_MARINE_SUMINISTRO,
 										UNIDAD_MARINE_RANGO_ATAQUE,
 										new Vitalidad(40,0),
@@ -198,7 +198,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_GOLLIAT_VISION,
 										new Costo(UNIDAD_GOLLIAT_COSTO),
 										UNIDAD_GOLLIAT_TIEMPO_CONSTRUCCION,
-										new Danio(UNIDAD_GOLLIAT_DAÑO),
+										new Danio(UNIDAD_GOLLIAT_DANIO),
 										UNIDAD_GOLLIAT_SUMINISTRO,
 										UNIDAD_GOLLIAT_RANGO_ATAQUE,
 										new Vitalidad(125,0),
@@ -213,7 +213,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_ESPECTRO_VISION,
 										new Costo(UNIDAD_ESPECTRO_COSTO),
 										UNIDAD_ESPECTRO_TIEMPO_CONSTRUCCION,
-										new Danio(UNIDAD_ESPECTRO_DAÑO),
+										new Danio(UNIDAD_ESPECTRO_DANIO),
 										UNIDAD_ESPECTRO_SUMINISTRO,
 										UNIDAD_ESPECTRO_RANGO_ATAQUE,
 										new Vitalidad(120,0),
@@ -228,7 +228,7 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_NAVE_CIENCIA_VISION,
 													new Costo(UNIDAD_NAVE_CIENCIA_COSTO),
 													UNIDAD_NAVE_CIENCIA_TIEMPO_CONSTRUCCION,
-													new Danio(UNIDAD_NAVE_CIENCIA_DAÑO),
+													new Danio(UNIDAD_NAVE_CIENCIA_DANIO),
 													UNIDAD_NAVE_CIENCIA_SUMINISTRO,
 													UNIDAD_NAVE_CIENCIA_RANGO_ATAQUE,
 													new Vitalidad(200,0),
@@ -243,7 +243,7 @@ public class UnidadFactory extends AbstractFactory{
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_VISION,
 										new Costo(UNIDAD_NAVE_TRANSPORTE_TERRAN_COSTO),
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_TIEMPO_CONSTRUCCION,
-										new Danio(UNIDAD_NAVE_TRANSPORTE_TERRAN_DAÑO),
+										new Danio(UNIDAD_NAVE_TRANSPORTE_TERRAN_DANIO),
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_SUMINISTRO,
 										UNIDAD_NAVE_TRANSPORTE_TERRAN_RANGO_ATAQUE,
 										new Vitalidad(150,0),
@@ -257,7 +257,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_ZEALOT_VISION,
 												new Costo(UNIDAD_ZEALOT_COSTO),
 												UNIDAD_ZEALOT_TIEMPO_CONSTRUCCION,
-												new Danio(UNIDAD_ZEALOT_DAÑO),
+												new Danio(UNIDAD_ZEALOT_DANIO),
 												UNIDAD_ZEALOT_SUMINISTRO,
 												UNIDAD_ZEALOT_RANGO_ATAQUE,
 												new Vitalidad(100,60),
@@ -273,7 +273,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_DRAGON_VISION,
 												new Costo(UNIDAD_DRAGON_COSTO),
 												UNIDAD_DRAGON_TIEMPO_CONSTRUCCION,
-												new Danio(UNIDAD_DRAGON_DAÑO),
+												new Danio(UNIDAD_DRAGON_DANIO),
 												UNIDAD_DRAGON_SUMINISTRO,
 												UNIDAD_DRAGON_RANGO_ATAQUE,
 												new Vitalidad(100,80),
@@ -288,7 +288,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_SCOUT_VISION,
 												new Costo(UNIDAD_SCOUT_COSTO),
 												UNIDAD_SCOUT_TIEMPO_CONSTRUCCION,
-												new Danio(UNIDAD_SCOUT_DAÑO),
+												new Danio(UNIDAD_SCOUT_DANIO),
 												UNIDAD_SCOUT_SUMINISTRO,
 												UNIDAD_SCOUT_RANGO_ATAQUE,
 												new Vitalidad(150,100),
@@ -303,7 +303,7 @@ public class UnidadFactory extends AbstractFactory{
 													UNIDAD_ALTO_TEMPLARIO_VISION,
 													new Costo(UNIDAD_ALTO_TEMPLARIO_COSTO),
 													UNIDAD_ALTO_TEMPLARIO_TIEMPO_CONSTRUCCION,
-													new Danio(UNIDAD_ALTO_TEMPLARIO_DAÑO),
+													new Danio(UNIDAD_ALTO_TEMPLARIO_DANIO),
 													UNIDAD_ALTO_TEMPLARIO_SUMINISTRO,
 													UNIDAD_ALTO_TEMPLARIO_RANGO_ATAQUE,
 													new Vitalidad(40,40),
@@ -318,7 +318,7 @@ public class UnidadFactory extends AbstractFactory{
 												UNIDAD_NAVE_TRANSPORTE_PROTOSS_VISION,
 												new Costo(UNIDAD_NAVE_TRANSPORTE_PROTOSS_COSTO),
 												UNIDAD_NAVE_TRANSPORTE_PROTOSS_TIEMPO_CONSTRUCCION,
-												new Danio(UNIDAD_NAVE_TRANSPORTE_PROTOSS_DAÑO),
+												new Danio(UNIDAD_NAVE_TRANSPORTE_PROTOSS_DANIO),
 												UNIDAD_NAVE_TRANSPORTE_PROTOSS_SUMINISTRO,
 												UNIDAD_NAVE_TRANSPORTE_PROTOSS_RANGO_ATAQUE,
 												new Vitalidad(80,60),

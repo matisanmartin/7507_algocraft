@@ -105,34 +105,14 @@
 		<mkdir dir="${reports.html.dir}" />
 	</target>
 
-	<target name="coverage-check">
-		<cobertura-check branchrate="34" totallinerate="100" />
-	</target>
 
-	<target name="coverage-report" depends="ejecutar.tests">
-		<cobertura-report srcdir="${src.dir}" destdir="${coverage.xml.dir}" format="xml" datafile="${build}/cobertura.ser" />
-	</target>
-
-	<target name="summary-coverage-report">
-		<cobertura-report srcdir="${src.dir}" destdir="${coverage.summaryxml.dir}" format="summaryXml" datafile="${build}/cobertura.ser" />
-	</target>
-
-	<target name="alternate-coverage-report">
-		<cobertura-report destdir="${coverage.html.dir}" datafile="${build}/cobertura.ser">
-			<fileset dir="${src.dir}">
-				<include name="**/*.java" />
-			</fileset>
-		</cobertura-report>
-	</target>
-
-	<target name="test" depends="ejecutar.tests, coverage-report, alternate-coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports." />
+	<target name="test" depends="ejecutar.tests" description="Compile, instrument ourself, run the tests" />
 
 	<target name="compilar.paquete" depends="test">
 		<javac srcdir="src" destdir="${build}" debug="no">
 		</javac>
 	</target>
 	
-	<target name="integracion-continua" depends="run-pmd,coverage-report,alternate-coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>
 
 	<!-- Ivy installation -->
 	<target name="download-ivy" unless="skip.download">

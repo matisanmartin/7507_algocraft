@@ -147,9 +147,10 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 //		this.posicion = posicionDestino;
 //	}
 	
-	public void setPosicion(Posicion posicionDestino) {
+	public void setPosicion(Posicion posicionDestino) throws PosicionInvalidaException, FueraDeRangoException {
 		int deltaX = Math.abs(this.posicion.getX() - posicionDestino.getX());
 		int deltaY = Math.abs(this.posicion.getY() - posicionDestino.getY());
+		
 		
 		//se mueve hacia abajo y hacia la derecha 
 		if ( (posicionDestino.getX() > this.posicion.getX() && (posicionDestino.getY() > this.posicion.getY()) ) ){
@@ -373,7 +374,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 		
 	}
 
-	public void agregarUnidad(Elemento unidadASubir) throws UnidadLlenaException {
+	public void agregarUnidad(Elemento unidadASubir) throws UnidadLlenaException, PosicionInvalidaException, FueraDeRangoException {
 		// TODO Auto-generated method stub
 		
 	}

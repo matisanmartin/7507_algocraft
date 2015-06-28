@@ -27,8 +27,10 @@ public class Espacio {
 	
 	public void agregarElemento(Elemento elementoParaAgregar) throws PosicionInvalidaException, FueraDeRangoException{
 		for (Elemento elemento : espacio) {
-			if(this.ocupanMismoEspacio(elementoParaAgregar,elemento)) throw new PosicionInvalidaException(Mensajes.MSJ_ERROR_POSICION_INVALIDA);
-		} //this.espacio.add(elementoParaAgregar);
+			if(!elementoParaAgregar.posicionEsParte(elemento.getPosicion()))
+				if(this.ocupanMismoEspacio(elementoParaAgregar,elemento)) 
+					throw new PosicionInvalidaException(Mensajes.MSJ_ERROR_POSICION_INVALIDA);
+		}
 	}
 
 	private boolean ocupanMismoEspacio(Elemento elementoParaAgregar,Elemento elemento) {

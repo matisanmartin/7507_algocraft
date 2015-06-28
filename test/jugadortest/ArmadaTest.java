@@ -115,11 +115,11 @@ public class ArmadaTest {
 	@Test (expected = ElementoNoEncontradoException.class)
 	public void noDeberiaRetornarElementoQueContieneLaParte() throws PosicionInvalidaException, FueraDeRangoException, UnidadInvalidaException, CostoInvalidoException, DanioInvalidoException, UnidadLlenaException, ElementoNoEncontradoException{
 		Unidad unidad1 = factory.getUnidad(TipoUnidad.TERRAN_GOLLIAT, new Posicion(50, 50));
-		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
+		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(200, 3));
 		armada.agregarElemento(unidad1);
 		armada.agregarElemento(unidad2);
 		Elemento unidadObtenida = armada.obtenerElementoEnPosicion(new Posicion(100, 100));
-		assertEquals(new Posicion(2, 3), unidadObtenida.getPosicion());
+		assertEquals(new Posicion(200, 3), unidadObtenida.getPosicion());
 		assertEquals(new Posicion(3,3), unidadObtenida.getPartes().get(2).getPosicion());
 		
 	}
@@ -137,14 +137,13 @@ public class ArmadaTest {
 		jugadorActual.setPoblacionDisponible(20000);
 		
 		Unidad unidad1 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(50, 50));
-		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(2, 3));
+		Unidad unidad2 = factory.getUnidad(TipoUnidad.TERRAN_MARINE, new Posicion(200, 3));
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidad1);
 		Juego.getInstancia().agregarUnidadAJugadorActual(unidad2);
 		
 		Elemento unidadObtenida = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(unidad2.getPartes().get(2).getPosicion());
 		ContextoStrategy contextoStrategy = new ContextoStrategy(new Mover());
 		unidadObtenida.realizarAccion(contextoStrategy, new Posicion(400, 400));
-//		ElementoArtificial unidadDeArmada = Juego.getInstancia().obtenerArmadaJugadorActual().obtenerElementoEnPosicion(new Posicion(400,400));
 		Elemento unidadDeCampo = CampoBatalla.getInstancia().getEspacioTerrestre().getEspacio().get(1);
 		assertEquals(new Posicion(400, 400), unidadDeCampo.getPosicion());
 		assertEquals(unidadObtenida.getPosicion(), unidadDeCampo.getPosicion());

@@ -20,7 +20,7 @@ import factory.UnidadFactory;
 public class TormentaPsionica implements Strategy {
 	
 	private static final int RANGO_ATAQUE_TORMENTA_PSIONICA=10;
-	private static final int DAÑO_TORMENTA_PSIONICA=100;
+	private static final int DANIO_TORMENTA_PSIONICA=100;
 	private static final int ENERGIA_NECESARIA=75;
 
 	@Override
@@ -51,7 +51,7 @@ public class TormentaPsionica implements Strategy {
 			
 			if(distanciaTemp<=RANGO_ATAQUE_TORMENTA_PSIONICA*factor){
 				Juego.getInstancia().getListener().seRealizoTormentaPsionica(elementoTemporalAtacado);
-				elementoTemporalAtacado.restarVitalidad(DAÑO_TORMENTA_PSIONICA);
+				elementoTemporalAtacado.restarVitalidad(DANIO_TORMENTA_PSIONICA);
 				it.set(elementoTemporalAtacado);
 			}
 		}

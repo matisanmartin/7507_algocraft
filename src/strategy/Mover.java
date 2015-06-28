@@ -1,9 +1,8 @@
 package strategy;
 
+import model.CampoBatalla;
 import model.Elemento;
-
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.ElementoInvalidoException;
 import exceptions.ElementoNoEncontradoException;
@@ -27,7 +26,8 @@ public class Mover implements Strategy {
 			EnergiaInsuficienteException, CostoInvalidoException,
 			RecursosInsuficientesException, CloneNotSupportedException, PoblacionFaltanteException {
 		
-		elementoActuante.setPosicion(posicionDestino);
+		if(!CampoBatalla.getInstancia().posicionOcupada(posicionDestino))
+			elementoActuante.setPosicion(posicionDestino);
 		
 	}
 
