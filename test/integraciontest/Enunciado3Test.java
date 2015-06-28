@@ -98,14 +98,14 @@ public class Enunciado3Test {
 	}
 	
 	@Test
-	public void testUnidadAereaNoPuedeAtacarUnidadTerrestre() 
+	public void testUnidadAereaPuedeAtacarUnidadTerrestre() 
 	throws FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoException, ElementoInvalidoException, PosicionInvalidaException, ElementoNoEncontradoException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CostoInvalidoException, RecursosInsuficientesException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		
 		//intercambio el turno
 		Juego.getInstancia().cambiarTurno();
 		
 		unidadAerea.realizarAccion(contexto, posUnidadTerrestre);
-		assertEquals(40,unidadTerrestre.getVida());
+		assertEquals(32,unidadTerrestre.getVida());
 		
 	}
 

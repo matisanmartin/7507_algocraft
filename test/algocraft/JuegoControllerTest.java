@@ -138,7 +138,7 @@ public class JuegoControllerTest {
 		
 		Juego.getInstancia().cambiarTurno();
 		
-		assertEquals(970,Juego.getInstancia().getJugadorActual().getCantidadDeGas());
+		assertEquals(960,Juego.getInstancia().getJugadorActual().getCantidadDeGas());
 		assertEquals(1000,Juego.getInstancia().getJugadorEnemigo().getCantidadDeGas());
 		
 		
