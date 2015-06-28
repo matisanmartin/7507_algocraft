@@ -5,9 +5,7 @@ import java.util.ListIterator;
 
 import model.CampoBatalla;
 import model.Elemento;
-import model.ElementoArtificial;
 import model.Espacio;
-import model.EspacioTerrestre;
 import model.Juego;
 
 import common.Mensajes;
@@ -64,7 +62,7 @@ public class Emp implements Strategy {
 			
 			//Valido que este en el radio y que no sea el elemento que actua
 			//En principio, no podria atacar a una unidad que este en otro espacio y misma posicion
-			if((distanciaTemp<RADIO_ACCION_MISIL_EMP*factor)&&(!elementoAtacado.posicionEsParte(posicionDestino)))
+			if((distanciaTemp<RADIO_ACCION_MISIL_EMP*factor)&&(!elementoAtacado.posicionEsParte(elementoActuante.getPosicion())))
 			{
 				elementoAtacado.recibirEmp();
 				it.set(elementoAtacado);

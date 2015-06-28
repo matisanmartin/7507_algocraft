@@ -217,7 +217,7 @@ public class Enunciado1Test {
 		Juego.getInstancia().getJugadorEnemigo().agregarElemento(altoTemplario);
 		
 		//A continuación se situa una unidad protoss
-		Posicion posicionZealot=new Posicion(15,15);
+		Posicion posicionZealot=new Posicion(80,12);
 		ElementoArtificial zealot = factoryUnidad.getUnidad(TipoUnidad.PROTOSS_ZEALOT, posicionZealot);
 		Juego.getInstancia().getJugadorEnemigo().agregarElemento(zealot);
 		
@@ -229,7 +229,7 @@ public class Enunciado1Test {
                 .obtenerArmada()
                 .obtenerElementoEnPosicion(posicionNaveCiencia);
 		
-		naveCienciaObt.realizarAccion(contexto, new Posicion(3,3));
+		naveCienciaObt.realizarAccion(contexto, new Posicion(200,3));
 		
 		//Se verifica que la nave ciencia tenga menos energia
 		assertEquals(10,Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionNaveCiencia).getEnergia());
