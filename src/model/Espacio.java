@@ -52,10 +52,20 @@ public class Espacio {
 //				);
 		
 		boolean res = ( (elementoParaAgregar.getPosicion().getX() >= elemento.getPosicion().getX()) && 
-				((elementoParaAgregar.getPosicion().getX() <= (elemento.getPosicion().getX()+elemento.getAlto()-1)))&&
+				((elementoParaAgregar.getPosicion().getX() <= (elemento.getPosicion().getX()+elemento.getAncho()-1)))&&
 				((elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()) && 
-				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAncho()-1))
+				(elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()+elemento.getAlto()-1))
 				);
+		
+		if (!res) {
+			res = ( (elementoParaAgregar.getPosicion().getX() <= elemento.getPosicion().getX()) && 
+					((elementoParaAgregar.getPosicion().getX() >= (elemento.getPosicion().getX()-elemento.getAncho()+1)))&&
+					((elementoParaAgregar.getPosicion().getY() <= elemento.getPosicion().getY()) && 
+					(elementoParaAgregar.getPosicion().getY() >= elemento.getPosicion().getY()-elemento.getAlto()+1))
+					);
+		}
+		
+		System.out.println(res);
 		
 		return res;
 		
