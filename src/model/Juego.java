@@ -192,7 +192,7 @@ public class Juego {
 		Iterator<Elemento> it = unidadesActual.iterator();
 		
 		while(it.hasNext()) {
-			if(!it.next().estaMuerta())
+			if(it.next().getVida() > 0)
 				return;		
 		}
 
@@ -209,7 +209,7 @@ public class Juego {
 		Iterator<Elemento> it = unidadesEnemigas.iterator();
 		
 		while(it.hasNext()) {
-			if(!it.next().estaMuerta())
+			if(it.next().getVida() > 0)
 				return;		
 		}
 		throw new PartidaGanadaException(Mensajes.MSJ_PARTIDA_GANADA);

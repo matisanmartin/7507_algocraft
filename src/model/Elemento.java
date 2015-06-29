@@ -252,7 +252,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 	}
 	
 	public boolean estaMuerta() {
-		return getVitalidad().getVida()<=0;
+		return this.vitalidad.getVida() == 0;
 	}
 
 	public int getVida() {

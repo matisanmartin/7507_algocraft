@@ -62,6 +62,9 @@ public class Ataque implements Strategy {
 				{
 					elementoAtacado.restarVitalidad(danioAtaqueNum);
 					it.set(elementoAtacado);
+					if (elementoAtacado.estaMuerta()) {
+						Juego.getInstancia().getListener().seMurioUnaUnidad(elementoAtacado);
+					}
 					Juego.getInstancia().getListener().seRealizoAtaque((ElementoArtificial)elementoAtacado);
 					Juego.getInstancia().verificarFinDePartida();
 					return;

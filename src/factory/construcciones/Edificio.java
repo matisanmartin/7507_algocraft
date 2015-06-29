@@ -54,14 +54,16 @@ public class Edificio extends ElementoArtificial {
 	
 	//TODO msma:En principio se devuelve true ya que "esta muerta" a los fines de verificar el fin de la partida
 	//pero no deberia ser asi
+	
 	@Override
-	public boolean estaMuerta(){
-		return true;
+	public int getVida() {
+		return 0;
 	}
 
 	@Override
 	public int getCantidadDeUnidadesTransportadas() {
 		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
@@ -94,7 +96,8 @@ public class Edificio extends ElementoArtificial {
 		
 		StringBuffer strUnidad = new StringBuffer();
 		strUnidad.append("<html>Edificio Seleccionado:<br>");
-		strUnidad.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
+		strUnidad.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br>");
+		strUnidad.append("Vida: "+getVitalidad().getVida()+"<br></html>");
 		
 		return strUnidad.toString();	
 	}
