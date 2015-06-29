@@ -55,12 +55,12 @@ public class Radiacion implements Strategy {
 		Posicion posicionElementoDelante	= new Posicion(posicionDestino.getX(),posicionDestino.getY()-1-factor);
 		
  
+		Elemento elementoCandidato = null; //para no cambiar la firma del metodo seRealizoRadiacion
 		try
 		{
-			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDelante);
+			 elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDelante);
 			//TODO msma: Para este y todos, de encotnrarlos, deberia drenarle la vida hasta que el otro se muera, luego no.
 			// Por ahora se le saca vida para probar la funcionalidad
-			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 			elementoCandidato.morir();
 			Juego.getInstancia()
 						   .getJugadorEnemigo()
@@ -71,8 +71,7 @@ public class Radiacion implements Strategy {
 		
 		try
 		{
-			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDetras);
-			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
+			 elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDetras);
 			elementoCandidato.morir();
 			Juego.getInstancia()
 			   .getJugadorEnemigo()
@@ -83,8 +82,7 @@ public class Radiacion implements Strategy {
 		
 		try
 		{
-			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDerecha);
-			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
+			 elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoDerecha);
 			elementoCandidato.morir();
 			Juego.getInstancia()
 			   .getJugadorEnemigo()
@@ -95,7 +93,7 @@ public class Radiacion implements Strategy {
 		
 		try
 		{
-			Elemento elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoIzquierda);
+			 elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoIzquierda);
 			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 			elementoCandidato.morir();
 			Juego.getInstancia()
@@ -105,6 +103,7 @@ public class Radiacion implements Strategy {
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
+		Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 		Juego.getInstancia().verificarFinDePartida();
 				
 	}

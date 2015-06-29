@@ -41,20 +41,22 @@ public class TormentaPsionica implements Strategy {
 		
 		ListIterator<Elemento> it = armadaEnemiga.listIterator();
 		
+		Elemento elementoTemporalAtacado = null;
 		while(it.hasNext())
 		{
-			Elemento elementoTemporalAtacado = it.next();
+			elementoTemporalAtacado = it.next();
 	
 			Posicion posicionTemporal = elementoTemporalAtacado.getPosicion();
 			
 			int distanciaTemp = posicionTemporal.getDistancia(posicionDestino);
 			
 			if(distanciaTemp<=RANGO_ATAQUE_TORMENTA_PSIONICA*factor){
-				Juego.getInstancia().getListener().seRealizoTormentaPsionica(elementoTemporalAtacado);
+
 				elementoTemporalAtacado.restarVitalidad(DANIO_TORMENTA_PSIONICA);
 				it.set(elementoTemporalAtacado);
 			}
 		}
+		Juego.getInstancia().getListener().seRealizoTormentaPsionica(elementoTemporalAtacado);
 		
 		Juego.getInstancia().verificarFinDePartida();
 	}
