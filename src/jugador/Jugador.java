@@ -96,8 +96,8 @@ public class Jugador {
 //		this.poblacionActual = 0;
 		this.excesoPoblacion = 0;
 		
-		this.cantidadDeCristal=200;
-		this.cantidadDeGas=0;
+		this.cantidadDeCristal=100000;
+		this.cantidadDeGas=100000;
 		
 		//godmode
 		//this.cantidadDeCristal = 1000000;

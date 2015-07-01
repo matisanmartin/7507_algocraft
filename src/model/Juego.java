@@ -196,7 +196,7 @@ public class Juego {
 				return;		
 		}
 
-		throw new PartidaPerdidaException(Mensajes.MSJ_PARTIDA_PERDIDA);
+		getListener().sePerdioPartida();
 		
 	}
 
@@ -212,7 +212,7 @@ public class Juego {
 			if(it.next().getVida() > 0)
 				return;		
 		}
-		throw new PartidaGanadaException(Mensajes.MSJ_PARTIDA_GANADA);
+		getListener().seGanoPartida();
 		
 	}
 

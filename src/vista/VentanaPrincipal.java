@@ -517,15 +517,17 @@ public class VentanaPrincipal implements JuegoListener {
 
 
 	@Override
-	public void comenzoJuego() {
-		// TODO Auto-generated method stub
-		
+	public void seGanoPartida() {
+		 JOptionPane.showMessageDialog(getFrame(), "Has ganado la partida!");
+		 System.exit(0);
+		 
 	}
-
+	
 	@Override
-	public void terminojuego() {
-		// TODO Auto-generated method stub
-		
+	public void sePerdioPartida() {
+		 JOptionPane.showMessageDialog(getFrame(), "Has perdido la partida!");
+		 System.exit(0);
+		 
 	}
 
 

@@ -63,8 +63,6 @@ public interface JuegoListener {
 	public void seMurioUnaUnidad(Elemento elemento) throws ElementoNoEncontradoException;
 	
 	//Metodos relacionados con el juego
-	public void comenzoJuego();
-	public void terminojuego();
 
 	public void seCreoCopiaFicticia(Elemento copiaFicticia1);
 
@@ -74,6 +72,10 @@ public interface JuegoListener {
 
 	public void seCreoCentroDeComandos(
 			ElementoArtificial centroComandoJugadorActual, Raza raza) throws IOException;
+
+	public void seGanoPartida();
+
+	public void sePerdioPartida();
 
 	
 

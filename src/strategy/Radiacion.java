@@ -48,6 +48,7 @@ public class Radiacion implements Strategy {
 		
 		//Juego.getInstancia().getListener().seRealizoRadiacion(elementoAtacado);
 		elementoAtacado.morir();
+		Juego.getInstancia().getListener().seMurioUnaUnidad(elementoAtacado);
 		
 		Posicion posicionElementoDerecha 	= new Posicion(posicionDestino.getX()+1+factor,posicionDestino.getY());
 		Posicion posicionElementoIzquierda 	= new Posicion(posicionDestino.getX()-1-factor,posicionDestino.getY());
@@ -62,10 +63,12 @@ public class Radiacion implements Strategy {
 			//TODO msma: Para este y todos, de encotnrarlos, deberia drenarle la vida hasta que el otro se muera, luego no.
 			// Por ahora se le saca vida para probar la funcionalidad
 			elementoCandidato.morir();
+			
 			Juego.getInstancia()
 						   .getJugadorEnemigo()
 						   .obtenerArmada()
 						   .modificarElementoEnPosicion(posicionElementoDelante, elementoCandidato);
+			Juego.getInstancia().getListener().seMurioUnaUnidad(elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
@@ -77,6 +80,7 @@ public class Radiacion implements Strategy {
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
 			   .modificarElementoEnPosicion(posicionElementoDetras, elementoCandidato);
+			Juego.getInstancia().getListener().seMurioUnaUnidad(elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
@@ -88,21 +92,23 @@ public class Radiacion implements Strategy {
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
 			   .modificarElementoEnPosicion(posicionElementoDerecha, elementoCandidato);
+			Juego.getInstancia().getListener().seMurioUnaUnidad(elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
 		try
 		{
 			 elementoCandidato=armadaEnemiga.obtenerElementoEnPosicion(posicionElementoIzquierda);
-			Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 			elementoCandidato.morir();
 			Juego.getInstancia()
 			   .getJugadorEnemigo()
 			   .obtenerArmada()
 			   .modificarElementoEnPosicion(posicionElementoIzquierda, elementoCandidato);
+			Juego.getInstancia().getListener().seMurioUnaUnidad(elementoCandidato);
 		}
 		catch(ElementoNoEncontradoException enee){}
 		
+		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
 		Juego.getInstancia().getListener().seRealizoRadiacion(elementoCandidato);
 		Juego.getInstancia().verificarFinDePartida();
 				

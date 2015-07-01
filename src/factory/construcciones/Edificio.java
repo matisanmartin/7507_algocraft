@@ -96,8 +96,7 @@ public class Edificio extends ElementoArtificial {
 		
 		StringBuffer strUnidad = new StringBuffer();
 		strUnidad.append("<html>Edificio Seleccionado:<br>");
-		strUnidad.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br>");
-		strUnidad.append("Vida: "+getVitalidad().getVida()+"<br></html>");
+		strUnidad.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
 		
 		return strUnidad.toString();	
 	}

@@ -248,17 +248,7 @@ public class VentanaMock implements JuegoListener {
 
 	}
 
-	@Override
-	public void comenzoJuego() {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void terminojuego() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void seCreoCopiaFicticia(Elemento copiaFicticia1) {
@@ -295,6 +285,18 @@ public class VentanaMock implements JuegoListener {
 
 	@Override
 	public void seRealizoEmp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seGanoPartida() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sePerdioPartida() {
 		// TODO Auto-generated method stub
 		
 	}

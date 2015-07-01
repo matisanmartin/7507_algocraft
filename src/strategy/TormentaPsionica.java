@@ -5,10 +5,9 @@ import java.util.ListIterator;
 
 import model.Elemento;
 import model.Juego;
-
 import common.Mensajes;
 import common.Posicion;
-
+import exceptions.ElementoNoEncontradoException;
 import exceptions.EnergiaInsuficienteException;
 import exceptions.FactoryInvalidaException;
 import exceptions.FinDePartidaException;
@@ -24,7 +23,7 @@ public class TormentaPsionica implements Strategy {
 	private static final int ENERGIA_NECESARIA=75;
 
 	@Override
-	public void realizarAccion(Elemento elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException, EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
+	public void realizarAccion(Elemento elementoActuante,Posicion posicionDestino) throws FactoryInvalidaException, EnergiaInsuficienteException, FueraDeRangoDeVisionException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, ElementoNoEncontradoException {
 		
 		int energiaActual=elementoActuante.getEnergia();
 		
@@ -54,8 +53,12 @@ public class TormentaPsionica implements Strategy {
 
 				elementoTemporalAtacado.restarVitalidad(DANIO_TORMENTA_PSIONICA);
 				it.set(elementoTemporalAtacado);
+				if (elementoTemporalAtacado.estaMuerta()) {
+					Juego.getInstancia().getListener().seMurioUnaUnidad(elementoTemporalAtacado);
+				}
 			}
 		}
+		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
 		Juego.getInstancia().getListener().seRealizoTormentaPsionica(elementoTemporalAtacado);
 		
 		Juego.getInstancia().verificarFinDePartida();

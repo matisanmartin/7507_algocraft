@@ -68,6 +68,8 @@ public class Alucinacion implements Strategy {
 		copiaFicticia2.getVitalidad().setVida(0);	
 		((Unidad) copiaFicticia2).setDanio(danioNulo);//TODO casteo temporal
 	
+		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
+		
 		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
 		Juego.getInstancia().getListener().seCreoCopiaFicticia(copiaFicticia1);
 		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
