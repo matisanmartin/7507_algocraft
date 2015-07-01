@@ -88,7 +88,7 @@ public class Enunciado8Test {
 	}
 
 	
-	@Test(expected = PartidaGanadaException.class)
+	@Test
 	public void testPartidaGanada() throws ElementoNoEncontradoException, ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		
 		factoryEdificio = new EdificioFactory();
@@ -214,10 +214,11 @@ public class Enunciado8Test {
 			naveCienciaObtDeNuevo.setEnergia(100);//TODO msma cambiar luego
 			naveCienciaObtDeNuevo.realizarAccion(contexto, new Posicion(150,200));
 		}
+		 assertEquals(true,Juego.getInstancia().seGanoPartida());
 		
 	}
 	
-	@Test(expected = PartidaPerdidaException.class)
+	@Test
 	public void testPartidaPerdida() throws ElementoInvalidoException, PosicionInvalidaException, RecursosInsuficientesException, FueraDeRangoException, CostoInvalidoException, ElementoNoEncontradoException, FactoryInvalidaException, UnidadInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, NombreJugadorRepetidoException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException {
 		//El test se medio rudimentario pero no se me ocurrio otra forma de simular una partida perdida
 		//salvo que la accion sea un """suicidio"""
@@ -275,7 +276,7 @@ public class Enunciado8Test {
 		
 		//verifico manualmente porque las excepciones vinculadas con el fin de partida, 
 		//por ahora, se lanzan cuando se realiza una accion
-		Juego.getInstancia().verificarFinDePartida();
+		 assertEquals(true,Juego.getInstancia().sePerdioPartida());
 		
 	}
 

@@ -175,15 +175,17 @@ public class Juego {
 	public void verificarFinDePartida() 
 	throws FinDePartidaException, PartidaGanadaException, PartidaPerdidaException {
 		
-		verificarPartidaGanada();
-		verificarPartidaPerdida();
-		//TODO msma: a futuro agregar un tiempo limite que tire FinDePartidaException y muestre un ganador
+		if (this.seGanoPartida())
+			getListener().seGanoPartida();
 		
+		if (this.sePerdioPartida())
+			getListener().sePerdioPartida();
+				
 
 	}
 
 
-	private void verificarPartidaPerdida() throws PartidaPerdidaException{
+	public boolean sePerdioPartida() {
 
 		Armada armadaActual = obtenerArmadaJugadorActual();
 		
@@ -193,15 +195,15 @@ public class Juego {
 		
 		while(it.hasNext()) {
 			if(it.next().getVida() > 0)
-				return;		
+				return false;		
 		}
 
-		getListener().sePerdioPartida();
+		return true;
 		
 	}
 
 
-	private void verificarPartidaGanada() throws PartidaGanadaException {
+	public boolean seGanoPartida() {
 		Armada armadaEnemiga = obtenerArmadaJugadorEnemigo();
 		
 		List<Elemento> unidadesEnemigas = armadaEnemiga.getArmada();
@@ -210,9 +212,9 @@ public class Juego {
 		
 		while(it.hasNext()) {
 			if(it.next().getVida() > 0)
-				return;		
+				return false;
 		}
-		getListener().seGanoPartida();
+		return true;
 		
 	}
 

@@ -112,7 +112,7 @@ public class Enunciado4Test {
 			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
 			unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 			
-			assertEquals(119,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
+			assertEquals(119,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());		
 		}
 		catch(PartidaPerdidaException pge)
 		{}
@@ -162,7 +162,7 @@ public class Enunciado4Test {
 			Juego.getInstancia().agregarUnidadAJugadorEnemigo(unidadDefensoraEnRango);
 			unidadAtacante.realizarAccion(contexto,Juego.getInstancia().obtenerArmadaJugadorEnemigo().getArmada().get(0).getPosicion());
 				
-			assertEquals(34,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getEscudo());		
+			assertEquals(34,Juego.getInstancia().getJugadorEnemigo().obtenerArmada().getArmada().get(0).getVida());		
 		}
 		catch(PartidaPerdidaException pge)
 		{}

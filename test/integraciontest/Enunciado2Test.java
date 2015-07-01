@@ -155,6 +155,7 @@ public class Enunciado2Test {
 	public void testNumero2bEnunciado() throws UnidadInvalidaException, FueraDeRangoException, CostoInvalidoException, ElementoInvalidoException, RecursosInsuficientesException, ElementoNoEncontradoException, FactoryInvalidaException, PosicionInvalidaException, FueraDeRangoDeVisionException, EnergiaInsuficienteException, CloneNotSupportedException, NombreJugadorRepetidoException, FinDePartidaException, PartidaGanadaException, PartidaPerdidaException, UnidadLlenaException, RecursosFaltantesException, PoblacionFaltanteException, DanioInvalidoException, IOException{
 	
 		altoTemplario.setPosicion(new Posicion(40,20));
+		altoTemplario.setEnergia(200);
 		
 		//Dejo pasar los turnos para que alcance la energia	
 		Juego.getInstancia().cambiarTurno();//enemigo
