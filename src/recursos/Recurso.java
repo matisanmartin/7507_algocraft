@@ -5,6 +5,7 @@ import java.io.IOException;
 import model.Elemento;
 import model.EspacioTerrestre;
 import strategy.ContextoStrategy;
+import titiritero.modelo.ObjetoPosicionable;
 import common.Posicion;
 import common.Vitalidad;
 import exceptions.CostoInvalidoException;
@@ -51,6 +52,25 @@ public class Recurso extends Elemento {
 
 	@Override
 	public String toString() {
+		return null;
+	}
+
+	@Override
+	public void setX(int x) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setY(int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ObjetoPosicionable clonar(Posicion nuevaPosicion)
+			throws PosicionInvalidaException, FueraDeRangoException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

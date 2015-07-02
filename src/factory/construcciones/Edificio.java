@@ -7,9 +7,8 @@ import model.Elemento;
 import model.ElementoArtificial;
 import model.Juego;
 import strategy.ContextoStrategy;
-
+import titiritero.modelo.ObjetoPosicionable;
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -99,5 +98,24 @@ public class Edificio extends ElementoArtificial {
 		strUnidad.append("Posicion: ("+getPosicion().getX()+","+getPosicion().getY()+")<br></html>");
 		
 		return strUnidad.toString();	
+	}
+
+	@Override
+	public void setX(int x) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setY(int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ObjetoPosicionable clonar(Posicion nuevaPosicion)
+			throws PosicionInvalidaException, FueraDeRangoException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

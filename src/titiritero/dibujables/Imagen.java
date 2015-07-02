@@ -11,6 +11,11 @@ import titiritero.modelo.ObjetoDibujable;
 import titiritero.modelo.ObjetoPosicionable;
 import titiritero.modelo.SuperficieDeDibujo;
 
+import common.Posicion;
+
+import exceptions.FueraDeRangoException;
+import exceptions.PosicionInvalidaException;
+
 public class Imagen implements ObjetoDibujable {
 
     private BufferedImage imagen;
@@ -21,6 +26,11 @@ public class Imagen implements ObjetoDibujable {
 		this.imagen = ImageIO.read(imagenUrl);
     }
     
+	public Imagen(BufferedImage imagen2, ObjetoPosicionable posicionable2) {
+		this.imagen=imagen2;
+		this.posicionable=posicionable2;
+	}
+
 	@Override
 	public void dibujar(SuperficieDeDibujo superficieDeDibujo) {
 		Graphics grafico = ((SuperficiePanel)superficieDeDibujo).getBuffer();
@@ -29,6 +39,22 @@ public class Imagen implements ObjetoDibujable {
 	
 	public ObjetoPosicionable getPosicionable() {
 		return posicionable;
+	}
+	
+	public Imagen clonar(Posicion nuevaPosicion) throws PosicionInvalidaException, FueraDeRangoException {
+		
+		int posX=nuevaPosicion.getX();
+		int posY=nuevaPosicion.getY();
+	
+		
+		ObjetoPosicionable posicionableNuevo = this.posicionable.clonar(nuevaPosicion);
+		Imagen clon = new Imagen(this.imagen,posicionableNuevo);
+		
+		//clon.getPosicionable().setX(nuevaPosicion.getX());
+		//clon.getPosicionable().setY(nuevaPosicion.getY());
+		
+		return clon;
+		
 	}
 	
 }

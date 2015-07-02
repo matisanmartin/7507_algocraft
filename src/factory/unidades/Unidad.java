@@ -184,5 +184,33 @@ public class Unidad extends ElementoArtificial implements ObjetoVivo, ObjetoPosi
 		return strUnidad.toString();	
 	}
 
+	public Unidad clonar(Posicion nuevaPosicion) throws PosicionInvalidaException, FueraDeRangoException {
+		Unidad clon = new Unidad(this.getTransporte(),
+								 this.getVision(),
+								 this.getCosto(),
+								 this.getTiempoConstruccion(),
+								 this.getDanio(),
+								 this.getSuministro(),
+								 this.getRangoAtaque(),
+								 this.getVitalidad(),
+								 this.getAlto(),
+								 this.getAncho(),
+								 nuevaPosicion,
+								 this.getEspacio());
+
+
+		return clon;
+	}
+
+	@Override
+	public void setX(int x) {
+		
+		posicion.setPosX(x);
+	}
+
+	@Override
+	public void setY(int y) {
+		posicion.setPosY(y);
+	}
 	
 }

@@ -2,6 +2,8 @@ package titiritero.dibujables;
 
 import java.awt.Graphics;
 
+import common.Posicion;
+
 import titiritero.modelo.ObjetoPosicionable;
 import titiritero.modelo.SuperficieDeDibujo;
 
@@ -22,6 +24,13 @@ public class Cuadrado extends Figura {
 		Graphics grafico = ((SuperficiePanel)superfice).getBuffer();
 		grafico.setColor(this.getColor());
 		grafico.fillRect(getPosicionable().getX() , getPosicionable().getY(), this.ancho, this.alto);
+	}
+
+
+	@Override
+	public Imagen clonar(Posicion nuevaPosicion) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

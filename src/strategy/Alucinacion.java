@@ -49,31 +49,31 @@ public class Alucinacion implements Strategy {
 		if(distancia>UnidadFactory.UNIDAD_ALTO_TEMPLARIO_VISION*factor)
 			throw new FueraDeRangoDeVisionException(Mensajes.MSJ_ERROR_FUERA_DE_RANGO_DE_VISION);
 		
-		int posX=elementoActuante.getPosicion().getX();
-		int posY=elementoActuante.getPosicion().getY();
+		int posX=posicionDestino.getX();
+		int posY=posicionDestino.getY();
 		
 		//TODO msma: podria mejorarse y que la posicion ficticia sea aleatoria en un rango acotado cerca de la unidad
 		//TODO msma: Si se cambian estas posiciones, van a fallar luego los tests, ojo, repararlos!!
-		Posicion posicionFicticia1 = new Posicion(posX+1+factor,posY);
+		Posicion posicionFicticia1 = new Posicion(posX+5+factor,posY);
 		Elemento elementoCopiado = Juego.getInstancia().getJugadorActual().obtenerArmada().obtenerElementoEnPosicion(posicionDestino);
-		Elemento copiaFicticia1 = (Elemento) elementoCopiado.clone();
-		copiaFicticia1.setPosicion(posicionFicticia1);
+		Elemento copiaFicticia1 = ((Unidad)elementoCopiado).clonar(posicionFicticia1);
 		copiaFicticia1.getVitalidad().setVida(0);
 		Danio danioNulo = new Danio("0A0T");
 		((Unidad) copiaFicticia1).setDanio(danioNulo);//TODO casteo temporal
+		copiaFicticia1.setAccionesDisponibles(null);
 	
-		Posicion posicionFicticia2 = new Posicion(posX-1-factor,posY);
-		Elemento copiaFicticia2 = (Elemento)elementoCopiado.clone();
-		copiaFicticia2.setPosicion(posicionFicticia2);
+		Posicion posicionFicticia2 = new Posicion(posX-5-factor,posY);
+		Elemento copiaFicticia2 = ((Unidad)elementoCopiado).clonar(posicionFicticia2);
 		copiaFicticia2.getVitalidad().setVida(0);	
 		((Unidad) copiaFicticia2).setDanio(danioNulo);//TODO casteo temporal
+		copiaFicticia2.setAccionesDisponibles(null);
 	
 		elementoActuante.restarEnergiaPorAccion(ENERGIA_NECESARIA);
 		
 		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia1);
-		Juego.getInstancia().getListener().seCreoCopiaFicticia(copiaFicticia1);
 		Juego.getInstancia().agregarUnidadAJugadorActual(copiaFicticia2);
-		Juego.getInstancia().getListener().seCreoCopiaFicticia(copiaFicticia2);
+		
+		Juego.getInstancia().getListener().seRealizoAlucinacion(elementoCopiado,copiaFicticia1,copiaFicticia2);
 		
 		//Juego.getInstancia().verificarFinDePartida();
 

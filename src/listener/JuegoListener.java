@@ -57,7 +57,7 @@ public interface JuegoListener {
 	public void seRealizoEmp();
 	public void seRealizoRadiacion(Elemento elementoAtacado);
 	public void seRealizoTormentaPsionica(Elemento elementoTemporalAtacado);
-	public void seRealizoAlucinacion(ElementoArtificial elemento);
+	public void seRealizoAlucinacion(Elemento elementoCopiado, Elemento copiaFicticia1, Elemento copiaFicticia2) throws PosicionInvalidaException, FueraDeRangoException;
 	
 	//Metodos relacionados con la vida de una unidad
 	public void seMurioUnaUnidad(Elemento elemento) throws ElementoNoEncontradoException;

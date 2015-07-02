@@ -5,6 +5,7 @@ import java.io.IOException;
 import recursos.Cristal;
 import recursos.Volcan;
 import strategy.ContextoStrategy;
+import titiritero.modelo.ObjetoPosicionable;
 import common.Posicion;
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
@@ -87,6 +88,25 @@ public class BaseSupIzq extends Base {
 
 	@Override
 	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setX(int x) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setY(int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ObjetoPosicionable clonar(Posicion nuevaPosicion)
+			throws PosicionInvalidaException, FueraDeRangoException {
 		// TODO Auto-generated method stub
 		return null;
 	}

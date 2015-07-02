@@ -34,7 +34,7 @@ import exceptions.UnidadLlenaException;
 
 public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneable{
 
-	private Posicion posicion;
+	protected Posicion posicion;
 	private ArrayList<Parte> partes;
 	private Espacio espacio;
 	private Map<String, Accion> accionesDisponibles;
@@ -79,7 +79,7 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 		// TODO Auto-generated constructor stub
 	}
 
-	private void crearPartes() throws FueraDeRangoException, PosicionInvalidaException {
+	protected void crearPartes() throws FueraDeRangoException, PosicionInvalidaException {
 		for (int i = 0; i < this.alto; i++) {
 			for (int j = 0; j < this.ancho; j++) {
 				Parte parte = new Parte(new Posicion(this.posicion.getX() + i, this.posicion.getY() + j));
@@ -365,6 +365,8 @@ public abstract class Elemento implements ObjetoVivo, ObjetoPosicionable,Cloneab
 		ElementoArtificial clone = (ElementoArtificial)super.clone();
 		return clone;
 	}
+	
+	
 
 	public int getEnergia() {
 		return 0;

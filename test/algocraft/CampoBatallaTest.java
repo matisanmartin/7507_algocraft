@@ -2,7 +2,6 @@ package algocraft;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import model.Base;
 import model.CampoBatalla;
 import model.Juego;
 import model.Parte;

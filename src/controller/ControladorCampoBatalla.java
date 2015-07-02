@@ -14,7 +14,7 @@ import exceptions.PosicionInvalidaException;
 
 public class ControladorCampoBatalla implements ObservadorDeGameLoop {
 	
-	private Map<Elemento,ObjetoDibujable> mapaDeVistasDeElementos;
+	private static Map<Elemento,ObjetoDibujable> mapaDeVistasDeElementos;
 	private VentanaPrincipal ventana;
 //	private static ControladorCampoBatalla INSTANCIA = null;
 
@@ -24,7 +24,11 @@ public class ControladorCampoBatalla implements ObservadorDeGameLoop {
 	}
 	
 	public void agregarAMapaDeVistaDeElementos(Elemento elemento, ObjetoDibujable vista){
-		this.mapaDeVistasDeElementos.put(elemento, vista);
+		mapaDeVistasDeElementos.put(elemento, vista);
+	}
+	
+	public static ObjetoDibujable obtenerVista(Elemento elemento) {
+		return mapaDeVistasDeElementos.get(elemento);
 	}
 	
 //	public static ControladorCampoBatalla getInstancia(){
@@ -47,10 +51,10 @@ public class ControladorCampoBatalla implements ObservadorDeGameLoop {
 		try {
 			elementosABorrar = CampoBatalla.getInstancia().getElementosABorrar();
 			for (Elemento elemento : elementosABorrar) {
-				ObjetoDibujable vista = this.mapaDeVistasDeElementos.get(elemento);
+				ObjetoDibujable vista = mapaDeVistasDeElementos.get(elemento);
 				if (vista != null){
 					this.ventana.getGameLoop().remover(vista);
-					this.mapaDeVistasDeElementos.remove(elemento);
+					mapaDeVistasDeElementos.remove(elemento);
 				}
 			}
 		} catch (PosicionInvalidaException | FueraDeRangoException e) {
@@ -61,6 +65,12 @@ public class ControladorCampoBatalla implements ObservadorDeGameLoop {
 		
 
 
+	}
+
+	public static void set(Elemento copia, ObjetoDibujable copiaDib) {
+		
+		mapaDeVistasDeElementos.put(copia, copiaDib);
+		
 	}
 
 }

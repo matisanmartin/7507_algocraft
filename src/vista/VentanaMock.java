@@ -236,7 +236,7 @@ public class VentanaMock implements JuegoListener {
 	}
 
 	@Override
-	public void seRealizoAlucinacion(ElementoArtificial elemento) {
+	public void seRealizoAlucinacion(Elemento elemento, Elemento copia1, Elemento copia2) {
 		// TODO Auto-generated method stub
 
 	}

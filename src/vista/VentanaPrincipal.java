@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +26,7 @@ import sonido.TipoSonido;
 import titiritero.dibujables.Imagen;
 import titiritero.dibujables.SuperficiePanel;
 import titiritero.modelo.GameLoop;
+import titiritero.modelo.ObjetoDibujable;
 import titiritero.modelo.SuperficieDeDibujo;
 import turno.TimerCambioDeTurno;
 import vista.edificios.VistaAcceso;
@@ -183,7 +183,6 @@ public class VentanaPrincipal implements JuegoListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				Timer tiempoDeTurno = new Timer();
 				TimerCambioDeTurno cambioDeTurno= new TimerCambioDeTurno();
 				
 				cambioDeTurno.run();
@@ -510,7 +509,25 @@ public class VentanaPrincipal implements JuegoListener {
 	}
 
 	@Override
-	public void seRealizoAlucinacion(ElementoArtificial elemento) {
+	public void seRealizoAlucinacion(Elemento elemento, Elemento copia1, Elemento copia2) throws PosicionInvalidaException, FueraDeRangoException {
+		
+		this.getGameLoop().agregar(copia1);
+		this.getGameLoop().agregar(copia2);
+		
+		ObjetoDibujable original = ControladorCampoBatalla.obtenerVista(elemento);
+		
+		ObjetoDibujable copiaDib1=original.clonar(copia1.getPosicion());
+		ObjetoDibujable copiaDib2=original.clonar(copia2.getPosicion());
+		
+		copia1 = (Elemento) ((Imagen)copiaDib1).getPosicionable();
+		copia2 = (Elemento) ((Imagen)copiaDib2).getPosicionable();
+		
+		ControladorCampoBatalla.set(copia1,copiaDib1);
+		ControladorCampoBatalla.set(copia2,copiaDib2);
+		
+		this.getGameLoop().agregar(copiaDib1);
+		this.getGameLoop().agregar(copiaDib2);
+		
 		JOptionPane.showMessageDialog(getFrame(), "Alucinación realizada exitosamente", "Ataque Exitoso",JOptionPane.INFORMATION_MESSAGE);
 		
 	}

@@ -12,23 +12,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import razas.Raza;
-
-import common.Posicion;
-
 import exceptions.ColorInvalidoException;
-import exceptions.CostoInvalidoException;
-import exceptions.DanioInvalidoException;
-import exceptions.ElementoInvalidoException;
-import exceptions.ElementoNoEncontradoException;
-import exceptions.FueraDeRangoException;
 import exceptions.NombreCortoException;
-import exceptions.PosicionInvalidaException;
-import exceptions.RecursosInsuficientesException;
-import exceptions.UnidadInvalidaException;
-import exceptions.UnidadLlenaException;
-import factory.UnidadFactory;
-import factory.unidades.TipoUnidad;
-import factory.unidades.Unidad;
 
 @RunWith(JUnit4.class)
 public class JugadorTest {
@@ -61,12 +46,5 @@ public class JugadorTest {
 		 //assertEquals(Raza.class,jugadorPrueba.getRaza().getClass());
 	 }
 
-	 @Test
-	 public void alCrerseDeberiaTener200DeCristal0DeGas() throws NombreCortoException, ColorInvalidoException{
-		 jugadorPrueba = new Jugador("12345","terran","rojo");
-		 assertEquals(200,jugadorPrueba.getCantidadDeCristal());
-		 assertEquals(0,jugadorPrueba.getCantidadDeGas());
-		 
-	 }
 	 
 }

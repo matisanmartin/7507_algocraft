@@ -48,4 +48,23 @@ public class Posicion implements ObjetoPosicionable {
 		
 		return distancia;
 	}
+
+	@Override
+	public void setX(int x) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setY(int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ObjetoPosicionable clonar(Posicion nuevaPosicion)
+			throws PosicionInvalidaException, FueraDeRangoException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

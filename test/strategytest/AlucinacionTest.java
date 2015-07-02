@@ -1,9 +1,12 @@
 package strategytest;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 
 import jugador.Jugador;
 import model.CampoBatalla;
+import model.Elemento;
 import model.Juego;
 
 import org.junit.After;
@@ -12,10 +15,9 @@ import org.junit.Test;
 
 import strategy.Alucinacion;
 import strategy.ContextoStrategy;
+import strategy.Mover;
 import vista.VentanaMock;
-
 import common.Posicion;
-
 import exceptions.CostoInvalidoException;
 import exceptions.DanioInvalidoException;
 import exceptions.ElementoInvalidoException;
@@ -67,11 +69,11 @@ public class AlucinacionTest {
 		Juego.getInstancia().setJugadorActual(jugadorActual);
 
 		posicionUnidadAmigaEnRango = new Posicion(100,80);//El rango de vision del alto templario es 7
-		unidadAmigaEnRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaEnRango);
+		unidadAmigaEnRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT,posicionUnidadAmigaEnRango);
 		jugadorActual.agregarElemento(unidadAmigaEnRango);
 
 		posicionUnidadAmigaFueraDeRango = new Posicion(800,200);//El rango de vision del alto templario es 7
-		unidadAmigaFueraDeRango=factory.getUnidad(TipoUnidad.TERRAN_MARINE,posicionUnidadAmigaFueraDeRango);
+		unidadAmigaFueraDeRango=factory.getUnidad(TipoUnidad.PROTOSS_ZEALOT,posicionUnidadAmigaFueraDeRango);
 		jugadorActual.agregarElemento(unidadAmigaFueraDeRango);
 		
 		Juego.getInstancia().setJugadorEnemigo(jugadorEnemigo);
@@ -97,19 +99,37 @@ public class AlucinacionTest {
 			unidadAtacante.setEnergia(100);
 			unidadAtacante.realizarAccion(contexto, posicionUnidadAmigaEnRango);
 			
+			Elemento unidadCopia1 = Juego.getInstancia()
+					 .getJugadorActual()
+					 .obtenerArmada()
+					 .obtenerElementoEnPosicion(new Posicion(135,80));
+
+			Elemento unidadCopia2 = Juego.getInstancia()
+					 .getJugadorActual()
+					 .obtenerArmada()
+					 .obtenerElementoEnPosicion(new Posicion(65,80));
+			
+			Elemento original = Juego.getInstancia()
+									 .getJugadorActual()
+									 .obtenerArmada()
+									 .obtenerElementoEnPosicion(new Posicion(100,200));
+			
+			ContextoStrategy contexto = new ContextoStrategy(new Mover());
+			
+			unidadCopia2.realizarAccion(contexto, new Posicion(600,20));
+			
+			unidadCopia1.realizarAccion(contexto, new Posicion(20,600));
+			
+			assertEquals(unidadCopia2.getPosicion(),new Posicion(600,20));
+			assertEquals(unidadCopia1.getPosicion(),new Posicion(20,600));
+			
+			
 			
 			
 		} catch (PartidaGanadaException e) {
 			
-			Juego.getInstancia()
-			   .getJugadorActual()
-			   .obtenerArmada()
-			   .obtenerElementoEnPosicion(new Posicion(231,20));
-
-			Juego.getInstancia()
-			   .getJugadorActual()
-			   .obtenerArmada()
-			   .obtenerElementoEnPosicion(new Posicion(169,20));
+			
+			
 
 		}
 		
